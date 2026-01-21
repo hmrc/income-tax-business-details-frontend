@@ -30,7 +30,16 @@ class ErrorHandlerSpec extends AnyWordSpec
   with ScalaFutures {
 
   override def fakeApplication(): Application =
-    new GuiceApplicationBuilder()
+    GuiceApplicationBuilder()
+      .configure(
+        "auth.host" -> "localhost",
+        "auth.port" -> 8500,
+        "auth.protocol" -> "http",
+
+        "microservice.services.auth.host" -> "localhost",
+        "microservice.services.auth.port" -> 8500,
+        "microservice.services.auth.protocol" -> "http"
+      )
       .build()
 
   private val fakeRequest = FakeRequest("GET", "/")
@@ -40,6 +49,8 @@ class ErrorHandlerSpec extends AnyWordSpec
     "render HTML" in {
       val html = handler.standardErrorTemplate("title", "heading", "message")(fakeRequest).futureValue
       html.contentType shouldBe "text/html"
+      html.body should not be empty
+      html.body should include("<")
     }
   }
 }

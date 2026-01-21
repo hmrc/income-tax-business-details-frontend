@@ -7,13 +7,13 @@ object AppDependencies {
 
   val bootstrapPlayVersion = "10.5.0"
   val playPartialsVersion = "10.2.0"
-  val playFrontendHMRCVersion = "12.22.0"
+  val playFrontendHMRCVersion = "12.23.0"
   val catsVersion = "2.13.0"
   val scalaTestPlusVersion = "7.0.2"
   val jsoupVersion = "1.22.1"
   val mockitoVersion = "5.21.0"
   val scalaMockVersion = "7.5.3"
-  val wiremockVersion = "3.0.0-beta-7"
+  val wiremockVersion = "3.5.0"
   val hmrcMongoVersion = "2.11.0"
   val playVersion = "play-30"
 
@@ -38,8 +38,7 @@ object AppDependencies {
     "org.scalatestplus" %% "scalacheck-1-15" % "3.2.11.0" % Test,
     "uk.gov.hmrc" %% s"bootstrap-test-$playVersion" % bootstrapPlayVersion % Test,
     caffeine,
-    "uk.gov.hmrc" %% s"crypto-json-$playVersion" % "8.4.0" % Test,
-  )
+    "uk.gov.hmrc" %% s"crypto-json-$playVersion" % "8.4.0" % Test)
 
   val it = Seq.empty
 }
