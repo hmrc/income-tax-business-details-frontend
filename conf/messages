@@ -1,2 +1,26 @@
 service.name = income-tax-business-details-frontend
 service.text = This is your new service
+
+htmlTitle = {0} - Manage your Self Assessment - GOV.UK
+htmlTitle.agent = {0} - Manage your Self Assessment - GOV.UK
+htmlTitle.errorPage = {0} - GOV.UK
+htmlTitle.invalidInput = Error: {0} - GOV.UK
+
+base.continue = Continue
+
+timeout.heading = Your session has timed out
+timeout.signIn.1 = To view your quarterly reporting details, you’ll have to
+timeout.signIn.2 = sign in
+timeout.signIn.3 = using your Government Gateway ID.
+
+agent-error.heading = You can’t use this service yet
+agent-error.note = To use this service, you need to
+agent-error.link = set up an agent services account
+
+agent-unauthorised.heading = You are not authorised to access this page
+agent-unauthorised.note = You are a supporting agent for this client. Only their main agent can access records that show:
+agent-unauthorised.note.b1 = payments, credits and refunds
+agent-unauthorised.note.b2 = returns
+agent-unauthorised.note.b3 = next charges due
+agent-unauthorised.note.b4 = penalties and appeals
+agent-unauthorised.link = Read more about the difference between main and supporting agents on GOV.UK
