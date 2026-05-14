@@ -16,11 +16,12 @@
 
 package uk.gov.hmrc.incometaxbusinessdetailsfrontend.config
 
+import config.AgentItvcErrorHandler
 import org.scalatest.concurrent.ScalaFutures
 import play.api.Application
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.test.FakeRequest
-import play.api.test.Helpers._
+import play.api.test.Helpers.*
 import uk.gov.hmrc.incometaxbusinessdetailsfrontend.testUtils.UnitSpec
 
 import scala.concurrent.Future

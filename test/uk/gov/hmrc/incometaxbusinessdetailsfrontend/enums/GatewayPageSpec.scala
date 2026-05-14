@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.incometaxbusinessdetailsfrontend.enums.GatewayPage
 
+import enums.GatewayPage.GatewayPage
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 

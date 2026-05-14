@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.incometaxbusinessdetailsfrontend.models.btaNavBar
 
+import models.btaNavBar.{ListLinks, NavContent, NavLinks}
 import play.api.libs.json.Json
 import uk.gov.hmrc.incometaxbusinessdetailsfrontend.testUtils.UnitSpec
 

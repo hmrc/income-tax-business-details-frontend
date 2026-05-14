@@ -19,6 +19,7 @@ package uk.gov.hmrc.incometaxbusinessdetailsfrontend.viewUtils
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.i18n.{Lang, Messages, MessagesApi, MessagesImpl}
 import uk.gov.hmrc.incometaxbusinessdetailsfrontend.testUtils.UnitSpec
+import viewUtils.ExternalUrlHelper
 
 class ExternalUrlHelperSpec extends UnitSpec with GuiceOneAppPerSuite {
 

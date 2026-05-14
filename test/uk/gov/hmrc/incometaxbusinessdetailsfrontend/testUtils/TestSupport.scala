@@ -16,13 +16,13 @@
 
 package uk.gov.hmrc.incometaxbusinessdetailsfrontend.testUtils
 
+import config.AppConfig
 import org.scalatest.BeforeAndAfterEach
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.i18n.{Lang, Messages, MessagesApi}
 import play.api.mvc.AnyContentAsEmpty
 import play.api.test.FakeRequest
 import uk.gov.hmrc.http.{HeaderCarrier, SessionId}
-import uk.gov.hmrc.incometaxbusinessdetailsfrontend.config.AppConfig
 
 trait TestSupport extends UnitSpec with GuiceOneAppPerSuite with BeforeAndAfterEach {
 
