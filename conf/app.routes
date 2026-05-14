@@ -1,4 +1,94 @@
 # microservice specific routes
+->          /hmrc-frontend                                                hmrcfrontend.Routes
 
-->         /hmrc-frontend           hmrcfrontend.Routes
-GET        /assets/*file            controllers.Assets.versioned(path = "/public", file: Asset)
+# Play frontend hmrc route for Assets
+GET         /assets/*file                                                 controllers.Assets.versioned(path = "/public", file)
+
+# Assets
+GET         /assets/*file                                                 controllers.Assets.at(path="/public", file)
+
+GET        /language/:lang                                                uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.LocalLanguageController.switchToLanguage(lang: String)
+
+#Charge summary
+GET         /tax-years/:taxYear/charge                                    uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.ChargeSummaryController.show(taxYear: Int, id: String, isInterestCharge: Boolean ?= false, origin: Option[String] ?= None)
+GET         /agents/tax-years/:taxYear/charge                             uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.ChargeSummaryController.showAgent(taxYear: Int, id: String, isInterestCharge: Boolean ?= false)
+
+#Credits
+GET         /credits-from-hmrc/:calendarYear                              uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.CreditsSummaryController.showCreditsSummary(calendarYear: Int, origin: Option[String] ?= None)
+GET         /agents/credits-from-hmrc/:calendarYear                       uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.CreditsSummaryController.showAgentCreditsSummary(calendarYear: Int)
+
+#Credits and Refunds
+GET          /money-in-your-account                                       uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.MoneyInYourAccountController.show(origin: Option[String] ?= None)
+GET          /agents/money-in-your-account                                uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.MoneyInYourAccountController.showAgent()
+
+#Custom not found
+GET         /custom-not-found                                             uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.errors.NotFoundDocumentIDLookupController.show()
+
+#Forecast income summary
+GET         /:taxYear/forecast-income                                     uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.ForecastIncomeSummaryController.show(taxYear: Int, origin: Option[String] ?= None)
+GET         /agents/:taxYear/forecast-income                              uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.ForecastIncomeSummaryController.showAgent(taxYear: Int)
+
+#Forecast Tax Calc Summary
+GET         /:taxYear/forecast-tax-calculation                            uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.ForecastTaxCalcSummaryController.show(taxYear: Int, origin: Option[String] ?= None)
+GET         /agents/:taxYear/forecast-tax-calculation                     uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.ForecastTaxCalcSummaryController.showAgent(taxYear: Int)
+
+#Home Controller
+GET         /                                                             uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.HomeController.show(origin: Option[String] ?= None)
+GET         /agents/client-income-tax                                     uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.HomeController.showAgent()
+GET         /your-tasks                                                   uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.newHomePage.HandleYourTasksController.show()
+GET         /agents/your-tasks                                            uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.newHomePage.HandleYourTasksController.showAgent()
+
+#No Income Sources Error page
+GET         /cannot-access-service                                        uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.NoIncomeSourcesController.show(isAgent: Boolean = false)
+GET         /agents/cannot-access-service                                 uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.NoIncomeSourcesController.show(isAgent: Boolean = true)
+
+#Not Enrolled
+GET         /cannot-access-service                                        uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.errors.NotEnrolledController.show()
+
+#Payment
+GET         /payment                                                      uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.PaymentController.paymentHandoff(amountInPence: Long, origin: Option[String] ?= None)
+GET         /agents/payment                                               uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.PaymentController.agentPaymentHandoff(amountInPence: Long)
+
+#Payment Allocation
+GET         /payment-made-to-hmrc                                         uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.PaymentAllocationsController.viewPaymentAllocation(documentNumber: String, origin: Option[String] ?= None)
+GET         /agents/payment-made-to-hmrc                                  uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.PaymentAllocationsController.viewPaymentAllocationAgent(documentNumber: String)
+
+#Payment history
+GET         /payment-refund-history                                       uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.PaymentHistoryController.show(origin: Option[String] ?= None)
+GET         /agents/payment-refund-history                                uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.PaymentHistoryController.showAgent()
+GET         /refund-status                                                uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.PaymentHistoryController.refundStatus()
+
+#Sign In Routes
+GET         /sign-in                                                      uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.SignInController.signIn()
+#Sign Out Routes
+GET         /sign-out                                                     uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.SignOutController.signOut()
+
+#TaxYears
+GET         /tax-years                                                    uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.TaxYearsController.showTaxYears(origin: Option[String] ?= None)
+GET         /agents/tax-years                                             uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.TaxYearsController.showAgentTaxYears()
+
+# Tax Year Summary
+GET         /tax-year-summary/:taxYear                                    uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.TaxYearSummaryController.renderTaxYearSummaryPage(taxYear: Int, origin: Option[String] ?= None)
+GET         /agents/tax-year-summary/:taxYear                             uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.TaxYearSummaryController.renderAgentTaxYearSummaryPage(taxYear: Int)
+
+#Timeout Routes
+GET         /session-timeout                                              uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.timeout.SessionTimeoutController.timeout()
+GET         /keep-alive                                                   uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.timeout.SessionTimeoutController.keepAlive()
+
+#Uplift Failed
+GET         /cannot-view-page                                             uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.errors.UpliftFailedController.show()
+
+#Uplift Success
+GET         /uplift-success                                               uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.UpliftSuccessController.success()
+
+# Users not migrated to ETMP
+GET          /how-to-claim-refund                                         uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.NotMigratedUserController.show()
+GET          /agents/how-to-claim-refund                                  uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.NotMigratedUserController.showAgent()
+
+#WhatYouOwe
+GET         /what-you-owe                                                 uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.WhatYouOweController.show(origin: Option[String] ?= None)
+GET         /agents/what-your-client-owes                                 uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.WhatYouOweController.showAgent()
+
+->          /                                                             obligations.Routes
+->          /                                                             businessDetails.Routes
+->          /                                                             claimToAdjustPoa.Routes

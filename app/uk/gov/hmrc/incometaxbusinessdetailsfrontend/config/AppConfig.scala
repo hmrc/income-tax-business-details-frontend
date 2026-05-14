@@ -22,23 +22,23 @@ import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
 
 @Singleton
 class AppConfig @Inject()(val servicesConfig: ServicesConfig, val config: Configuration) {
-  
-  // Sign Out
-  lazy val ggUrl: String = servicesConfig.getString("government-gateway.url")
-  def ggSignOutUrl(identifier: String): String = s"$ggUrl/bas-gateway/sign-out-without-state?continue=${exitSurveyUrl(identifier)}"
 
-  
+//  // Sign Out
+//  lazy val ggUrl: String = servicesConfig.getString("government-gateway.url")
+//  def ggSignOutUrl(identifier: String): String = s"$ggUrl/bas-gateway/sign-out-without-state?continue=${exitSurveyUrl(identifier)}"
+//
+
   //Current Language
   val welshLanguageSupportEnabled: Boolean =
     config.getOptional[Boolean]("features.welsh-language-support").getOrElse(false)
 
-  //Time Machine
-  lazy val contactFormServiceIdentifier: String = "ITVC"
+//  //Time Machine
+//  lazy val contactFormServiceIdentifier: String = "ITVC"
+//
+//  //Exit Survey
+//  lazy val exitSurveyBaseUrl: String = servicesConfig.getString("feedback-frontend.host") + servicesConfig.getString("feedback-frontend.url")
+//  def exitSurveyUrl(identifier: String): String = s"$exitSurveyBaseUrl/$identifier"
 
-  //Exit Survey
-  lazy val exitSurveyBaseUrl: String = servicesConfig.getString("feedback-frontend.host") + servicesConfig.getString("feedback-frontend.url")
-  def exitSurveyUrl(identifier: String): String = s"$exitSurveyBaseUrl/$identifier"
-  
 
   // URL Placeholders (routes removed from routing)
   lazy val homeUrl: String = config.get[String]("urls.home")

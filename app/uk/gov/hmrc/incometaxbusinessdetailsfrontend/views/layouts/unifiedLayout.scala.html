@@ -17,77 +17,217 @@
 @import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.helpers.CurrentLanguage
 @import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.helpers.HtmlTitle
 @import uk.gov.hmrc.govukfrontend.views.html.components._
-@import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.components._
+@import uk.gov.hmrc.hmrcfrontend.views.html.components._
+@import uk.gov.hmrc.hmrcfrontend.views.html.components.Header
+@import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.{components => localComponents}
+@import uk.gov.hmrc.hmrcfrontend.views.viewmodels.userresearchbanner.UserResearchBanner
 @import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.layouts.common.Scripts
-@import uk.gov.hmrc.incometaxbusinessdetailsfrontend.config.AppConfig
+@import uk.gov.hmrc.incometaxbusinessdetailsfrontend.config.FrontendAppConfig
 @import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.helpers.injected.BackLinkWithFallback
 @import uk.gov.hmrc.incometaxbusinessdetailsfrontend.enums.GatewayPage._
 @import uk.gov.hmrc.incometaxbusinessdetailsfrontend.viewUtils.ExternalUrlHelper
-@import uk.gov.hmrc.govukfrontend.views.viewmodels.content.Text
-@import uk.gov.hmrc.govukfrontend.views.html.components.implicits._
-@import uk.gov.hmrc.govukfrontend.views.viewmodels.tag.Tag
+@import uk.gov.hmrc.hmrcfrontend.views.viewmodels.header.v2.HeaderUrls
+@import uk.gov.hmrc.hmrcfrontend.views.viewmodels.header.v2.HeaderNames
 
 @this(
-    appConfig: AppConfig,
-    govukBackLink: GovukBackLink,
-    govukLayout: GovukLayout,
-    govukPhaseBanner: GovukPhaseBanner,
-    govukFooter: GovukFooter,
-    backLink: uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.components.back_link,
-    backLinkFallback: uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.helpers.injected.BackLinkWithFallback,
-    mainContentLayout: uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.layouts.mainContentLayout,
-    scripts: uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.layouts.common.Scripts,
-    a: uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.components.link
+appConfig: uk.gov.hmrc.incometaxbusinessdetailsfrontend.config.FrontendAppConfig,
+govukBackLink: GovukBackLink,
+govukLayout: GovukLayout,
+hmrcHeader:  HmrcHeader,
+govukPhaseBanner: GovukPhaseBanner,
+footerLinks: HmrcStandardFooter,
+hmrcTimeoutDialog: HmrcTimeoutDialog,
+hmrcTrackingConsentSnippet: HmrcTrackingConsentSnippet,
+backLink: localComponents.back_link,
+backLinkFallback: BackLinkWithFallback,
+languageSwitch: HmrcLanguageSelect,
+mainContentLayout: mainContentLayout,
+scripts: Scripts,
+a: localComponents.link
 )
 
 @(pageTitle: String,
-    scriptsBlock: Option[Html] = None,
-    backUrl: Option[String] = None,
-    showLogout: Boolean = true,
-    mainClass: Option[String] = None,
-    showBtaHeader: Boolean = true,
-    signOutLink: Boolean = true,
-    timeout: Boolean = true,
-    isAgent: Boolean = false,
-    itsaTaxYear: Option[Int] = None,
-    form: Option[Form[_]] = None,
-    btaNavPartial: Option[Html] = None,
-    origin: Option[String] = None,
-    useFallbackBackLink: Boolean = true,
-    showServiceName: Boolean = true,
-    isErrorPage: Boolean = false,
-    gatewayPage: Option[GatewayPage] = None
+scriptsBlock: Option[Html] = None,
+backUrl: Option[String] = None,
+showLogout: Boolean = true,
+mainClass: Option[String] = None,
+showBtaHeader: Boolean = true,
+signOutLink: Boolean = true,
+timeout: Boolean = true,
+isAgent: Boolean = false,
+itsaTaxYear: Option[Int] = None,
+form: Option[Form[_]] = None,
+btaNavPartial: Option[Html] = None,
+btaAndPtaServiceNavigation: Option[ServiceNavigation] = None,
+origin: Option[String] = None,
+useFallbackBackLink: Boolean = true,
+showServiceName: Boolean = true,
+isErrorPage: Boolean = false,
+gatewayPage: Option[GatewayPage] = None
 )(contentBlock: Html)(implicit request: RequestHeader, messages: Messages)
 
+
+@feedbackUrl = @{
+if(isAgent) appConfig.agentBetaFeedbackUrl
+else appConfig.betaFeedbackUrl
+}
+
+@feedbackBanner = {
+@if(useGovUkRebrand) {
+@messages("betaBanner.newService.new")
+@if(isAgent) { @a(link=appConfig.agentBetaFeedbackUrl, classes="govuk-link", messageKey="betaBanner.feedback.link.new", id=Some("agent-feedback-url"), target=Some("_blank"), outerMessage=messages("base.fullstop")) } else { @a(link=appConfig.betaFeedbackUrl, classes="govuk-link", messageKey="betaBanner.feedback.link.new", target=Some("_blank"), id=Some("individuals-feedback-url"), outerMessage=messages("base.fullstop")) }
+} else {
+@messages("betaBanner.newService")
+@messages("betaBanner.your")
+@if(isAgent) { @a(link=appConfig.agentBetaFeedbackUrl, classes="govuk-link", messageKey="betaBanner.feedback", id=Some("agent-feedback-url")) } else { @a(link=appConfig.betaFeedbackUrl, classes="govuk-link", messageKey="betaBanner.feedback", id=Some("individuals-feedback-url")) }
+@messages("betaBanner.improve")
+}
+}
+
+@useGovUkRebrand = @{ appConfig.itvcRebrand }
+
+@defaultServiceNavigation(serviceName: Option[String], serviceUrl: String) = @{
+ServiceNavigation(serviceName = serviceName, serviceUrl = Some(serviceUrl)).withLanguageToggle()
+}
+
+@siteHeader = @{
+
+val oldServiceName = if (isAgent) Some(messages("agent.header.serviceName")) else Some(messages("header.serviceName"))
+
+val serviceName = {
+(showServiceName, isAgent) match {
+case (true, false) => Some(messages("header.serviceName"))
+case (true, true)  => Some(messages("agent.header.serviceName"))
+case (false, _)    => None
+}
+}
+
+val serviceUrl = if (isAgent) uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.HomeController.showAgent().url
+else uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.HomeController.show().url
+
+if(useGovUkRebrand) {
+val navBar = btaAndPtaServiceNavigation match {
+case Some(nav) => nav.copy(serviceName = serviceName, serviceUrl = Some(serviceUrl)).withLanguageToggle()
+case None => defaultServiceNavigation(serviceName, serviceUrl)
+}
+
+hmrcHeader(HeaderParams(
+headerUrls = HeaderUrls(
+homepageUrl = ExternalUrlHelper.homepageLink,
+serviceUrl = serviceUrl,
+signOutHref = Some(uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.SignOutController.signOut().url)
+),
+banners = Banners(
+userResearchBanner = Some(UserResearchBanner(url = appConfig.enterSurveyUrl)),
+displayHmrcBanner = false,
+phaseBanner = Some(
+PhaseBanner(
+tag = Some(Tag(content = Text("Beta"))),
+content = HtmlContent(feedbackBanner)
+)
+),
+additionalBannersBlock = None
+),
+language = CurrentLanguage(),
+serviceNavigation = Some(navBar)
+))
+} else {
+hmrcHeader(Header(
+homepageUrl = ExternalUrlHelper.homepageLink,
+serviceName = if(showServiceName) oldServiceName else None,
+serviceUrl = serviceUrl,
+language = CurrentLanguage(),
+signOutHref = Some(uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.SignOutController.signOut().url),
+userResearchBanner =  Some(UserResearchBanner(url = appConfig.enterSurveyUrl)),
+displayHmrcBanner = false,
+phaseBanner = Some(
+PhaseBanner(
+tag = Some(Tag(content = Text("Beta"))),
+content = HtmlContent(feedbackBanner)
+)
+),
+additionalBannersBlock = None
+))
+}
+}
+
+@head = {
+@hmrcTrackingConsentSnippet()
+<!--[if lte IE 8]><link href=' @uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.Assets.at("stylesheets/application-ie-8.css")' rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if gt IE 8]><!--> <link href='@uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.Assets.at("stylesheets/application.css")' media="screen" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+
+@if(timeout) {
+@hmrcTimeoutDialog(TimeoutDialog(
+language = Some(CurrentLanguage().code),
+timeout = Option(900),
+countdown = Option(120),
+keepAliveUrl = Some(uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.timeout.routes.SessionTimeoutController.keepAlive().url),
+signOutUrl = Some(uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.SignOutController.signOut().url),
+keepAliveButtonText = Some(messages("button.continue"))
+))
+}
+}
+
 @beforeContentBlock = {
-    @if(backUrl.isDefined) {
-        @if(useFallbackBackLink) {
-            @backLinkFallback(backUrl.get, gatewayPage)
-        } else {
-            @backLink(backUrl.get)
-        }
-    }
+@if(!useGovUkRebrand) {
+@{btaNavPartial.getOrElse(())}
+}
+
+@if(!useGovUkRebrand) {
+<div id="language-switch">
+    @languageSwitch(LanguageSelect(
+    if (messages.lang.code == "cy") Cy else En,
+    (En, uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.LocalLanguageController.switchToLanguage("english").url),
+    (Cy, uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.LocalLanguageController.switchToLanguage("cymraeg").url)
+    ))
+</div>
+}
+
+@if(useFallbackBackLink) {
+@backUrl.map(backLinkFallback(_, gatewayPage))
+} else {
+@backUrl.map(backLink(_))
+}
 }
 
 @content = {
-    <div class="govuk-!-margin-bottom-6">
-        @contentBlock
-    </div>
+<div class="govuk-!-margin-bottom-6">
+    @contentBlock
+</div>
+
+<div class="govuk-body app-get-help-link">
+    <a lang="en" hreflang="en" class="govuk-link" rel="noreferrer noopener" target="_blank" href="@{appConfig.reportAProblemNonJSUrl}">
+        @messages("getpagehelp.linkText")
+        @messages("pagehelp.opensInNewTabText")
+    </a>
+</div>
+
 }
 
+@hmrcFrontendAssetPath = @{uk.gov.hmrc.hmrcfrontend.uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.Assets.at("govuk").url}
+
 @if(mainClass.isDefined){
-    @govukLayout(
-        pageTitle = Some(HtmlTitle(isAgent, isErrorPage, form.exists(_.hasErrors), pageTitle, showServiceName)),
-        beforeContentBlock = Some(beforeContentBlock),
-        footerItems = Seq(),
-        scriptsBlock = Some(scripts()),
-        mainContentLayout = Some(mainContentLayout(mainClass.get)(_))
-    )(content)
+@govukLayout(
+pageTitle = Some(HtmlTitle(isAgent, isErrorPage, form.exists(_.hasErrors), pageTitle, showServiceName)),
+headBlock = Some(head),
+beforeContentBlock = Some(beforeContentBlock),
+bodyEndBlock = None,
+headerBlock = Some(siteHeader),
+footerBlock = Some(footerLinks()),
+scriptsBlock = Some(scripts()),
+assetPath = Some(hmrcFrontendAssetPath),
+mainContentLayout = Some(mainContentLayout(mainClass.get)(_))
+)(content)
 } else {
-    @govukLayout(
-        pageTitle = Some(HtmlTitle(isAgent, isErrorPage, form.exists(_.hasErrors), pageTitle, showServiceName)),
-        beforeContentBlock = Some(beforeContentBlock),
-        footerItems = Seq(),
-        scriptsBlock = Some(scripts())
-    )(content)
+@govukLayout(
+pageTitle = Some(HtmlTitle(isAgent, isErrorPage, form.exists(_.hasErrors), pageTitle, showServiceName)),
+headBlock = Some(head),
+beforeContentBlock = Some(beforeContentBlock),
+bodyEndBlock = None,
+headerBlock = Some(siteHeader),
+footerBlock = Some(footerLinks()),
+scriptsBlock = Some(scripts()),
+assetPath = Some(hmrcFrontendAssetPath)
+)(content)
 }

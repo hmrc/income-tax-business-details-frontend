@@ -1,3 +1,4 @@
 # Add all the application routes to the app.routes file
 ->         /income-tax-business-details              app.Routes
-->         /                          health.Routes
+->         /income-tax-business-details/agents       agent.Routes
+->         /                                         health.Routes

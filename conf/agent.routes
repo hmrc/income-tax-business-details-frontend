@@ -1,0 +1,19 @@
+#Agent Error
+GET         /agent-error                                                   uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.errors.AgentErrorController.show()
+GET         /custom-not-found                                              uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.errors.AgentNotFoundDocumentIDLookupController.show()
+
+# Client Relationship Failure
+GET         /not-authorised-to-view-client                                 uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.ClientRelationshipFailureController.show()
+GET         /no-assignment                                                 uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.NoAssignmentController.show()
+
+# Confirm Client
+GET         /confirm-client-details                                        uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.ConfirmClientUTRController.show()
+POST        /confirm-client-details                                        uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.ConfirmClientUTRController.submit()
+
+# Enter Clients UTR
+GET         /client-utr                                                    uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.EnterClientsUTRController.show()
+POST        /client-utr                                                    uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.EnterClientsUTRController.submit()
+
+# UTR Error
+GET         /cannot-view-client                                            uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.UTRErrorController.show()
+POST        /cannot-view-client                                            uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.UTRErrorController.submit()

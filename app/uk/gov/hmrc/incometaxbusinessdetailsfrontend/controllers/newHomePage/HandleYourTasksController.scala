@@ -1,0 +1,184 @@
+/*
+ * Copyright 2026 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.newHomePage
+
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.auth.MtdItUser
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.auth.authV2.AuthActions
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.config.FrontendAppConfig
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.config.featureswitch.FeatureSwitching
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.agent.sessionUtils.SessionKeys
+//import uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.newHomePage.routes
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.models.admin.*
+//import uk.gov.hmrc.incometaxbusinessdetailsfrontend.models.creditsandrefunds.CreditsModel
+//import uk.gov.hmrc.incometaxbusinessdetailsfrontend.models.financialDetails.*
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.models.incomeSourceDetails.TaxYear
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.models.itsaStatus.ITSAStatus
+//import uk.gov.hmrc.incometaxbusinessdetailsfrontend.models.newHomePage.SubmissionDeadlinesViewModel
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.obligations.models.{ObligationsModel, SingleObligationModel}
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.obligations.services.NextUpdatesService
+//import uk.gov.hmrc.incometaxbusinessdetailsfrontend.obligations.services.reportingObligations.optOut.OptOutService
+//import uk.gov.hmrc.incometaxbusinessdetailsfrontend.obligations.services.reportingObligations.signUp.SignUpService
+import play.api.Logger
+import play.api.i18n.I18nSupport
+import play.api.mvc.*
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.services.*
+//import uk.gov.hmrc.incometaxbusinessdetailsfrontend.services.newHomePage.HandleYourTasksService
+import uk.gov.hmrc.http.HeaderCarrier
+import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
+//import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.newHomePage.NewHomeYourTasksView
+
+import java.time.LocalDate
+import javax.inject.{Inject, Singleton}
+import scala.concurrent.{ExecutionContext, Future}
+
+@Singleton
+class HandleYourTasksController @Inject()(val authActions: AuthActions,
+//                                          val handleYourTasksView: NewHomeYourTasksView,
+//                                          val signUpService: SignUpService,
+//                                          val optOutService: OptOutService,
+                                          val ITSAStatusService: ITSAStatusService,
+//                                          val whatYouOweService: WhatYouOweService,
+//                                          val creditService: CreditService,
+                                          val dateService: DateServiceInterface,
+//                                          val financialDetailsService: FinancialDetailsService,
+                                          val nextUpdatesService: NextUpdatesService,
+//                                          val handleYourTasksService: HandleYourTasksService
+                                         )
+                                         (implicit val ec: ExecutionContext,
+                                          mcc: MessagesControllerComponents,
+                                          val appConfig: FrontendAppConfig) extends FrontendController(mcc) with I18nSupport with FeatureSwitching {
+
+
+  def show(origin: Option[String] = None): Action[AnyContent] = authActions.asMTDIndividual().async {
+    implicit user =>
+      handleShowRequest(origin)
+  }
+
+  def showAgent(origin: Option[String] = None): Action[AnyContent] = authActions.asMTDAgentWithConfirmedClient().async {
+    implicit mtdItUser =>
+      handleShowRequest(origin)
+  }
+
+  def handleShowRequest(origin: Option[String] = None)
+                       (implicit user: MtdItUser[_], hc: HeaderCarrier): Future[Result] = {
+    handleYourTasks(origin, user.isAgent)
+  }
+
+  private def handleYourTasks(origin: Option[String] = None, isAgent: Boolean)
+                             (implicit user: MtdItUser[_]): Future[Result] = {
+    val currentTaxYear = TaxYear(dateService.getCurrentTaxYearEnd - 1, dateService.getCurrentTaxYearEnd)
+
+        for {
+    //      credits: CreditsModel <- creditService.getAllCredits
+    //      unpaidCharges <- financialDetailsService.getAllUnpaidFinancialDetails()
+    //      _ <- signUpService.updateJourneyStatusInSessionData(journeyComplete = false)
+    //      _ <- optOutService.updateJourneyStatusInSessionData(journeyComplete = false)
+          currentItsaStatus <- getCurrentITSAStatus(currentTaxYear)
+    //
+//          chargeItemList = getChargeList(unpaidCharges, isEnabled(FilterCodedOutPoas), isEnabled(PenaltiesAndAppeals))
+//          updatesAndDeadlinesViewModel <- getNextUpdates()
+        } yield {
+    //
+    //      val mandation = currentItsaStatus == ITSAStatus.Mandated
+    //
+    //      val creditsRefundsRepayEnabled = isEnabled(CreditsRefundsRepay)
+    //      val penaltiesAndAppealsEnabled = isEnabled(PenaltiesAndAppeals)
+    //      val mandationStatus =
+    //        if (mandation) SessionKeys.mandationStatus -> "on"
+    //        else SessionKeys.mandationStatus -> "off"
+    //
+    //      val yourTaskCardViewModel = handleYourTasksService.getYourTasksCards(updatesAndDeadlinesViewModel,
+    //        isAgent, chargeItemList, credits, creditsRefundsRepayEnabled, currentItsaStatus, penaltiesAndAppealsEnabled)
+    //
+            Ok//(handleYourTasksView(origin, isAgent,
+    //        yourTasksUrl(origin, isAgent), recentActivityUrl(origin, isAgent),
+    //        overviewUrl(origin, isAgent), helpUrl(origin, isAgent), yourTaskCardViewModel, appConfig.itvcRebrand, isEnabled(RecentActivity))).addingToSession(mandationStatus)
+        }
+      }
+
+    //  private def getChargeList(unpaidCharges: List[FinancialDetailsResponseModel], isFilterOutCodedPoasEnabled: Boolean, penaltiesEnabled: Boolean): List[ChargeItem] = {
+    //
+    //    val chargesList =
+    //      unpaidCharges.collect {
+    //        case fdm: FinancialDetailsModel => fdm
+    //      }
+    //    whatYouOweService.getFilteredChargesList(
+    //      financialDetailsList = chargesList,
+    //      isFilterCodedOutPoasEnabled = isFilterOutCodedPoasEnabled,
+    //      isPenaltiesEnabled = penaltiesEnabled,
+    //      remainingToPayByChargeOrInterestWhenChargeIsPaidOrNot = mainChargeIsNotPaidFilter)
+    //  }
+
+    //  private def mainChargeIsNotPaidFilter: PartialFunction[ChargeItem, ChargeItem] = {
+    //    case x if x.remainingToPayByChargeOrInterestWhenChargeIsPaid => x
+    //  }
+
+    //  private def getNextUpdates()(implicit user: MtdItUser[_]): Future[SubmissionDeadlinesViewModel] = {
+    //
+    //    val submissionDeadlinesViewModel = {
+    //      for {
+    //        (nextQuarterlyUpdateDueDate, nextTaxReturnDueDate) <- nextUpdatesService.getNextDueDates()
+    //        openObligations <- getOpenObligations()
+    //      } yield {
+    //        SubmissionDeadlinesViewModel(
+    //          openObligations = openObligations,
+    //          currentDate = dateService.getCurrentDate,
+    //          nextQuarterlyUpdateDueDate = nextQuarterlyUpdateDueDate,
+    //          nextTaxReturnDueDate = nextTaxReturnDueDate
+    //        )
+    //      }
+    //    }.recoverWith {
+    //      case ex =>
+    //        Logger("application").error(s"Failed to retrieve reporting content checks: ${ex.getMessage}")
+    //        Future.successful(SubmissionDeadlinesViewModel(Seq.empty, dateService.getCurrentDate, None, None))
+    //    }
+    //    submissionDeadlinesViewModel
+    //  }
+
+    //  private def getOpenObligations()
+    //                                (implicit user: MtdItUser[_], hc: HeaderCarrier): Future[Seq[SingleObligationModel]] = {
+    //    nextUpdatesService.getOpenObligations().flatMap {
+    //      case openObligations: ObligationsModel if openObligations.obligations.forall(_.obligations.nonEmpty) => Future.successful(openObligations.obligations.flatMap(_.obligations))
+    //      case _ =>
+    //        Logger("application").error("Unexpected Exception getting open obligations")
+    //        Future.successful(Seq.empty[SingleObligationModel])
+    //    }
+    //  }
+    //
+      private def getCurrentITSAStatus(currentTaxYear: TaxYear)(
+        implicit hc: HeaderCarrier,
+        user: MtdItUser[_]
+      ): Future[ITSAStatus.ITSAStatus] = {
+        ITSAStatusService
+          .getITSAStatusDetail(currentTaxYear, false, false)
+          .map { statusDetailList =>
+            statusDetailList
+              .flatMap(_.itsaStatusDetails)
+              .flatMap(_.map(_.status))
+              .headOption
+              .getOrElse(ITSAStatus.NoStatus)
+          }
+      }
+
+    //  def yourTasksUrl(origin: Option[String] = None, isAgent: Boolean): String = if (isAgent) controllers.newHomePage.routes.HandleYourTasksController.showAgent().url else controllers.newHomePage.routes.HandleYourTasksController.show().url
+    //
+    //  def recentActivityUrl(origin: Option[String] = None, isAgent: Boolean): String = routes.RecentActivityController.show(isAgent, origin).url
+    //
+    //  def overviewUrl(origin: Option[String] = None, isAgent: Boolean): String = controllers.routes.HomeController.handleOverview(origin, isAgent).url
+    //
+    //  def helpUrl(origin: Option[String] = None, isAgent: Boolean): String = controllers.routes.HomeController.handleHelp(origin, isAgent).url
+  }

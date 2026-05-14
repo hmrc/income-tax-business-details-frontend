@@ -17,13 +17,13 @@
 package uk.gov.hmrc.incometaxbusinessdetailsfrontend.config
 
 import play.api.i18n.{I18nSupport, MessagesApi}
-import play.api.http.ContentTypes.HTML
 import play.api.mvc.Results.{BadRequest, InternalServerError, Unauthorized}
 import play.api.mvc.{RequestHeader, Result}
 import play.twirl.api.Html
-import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.errors.templates.ErrorTemplate
 import uk.gov.hmrc.play.bootstrap.frontend.http.FrontendErrorHandler
 import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.agent.errorPages.UnauthorisedAgentView
+import uk.gov.hmrc.incometaxbusinessdetailsfrontend.views.html.errorPages.templates.ErrorTemplate
+
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -53,5 +53,5 @@ class AgentItvcErrorHandler @Inject()(val errorTemplate: ErrorTemplate,
 
 
   def supportingAgentUnauthorised()(implicit request: RequestHeader): Result =
-    Unauthorized(unauthorisedAgentView().body).as(HTML)
+    Unauthorized(unauthorisedAgentView())
 }

@@ -23,14 +23,14 @@
 @import uk.gov.hmrc.hmrcfrontend.views.viewmodels.accountmenu.SignOut
 @import uk.gov.hmrc.hmrcfrontend.views.viewmodels.accountmenu.BusinessTaxAccount
 
-@import uk.gov.hmrc.incometaxbusinessdetailsfrontend.config.AppConfig
+@import uk.gov.hmrc.incometaxbusinessdetailsfrontend.config.FrontendAppConfig
 
 @this(hmrcAccountMenu: HmrcAccountMenu)(implicit accountMenuConfig: AccountMenuConfig)
-@()(implicit request : Request[_], messages: Messages, appConfig: AppConfig)
+@()(implicit request : Request[_], messages: Messages, appConfig: FrontendAppConfig)
 
 @hmrcAccountMenu(AccountMenu(
     accountHome = AccountHome(
-        href = appConfig.homeUrl,
+        href = appConfig.itvcFrontendEnvironment + uk.gov.hmrc.incometaxbusinessdetailsfrontend.controllers.routes.HomeController.show().url,
         active = true
     ),
     signOut = SignOut(href = appConfig.ggSignOutUrl(appConfig.contactFormServiceIdentifier)),

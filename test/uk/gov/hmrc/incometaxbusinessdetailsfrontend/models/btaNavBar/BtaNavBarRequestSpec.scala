@@ -41,7 +41,7 @@ class BtaNavBarRequestSpec extends UnitSpec {
         account = navLink.copy(en = "Account", cy = "Cyfrif", url = "/account"),
         messages = navLink.copy(en = "Messages", cy = "Negeseuon", url = "/messages"),
         help = navLink.copy(en = "Help", cy = "Cymorth", url = "/help"),
-        forms = navLink.copy(en = "Forms", cy = "Ffurflenni", url = "/forms")
+        forms = navLink.copy(en = "Forms", cy = "Ffurflenni", url = "/uk/gov/hmrc/incometaxbusinessdetailsfrontend/forms")
       )
 
       Json.fromJson[NavContent](Json.toJson(model)).get shouldBe model
