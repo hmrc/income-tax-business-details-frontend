@@ -58,7 +58,7 @@ To test the application execute:
 ```
 or
 ```
-sbt clean scalastyle coverage test it/test coverageOff coverageReport
+sbt clean coverage test it/test coverageOff coverageReport
 ```
 
 ## How to run sbt-scoverage plugin for the application
