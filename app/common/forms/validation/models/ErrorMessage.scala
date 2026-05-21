@@ -18,7 +18,6 @@ package common.forms.validation.models
 
 import play.api.i18n.Messages
 
-
 trait ErrorMessage {
 
   def messageKey: String

@@ -20,6 +20,7 @@ import common.auth.HeaderExtractor
 import common.config.FrontendAppConfig
 import common.helpers.{SessionCookieBaker, TestDateService, TestHeaderExtractor, WiremockHelper}
 import common.implicits.ImplicitDateFormatterImpl
+import common.services.{DateService, DateServiceInterface}
 import common.repositories.OptOutSessionDataRepository
 import org.scalatest.*
 import org.scalatest.concurrent.{Eventually, IntegrationPatience, ScalaFutures}
@@ -33,7 +34,6 @@ import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.libs.crypto.DefaultCookieSigner
 import play.api.{Application, Environment, Mode}
 import common.repositories.UIJourneySessionDataRepository
-import common.services.{DateService, DateServiceInterface}
 import testConstants.BaseIntegrationTestConstants.testSessionId
 import uk.gov.hmrc.http.{HeaderCarrier, SessionId}
 import uk.gov.hmrc.play.language.LanguageUtils
@@ -58,7 +58,7 @@ trait ControllerISpecBase
 
   val mockHost = WiremockHelper.wiremockHost
   val mockPort = WiremockHelper.wiremockPort.toString
-  val mockUrl = WiremockHelper.url
+  val mockUrl = s"http://$mockHost:$mockPort"
 
   val testAppConfig: FrontendAppConfig = app.injector.instanceOf[FrontendAppConfig]
   val cache: AsyncCacheApi = app.injector.instanceOf[AsyncCacheApi]

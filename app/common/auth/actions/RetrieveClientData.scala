@@ -70,9 +70,9 @@ class RetrieveClientData @Inject()(sessionDataService: SessionDataService,
                 }
               )
               Right(AuthorisedAgentWithClientDetailsRequest(
-              request.authUserDetails,
+                request.authUserDetails,
                 agentClientDetails
-            ))
+              ))
             case Left(error) =>
               Logger("error").error(s"unable to find client with UTR: ${sessionData.utr} " + error)
               Left(Redirect(appConfig.getHomePageBaseRoute(true) + "/client-utr"))

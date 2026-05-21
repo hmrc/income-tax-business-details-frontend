@@ -28,7 +28,6 @@ import uk.gov.hmrc.http.{HeaderCarrier, HeaderNames, HttpResponse, StringContext
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
-
 @Singleton
 class CitizenDetailsConnector @Inject()(val http: HttpClientV2,
                                         val config: FrontendAppConfig

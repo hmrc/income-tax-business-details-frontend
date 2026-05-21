@@ -1,10 +1,16 @@
-
 # income-tax-business-details-frontend
 
 [![Build Status](https://travis-ci.org/hmrc/income-tax-view-change-frontend.svg)](https://travis-ci.org/hmrc/income-tax-view-change-frontend) [ ![Download](https://api.bintray.com/packages/hmrc/releases/income-tax-view-change-frontend/images/download.svg) ](https://bintray.com/hmrc/releases/income-tax-view-change-frontend/_latestVersion)
 
 
-This is the repository for the Income Tax Business Details frontend.
+This is the repository for the Income Tax View and Change frontend.
+
+Backend: https://github.com/hmrc/income-tax-business-details
+
+Stub: https://github.com/hmrc/income-tax-vc-fs-and-stub
+
+Feature switch info: https://confluence.tools.tax.service.gov.uk/pages/viewpage.action?spaceKey=MISUV&title=Feature+Switches+State
+
 Requirements
 ------------
 

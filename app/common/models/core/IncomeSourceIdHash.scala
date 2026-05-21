@@ -17,6 +17,7 @@
 package common.models.core
 
 import common.exceptions.{MultipleIncomeSourcesFound, NoIncomeSourceFound}
+
 import scala.util.Try
 
 class IncomeSourceIdHash private(val hash: String) extends AnyVal {

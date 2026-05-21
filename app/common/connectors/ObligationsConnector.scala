@@ -162,7 +162,5 @@ class ObligationsConnector @Inject()(val http: HttpClientV2,
         Logger("application").error(s"Unexpected failure, ${ex.getMessage}", ex)
         ObligationsErrorModel(Status.INTERNAL_SERVER_ERROR, s"Unexpected failure, ${ex.getMessage}")
     }
-
   }
-
 }

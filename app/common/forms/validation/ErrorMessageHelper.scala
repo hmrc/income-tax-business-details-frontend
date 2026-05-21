@@ -19,7 +19,6 @@ package common.forms.validation
 import common.forms.validation.models.{FieldError, SummaryError}
 import play.api.data.{Field, Form, FormError}
 
-
 object ErrorMessageHelper {
 
   import ErrorMessageFactory.SummaryErrorLoc

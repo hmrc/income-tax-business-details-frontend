@@ -26,7 +26,6 @@ import java.net.{URI, URL}
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
-
 @Singleton
 class BtaNavBarPartialConnector @Inject()(val http: HttpClientV2,
                                           val config: FrontendAppConfig) extends HttpReadsInstances {

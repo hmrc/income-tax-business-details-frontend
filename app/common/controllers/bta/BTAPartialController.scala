@@ -25,7 +25,6 @@ import common.views.html.navBar.BtaPartial
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.ExecutionContext
 
-
 @Singleton
 class BTAPartialController @Inject()(btaPartial: BtaPartial,
                                      authActions: AuthActions)

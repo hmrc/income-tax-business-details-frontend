@@ -16,7 +16,7 @@
 
 package common.auth.actions
 
-import common.controllers.timeout.routes as timeoutRoutes
+import common.viewUtils.InternalUrlHelper
 import play.api.Logger
 import play.api.mvc.Results.Redirect
 import play.api.mvc._
@@ -40,7 +40,7 @@ class SessionTimeoutAction @Inject()(val parser: BodyParsers.Default)(implicit v
       case (Some(_), None) =>
         // Auth session has been wiped by Frontend Bootstrap Filter, hence timed out.
         Logger(getClass).warn("Session Time Out.")
-        Future.successful(Left(Redirect(timeoutRoutes.SessionTimeoutController.timeout())))
+        Future.successful(Left(Redirect(InternalUrlHelper.timeoutCall)))
       case (_, _) =>
         val mtdItUserWithUpdatedHeaders = request.withHeaders(updatedHeaders)
         Future.successful(Right(mtdItUserWithUpdatedHeaders))

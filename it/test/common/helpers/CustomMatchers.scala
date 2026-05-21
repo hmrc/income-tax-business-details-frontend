@@ -25,7 +25,6 @@ import play.api.i18n.{Lang, MessagesApi}
 import play.api.libs.json.Reads
 import play.api.libs.ws.WSResponse
 
-
 import scala.annotation.tailrec
 import scala.jdk.CollectionConverters.*
 

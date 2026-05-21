@@ -24,7 +24,6 @@ import java.time.{LocalDate, LocalDateTime, ZonedDateTime}
 import javax.inject.{Inject, Singleton}
 import scala.language.implicitConversions
 
-
 @Singleton
 class ImplicitDateFormatterImpl @Inject()(val languageUtils: LanguageUtils) extends ImplicitDateFormatter
 

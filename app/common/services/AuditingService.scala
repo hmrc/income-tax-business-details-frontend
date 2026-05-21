@@ -82,5 +82,4 @@ class AuditingService @Inject()(appConfig: FrontendAppConfig, auditConnector: Au
       detail = details
     )
   }
-
 }

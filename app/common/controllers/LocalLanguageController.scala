@@ -16,8 +16,8 @@
 
 package common.controllers
 
-import com.google.inject.Inject
 import common.config.FrontendAppConfig
+import com.google.inject.Inject
 import play.api.i18n.{Lang, MessagesApi}
 import play.api.mvc.ControllerComponents
 import uk.gov.hmrc.play.language.{LanguageController, LanguageUtils}
