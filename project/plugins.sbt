@@ -1,4 +1,3 @@
-
 resolvers += Resolver.url("HMRC Sbt Plugin Releases", url("https://dl.bintray.com/hmrc/sbt-plugin-releases"))(Resolver.ivyStylePatterns)
 resolvers += "Typesafe Releases" at "https://repo.typesafe.com/typesafe/releases/"
 resolvers += "HMRC-open-artefacts-maven" at "https://open.artefacts.tax.service.gov.uk/maven2"
@@ -15,9 +14,6 @@ addSbtPlugin("org.playframework" % "sbt-plugin" % "3.0.10")
 
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "2.3.1")
 
-addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
+addSbtPlugin("uk.gov.hmrc" % "sbt-sass-compiler" % "0.13.0")
 
-addSbtPlugin("io.github.irundaia" % "sbt-sassify" % "1.5.2")
-
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.4")
 addDependencyTreePlugin

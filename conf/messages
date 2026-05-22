@@ -1,26 +1,226 @@
-service.name = income-tax-business-details-frontend
-service.text = This is your new service
+## Common
 
-htmlTitle = {0} - Manage your Self Assessment - GOV.UK
-htmlTitle.agent = {0} - Manage your Self Assessment - GOV.UK
-htmlTitle.errorPage = {0} - GOV.UK
-htmlTitle.invalidInput = Error: {0} - GOV.UK
+outage-page.serviceDisplayName                                  = Manage your Self Assessment
 
-base.continue = Continue
+## Base
+base.back                                                       = Back
+base.backToHome                                                 = Back to Income Tax home
+base.confirm-and-continue                                       = Confirm and continue
+base.confirm-and-save                                           = Confirm and save
+base.confirm-this-change                                        = Confirm this change
+base.continue                                                   = Continue
+base.error-prefix                                               = Error:
+base.error_heading                                              = There’s a problem
+base.error_summary.heading                                      = There is a problem
+base.fullstop                                                   = .
+base.govUk                                                      = GOV.UK
+base.or                                                         = or
+base.phase                                                      = BETA
+base.service_name                                               = Business tax account
+base.service_name.itsa                                          = Update and submit an Income Tax Return
+base.service_name.pta                                           = Personal tax account
+base.sign-out                                                   = Sign out
+base.software.compatible.with.mtd.income.tax.link               = software compatible with Making Tax Digital for Income Tax
+base.submit                                                     = Submit
 
-timeout.heading = Your session has timed out
-timeout.signIn.1 = To view your quarterly reporting details, you’ll have to
-timeout.signIn.2 = sign in
-timeout.signIn.3 = using your Government Gateway ID.
+## Accessibility
+accessibility.this-section-is                                   = This section is:
 
-agent-error.heading = You can’t use this service yet
-agent-error.note = To use this service, you need to
-agent-error.link = set up an agent services account
+## Agent Base
+agent.base.service_name                             = Your client’s Income Tax details
 
-agent-unauthorised.heading = You are not authorised to access this page
-agent-unauthorised.note = You are a supporting agent for this client. Only their main agent can access records that show:
-agent-unauthorised.note.b1 = payments, credits and refunds
-agent-unauthorised.note.b2 = returns
-agent-unauthorised.note.b3 = next charges due
-agent-unauthorised.note.b4 = penalties and appeals
-agent-unauthorised.link = Read more about the difference between main and supporting agents on GOV.UK
+## Header
+agent.header.serviceName                            = Manage your Self Assessment
+header.serviceName                                  = Manage your Self Assessment
+
+## HTML Titles
+htmlTitle                                           = {0} - Manage your Self Assessment - GOV.UK
+htmlTitle.agent                                     = {0} - Manage your Self Assessment - GOV.UK
+htmlTitle.confirmClient                             = {0} - Manage your Self Assessment - GOV.UK
+htmlTitle.errorPage                                 = {0} - GOV.UK
+htmlTitle.invalidInput                              = Error: {0} - GOV.UK
+
+## Add Business Page
+add-business-name.form.error.invalidName                          = Trade and business name cannot be the same
+add-business-name.form.error.invalidNameFormat                    = The business name can only include upper or lower case letters, full stops, commas, digits, &, ’, \, /, -.
+add-business-name.form.error.maxLength                            = Business name must be 105 characters or fewer
+add-business-name.form.error.required                             = Enter your name or the name of your business
+
+## Add Business Trade Page
+add-trade.form.error.empty                      = Enter the trade of your business
+add-trade.form.error.invalid                    = The business trade can only include upper or lower case letters, full stops, commas, digits, &, ’, \, /, -.
+add-trade.form.error.long                       = Trade must be 35 characters or fewer
+add-trade.form.error.same-name                  = Trade and business name cannot be the same
+add-trade.form.error.short                      = Trade must be 2 characters or more
+
+## Agent - Client Relationship Failure
+agent.client_relationship_failure.enter_different_details       = Check another client
+agent.client_relationship_failure.heading                       = You are not authorised to view this client
+agent.client_relationship_failure.info                          = Your client needs to {0}.
+agent.client_relationship_failure.info.link                     = authorise you as their agent
+
+## Agent - No Assignment
+agent.no_assignment.button                                      = Go to agent services account
+agent.no_assignment.heading                                     = Your organisation has not given you access to this client
+agent.no_assignment.p1                                          = This client has authorised your organisation. Your team has not given you access to the client’s tax.
+agent.no_assignment.p2                                          = Ask your team who manages access groups. It will be someone with administrative access to your agent services account.
+
+## Agent Error Page
+agent-error.heading                                            = You can’t use this service yet
+agent-error.link                                               = set up an agent services account
+agent-error.note                                               = To use this service, you need to
+
+## Beta Banner
+betaBanner.feedback.link.new                                    = give your feedback
+betaBanner.newService.new                                       = This is a new service. Help us improve it and
+
+betaBanner.feedback                                             = feedback
+betaBanner.improve                                              = will help us to improve it.
+betaBanner.newService                                           = This is a new service
+betaBanner.your                                                 = – your
+
+## BTA Partial
+bta_partial.heading                                             = Income Tax reporting through software
+bta_partial.home_button                                         = View your Income Tax details
+bta_partial.p1                                                  = You’ve signed up to report your Income Tax through software. This will replace your Self Assessment tax return.
+bta_partial.p2                                                  = You can view your report deadlines, bills and an estimate for the next tax year.
+
+## Charge Summary
+chargeSummary.paymentAllocations.mfaDebit                          = Payment put towards HMRC adjustment
+
+## Custom Error Page
+error.custom.heading                                            = There is a problem
+error.custom.link                                               = Return to Making Tax Digital for Income Tax
+error.custom.message                                            = The page you’re trying to view has changed
+
+## Feedback
+feedback.bad                                                    = Bad
+feedback.comments                                               = Comments
+feedback.comments.error.empty                                   = Enter your comments
+feedback.comments.error.length                                  = The comment cannot be longer than 2000 characters
+feedback.comments.hint                                          = Do not include personal or financial information. For example, your National Insurance number or credit card numbers.
+feedback.description                                            = We use your feedback to make our services better.
+feedback.email                                                  = Email address
+feedback.email.error                                            = Enter an email address in the correct format, like name@example.com
+feedback.email.error.length                                     = Email address must be 255 characters or fewer
+feedback.fullName                                               = Full name
+feedback.fullName.error.empty                                   = Enter your full name
+feedback.fullName.error.invalid                                 = Full name must only include letters a to z, hyphens, full stops, commas, apostrophes and spaces
+feedback.fullName.error.length                                  = Full name cannot be longer than 70 characters
+feedback.good                                                   = Good
+feedback.heading                                                = Send your feedback
+feedback.neutral                                                = Neutral
+feedback.radiosDescription                                      = What do you think of this online service?
+feedback.radiosError                                            = Tell us what you think of the service
+feedback.received                                               = Your feedback has been received.
+feedback.send                                                   = Send
+feedback.thankYou                                               = Thank you
+feedback.veryBad                                                = Very bad
+feedback.veryGood                                               = Very good
+
+## Generic Income Sources Messages
+date.day                     = Day
+date.month                   = Month
+date.year                    = Year
+
+date.error.day               = day
+date.error.month             = month
+date.error.year              = year
+
+## Language Selector
+language-switcher.english                                       = English
+language-switcher.english.hidden                                = Change the language to English
+language-switcher.nav                                           = Language switcher
+language-switcher.welsh                                         = Cymraeg
+language-switcher.welsh.hidden                                  = Newid yr iaith ir Gymraeg
+
+## Manage Income Sources Reporting Method (new - Content FS R17 Enabled)
+manageBusinesses.manage.propertyReportingMethod.new.form.error.annual               = Select yes if you want to opt this new business out of Making Tax Digital for Income Tax
+manageBusinesses.manage.propertyReportingMethod.new.form.error.quarterly            = Select yes if you want to sign this new business up to Making Tax Digital for Income Tax
+
+## Next Updates Page
+nextUpdates.business            							       = Business income
+nextUpdates.crystallised            							   = Final declaration
+nextUpdates.crystallisedAll            							   = All income sources
+
+## Next Updates Page - R17 Content Changes
+nextUpdates.r17.tab.quarterly.table.income.source.foreign          = Foreign property business
+nextUpdates.r17.tab.quarterly.table.income.source.property         = Property business
+nextUpdates.r17.tab.quarterly.table.income.source.uk               = UK property business
+
+sections.close												       = Hide
+sections.close.all												   = Hide all sections
+sections.open												       = Show
+sections.open.all												   = Show all sections
+
+## No Income Sources Error Page
+noIncomeSources.error.button = Contact us form
+noIncomeSources.error.contact.heading = To contact us:
+noIncomeSources.error.p1 = A change is required before you can access the Manage your Self Assessment service. This does not mean there is anything wrong with your HMRC records.
+noIncomeSources.error.p2 = We’ll contact you with any updates and let you know how you can access this service.
+noIncomeSources.error.step1 = Open the contact us form.
+noIncomeSources.error.step2 = Fill in your name and email address.
+noIncomeSources.error.step3 = In the box labelled "What do you need help with?", type "I need help accessing the Manage your Self Assessment service".
+noIncomeSources.error.title = You need to contact us to access this service
+
+## Not Enrolled
+not_enrolled.heading                                            = You cannot access this service
+not_enrolled.sign-up                                            = You need to
+not_enrolled.sign-up.link                                       = sign up for Making Tax Digital for Income Tax
+
+## Rebrand Service Navigation
+pta.navigation.businessTaxAccount = Business tax account
+pta.navigation.checkProgress = Check progress
+pta.navigation.messages = Messages
+pta.navigation.profileAndSettings = Profile and settings
+
+bta.navigation.helpAndContact = Help and contact
+bta.navigation.manageAccount = Manage account
+bta.navigation.messages = Messages
+
+## Standard Error Page
+standardError.heading                                           = Sorry, there is a problem with the service
+standardError.message                                           = Try again later.
+
+## Tax Year Summary Page New
+tax-year-summary.agent.message.C15507                              = your client claimed {0} in Property Income Allowance but this is more than turnover for their UK property.
+tax-year-summary.agent.message.C15510                              = the Rent-a-Room relief claimed for a jointly let property cannot be more than {0}% of the Rent-a-Room limit.
+tax-year-summary.agent.message.C55007                              = Period submission does not align to cessation date of {0}. Please amend and resubmit.
+tax-year-summary.agent.message.C55009                              = updates cannot include gaps.
+tax-year-summary.agent.message.C55012                              = the update must align to the accounting period end date of {0}.
+tax-year-summary.message.C15507                                    = you’ve claimed {0} in Property Income Allowance but this is more than turnover for your UK property.
+tax-year-summary.message.C15510                                    = the Rent-a-Room relief claimed for a jointly let property cannot be more than {0}% of the Rent-a-Room limit.
+tax-year-summary.message.C55007                                    = Period submission does not align to cessation date of {0}. Please amend and resubmit.
+tax-year-summary.message.C55009                                    = updates cannot include gaps.
+tax-year-summary.message.C55012                                    = the update must align to the accounting period end date of {0}.
+
+## Technical Helper
+getpagehelp.linkText                                            = Get help with this page
+pagehelp.opensInNewTabText                                      = (opens in new tab)
+
+## Timeout
+button.continue                                                 = Stay signed in
+
+## Timeout Page
+timeout.heading                                                 = Your session has timed out
+timeout.signIn.1                                                = To view your quarterly reporting details, you’ll have to
+timeout.signIn.2                                                = sign in
+timeout.signIn.3                                                = using your Government Gateway ID.
+
+## Unauthorised Agent Page
+agent-unauthorised.heading                                      = You are not authorised to access this page
+agent-unauthorised.link                                         = Read more about the difference between main and supporting agents on GOV.UK
+agent-unauthorised.note                                         = You are a supporting agent for this client. Only their main agent can access records that show:
+agent-unauthorised.note.b1                                      = payments, credits and refunds
+agent-unauthorised.note.b2                                      = returns
+agent-unauthorised.note.b3                                      = next charges due
+agent-unauthorised.note.b4                                      = penalties and appeals
+
+## Uplift Failure
+upliftFailure.bullet.1                                          = you took too long to enter information and the service has timed out
+upliftFailure.bullet.2                                          = you have failed to answer enough questions correctly
+upliftFailure.bullet.3                                          = we could not match your details to our system
+upliftFailure.content                                           = This may be because:
+upliftFailure.sign.out                                          = Return to Sign in
+upliftFailure.title                                             = You cannot view this page
+
