@@ -197,7 +197,7 @@ class AuthoriseAndRetrieveIndividualForNrsSpec extends AuthActionsSpecHelper {
               defaultAsync)
 
             status(result) shouldBe SEE_OTHER
-            redirectLocation(result).get should include("/report-quarterly/income-and-expenses/view/cannot-access-service")
+            redirectLocation(result).get should include("/manage-self-assessment/businesses/cannot-access-service")
           }
         }
       }
@@ -218,7 +218,7 @@ class AuthoriseAndRetrieveIndividualForNrsSpec extends AuthActionsSpecHelper {
           defaultAsync)
 
         status(result) shouldBe SEE_OTHER
-        redirectLocation(result).get should include("/report-quarterly/income-and-expenses/view/agents/client-utr")
+        redirectLocation(result).get should include("/manage-self-assessment/businesses/agents/client-utr")
       }
     }
 
@@ -234,7 +234,7 @@ class AuthoriseAndRetrieveIndividualForNrsSpec extends AuthActionsSpecHelper {
           defaultAsync)
 
         status(result) shouldBe SEE_OTHER
-        redirectLocation(result).get should include("/report-quarterly/income-and-expenses/view/session-timeout")
+        redirectLocation(result).get should include("/manage-self-assessment/businesses/session-timeout")
       }
     }
 
@@ -250,7 +250,7 @@ class AuthoriseAndRetrieveIndividualForNrsSpec extends AuthActionsSpecHelper {
           defaultAsync)
 
         status(result) shouldBe SEE_OTHER
-        redirectLocation(result).get should include("/report-quarterly/income-and-expenses/view/sign-in")
+        redirectLocation(result).get should include("/manage-self-assessment/businesses/sign-in")
       }
     }
   }
