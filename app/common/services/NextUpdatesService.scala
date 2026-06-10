@@ -15,12 +15,11 @@
  */
 
 package common.services
-
 import common.auth.MtdItUser
 import common.models.core.IncomeSourceId.mkIncomeSourceId
-import common.models.incomeSourceDetails.*
+import common.models.incomeSourceDetails.viewModels.*
+import common.models.incomeSourceDetails.{QuarterTypeCalendar, QuarterTypeStandard, TaxYear}
 import common.connectors.ObligationsConnector
-import common.models.incomeSourceDetails.viewModels.{DatesModel, ObligationsViewModel}
 import common.models.obligations.*
 import common.services.NextUpdatesService.{QuarterlyUpdatesCountForTaxYear, noQuarterlyUpdates}
 import play.api.Logger
@@ -187,3 +186,5 @@ class NextUpdatesService @Inject()(
     }
   }
 }
+
+

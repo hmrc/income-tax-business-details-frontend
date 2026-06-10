@@ -16,7 +16,7 @@
 
 package common.mocks.services
 
-import common.services.IncomeSourceDetailsService
+import businessDetails.services.IncomeSourceDetailsService
 import org.mockito.Mockito.{mock, reset}
 import org.scalatest.{BeforeAndAfterEach, Suite}
 

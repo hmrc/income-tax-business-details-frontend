@@ -66,7 +66,7 @@ object AuditStub extends WiremockMethods with Eventually {
   }
 
   def verifyAuditEvent(auditEvent: ExtendedAuditModel,
-                       auditSource: String = "income-tax-view-change-frontend"): Unit = {
+                       auditSource: String = "income-tax-business-details-frontend"): Unit = {
     eventually {
       val expectedAuditJson =
         Json.obj(

@@ -37,7 +37,7 @@ import common.models.itsaStatus.*
 import common.models.itsaStatus.ITSAStatus.Voluntary
 import common.models.itsaStatus.StatusReason.*
 import common.models.liabilityCalculation.{Inputs, LiabilityCalculationResponse, Metadata, PersonalInformation}
-import common.services.IncomeSourceDetailsService
+import businessDetails.services.IncomeSourceDetailsService
 import common.services.{CustomerFactsUpdateService, DateServiceInterface, SessionDataService}
 import common.services.agent.ClientDetailsService
 import org.jsoup.Jsoup

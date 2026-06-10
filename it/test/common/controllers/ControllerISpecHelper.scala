@@ -42,7 +42,7 @@ trait ControllerISpecHelper extends ComponentSpecBase with FinancialDetailsModel
 
   def homeUrl(mtdUserRole: MTDUserRole): String = mtdUserRole match {
     case MTDIndividual => appConfig.homePageBaseRoute
-    case _ => appConfig.getHomePageBaseUrl(true)
+    case _ => appConfig.homePageUrl(true)
   }
 
   def stubAuthorised(mtdRole: MTDUserRole, featureSwitches: List[FeatureSwitchName] = List()): Unit = {
@@ -70,20 +70,20 @@ trait ControllerISpecHelper extends ComponentSpecBase with FinancialDetailsModel
 
   def testNoClientDataFailure(requestPath: String, optBody: Option[Map[String, Seq[String]]] = None): Unit = {
     "the user does not have client session data" should {
-      s"redirect ($SEE_OTHER) to ${appConfig.homePageBaseRoute + "/client-utr"}" in {
+      s"redirect ($SEE_OTHER) to ${appConfig.getHomePageBaseRoute(true) + "/client-utr"}" in {
         MTDAgentAuthStub.stubAuthorisedWithAgentEnrolment()
         SessionDataStub.stubGetSessionDataResponseNotFound()
         val result = buildMTDClient(requestPath, optBody = optBody).futureValue
 
         result should have(
           httpStatus(SEE_OTHER),
-          redirectURI(appConfig.homePageBaseRoute + "/client-utr")
+          redirectURI(appConfig.getHomePageBaseRoute(true) + "/client-utr")
         )
       }
     }
 
     "the user has client session data but citizen details not found" should {
-      s"redirect ($SEE_OTHER) to ${appConfig.homePageBaseRoute + "/client-utr"}" in {
+      s"redirect ($SEE_OTHER) to ${appConfig.getHomePageBaseRoute(true) + "/client-utr"}" in {
         MTDAgentAuthStub.stubAuthorisedWithAgentEnrolment()
         SessionDataStub.stubGetSessionDataResponseSuccess()
         stubGetCitizenDetails(status = 404)
@@ -91,7 +91,7 @@ trait ControllerISpecHelper extends ComponentSpecBase with FinancialDetailsModel
 
         result should have(
           httpStatus(SEE_OTHER),
-          redirectURI(appConfig.homePageBaseRoute + "/client-utr")
+          redirectURI(appConfig.getHomePageBaseRoute(true) + "/client-utr")
         )
       }
     }
@@ -219,7 +219,7 @@ trait ControllerISpecHelper extends ComponentSpecBase with FinancialDetailsModel
 
           result should have(
             httpStatus(SEE_OTHER),
-            redirectURI(appConfig.homePageBaseRoute)
+            redirectURI(appConfig.homePageUrl(false))
           )
         }
       }

@@ -40,7 +40,7 @@ class BusinessDetailsConnectorISpec extends AnyWordSpec with ComponentSpecBase {
           val nino = "AB123456A"
           val testMtditid = "XAITSA123456"
 
-          val url = s"/income-tax-view-change/get-business-details/nino/$nino"
+          val url = s"/income-tax-business-details/get-business-details/nino/$nino"
 
           val business =
             BusinessDetailsModel(
@@ -82,7 +82,7 @@ class BusinessDetailsConnectorISpec extends AnyWordSpec with ComponentSpecBase {
           result shouldBe expectedResponse
 
           WiremockHelper.verifyGet(
-            uri = s"/income-tax-view-change/get-business-details/nino/$nino"
+            uri = s"/income-tax-business-details/get-business-details/nino/$nino"
           )
         }
       }
@@ -92,7 +92,7 @@ class BusinessDetailsConnectorISpec extends AnyWordSpec with ComponentSpecBase {
         "return IncomeSourceDetailsError with some response body" in {
 
           val nino = "AB123456A"
-          val url = s"/income-tax-view-change/get-business-details/nino/$nino"
+          val url = s"/income-tax-business-details/get-business-details/nino/$nino"
 
           val responseBody =
             """{
@@ -106,7 +106,7 @@ class BusinessDetailsConnectorISpec extends AnyWordSpec with ComponentSpecBase {
           result shouldBe IncomeSourceDetailsError(status = INTERNAL_SERVER_ERROR, reason = responseBody)
 
           WiremockHelper.verifyGet(
-            uri = s"/income-tax-view-change/get-business-details/nino/$nino"
+            uri = s"/income-tax-business-details/get-business-details/nino/$nino"
           )
         }
       }

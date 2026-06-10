@@ -103,7 +103,7 @@
         }
     }
 
-    val serviceUrl = appConfig.getHomePageBaseUrl(isAgent)
+    val serviceUrl = appConfig.homePageUrl(isAgent)
 
     if(useGovUkRebrand) {
         val navBar = btaAndPtaServiceNavigation match {

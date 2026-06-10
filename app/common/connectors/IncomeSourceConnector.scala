@@ -39,7 +39,7 @@ class IncomeSourceConnector @Inject()(httpClient: HttpClientV2,
                                      )(implicit val ec: ExecutionContext) {
 
   private[connectors] def getIncomeSourcesUrl(mtditid: String): String = {
-    s"${appConfig.itvcProtectedService}/income-tax-view-change/income-sources/$mtditid"
+    s"${appConfig.incomeTaxBusinessDetailsBaseUrl}/income-tax-business-details/income-sources/$mtditid"
   }
 
   def modifyHeaderCarrier(
