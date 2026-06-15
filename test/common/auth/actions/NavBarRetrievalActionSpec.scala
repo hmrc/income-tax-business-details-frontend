@@ -18,12 +18,8 @@ package common.auth.actions
 
 import common.auth.MtdItUser
 import common.auth.actions.AuthActionsTestData.*
-import common.config.ItvcErrorHandler
-import common.controllers.bta.BtaNavBarController
-import common.utils.session.SessionKeys
 import common.models.admin.{FeatureSwitch, NavBarFs}
-import org.mockito.ArgumentMatchers.any
-import org.mockito.Mockito.when
+import common.utils.AuthUtils
 import org.scalatest.Assertion
 import play.api
 import play.api.Application
@@ -31,9 +27,7 @@ import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.mvc.request.RequestTarget
 import play.api.mvc.{Result, Results}
 import play.api.test.Helpers.*
-import play.twirl.api.Html
 import uk.gov.hmrc.auth.core.AffinityGroup.{Agent, Individual, Organisation}
-import common.views.html.navBar.PtaPartial
 
 import scala.concurrent.Future
 
@@ -41,16 +35,10 @@ class NavBarRetrievalActionSpec extends AuthActionsSpecHelper {
 
   private val featureSwitchNavBarEnabled = List(FeatureSwitch(NavBarFs, true))
 
-  def buildApp(useRebrand: Boolean): Application =
+  def buildApp(): Application =
     new GuiceApplicationBuilder()
-      .overrides(
-        api.inject.bind[BtaNavBarController].toInstance(mockBtaNavBarController),
-        api.inject.bind[PtaPartial].toInstance(mockPtaPartial),
-        api.inject.bind[ItvcErrorHandler].toInstance(mockItvcErrorHandler)
-      )
       .configure(
-        "feature-switches.read-from-mongo" -> "true",
-        "itvc.useRebrand" -> useRebrand.toString
+        "feature-switches.read-from-mongo" -> "true"
       )
       .build()
 
@@ -62,14 +50,14 @@ class NavBarRetrievalActionSpec extends AuthActionsSpecHelper {
 
   def defaultAsync: MtdItUser[_] => Future[Result] = _ => Future.successful(Results.Ok("Successful"))
 
-  private def sharedTests(app: Application, rebrand: Boolean): Unit = {
+  private def sharedTests(app: Application): Unit = {
 
     val action = app.injector.instanceOf[NavBarRetrievalAction]
 
     "the user is an Agent" should {
       "return the request unchanged" in {
         val mtdReq = getMtdItUser(Agent)
-        val result = action.invokeBlock(mtdReq, defaultAsyncBody(_.btaNavPartial shouldBe None))
+        val result = action.invokeBlock(mtdReq, defaultAsync)
 
         status(result) shouldBe OK
         contentAsString(result) shouldBe "Successful"
@@ -81,77 +69,34 @@ class NavBarRetrievalActionSpec extends AuthActionsSpecHelper {
 
         "return request unchanged when navbar FS is disabled" in {
           val mtdReq = getMtdItUser(affinityGroup)
-          val result = action.invokeBlock(
-            mtdReq,
-            defaultAsyncBody(_.btaNavPartial shouldBe None)
-          )
+          val result = action.invokeBlock(mtdReq, defaultAsync)
 
           status(result) shouldBe OK
           contentAsString(result) shouldBe "Successful"
         }
 
-        if (!rebrand) {
+        "return PTA ServiceNavigation when origin = PTA" in {
+          val req = fakeRequestWithActiveSession.withSession(AuthUtils.ORIGIN -> "PTA")
+          val mtdReq = getMtdItUser(affinityGroup, featureSwitchNavBarEnabled)(req)
 
-          "return PTA partial when origin in session = PTA" in {
-            val ptaHtml = Html("<test>PTA</test>")
-            val req = fakeRequestWithActiveSession.withSession(SessionKeys.origin -> "PTA")
-            val mtdReq =
-              getMtdItUser(affinityGroup, featureSwitchNavBarEnabled)(req)
+          val result = action.invokeBlock(
+            mtdReq,
+            defaultAsyncBody(_.serviceNavigationPartial shouldBe defined)
+          )
 
-            when(mockPtaPartial.apply()(any(), any(), any()))
-              .thenReturn(ptaHtml)
-
-            val result = action.invokeBlock(
-              mtdReq,
-              defaultAsyncBody(_.btaNavPartial shouldBe Some(ptaHtml))
-            )
-
-            status(result) shouldBe OK
-          }
-
-          "return BTA partial when origin in session = BTA" in {
-            val btaHtml = Html("<test>BTA</test>")
-            val req = fakeRequestWithActiveSession.withSession(SessionKeys.origin -> "BTA")
-            val mtdReq =
-              getMtdItUser(affinityGroup, featureSwitchNavBarEnabled)(req)
-
-            when(mockBtaNavBarController.btaNavBarPartial(any())(any(), any()))
-              .thenReturn(Future.successful(btaHtml))
-
-            val result = action.invokeBlock(
-              mtdReq,
-              defaultAsyncBody(_.btaNavPartial shouldBe Some(btaHtml))
-            )
-
-            status(result) shouldBe OK
-          }
-
+          status(result) shouldBe OK
         }
 
-        if (rebrand) {
-          "return PTA ServiceNavigation when origin = PTA" in {
-            val req = fakeRequestWithActiveSession.withSession(SessionKeys.origin -> "PTA")
-            val mtdReq = getMtdItUser(affinityGroup, featureSwitchNavBarEnabled)(req)
+        "return BTA ServiceNavigation when origin = BTA" in {
+          val req = fakeRequestWithActiveSession.withSession(AuthUtils.ORIGIN -> "BTA")
+          val mtdReq = getMtdItUser(affinityGroup, featureSwitchNavBarEnabled)(req)
 
-            val result = action.invokeBlock(
-              mtdReq,
-              defaultAsyncBody(_.serviceNavigationPartial shouldBe defined)
-            )
+          val result = action.invokeBlock(
+            mtdReq,
+            defaultAsyncBody(_.serviceNavigationPartial shouldBe defined)
+          )
 
-            status(result) shouldBe OK
-          }
-
-          "return BTA ServiceNavigation when origin = BTA" in {
-            val req = fakeRequestWithActiveSession.withSession(SessionKeys.origin -> "BTA")
-            val mtdReq = getMtdItUser(affinityGroup, featureSwitchNavBarEnabled)(req)
-
-            val result = action.invokeBlock(
-              mtdReq,
-              defaultAsyncBody(_.serviceNavigationPartial shouldBe defined)
-            )
-
-            status(result) shouldBe OK
-          }
+          status(result) shouldBe OK
         }
 
         "return unchanged request when no origin found" in {
@@ -167,7 +112,7 @@ class NavBarRetrievalActionSpec extends AuthActionsSpecHelper {
         "save origin from query params and redirect" in {
           val requestWithQuery =
             fakeRequestWithActiveSession.withTarget(
-              RequestTarget("http://test/testing", "/testing", Map(SessionKeys.origin -> Seq("pta")))
+              RequestTarget("http://test/testing", "/testing", Map(AuthUtils.ORIGIN -> Seq("pta")))
             )
 
           val mtdReq = getMtdItUser(affinityGroup, featureSwitchNavBarEnabled)(requestWithQuery)
@@ -176,19 +121,14 @@ class NavBarRetrievalActionSpec extends AuthActionsSpecHelper {
 
           status(result) shouldBe SEE_OTHER
           redirectLocation(result) shouldBe Some("/testing")
-          session(result).get(SessionKeys.origin) shouldBe Some("PTA")
+          session(result).get(AuthUtils.ORIGIN) shouldBe Some("PTA")
         }
       }
     }
   }
 
-  "NavBarRetrievalAction when rebrand = true" when {
-    val app = buildApp(useRebrand = true)
-    sharedTests(app, rebrand = true)
-  }
-
-  "NavBarRetrievalAction when rebrand = false" when {
-    val app = buildApp(useRebrand = false)
-    sharedTests(app, rebrand = false)
+  "NavBarRetrievalAction" when {
+    val app = buildApp()
+    sharedTests(app)
   }
 }

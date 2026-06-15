@@ -17,15 +17,12 @@
 package common.auth.actions
 
 import common.enums.TriggeredMigration.Channel.{CustomerLed, HmrcConfirmed, HmrcUnconfirmed}
-import common.models.triggeredMigration.TriggeredMigrationSessionData
 import common.auth.MtdItUser
 import common.auth.actions.AuthActionsTestData.{defaultIncomeSourcesData, getMtdItUser}
 import common.config.{AgentItvcErrorHandler, ItvcErrorHandler}
 import common.connectors.IncomeTaxCalculationConnector
-import common.mocks.services.MockSessionService
 import common.services.{CustomerFactsUpdateService, DateServiceInterface, ITSAStatusService}
 import common.enums.JourneyType.TriggeredMigrationJourney
-import common.models.UIJourneySessionData
 import common.models.admin.{FeatureSwitchName, TriggeredMigration}
 import common.models.incomeSourceDetails.{BusinessDetailsModel, TaxYear}
 import common.models.itsaStatus.ITSAStatus.{Annual, DigitallyExempt, Dormant, Exempt, Mandated, NoStatus, Voluntary}
@@ -46,7 +43,7 @@ import uk.gov.hmrc.auth.core.AffinityGroup.{Agent, Individual}
 import java.time.LocalDate
 import scala.concurrent.Future
 
-class TriggeredMigrationRetrievalActionSpec extends TestSupport with MockSessionService {
+class TriggeredMigrationRetrievalActionSpec extends TestSupport {
 
   lazy val mockItsaStatusService = mock[ITSAStatusService]
   lazy val mockIncomeTaxCalculationConnector = mock[IncomeTaxCalculationConnector]
@@ -67,8 +64,7 @@ class TriggeredMigrationRetrievalActionSpec extends TestSupport with MockSession
     mockItsaStatusService,
     mockIncomeTaxCalculationConnector,
     mockDateServiceInterface,
-    mockCustomerFactsUpdateService,
-    mockSessionService
+    mockCustomerFactsUpdateService
   )(
     ec,
     itvcErrorHandler,
@@ -126,20 +122,12 @@ class TriggeredMigrationRetrievalActionSpec extends TestSupport with MockSession
       submissionChannel = None
     )
 
-  def triggeredMigrationSessionData(recentlyConfirmed: Boolean) = UIJourneySessionData(
-    sessionId = "testSessionId",
-    journeyType = TriggeredMigrationJourney.toString,
-    triggeredMigrationData = Some(TriggeredMigrationSessionData(recentlyConfirmed))
-  )
-
   ".apply()" should {
 
     "redirect to the home page" when {
       "an individual user has a channel of confirmed and is on a triggered migration page and is not recently confirmed" in {
         val action = actionWithSwitch(Set(TriggeredMigration))
-
-        when(mockSessionService.getMongo(any())(any(), any())).thenReturn(Future.successful(Right(Some(triggeredMigrationSessionData(false)))))
-
+        
         val confirmedMtdUser = getMtdItUser(Individual, incomeSources = incomeSourcesWithChannel(HmrcConfirmed.getValue))
 
         val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe Some("")))
@@ -150,9 +138,7 @@ class TriggeredMigrationRetrievalActionSpec extends TestSupport with MockSession
 
       "an individual user has a channel of confirmed and is on a triggered migration page and is not recently confirmed (Set to None)" in {
         val action = actionWithSwitch(Set(TriggeredMigration))
-
-        when(mockSessionService.getMongo(any())(any(), any())).thenReturn(Future.successful(Right(None)))
-
+        
         val confirmedMtdUser = getMtdItUser(Individual, incomeSources = incomeSourcesWithChannel(HmrcConfirmed.getValue))
 
         val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe Some("")))
@@ -163,9 +149,7 @@ class TriggeredMigrationRetrievalActionSpec extends TestSupport with MockSession
 
       "an individual user has a channel of customer led and is on a triggered migration page and is not recently confirmed" in {
         val action = actionWithSwitch(Set(TriggeredMigration))
-
-        when(mockSessionService.getMongo(any())(any(), any())).thenReturn(Future.successful(Right(Some(triggeredMigrationSessionData(false)))))
-
+        
         val confirmedMtdUser = getMtdItUser(Individual, incomeSources = incomeSourcesWithChannel(CustomerLed.getValue))
 
         val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe Some("")))
@@ -175,9 +159,7 @@ class TriggeredMigrationRetrievalActionSpec extends TestSupport with MockSession
       }
       "an agent user has a channel of confirmed and is on a triggered migration page and is not recently confirmed" in {
         val action = actionWithSwitch(Set(TriggeredMigration))
-
-        when(mockSessionService.getMongo(any())(any(), any())).thenReturn(Future.successful(Right(Some(triggeredMigrationSessionData(false)))))
-
+        
         val confirmedMtdUser = getMtdItUser(Agent, incomeSources = incomeSourcesWithChannel(HmrcConfirmed.getValue))
 
         val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe Some("")))
@@ -187,9 +169,7 @@ class TriggeredMigrationRetrievalActionSpec extends TestSupport with MockSession
       }
       "an agent user has a channel of customer led and is on a triggered migration page and is not recently confirmed" in {
         val action = actionWithSwitch(Set(TriggeredMigration))
-
-        when(mockSessionService.getMongo(any())(any(), any())).thenReturn(Future.successful(Right(Some(triggeredMigrationSessionData(false)))))
-
+        
         val confirmedMtdUser = getMtdItUser(Agent, incomeSources = incomeSourcesWithChannel(CustomerLed.getValue))
 
         val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe Some("")))
@@ -311,59 +291,6 @@ class TriggeredMigrationRetrievalActionSpec extends TestSupport with MockSession
         val action = actionWithSwitch(Set.empty)
 
         val confirmedMtdUser = getMtdItUser(Individual, incomeSources = incomeSourcesWithChannel(HmrcUnconfirmed.getValue))
-
-        val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe None))
-
-        status(result) shouldBe OK
-        contentAsString(result) shouldBe "Successful"
-        verify(mockCustomerFactsUpdateService, times(0)).updateCustomerFacts(any())(any(), any())
-      }
-      "an individual user has a channel of confirmed and is on a triggered migration page and is recently confirmed" in {
-        val action = actionWithSwitch(Set(TriggeredMigration))
-
-        when(mockSessionService.getMongo(any())(any(), any())).thenReturn(Future.successful(Right(Some(triggeredMigrationSessionData(true)))))
-
-        val confirmedMtdUser = getMtdItUser(Individual, incomeSources = incomeSourcesWithChannel(HmrcConfirmed.getValue))
-
-        val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe None))
-
-        status(result) shouldBe OK
-        contentAsString(result) shouldBe "Successful"
-        verify(mockCustomerFactsUpdateService, times(0)).updateCustomerFacts(any())(any(), any())
-      }
-
-      "an individual user has a channel of customer led and is on a triggered migration page and is recently confirmed" in {
-        val action = actionWithSwitch(Set(TriggeredMigration))
-
-        when(mockSessionService.getMongo(any())(any(), any())).thenReturn(Future.successful(Right(Some(triggeredMigrationSessionData(true)))))
-
-        val confirmedMtdUser = getMtdItUser(Individual, incomeSources = incomeSourcesWithChannel(CustomerLed.getValue))
-
-        val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe None))
-
-        status(result) shouldBe OK
-        contentAsString(result) shouldBe "Successful"
-        verify(mockCustomerFactsUpdateService, times(0)).updateCustomerFacts(any())(any(), any())
-      }
-      "an agent user has a channel of confirmed and is on a triggered migration page and is recently confirmed" in {
-        val action = actionWithSwitch(Set(TriggeredMigration))
-
-        when(mockSessionService.getMongo(any())(any(), any())).thenReturn(Future.successful(Right(Some(triggeredMigrationSessionData(true)))))
-
-        val confirmedMtdUser = getMtdItUser(Agent, incomeSources = incomeSourcesWithChannel(HmrcConfirmed.getValue))
-
-        val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe None))
-
-        status(result) shouldBe OK
-        contentAsString(result) shouldBe "Successful"
-        verify(mockCustomerFactsUpdateService, times(0)).updateCustomerFacts(any())(any(), any())
-      }
-      "an agent user has a channel of customer led and is on a triggered migration page and is recently confirmed" in {
-        val action = actionWithSwitch(Set(TriggeredMigration))
-
-        when(mockSessionService.getMongo(any())(any(), any())).thenReturn(Future.successful(Right(Some(triggeredMigrationSessionData(true)))))
-
-        val confirmedMtdUser = getMtdItUser(Agent, incomeSources = incomeSourcesWithChannel(CustomerLed.getValue))
 
         val result = action(true).invokeBlock(confirmedMtdUser, defaultAsyncBody(_.headers.get("Gov-Test-Scenario") shouldBe None))
 

@@ -18,10 +18,6 @@ package common.connectors
 
 import common.config.FrontendAppConfig
 import common.models.sessionData.SessionDataGetResponse.SessionGetResponse
-import common.models.sessionData.SessionDataModel
-import common.models.sessionData.SessionDataPostResponse.SessionDataPostResponse
-import play.api.libs.json.Json
-import play.api.libs.ws.writeableOf_JsValue
 import uk.gov.hmrc.http.client.HttpClientV2
 import uk.gov.hmrc.http.{HeaderCarrier, StringContextOps}
 
@@ -38,18 +34,6 @@ class SessionDataConnector @Inject()(val appConfig: FrontendAppConfig,
     http
       .get(url"$url")
       .execute[SessionGetResponse]
-
-  }
-
-  def postSessionData(sessionDataModel: SessionDataModel)(implicit hc: HeaderCarrier): Future[SessionDataPostResponse] = {
-    lazy val url = s"${appConfig.incomeTaxSessionDataUrl}/income-tax-session-data/"
-
-    val body = Json.toJson[SessionDataModel](sessionDataModel)
-
-    http
-      .post(url"$url")
-      .withBody(body)
-      .execute[SessionDataPostResponse]
 
   }
 }

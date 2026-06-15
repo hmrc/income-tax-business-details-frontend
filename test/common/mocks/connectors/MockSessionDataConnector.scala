@@ -18,7 +18,6 @@ package common.mocks.connectors
 
 import common.connectors.SessionDataConnector
 import common.models.sessionData.SessionDataGetResponse.SessionGetResponse
-import common.models.sessionData.SessionDataPostResponse.SessionDataPostResponse
 import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito.{mock, reset, when}
 import org.scalatest.BeforeAndAfterEach
@@ -33,11 +32,6 @@ trait MockSessionDataConnector extends UnitSpec with BeforeAndAfterEach {
   override def beforeEach(): Unit = {
     super.beforeEach()
     reset(mockSessionDataConnector)
-  }
-
-  def setupMockPostSessionData(response: SessionDataPostResponse): Unit = {
-    when(mockSessionDataConnector.postSessionData(any())(any()))
-      .thenReturn(Future.successful(response))
   }
 
   def setupMockGetSessionData(response: SessionGetResponse): Unit = {

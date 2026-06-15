@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,11 @@
 package common.auth.actions
 
 import common.auth.MtdItUser
-import common.config.{FrontendAppConfig, ItvcErrorHandler}
-import common.controllers.bta.BtaNavBarController
+import common.config.FrontendAppConfig
 import common.models.OriginEnum
 import common.models.OriginEnum.{BTA, PTA}
 import common.models.admin.NavBarFs
-import common.utils.auth.AuthUtils.ORIGIN
-import common.views.html.navBar.{BtaPartial, PtaPartial}
+import common.utils.AuthUtils.ORIGIN
 import play.api.i18n.{Messages, MessagesApi}
 import play.api.mvc.*
 import uk.gov.hmrc.govukfrontend.views.Aliases.{ServiceNavigationItem, Text}
@@ -35,10 +33,7 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class NavBarRetrievalAction @Inject()(val btaNavBarController: BtaNavBarController,
-                                      val ptaPartial: PtaPartial,
-                                      val btaPartial: BtaPartial,
-                                      val itvcErrorHandler: ItvcErrorHandler)
+class NavBarRetrievalAction @Inject()()
                                      (implicit val appConfig: FrontendAppConfig,
                                       val executionContext: ExecutionContext,
                                       val messagesApi: MessagesApi
@@ -57,18 +52,10 @@ class NavBarRetrievalAction @Inject()(val btaNavBarController: BtaNavBarControll
   }
 
   def retrieveCacheAndHandleNavBar[A](request: MtdItUser[A])(implicit hc: HeaderCarrier, messages: Messages): Future[Either[Result, MtdItUser[A]]] = {
-    (request.session.get(ORIGIN), appConfig.itvcRebrand) match {
-      case (Some(origin), true) if OriginEnum(origin).contains(PTA)  => Future.successful(Right(request.addServiceNavigation(createPtaServiceNavigation())))
-      case (Some(origin), true) if OriginEnum(origin).contains(BTA)  => Future.successful(Right(request.addServiceNavigation(createBtaServiceNavigation())))
-      case (Some(origin), false) if OriginEnum(origin).contains(PTA) => Future.successful(Right(request.addNavBar(ptaPartial()(request, request.messages, appConfig))))
-      case (Some(origin), false) if OriginEnum(origin).contains(BTA) => handleBtaNavBar(request)
-      case _                                                         => Future.successful(Right(request))
-    }
-  }
-
-  private def handleBtaNavBar[A](request: MtdItUser[A])(implicit hc: HeaderCarrier): Future[Either[Result, MtdItUser[A]]] = {
-    btaNavBarController.btaNavBarPartial(request) map { partial =>
-      Right(request.addNavBar(partial))
+    request.session.get(ORIGIN) match {
+      case Some(origin) if OriginEnum(origin).contains(PTA) => Future.successful(Right(request.addServiceNavigation(createPtaServiceNavigation())))
+      case Some(origin) if OriginEnum(origin).contains(BTA) => Future.successful(Right(request.addServiceNavigation(createBtaServiceNavigation())))
+      case _                                                 => Future.successful(Right(request))
     }
   }
 

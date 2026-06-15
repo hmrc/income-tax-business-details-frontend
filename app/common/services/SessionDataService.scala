@@ -16,11 +16,9 @@
 
 package common.services
 
-import common.utils.session.SessionKeys
 import common.connectors.SessionDataConnector
 import common.models.sessionData.SessionDataGetResponse.{SessionDataGetSuccess, SessionDataNotFound, SessionGetResponse}
-import common.models.sessionData.SessionDataModel
-import common.models.sessionData.SessionDataPostResponse.SessionDataPostResponse
+import common.utils.session.SessionKeys
 import play.api.mvc.Request
 import uk.gov.hmrc.http.HeaderCarrier
 
@@ -38,11 +36,6 @@ class SessionDataService @Inject()(sessionDataConnector: SessionDataConnector)
     } else {
       sessionDataConnector.getSessionData()
     }
-  }
-
-  //ToDo remove this method if not income-tax-view-change-frontend
-  def postSessionData(sessionDataModel: SessionDataModel)(implicit hc: HeaderCarrier): Future[SessionDataPostResponse] = {
-    sessionDataConnector.postSessionData(sessionDataModel)
   }
 
   private def getSessionResponseFromCookie(implicit request: Request[_]): Future[SessionGetResponse] = {

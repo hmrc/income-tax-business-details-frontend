@@ -17,7 +17,6 @@
 package common.connectors
 
 import common.mocks.MockHttpV2
-import common.mocks.services.MockSessionService
 import common.forms.FeedbackForm
 import org.mockito.Mockito.*
 import play.api.http.Status.BAD_REQUEST
@@ -28,7 +27,7 @@ import uk.gov.hmrc.http.HttpResponse
 import uk.gov.hmrc.play.partials.HeaderCarrierForPartials
 
 
-class FeedbackConnectorSpec extends TestSupport with MockHttpV2 with MockSessionService{
+class FeedbackConnectorSpec extends TestSupport with MockHttpV2 {
 
   val formData: FeedbackForm = FeedbackForm(
     Some("Random Rating"),

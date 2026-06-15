@@ -26,7 +26,7 @@ import common.controllers.errors.routes as errorRoutes
 import common.mocks.MockAuditingService
 import common.mocks.services.admin.MockFeatureSwitchService
 import common.mocks.services.{MockClientDetailsService, MockITSAStatusService, MockSessionDataService}
-import common.mocks.services.{MockCustomerFactsUpdateService, MockIncomeSourceDetailsService}
+import common.mocks.services.MockCustomerFactsUpdateService
 import common.services.AuditingService
 import common.services.admin.FeatureSwitchService
 import common.viewUtils.InternalUrlHelper
@@ -37,7 +37,6 @@ import common.models.itsaStatus.*
 import common.models.itsaStatus.ITSAStatus.Voluntary
 import common.models.itsaStatus.StatusReason.*
 import common.models.liabilityCalculation.{Inputs, LiabilityCalculationResponse, Metadata, PersonalInformation}
-import common.services.IncomeSourceDetailsService
 import common.services.{CustomerFactsUpdateService, DateServiceInterface, SessionDataService}
 import common.services.agent.ClientDetailsService
 import org.jsoup.Jsoup
@@ -62,7 +61,6 @@ import java.time.Instant
 trait MockAuthActions
   extends TestSupport
     with MockAuthServiceSupport
-    with MockIncomeSourceDetailsService
     with MockAgentAuthorisedFunctions
     with MockUserAuthorisedFunctions
     with MockAuditingService
@@ -79,7 +77,6 @@ trait MockAuthActions
     reset(mockAuthService)
     reset(mockFAF)
     reset(mockCustomerFactsUpdateService)
-    reset(mockIncomeSourceDetailsService)
   }
 
   override def afterEach() = {

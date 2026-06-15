@@ -17,18 +17,16 @@
 package common.auth.actions
 
 import common.auth.MtdItUser
-import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler}
 import common.config.featureswitch.FeatureSwitching
-import common.controllers.BaseController
-import common.services.DateServiceInterface
+import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler}
 import common.connectors.IncomeTaxCalculationConnector
-import common.enums.JourneyType.TriggeredMigrationJourney
+import common.controllers.BaseController
 import common.enums.TaxYearSummary.CalculationRecord.LATEST
 import common.models.admin.TriggeredMigration
 import common.models.liabilityCalculation.{LiabilityCalculationError, LiabilityCalculationResponse}
+import common.services.{CustomerFactsUpdateService, DateServiceInterface, ITSAStatusService}
 import play.api.Logger
 import play.api.mvc.{ActionRefiner, MessagesControllerComponents, Result}
-import common.services.{CustomerFactsUpdateService, ITSAStatusService, SessionService}
 import uk.gov.hmrc.auth.core.AffinityGroup.Agent
 import uk.gov.hmrc.http.HeaderCarrier
 
@@ -41,8 +39,7 @@ class TriggeredMigrationRetrievalAction @Inject()(
                                                    ITSAStatusService: ITSAStatusService,
                                                    incomeTaxConnector: IncomeTaxCalculationConnector,
                                                    dateService: DateServiceInterface,
-                                                   customerFactsUpdateService: CustomerFactsUpdateService,
-                                                   sessionService: SessionService
+                                                   customerFactsUpdateService: CustomerFactsUpdateService
                                                  )
                                                  (implicit val executionContext: ExecutionContext,
                                                   individualErrorHandler: ItvcErrorHandler,
@@ -62,11 +59,7 @@ class TriggeredMigrationRetrievalAction @Inject()(
         lazy val authAction: Future[Either[Result, MtdItUser[A]]] = {
           (request.incomeSources.isConfirmedUser, isTriggeredMigrationPage) match {
             case (true, false) => Future(Right(req))
-            case (true, true) =>
-              checkIfRecentlyConfirmed().map {
-                case true => Right(req)
-                case false => Left(redirectToHome(req.isAgent))
-              }
+            case (true, true) => Future(Left(redirectToHome(req.isAgent)))
             case (false, _) =>
               isItsaStatusVoluntaryOrMandated().flatMap {
                 case Right(false) => confirmIneligibleUser(req, isTriggeredMigrationPage)
@@ -150,23 +143,6 @@ class TriggeredMigrationRetrievalAction @Inject()(
       case (_, "startingTaxYearNone") => individualErrorHandler.showBadRequestError()(request)
       case (Some(Agent), _) => agentErrorHandler.showInternalServerError()(request)
       case (_, _) => individualErrorHandler.showInternalServerError()(request)
-    }
-  }
-
-  private def checkIfRecentlyConfirmed()(implicit hc: HeaderCarrier): Future[Boolean] = {
-    sessionService.getMongo(TriggeredMigrationJourney).map {
-      case Right(Some(data)) =>
-        data.triggeredMigrationData match {
-          case Some(trigMigData) =>
-            Logger(getClass).info(s"[TriggeredMigrationRetrievalAction][checkIfRecentlyConfirmed] triggeredMigrationData found in session data")
-            trigMigData.recentlyConfirmed
-          case None =>
-            Logger(getClass).info(s"[TriggeredMigrationRetrievalAction][checkIfRecentlyConfirmed] triggeredMigrationData missing from session data")
-            false
-        }
-      case _ =>
-        Logger(getClass).info(s"[TriggeredMigrationRetrievalAction][checkIfRecentlyConfirmed] No session data found for TriggeredMigrationJourney")
-        false
     }
   }
 

@@ -29,12 +29,11 @@ import common.helpers.serviceMocks.{AuditStub, MTDAgentAuthStub, MTDIndividualAu
 import common.models.audit.AccessDeniedForSupportingAgentAuditModel
 import common.viewUtils.InternalUrlHelper
 import common.models.admin.FeatureSwitchName
-import common.models.extensions.FinancialDetailsModelExtension
 import play.api.http.Status.{SEE_OTHER, UNAUTHORIZED}
 import play.api.libs.ws.WSResponse
 import testConstants.BaseIntegrationTestConstants.getAgentClientDetailsForCookie
 
-trait ControllerISpecHelper extends ComponentSpecBase with FinancialDetailsModelExtension {
+trait ControllerISpecHelper extends ComponentSpecBase {
 
   val mtdAllRoles = List(MTDIndividual, MTDPrimaryAgent, MTDSupportingAgent)
 

@@ -22,20 +22,22 @@ import common.config.FrontendAppConfig
 import common.models.auth.AuthorisedAndEnrolledRequest
 import common.enums.MTDIndividual
 import common.models.btaNavBar.ListLinks
-import common.models.core.Nino
-import common.models.incomeSourceDetails.{IncomeSourceDetailsModel, TaxYear, TaxYearRange}
+import common.models.core.{AccountingPeriodModel, Nino}
+import common.models.incomeSourceDetails.*
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.http.Status
 import play.api.test.FakeRequest
 import play.twirl.api.{Html, HtmlFormat}
 import testConstants.BusinessDetailsTestConstants.business1
-import testConstants.PropertyDetailsTestConstants.propertyDetails
 import testConstants.IncomeSourceDetailsTestConstants.businessesAndPropertyIncome
+import testConstants.PropertyDetailsTestConstants.propertyDetails
 import testUtils.UnitSpec
 import uk.gov.hmrc.auth.core.*
 import uk.gov.hmrc.auth.core.retrieve.{Credentials, Name, ~}
 import uk.gov.hmrc.govukfrontend.views.Aliases.{ServiceNavigationItem, Text}
 import uk.gov.hmrc.govukfrontend.views.viewmodels.servicenavigation.ServiceNavigation
+
+import java.time.LocalDate
 
 object BaseTestConstants extends UnitSpec with GuiceOneAppPerSuite {
 
@@ -98,6 +100,7 @@ object BaseTestConstants extends UnitSpec with GuiceOneAppPerSuite {
 
   lazy val testMtdItUserNoIncomeSource: MtdItUser[_] = defaultMTDITUser(Some(testUserTypeIndividual),
     IncomeSourceDetailsModel(testNino, "", Some("2018"), List(business1.copy("", None, None, None)), List(propertyDetails.copy("", None, None))))
+  
   val testSelfEmploymentId = "XA00001234"
   val testSelfEmploymentId2 = "XA00001235"
   val testSelfEmploymentIdValidation = "XAIS00000000002"
