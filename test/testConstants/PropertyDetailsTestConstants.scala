@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,9 @@ package testConstants
 
 import common.enums.IncomeSourceJourney.{ForeignProperty, IncomeSourceType, UkProperty}
 import common.models.core.{AccountingPeriodModel, CessationModel}
-import common.models.incomeSourceDetails.viewModels.{CeasePropertyDetailsViewModel, PropertyDetailsViewModel, ViewPropertyDetailsViewModel}
-import common.models.incomeSourceDetails.{LatencyDetails, PropertyDetailsModel}
-import common.models.obligations.{SingleObligationModel, StatusFulfilled}
+import common.models.incomeSourceDetails.*
 import testConstants.BaseTestConstants.{testPropertyIncomeId, testPropertyIncomeId2, testSelfEmploymentId, testSelfEmploymentId2}
-import testConstants.BusinessDetailsTestConstants.{quarterTypeElectionCalendar, quarterTypeElectionStandard, testLatencyDetails4, testLatencyDetails5}
-import testConstants.NextUpdatesTestConstants.fakeNextUpdatesModel
+import testConstants.LatencyDetailsConstants.*
 
 import java.time.LocalDate
 
@@ -50,6 +47,8 @@ object PropertyDetailsTestConstants {
   val testIncomeType = "property-unspecified"
   val ukIncomeType = "uk-property"
   val foreignIncomeType = "foreign-property"
+  val quarterTypeElectionStandard = QuarterTypeElection("STANDARD", "2021")
+  val quarterTypeElectionCalendar = QuarterTypeElection("CALENDAR", "2021")
 
   val propertyDetails = PropertyDetailsModel(
     incomeSourceId = testPropertyIncomeId,
@@ -59,18 +58,6 @@ object PropertyDetailsTestConstants {
     tradingStartDate = Some(testStartDate),
     contextualTaxYear = None,
     cessation = None
-  )
-
-  val ukPropertyDetailsViewModel = PropertyDetailsViewModel(
-    tradingStartDate = Some(testStartDate)
-  )
-
-  val ceaseUkPropertyDetailsViewModel = CeasePropertyDetailsViewModel(
-    tradingStartDate = Some(testStartDate)
-  )
-
-  val viewUkPropertyDetailsViewModel = ViewPropertyDetailsViewModel(
-    tradingStartDate = testPropertyStartDateOption
   )
 
   val foreignPropertyDetails = PropertyDetailsModel(
@@ -104,10 +91,6 @@ object PropertyDetailsTestConstants {
     cessation = None,
   )
 
-  val foreignPropertyDetailsViewModel = PropertyDetailsViewModel(
-    tradingStartDate = Some(testStartDate2)
-  )
-
   val uKPropertyDetails = PropertyDetailsModel(
     incomeSourceId = testPropertyIncomeId,
     accountingPeriod = Some(testPropertyAccountingPeriod),
@@ -126,10 +109,6 @@ object PropertyDetailsTestConstants {
     tradingStartDate = Some(testStartDate),
     contextualTaxYear = None,
     cessation = None,
-  )
-
-  val ceaseForeignPropertyDetailsViewModel = CeasePropertyDetailsViewModel(
-    tradingStartDate = Some(testStartDate2)
   )
 
   val ceasedPropertyDetails = PropertyDetailsModel(
@@ -191,16 +170,6 @@ object PropertyDetailsTestConstants {
     contextualTaxYear = None,
     cessation = Some(testPropertyCessation2),
   )
-
-  val openCrystallised: SingleObligationModel = fakeNextUpdatesModel(SingleObligationModel(
-    start = LocalDate.of(2017, 4, 6),
-    end = LocalDate.of(2018, 4, 5),
-    due = LocalDate.of(2017, 10, 31),
-    periodKey = "#003",
-    dateReceived = None,
-    obligationType = "Crystallisation",
-    status = StatusFulfilled
-  ))
 
   val testLatencyDetails = LatencyDetails(
     latencyEndDate = LocalDate.of(year2019, 1, 1),
