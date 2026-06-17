@@ -91,9 +91,9 @@ class IsTheNewAddressInTheUKControllerSpec extends MockAuthActions with MockSess
                 mockItsaStatusRetrievalAction(businessesAndPropertyIncome)
                 setupMockGetIncomeSourceDetails(businessesAndPropertyIncome)
                 setupMockCreateSession(true)
-                val result = action(fakeRequest)
                 setupMockGetMongo(Right(Some(emptyUIJourneySessionData(IncomeSourceJourneyType(Manage, SelfEmployment))
                   .copy(addIncomeSourceData = Some(AddIncomeSourceData())))))
+                val result = action(fakeRequest)
 
                 val document: Document = Jsoup.parse(contentAsString(result))
                 document.title should include(messages(addBusinessIsTheNewAddressInTheUKHeading))
@@ -108,9 +108,9 @@ class IsTheNewAddressInTheUKControllerSpec extends MockAuthActions with MockSess
                 mockItsaStatusRetrievalAction(businessesAndPropertyIncome.copy(businesses = List(business1.copy(address = None))))
                 setupMockGetIncomeSourceDetails(businessesAndPropertyIncome.copy(businesses = List(business1.copy(address = None))))
                 setupMockCreateSession(true)
-                val result = action(fakeRequest)
                 setupMockGetMongo(Right(Some(emptyUIJourneySessionData(IncomeSourceJourneyType(Manage, SelfEmployment))
                   .copy(addIncomeSourceData = Some(AddIncomeSourceData())))))
+                val result = action(fakeRequest)
 
                 val document: Document = Jsoup.parse(contentAsString(result))
                 document.title should include(messages(addBusinessIsTheAddressOfYourSoleTraderBusinessInTheUKHeading))
@@ -122,9 +122,9 @@ class IsTheNewAddressInTheUKControllerSpec extends MockAuthActions with MockSess
                 mockItsaStatusRetrievalAction(businessesAndPropertyIncome.copy(businesses = List(business1.copy(address = Some(invalidUKAddressNoPostCode)))))
                 setupMockGetIncomeSourceDetails(businessesAndPropertyIncome.copy(businesses = List(business1.copy(address = Some(invalidUKAddressNoPostCode)))))
                 setupMockCreateSession(true)
-                val result = action(fakeRequest)
                 setupMockGetMongo(Right(Some(emptyUIJourneySessionData(IncomeSourceJourneyType(Manage, SelfEmployment))
                   .copy(addIncomeSourceData = Some(AddIncomeSourceData())))))
+                val result = action(fakeRequest)
 
                 val document: Document = Jsoup.parse(contentAsString(result))
                 document.title should include(messages(addBusinessIsTheAddressOfYourSoleTraderBusinessInTheUKHeading))
@@ -136,9 +136,9 @@ class IsTheNewAddressInTheUKControllerSpec extends MockAuthActions with MockSess
                 mockItsaStatusRetrievalAction(businessesAndPropertyIncome.copy(businesses = List(business1.copy(address = Some(foreignAddress)))))
                 setupMockGetIncomeSourceDetails(businessesAndPropertyIncome.copy(businesses = List(business1.copy(address = Some(foreignAddress)))))
                 setupMockCreateSession(true)
-                val result = action(fakeRequest)
                 setupMockGetMongo(Right(Some(emptyUIJourneySessionData(IncomeSourceJourneyType(Manage, SelfEmployment))
                   .copy(addIncomeSourceData = Some(AddIncomeSourceData())))))
+                val result = action(fakeRequest)
 
                 val document: Document = Jsoup.parse(contentAsString(result))
                 document.title should include(messages(addBusinessIsTheAddressOfYourSoleTraderBusinessInTheUKHeading))
@@ -153,9 +153,9 @@ class IsTheNewAddressInTheUKControllerSpec extends MockAuthActions with MockSess
                 mockItsaStatusRetrievalAction(businessesAndPropertyIncome)
                 setupMockGetIncomeSourceDetails(businessesAndPropertyIncome)
                 setupMockCreateSession(true)
-                val result = action(fakeRequest)
                 setupMockGetMongo(Right(Some(emptyUIJourneySessionData(IncomeSourceJourneyType(Manage, SelfEmployment))
                   .copy(addIncomeSourceData = Some(AddIncomeSourceData())))))
+                val result = action(fakeRequest)
 
                 status(result) shouldBe SEE_OTHER
                 redirectLocation(result).get should include("/manage-self-assessment/businesses")
