@@ -42,7 +42,8 @@ case class AddIncomeSourceData(
                                 incomeSourceAdded: Option[Boolean] = None,
                                 incomeSourceCreatedJourneyComplete: Option[Boolean] = None,
                                 incomeSourceRFJourneyComplete: Option[Boolean] = None,
-                              ) {
+  idempotencyKey: Option[String] = None
+) {
 
   def encrypted: SensitiveAddIncomeSourceData =
     SensitiveAddIncomeSourceData(

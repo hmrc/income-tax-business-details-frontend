@@ -16,6 +16,8 @@
 
 package common.helpers
 
+import common.repositories.UIJourneySessionDataRepository
+
 import com.github.tomakehurst.wiremock.client.WireMock
 import common.auth.{HeaderExtractor, MtdItUser}
 import common.config.FrontendAppConfig
@@ -25,7 +27,6 @@ import common.implicits.ImplicitDateFormatterImpl
 import common.models.auth.AuthorisedAndEnrolledRequest
 import common.services.{DateService, DateServiceInterface}
 import common.models.incomeSourceDetails.{IncomeSourceDetailsModel, TaxYear}
-import common.repositories.{OptOutSessionDataRepository,UIJourneySessionDataRepository}
 import org.scalatest.*
 import org.scalatest.concurrent.{Eventually, IntegrationPatience, ScalaFutures}
 import org.scalatest.matchers.should.Matchers
@@ -111,8 +112,7 @@ trait ComponentSpecBase extends TestSuite with CustomMatchers
   implicit val ec: ExecutionContext = app.injector.instanceOf[ExecutionContext]
   implicit val hc: HeaderCarrier = HeaderCarrier(sessionId = Some(SessionId(testSessionId)))
   implicit val testAppConfig: FrontendAppConfig = appConfig
-  implicit val optOutSessionDataRepository: OptOutSessionDataRepository = app.injector.instanceOf[OptOutSessionDataRepository]
-  implicit val uiRepository: UIJourneySessionDataRepository = app.injector.instanceOf[UIJourneySessionDataRepository]
+  val uiRepository: UIJourneySessionDataRepository = app.injector.instanceOf[UIJourneySessionDataRepository]
   implicit val dateService: DateService = new DateService()(frontendAppConfig = testAppConfig) {
     override def getCurrentDate: LocalDate = LocalDate.of(2023, 4, 5)
 
@@ -156,7 +156,10 @@ trait ComponentSpecBase extends TestSuite with CustomMatchers
     "microservice.services.auth.port" -> mockPort,
     "microservice.services.identity-verification-frontend.host" -> "http://stubIV.com",
     "microservice.services.income-tax-view-change.host" -> mockHost,
+    "microservice.services.income-tax-business-details.protocol" -> "http",
+    "microservice.services.income-tax-business-details.host" -> mockHost,
     "microservice.services.income-tax-view-change.port" -> mockPort,
+    "microservice.services.income-tax-business-details.port" -> mockPort,
     "microservice.services.self-assessment-api.host" -> mockHost,
     "microservice.services.self-assessment-api.port" -> mockPort,
     "microservice.services.business-account.host" -> mockHost,

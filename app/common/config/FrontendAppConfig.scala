@@ -26,6 +26,33 @@ import javax.inject.Singleton
 @Singleton
 class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config: Configuration) {
 
+  lazy val incomeTaxObligationsBaseUrl: String = servicesConfig.baseUrl("income-tax-obligations")
+
+  val incomeTaxBusinessDetailsBaseUrl: String =
+    servicesConfig.baseUrl("income-tax-business-details")
+
+  val incomeTaxViewChangeFrontendUrl: String =
+    servicesConfig.baseUrl("income-tax-view-change-frontend")
+
+  val viewAndChangeHomeUrl: String =
+    s"$incomeTaxViewChangeFrontendUrl/manage-self-assessment/businesses"
+
+  val viewAndChangeAgentHomeUrl: String =
+    s"$incomeTaxViewChangeFrontendUrl/manage-self-assessment/businesses/agents"
+
+  val viewAndChangeSubmissionDeadlinesUrl: String =
+    s"$incomeTaxViewChangeFrontendUrl/manage-self-assessment/businesses/submission-deadlines"
+
+  val viewAndChangeAgentSubmissionDeadlinesUrl: String =
+    s"$incomeTaxViewChangeFrontendUrl/manage-self-assessment/businesses/agents/submission-deadlines"
+
+  val viewAndChangeReportingFrequencyUrl: String =
+    s"$incomeTaxViewChangeFrontendUrl/manage-self-assessment/businesses/reporting-frequency"
+
+  val viewAndChangeAgentReportingFrequencyUrl: String =
+    s"$incomeTaxViewChangeFrontendUrl/manage-self-assessment/businesses/agents/reporting-frequency"
+
+
   lazy val hasEnabledTestOnlyRoutes: Boolean = config.get[String]("play.http.router") == "testOnlyDoNotUseInAppConf.Routes"
 
   //App
@@ -55,15 +82,12 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
   lazy val addressLookupExternalHost: String = servicesConfig.getString("address-lookup.external-host")
 
   //View L&P
-  def saViewLandPService(utr: String): String = servicesConfig.getString("old-sa-viewer-frontend.host") + s"/$utr/account"
-
-  //GG Sign In via BAS Gateway
   lazy val signInUrl: String = servicesConfig.getString("base.sign-in")
   lazy val ggSignInUrl: String = servicesConfig.getString("government-gateway.sign-in.url")
   lazy val homePageBaseUrl: String = servicesConfig.getString("base.fullUrl")
   lazy val homePageBaseRoute: String = servicesConfig.getString("base.context-root")
   lazy val getHomePageBaseRoute: Boolean => String = isAgent =>  if(isAgent) homePageBaseRoute + "/agents" else homePageBaseRoute
-  lazy val getHomePageBaseUrl: Boolean => String = isAgent =>  if(isAgent) homePageBaseUrl + "/agents" else homePageBaseUrl
+  lazy val homePageUrl: Boolean => String = isAgent => if(isAgent) homePageBaseUrl + "/agents" else homePageBaseUrl
   lazy val clientIncomeTaxRoute: Boolean => String = isAgent => if(isAgent) s"$homePageBaseRoute/agents/client-income-tax" else homePageBaseRoute
   lazy val youMustWaitToSignUpUrl: Boolean => String = isAgent => if(isAgent) s"$homePageBaseUrl/agents/view-client-from-next-tax-year" else s"$homePageBaseUrl/access-service-from-next-tax-year"
 
@@ -182,9 +206,6 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
   lazy val relativeIVUpliftParams = servicesConfig.getBoolean("identity-verification-frontend.use-relative-params")
 
   def incomeSourceOverrides(): Option[Seq[String]] = config.getOptional[Seq[String]]("afterIncomeSourceCreated")
-
-  def poaAdjustmentOverrides(): Option[Seq[String]] = config.getOptional[Seq[String]]("afterPoaAmountAdjusted")
-
   def triggeredMigrationOverrides(): Option[Seq[String]] = config.getOptional[Seq[String]]("afterMigration")
 
   val cacheTtl: Int = config.get[Int]("mongodb.timeToLiveInSeconds")
@@ -204,48 +225,11 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
   lazy val isHipRepaymentApiEnabled: Boolean = servicesConfig.getBoolean("feature-switch.enable-hip-repayment-api")
 
   //External-Urls
-  def logInFileSelfAssessmentTaxReturnLink(implicit messages: Messages): String =
-    messages.lang.code match {
-      case "en" => "https://www.gov.uk/log-in-file-self-assessment-tax-return"
-      case "cy" => "https://www.gov.uk/cyflwyno-ch-ffurflen-dreth-hunanasesiad-ar-lein"
-      case _ => "https://www.gov.uk/log-in-file-self-assessment-tax-return"
-    }
-
-  def selfAssessmentTaxReturnLink(isAgent: Boolean)(implicit messages: Messages): String =
-    messages.lang.code match {
-      case _ if isAgent => "https://www.gov.uk/guidance/self-assessment-for-agents-online-service"
-      case "en" => "https://www.gov.uk/self-assessment-tax-returns"
-      case "cy" => "https://www.gov.uk/ffurflenni-treth-hunanasesiad/trosolwg"
-      case _ => "https://www.gov.uk/self-assessment-tax-returns"
-    }
-
-  def findHmrcContactsSALink(): String =
-    "https://www.gov.uk/find-hmrc-contacts/self-assessment-general-enquiries"
-
-
   def compatibleSoftwareLink(implicit messages: Messages): String =
     messages.lang.code match {
       case "en" => "https://www.gov.uk/guidance/choose-the-right-software-for-making-tax-digital-for-income-tax"
       case "cy" => "https://www.gov.uk/guidance/choose-the-right-software-for-making-tax-digital-for-income-tax.cy"
       case _ => "https://www.gov.uk/guidance/choose-the-right-software-for-making-tax-digital-for-income-tax"
-    }
-
-  def mtdIncomeTaxLink(implicit messages: Messages): String =
-    messages.lang.code match {
-      case "cy" => "https://www.gov.uk/guidance/defnyddio-r-cynllun-troi-treth-yn-ddigidol-ar-gyfer-treth-incwm"
-      case _ => "https://www.gov.uk/guidance/use-making-tax-digital-for-income-tax"
-    }
-
-  def paySelfAssessmentBillLink(implicit messages: Messages): String =
-    messages.lang.code match {
-      case "cy" => "https://www.gov.uk/taluch-bil-treth-hunanasesiad"
-      case _ => "https://www.gov.uk/pay-self-assessment-tax-bill"
-    }
-
-  def strugglingToPayTaxLink(implicit messages: Messages): String =
-    messages.lang.code match {
-      case "cy" => "https://www.gov.uk/anawsterau-talu-cthem"
-      case _ => "https://www.gov.uk/difficulties-paying-hmrc"
     }
 
   lazy val preThreshold2027 = servicesConfig.getString("thresholds.prethreshold2027")

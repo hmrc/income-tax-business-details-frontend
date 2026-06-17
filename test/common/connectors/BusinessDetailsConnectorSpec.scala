@@ -56,7 +56,7 @@ class BusinessDetailsConnectorSpec extends BaseConnectorSpec {
 
     def getAppConfig: FrontendAppConfig =
       new FrontendAppConfig(app.injector.instanceOf[ServicesConfig], app.injector.instanceOf[Configuration]) {
-        override lazy val itvcProtectedService: String = "http://localhost:9999"
+        override val incomeTaxBusinessDetailsBaseUrl: String = "http://localhost:9999"
       }
 
     val connector = new BusinessDetailsConnector(mockHttpClientV2, getAppConfig)
@@ -71,7 +71,7 @@ class BusinessDetailsConnectorSpec extends BaseConnectorSpec {
 
     ".getBusinessDetailsUrl()" should {
       "return the correct url" in new Setup {
-        connector.getBusinessDetailsUrl(testNino) shouldBe s"$baseUrl/income-tax-view-change/get-business-details/nino/$testNino"
+        connector.getBusinessDetailsUrl(testNino) shouldBe s"$baseUrl/income-tax-business-details/get-business-details/nino/$testNino"
       }
     }
 

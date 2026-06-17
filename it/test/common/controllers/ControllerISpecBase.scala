@@ -21,7 +21,6 @@ import common.config.FrontendAppConfig
 import common.helpers.{SessionCookieBaker, TestDateService, TestHeaderExtractor, WiremockHelper}
 import common.implicits.ImplicitDateFormatterImpl
 import common.services.{DateService, DateServiceInterface}
-import common.repositories.OptOutSessionDataRepository
 import org.scalatest.*
 import org.scalatest.concurrent.{Eventually, IntegrationPatience, ScalaFutures}
 import org.scalatest.matchers.should.Matchers
@@ -74,7 +73,6 @@ trait ControllerISpecBase
   implicit val ec: ExecutionContext = app.injector.instanceOf[ExecutionContext]
   implicit val hc: HeaderCarrier = HeaderCarrier(sessionId = Some(SessionId(testSessionId)))
 
-  implicit val optOutSessionDataRepository: OptOutSessionDataRepository = app.injector.instanceOf[OptOutSessionDataRepository]
   implicit val uiRepository: UIJourneySessionDataRepository = app.injector.instanceOf[UIJourneySessionDataRepository]
 
   implicit val dateService: DateService =
@@ -101,7 +99,10 @@ trait ControllerISpecBase
     "microservice.services.auth.host" -> mockHost,
     "microservice.services.auth.port" -> mockPort,
     "microservice.services.income-tax-view-change.host" -> mockHost,
+    "microservice.services.income-tax-business-details.protocol" -> "http",
+    "microservice.services.income-tax-business-details.host" -> mockHost,
     "microservice.services.income-tax-view-change.port" -> mockPort,
+    "microservice.services.income-tax-business-details.port" -> mockPort,
     "microservice.services.itvc-dynamic-stub.host" -> mockHost,
     "microservice.services.itvc-dynamic-stub.port" -> mockPort,
     "microservice.services.self-assessment-api.host" -> mockHost,

@@ -21,11 +21,12 @@ import common.models.incomeSourceDetails.viewModels.{DatesModel, ObligationsView
 import common.mocks.connectors.MockObligationsConnector
 import common.models.obligations.*
 import common.services.NextUpdatesService.QuarterlyUpdatesCountForTaxYear
-import testConstants.NextUpdatesTestConstants.*
+import common.services.reportingObligations.optOut.OptOutTestSupport
+import obligations.testConstants.NextUpdatesTestConstants.*
 import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito.when
 import play.api.http.Status.INTERNAL_SERVER_ERROR
-import testConstants.BusinessDetailsTestConstants.obligationsDataSuccessModel as _
+import obligations.testConstants.BusinessDetailsTestConstants.obligationsDataSuccessModel as _
 import testUtils.TestSupport
 
 import java.time.LocalDate
