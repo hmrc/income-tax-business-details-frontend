@@ -19,17 +19,20 @@
 @import uk.gov.hmrc.govukfrontend.views.html.components.FormWithCSRF
 @import common.enums.IncomeSourceJourney.{ForeignProperty, IncomeSourceType, SelfEmployment, UkProperty}
 @import businessDetails.controllers.manageBusinesses.routes as manageBusinessRoutes
+@import common.auth.MtdItUser
+@import common.config.FrontendAppConfig
 
-@this(appConfig: common.config.FrontendAppConfig, 
+@this(
     mainTemplate: unifiedLayout,
     h1: h1,
     h2: h2,
     link: link,
     p: p,
     formWithCSRF: FormWithCSRF,
-    continueButton: ContinueButton)
+    continueButton: ContinueButton,
+    appConfig: FrontendAppConfig)
 
-@(isAgent: Boolean = false, incomeSourceType: IncomeSourceType)(implicit user: common.auth.MtdItUser[_], messages: Messages)
+@(isAgent: Boolean = false, incomeSourceType: IncomeSourceType)(implicit user: MtdItUser[_], messages: Messages)
 
 @getCeasedMessage = @{
     incomeSourceType match {
@@ -48,8 +51,7 @@
 }
 
 @getHomeUrl = @{
-    if(isAgent) appConfig.viewAndChangeAgentHomeUrl
-    else appConfig.viewAndChangeHomeUrl
+    appConfig.homePageUrl(isAgent)
 }
 
 @mainTemplate(

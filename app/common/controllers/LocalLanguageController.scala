@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,17 @@
 
 package common.controllers
 
-import common.config.FrontendAppConfig
 import com.google.inject.Inject
 import play.api.i18n.{Lang, MessagesApi}
 import play.api.mvc.ControllerComponents
 import uk.gov.hmrc.play.language.{LanguageController, LanguageUtils}
+import common.config.FrontendAppConfig
 
 class LocalLanguageController @Inject()(
                                          languageUtils: LanguageUtils,
                                          controllerComponent: ControllerComponents,
-                                         appConfig: FrontendAppConfig,
-                                         override val messagesApi: MessagesApi
+                                         override val messagesApi: MessagesApi,
+                                         appConfig: FrontendAppConfig
                                        ) extends LanguageController(languageUtils, controllerComponent) {
 
   override def languageMap: Map[String, Lang] =
@@ -35,5 +35,5 @@ class LocalLanguageController @Inject()(
       "cymraeg" -> Lang("cy")
     )
 
-  override def fallbackURL: String = appConfig.homePageBaseRoute
+  override def fallbackURL: String = appConfig.individualHomeUrl
 }

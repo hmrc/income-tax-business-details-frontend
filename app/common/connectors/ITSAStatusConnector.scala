@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,12 +32,11 @@ class ITSAStatusConnector @Inject()(val http: HttpClientV2,
                                    )(implicit val ec: ExecutionContext) extends RawResponseReads {
 
   def getITSAStatusDetailUrl(taxableEntityId: String, taxYear: String, futureYears: Boolean, history: Boolean): String = {
-    s"${appConfig.incomeTaxBusinessDetailsBaseUrl}/income-tax-business-details/itsa-status/status/$taxableEntityId/$taxYear?futureYears=${futureYears.toString}&history=${history.toString}"
+    s"${appConfig.incomeTaxObligationsService}/income-tax-obligations/itsa-status/status/$taxableEntityId/$taxYear?futureYears=${futureYears.toString}&history=${history.toString}"
   }
 
   def getITSAStatusDetail(nino: String, taxYear: String, futureYears: Boolean, history: Boolean)
                          (implicit headerCarrier: HeaderCarrier): Future[Either[ITSAStatusResponse, List[ITSAStatusResponseModel]]] = {
-
     val itsaURL = getITSAStatusDetailUrl(nino, taxYear, futureYears, history)
     http.get(url"$itsaURL")
       .transform(_.addHttpHeaders("Accept" -> "application/vnd.hmrc.2.0+json"))

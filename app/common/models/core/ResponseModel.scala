@@ -23,6 +23,7 @@ import uk.gov.hmrc.http.{HttpReads, HttpResponse}
 
 import scala.util.Try
 
+
 object ResponseModel {
 
   trait SuccessModel

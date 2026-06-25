@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 
 package common.services.agent
 
-import common.connectors.agent.CitizenDetailsConnector
 import common.connectors.BusinessDetailsConnector
-import common.models.citizenDetails.{CitizenDetailsErrorModel, CitizenDetailsModel}
-import common.models.incomeSourceDetails.{IncomeSourceDetailsError, IncomeSourceDetailsModel}
+import common.connectors.agent.CitizenDetailsConnector
 import play.api.Logger
 import play.api.http.Status.NOT_FOUND
 import ClientDetailsService.{BusinessDetailsNotFound, CitizenDetailsNotFound, ClientDetails, ClientDetailsFailure}
+import common.models.citizenDetails.{CitizenDetailsErrorModel, CitizenDetailsModel}
+import common.models.incomeSourceDetails.{IncomeSourceDetailsError, IncomeSourceDetailsModel}
 import uk.gov.hmrc.http.HeaderCarrier
 
 import javax.inject.{Inject, Singleton}

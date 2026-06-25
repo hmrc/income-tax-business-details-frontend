@@ -16,14 +16,15 @@
 
 @import _root_.common.implicits.ImplicitDateFormatterImpl
 @import common.enums.IncomeSourceJourney.{ForeignProperty, IncomeSourceType, SelfEmployment, UkProperty}
-@import common.models.incomeSourceDetails.{ ChosenReportingMethod, SignedUpForMTD, SignUpNextYearOnly, NotSigningUp, SignUpCurrentYearOnly, SignUpBothYears, OnlyOneYearAvailableToSignUp, OptedOut}
-@import common.models.incomeSourceDetails.viewModels._
+@import models.incomeSourceDetails.{ ChosenReportingMethod, SignedUpForMTD, SignUpNextYearOnly, NotSigningUp, SignUpCurrentYearOnly, SignUpBothYears, OnlyOneYearAvailableToSignUp, OptedOut}
+@import models.incomeSourceDetails.viewmodels._
 @import uk.gov.hmrc.govukfrontend.views.html.components.{FormWithCSRF, _}
 @import common.views.html.components._
 @import common.views.html.helpers.injected.ErrorSummary
 @import common.views.html.layouts.unifiedLayout
 
 @import java.time.LocalDate
+@import common.auth.MtdItUser
 
 @this(
         mainTemplate: unifiedLayout,
@@ -56,7 +57,7 @@
     getNextUpdatesUrl: String,
     getManageBusinessUrl: String,
     scenario: SignedUpForMTD
-)(implicit messages: Messages, user: common.auth.MtdItUser[_])
+)(implicit messages: Messages, user: MtdItUser[_])
 
 @getMessage(key: String, args: String*) = @{
     messages(s"business.added.${incomeSourceType.messagesSuffix}.$key", args: _*)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,17 @@ package common.enums
 
 import play.api.libs.json.*
 
-sealed trait MTDUserRole
+sealed trait MTDUserRole:
+  def isAgent: Boolean
 
-case object MTDPrimaryAgent extends MTDUserRole
+case object MTDPrimaryAgent extends MTDUserRole: 
+  override def isAgent: Boolean = true
 
-case object MTDSupportingAgent extends MTDUserRole
+case object MTDSupportingAgent extends MTDUserRole:
+  override def isAgent: Boolean = true
 
-case object MTDIndividual extends MTDUserRole
+case object MTDIndividual extends MTDUserRole:
+  override def isAgent: Boolean = false
 
 object MTDUserRole {
 

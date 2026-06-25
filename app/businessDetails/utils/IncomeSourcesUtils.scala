@@ -16,12 +16,6 @@
 
 package businessDetails.utils
 
-import java.util.UUID
-
-import play.api.mvc.Call
-
-import common.config.FrontendAppConfig
-
 import common.auth.MtdItUser
 import common.config.featureswitch.FeatureSwitching
 import common.enums.IncomeSourceJourney.{IncomeSourceType, SelfEmployment, UkProperty}
@@ -30,13 +24,11 @@ import common.models.incomeSourceDetails.PropertyDetailsModel
 import play.api.Logger
 import play.api.mvc.Result
 import play.api.mvc.Results.Redirect
-import uk.gov.hmrc.auth.core.AffinityGroup.Agent
 
+import java.util.UUID
 import scala.concurrent.{ExecutionContext, Future}
 
 trait IncomeSourcesUtils extends FeatureSwitching {
-  val appConfig: FrontendAppConfig
-
 
   def selectActiveProperty(incomeSourceType: IncomeSourceType, filter: PropertyDetailsModel => Boolean)(implicit user: MtdItUser[_]): Option[PropertyDetailsModel] = {
 
@@ -61,10 +53,7 @@ trait IncomeSourcesUtils extends FeatureSwitching {
 
   def withOverseasBusinessFS(comeBlock: => Future[Result])(implicit user: MtdItUser[_], ec: ExecutionContext): Future[Result] = {
     if (!isEnabled(OverseasBusinessAddress)) {
-      user.userType match {
-        case Some(Agent) => Future(Redirect(Call("GET", appConfig.homePageUrl(true))))
-        case _ => Future(Redirect(Call("GET", appConfig.homePageUrl(false))))
-      }
+      Future(Redirect(appConfig.homePageUrl(user.isAgent)))
     } else {
       comeBlock
     }

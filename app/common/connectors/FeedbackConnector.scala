@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,14 +55,14 @@ class FeedbackConnector @Inject()(val http: HttpClientV2,
       .withBody(data)
       .execute[HttpResponse]
       .map {resp =>
-        resp.status match {
-          case OK =>
-            Logger("application").info(s"RESPONSE status: ${resp.status}")
-            Right(())
-          case status =>
-            Logger("application").error(s"RESPONSE status: ${resp.status}")
-            Left(status)
-        }
-      }
+          resp.status match {
+            case OK =>
+              Logger("application").info(s"RESPONSE status: ${resp.status}")
+              Right(())
+            case status =>
+              Logger("application").error(s"RESPONSE status: ${resp.status}")
+              Left(status)
+          }
+    }
   }
 }

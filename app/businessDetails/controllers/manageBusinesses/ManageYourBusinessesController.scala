@@ -16,21 +16,18 @@
 
 package businessDetails.controllers.manageBusinesses
 
-import common.config.FrontendAppConfig
-
-import businessDetails.services.IncomeSourceDetailsService
+import businessDetails.services.{IncomeSourceDetailsService, SessionService}
 import businessDetails.utils.IncomeSourcesUtils
-import common.models.incomeSourceDetails.IncomeSourceDetailsModel
 import play.api.Logger
 import play.api.i18n.I18nSupport
 import play.api.mvc._
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import businessDetails.views.html.manageBusinesses.ManageYourBusinessesView
 import common.auth.{AuthActions, MtdItUser}
-import common.config.{AgentItvcErrorHandler, ItvcErrorHandler, ShowInternalServerError}
+import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler, ShowInternalServerError}
 import common.config.featureswitch.FeatureSwitching
 import common.models.admin.DisplayBusinessStartDate
-import common.services.SessionService
+import common.models.incomeSourceDetails.IncomeSourceDetailsModel
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
@@ -52,7 +49,7 @@ class ManageYourBusinessesController @Inject()(val manageYourBusinesses: ManageY
     handleRequest(
       sources = user.incomeSources,
       isAgent = false,
-      backUrl = appConfig.homePageUrl(false)
+      backUrl = appConfig.individualHomeUrl
     )(user, itvcErrorHandler)
   }
 
@@ -60,7 +57,7 @@ class ManageYourBusinessesController @Inject()(val manageYourBusinesses: ManageY
     handleRequest(
       sources = user.incomeSources,
       isAgent = true,
-      backUrl = appConfig.homePageUrl(true)
+      backUrl = appConfig.agentHomeUrl
     )(user, itvcErrorHandlerAgent)
   }
 

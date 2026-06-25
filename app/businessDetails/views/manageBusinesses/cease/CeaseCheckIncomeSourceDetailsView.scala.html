@@ -21,12 +21,13 @@
 @import uk.gov.hmrc.hmrcfrontend.views.html.components.HmrcPageHeading
 @import uk.gov.hmrc.hmrcfrontend.views.viewmodels.pageheading.PageHeading
 @import common.enums.IncomeSourceJourney._
-@import common.models.incomeSourceDetails.viewModels.CheckCeaseIncomeSourceDetailsViewModel
+@import models.incomeSourceDetails.viewmodels.CheckCeaseIncomeSourceDetailsViewModel
 @import common.models.core.AddressModel
 @import play.twirl.api.HtmlFormat
 @import common.models.core._
 @import common.views.html.components._
 @import businessDetails.controllers.manageBusinesses.cease.routes as ceaseBusinessRoutes
+@import common.auth.MtdItUser
 
 @this(
         mainTemplate: unifiedLayout,
@@ -43,7 +44,7 @@
         viewModel: CheckCeaseIncomeSourceDetailsViewModel,
         messagesPrefix: String,
         isTriggeredMigration: Boolean
-)(implicit request: common.auth.MtdItUser[_], messages: Messages)
+)(implicit request: MtdItUser[_], messages: Messages)
 
 @getMessage(key: String, args: String*) = @{
     messages(s"$messagesPrefix.$key", args: _*)

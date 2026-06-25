@@ -14,18 +14,18 @@
  * limitations under the License.
  *@
 
-@import common.config.FrontendAppConfig
 @import _root_.common.implicits.ImplicitDateFormatterImpl
 @import common.views.html.layouts.unifiedLayout
 @import common.views.html.components._
 @import uk.gov.hmrc.govukfrontend.views.html.components._
 @import common.models.incomeSourceDetails.TaxYear
-@import common.models.incomeSourceDetails.viewModels.ObligationsViewModel
-@import common.models.incomeSourceDetails.viewModels.DatesModel
+@import models.incomeSourceDetails.viewmodels.ObligationsViewModel
+@import models.incomeSourceDetails.viewmodels.DatesModel
 @import businessDetails.controllers.manageBusinesses.routes as manageBusinessRoutes
+@import obligations.controllers.{routes => obligationsRoutes}
+@import common.auth.MtdItUser
 
 @this(
-        appConfig: FrontendAppConfig,
         mainTemplate: unifiedLayout,
         implicitDateFormatter: ImplicitDateFormatterImpl,
         continueButton: ContinueButton,
@@ -48,7 +48,7 @@
         isAgent: Boolean,
         postAction: Call,
         isCurrentTaxYear: Boolean
-)(implicit messages: Messages, user: common.auth.MtdItUser[_])
+)(implicit messages: Messages, user: MtdItUser[_])
 
 @import implicitDateFormatter.longDate
 
@@ -106,9 +106,9 @@ s"${getMessage("table.heading.1")} ${quarterly.head.inboundCorrespondenceFrom.ge
 
 @nextUpdatesControllerURL = @{
     if(isAgent) {
-        appConfig.viewAndChangeAgentSubmissionDeadlinesUrl
+        obligationsRoutes.NextUpdatesController.showAgent().url
     } else {
-        appConfig.viewAndChangeSubmissionDeadlinesUrl
+        obligationsRoutes.NextUpdatesController.show().url
     }
 }
 
@@ -138,7 +138,6 @@ s"${getMessage("table.heading.1")} ${quarterly.head.inboundCorrespondenceFrom.ge
             @messages("incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.beforeLink")
             @link(
                 link = nextUpdatesControllerURL,
-                classes = "govuk-link",
                 messageKey = "incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.link",
             )
             @messages("incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.afterLink")
@@ -153,7 +152,6 @@ s"${getMessage("table.heading.1")} ${quarterly.head.inboundCorrespondenceFrom.ge
         @p() {
             @link(
                 link = manageBusinessesControllerURL,
-                classes = "govuk-link",
                 messageKey = "incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.link",
             )
             @messages("incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.afterLink")

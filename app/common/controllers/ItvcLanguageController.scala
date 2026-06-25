@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,21 @@
 
 package common.controllers
 
-import common.config.FrontendAppConfig
 import play.api.i18n.Lang
 import play.api.mvc.*
 import uk.gov.hmrc.play.language.{LanguageController, LanguageUtils}
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
+import common.config.FrontendAppConfig
 
 @Singleton
-class ItvcLanguageController @Inject()(mcc: MessagesControllerComponents, appConfig: FrontendAppConfig,
-                                       languageUtils: LanguageUtils) extends LanguageController(languageUtils, mcc) {
+class ItvcLanguageController @Inject()(mcc: MessagesControllerComponents,
+                                       languageUtils: LanguageUtils,
+                                       appConfig: FrontendAppConfig) extends LanguageController(languageUtils, mcc) {
 
 
-  override def fallbackURL: String = appConfig.homePageBaseRoute
+  override def fallbackURL: String = appConfig.individualHomeUrl
 
   val english: Lang = Lang("en")
   val welsh: Lang = Lang("cy")

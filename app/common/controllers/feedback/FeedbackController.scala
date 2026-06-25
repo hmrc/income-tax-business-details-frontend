@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,9 +38,9 @@ class FeedbackController @Inject()(val authActions: AuthActions,
                                    val feedbackConnector : FeedbackConnector)
                                   (implicit val config: FrontendAppConfig,
                                     mcc: MessagesControllerComponents,
-                                    ec: ExecutionContext
-                                  ) extends FrontendController(mcc) with I18nSupport {
-  
+                                    ec: ExecutionContext) extends FrontendController(mcc) with I18nSupport {
+
+
   def show: Action[AnyContent] = authActions.asAuthorisedUser.async {
     implicit request =>
       val feedback = feedbackView(FeedbackForm.form, postAction = routes.FeedbackController.submit())

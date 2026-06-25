@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 
 package common.models.citizenDetails
 
-import common.models.readNullable
 import play.api.libs.functional.syntax._
 import play.api.libs.json._
 
@@ -34,6 +33,9 @@ object CitizenDetailsErrorModel {
 }
 
 object CitizenDetailsModel {
+  private def readNullable[T](path: JsPath)(implicit reads: Reads[T]): Reads[Option[T]] = 
+    path.readNullable[T] orElse Reads.pure[Option[T]](None) 
+    
   implicit val reads: Reads[CitizenDetailsModel] = (
     readNullable[String](__ \ "name" \ "current" \ "firstName") and
       readNullable[String](__ \ "name" \ "current" \ "lastName") and

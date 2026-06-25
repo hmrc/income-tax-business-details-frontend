@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,6 @@ class SignInController @Inject()(val appConfig: FrontendAppConfig)
                                 (implicit mcc: MessagesControllerComponents) extends FrontendController(mcc) {
 
   val signIn: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Redirect(appConfig.ggSignInUrl, Map("continue_url" -> Seq(appConfig.homePageBaseUrl), "origin" -> Seq(appConfig.appName))))
+    Future.successful(Redirect(appConfig.ggSignInUrl, Map("continue_url" -> Seq(appConfig.homePageUrl), "origin" -> Seq(appConfig.appName))))
   }
 }

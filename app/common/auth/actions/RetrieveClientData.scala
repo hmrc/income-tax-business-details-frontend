@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import common.config.{AgentItvcErrorHandler, FrontendAppConfig}
 import common.models.auth.{AgentClientDetails, AuthorisedAgentWithClientDetailsRequest, AuthorisedUserRequest}
 import common.services.SessionDataService
 import common.services.agent.ClientDetailsService
-import common.utils.session.SessionKeys
+import common.utils.sessionUtils.SessionKeys
 import common.models.sessionData.SessionDataGetResponse.SessionDataNotFound
 import play.api.Logger
 import play.api.mvc.Results.Redirect
@@ -70,14 +70,14 @@ class RetrieveClientData @Inject()(sessionDataService: SessionDataService,
                 }
               )
               Right(AuthorisedAgentWithClientDetailsRequest(
-                request.authUserDetails,
+              request.authUserDetails,
                 agentClientDetails
-              ))
+            ))
             case Left(error) =>
               Logger("error").error(s"unable to find client with UTR: ${sessionData.utr} " + error)
-              Left(Redirect(appConfig.getHomePageBaseRoute(true) + "/client-utr"))
+              Left(Redirect(appConfig.enterClientsUTRUrl))
           }
-        case Left(_: SessionDataNotFound) => Future.successful(Left(Redirect(appConfig.getHomePageBaseRoute(true) + "/client-utr")))
+        case Left(_: SessionDataNotFound) => Future.successful(Left(Redirect(appConfig.enterClientsUTRUrl)))
         case Left(_) => Future.successful(Left(errorHandler.showInternalServerError()))
       }
     }

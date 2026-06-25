@@ -16,15 +16,15 @@
 
 package businessDetails.services.triggeredMigration
 
-import common.models.triggeredMigration.TriggeredMigrationSessionData
+import businessDetails.models.triggeredMigration.TriggeredMigrationSessionData
 import businessDetails.models.triggeredMigration.viewModels.{CheckHmrcRecordsSoleTraderDetails, CheckHmrcRecordsViewModel}
+import businessDetails.services.SessionService
 import com.google.inject.Inject
 import common.enums.JourneyType.TriggeredMigrationJourney
 import common.enums.TriggeredMigration.TriggeredMigrationState
-import common.models.UIJourneySessionData
 import common.models.core.IncomeSourceId
-import common.services.SessionService
 import common.models.incomeSourceDetails.IncomeSourceDetailsModel
+import shared.models.UIJourneySessionData
 import uk.gov.hmrc.http.HeaderCarrier
 
 import javax.inject.Singleton

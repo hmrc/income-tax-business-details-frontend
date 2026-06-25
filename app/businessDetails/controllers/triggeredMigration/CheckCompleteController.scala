@@ -16,24 +16,23 @@
 
 package businessDetails.controllers.triggeredMigration
 
-import play.api.mvc.Call
-
+import businessDetails.auth.AuthActionsWithTriggeredMigrationCheck
+import businessDetails.services.SessionService
 import businessDetails.utils.TriggeredMigrationUtils
 import com.google.inject.{Inject, Singleton}
 import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import businessDetails.views.html.triggeredMigration.CheckCompleteView
-import common.auth.AuthActions
 import common.config.FrontendAppConfig
-import common.services.SessionService
 
 import scala.annotation.unused
 import scala.concurrent.{ExecutionContext, Future}
+import obligations.controllers.routes as obligationsRoutes
 
 @Singleton
 class CheckCompleteController @Inject()(view: CheckCompleteView,
-                                        val auth: AuthActions,
+                                        val auth: AuthActionsWithTriggeredMigrationCheck,
                                         sessionService: SessionService)
                                        (mcc: MessagesControllerComponents,
                                         implicit val appConfig: FrontendAppConfig,
@@ -41,8 +40,8 @@ class CheckCompleteController @Inject()(view: CheckCompleteView,
   extends FrontendController(mcc) with I18nSupport with TriggeredMigrationUtils {
 
   private def nextUpdatesLink(isAgent: Boolean): String =
-    if (isAgent) appConfig.homePageUrl(true) + "/submission-deadlines"
-    else appConfig.homePageUrl(false) + "/submission-deadlines"
+    if (isAgent) obligationsRoutes.NextUpdatesController.showAgent().url
+    else obligationsRoutes.NextUpdatesController.show().url
 
   def show(isAgent: Boolean): Action[AnyContent] = auth.asMTDIndividualOrAgentWithClient(isAgent, triggeredMigrationPage = true).async { implicit user =>
     withTriggeredMigrationFS {
@@ -70,12 +69,7 @@ class CheckCompleteController @Inject()(view: CheckCompleteView,
       @unused
       val compatibleSoftwareLink: String = appConfig.compatibleSoftwareLink
       withTriggeredMigrationFS {
-
-        if (isAgent) {
-          Future.successful(Redirect(Call("GET", appConfig.homePageUrl(true))))
-        } else {
-          Future.successful(Redirect(Call("GET", appConfig.homePageUrl(false))))
-        }
+        Future.successful(Redirect(appConfig.homePageUrl(isAgent)))
       }
     }
 }

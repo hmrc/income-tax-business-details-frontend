@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,24 +19,25 @@ package common.connectors
 import common.config.FrontendAppConfig
 import common.models.audit.IncomeSourceDetailsResponseAuditModel
 import common.models.auth.AuthorisedAndEnrolledRequest
-import common.services.AuditingService
 import common.models.incomeSourceDetails.{IncomeSourceDetailsError, IncomeSourceDetailsModel, IncomeSourceDetailsResponse}
-import common.utils.Headers.checkAndAddTestHeader
+import common.services.AuditingService
 import play.api.Logger
 import play.api.http.Status.OK
 import play.api.http.{HeaderNames, Status}
 import uk.gov.hmrc.http.HttpReads.Implicits.*
 import uk.gov.hmrc.http.client.HttpClientV2
 import uk.gov.hmrc.http.{HeaderCarrier, HttpResponse, StringContextOps}
+import common.utils.Headers.checkAndAddTestHeader
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class IncomeSourceConnector @Inject()(httpClient: HttpClientV2,
-                                       auditingService: AuditingService,
-                                       appConfig: FrontendAppConfig
-                                     )(implicit val ec: ExecutionContext) {
+class IncomeSourceConnector @Inject()(
+                                          httpClient: HttpClientV2,
+                                          auditingService: AuditingService,
+                                          appConfig: FrontendAppConfig
+                                        )(implicit val ec: ExecutionContext) {
 
   private[connectors] def getIncomeSourcesUrl(mtditid: String): String = {
     s"${appConfig.incomeTaxBusinessDetailsBaseUrl}/income-tax-business-details/income-sources/$mtditid"
@@ -64,7 +65,7 @@ class IncomeSourceConnector @Inject()(httpClient: HttpClientV2,
 
     headerCarrier
   }
-
+  
   def getIncomeSources()(implicit headerCarrier: HeaderCarrier, mtdItUser: AuthorisedAndEnrolledRequest[_]): Future[IncomeSourceDetailsResponse] = {
 
     val url = getIncomeSourcesUrl(mtdItUser.mtditId)

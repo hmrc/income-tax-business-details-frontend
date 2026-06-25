@@ -16,31 +16,32 @@
 
 package businessDetails.controllers.manageBusinesses.add
 
-
+import businessDetails.auth.AuthActionsWithTriggeredMigrationCheck
 import businessDetails.forms.manageBusinesses.add.AddIncomeSourceStartDateFormProvider
+import businessDetails.services.SessionService
 import businessDetails.utils.JourneyCheckerManageBusinesses
-import common.enums.{BeforeSubmissionPage, InitialPage, FreshInitialPage}
-import common.models.incomeSourceDetails.AddIncomeSourceData
-import play.api.Logger
-import play.api.i18n.I18nSupport
-import play.api.mvc.*
-import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
-import common.views.html.errorPages.CustomNotFoundErrorView
 import businessDetails.views.html.manageBusinesses.add.AddIncomeSourceStartDateView
-import common.auth.{AuthActions, MtdItUser}
+import common.auth.MtdItUser
 import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler}
 import common.enums.IncomeSourceJourney.{IncomeSourceType, SelfEmployment}
 import common.enums.JourneyType.{Add, IncomeSourceJourneyType}
 import common.implicits.ImplicitDateFormatterImpl
 import common.models.core.{CheckMode, Mode, NormalMode}
-import common.services.{DateService, SessionService}
+import common.services.DateService
+import common.views.html.errorPages.CustomNotFoundErrorView
+import models.incomeSourceDetails.AddIncomeSourceData
+import play.api.Logger
+import play.api.i18n.I18nSupport
+import play.api.mvc.*
+import shared.enums.{BeforeSubmissionPage, FreshInitialPage, InitialPage}
+import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 
 import java.time.LocalDate
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class AddIncomeSourceStartDateController @Inject()(val authActions: AuthActions,
+class AddIncomeSourceStartDateController @Inject()(val authActions: AuthActionsWithTriggeredMigrationCheck,
                                                    val addIncomeSourceStartDate: AddIncomeSourceStartDateView,
                                                    val customNotFoundErrorView: CustomNotFoundErrorView,
                                                    val sessionService: SessionService,
@@ -94,7 +95,7 @@ class AddIncomeSourceStartDateController @Inject()(val authActions: AuthActions,
         case (_, NormalMode) => FreshInitialPage
       }
     }, isTriggeredMigration) { sessionData =>
-val dateStartedOpt = sessionData.addIncomeSourceData.flatMap(_.dateStarted)
+      val dateStartedOpt = sessionData.addIncomeSourceData.flatMap(_.dateStarted)
       val filledForm = dateStartedOpt match {
         case Some(date) =>
           form(messagesPrefix).fill(date)
@@ -155,10 +156,9 @@ val dateStartedOpt = sessionData.addIncomeSourceData.flatMap(_.dateStarted)
   private def handleValidFormData(formData: LocalDate, incomeSourceType: IncomeSourceType, isAgent: Boolean, mode: Mode, isTriggeredMigration: Boolean)
                                  (implicit user: MtdItUser[_]): Future[Result] = {
     withSessionData(IncomeSourceJourneyType(Add, incomeSourceType), journeyState = {
-      (incomeSourceType, mode) match {
-        case (SelfEmployment, _) => BeforeSubmissionPage
-        case (_, CheckMode) => InitialPage
-        case (_, NormalMode) => FreshInitialPage
+      incomeSourceType match {
+        case SelfEmployment => BeforeSubmissionPage
+        case _ => InitialPage
       }
     }) { sessionData =>
       sessionService.setMongoData(

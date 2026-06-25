@@ -16,13 +16,12 @@
 
 package businessDetails.controllers.manageBusinesses.cease
 
-import common.enums.BeforeSubmissionPage
-
+import businessDetails.auth.AuthActionsWithTriggeredMigrationCheck
 import common.models.core.IncomeSourceIdHash.mkFromQueryString
-import common.models.incomeSourceDetails.CeaseIncomeSourceData
+import models.incomeSourceDetails.CeaseIncomeSourceData
 import play.api.Logger
 import play.api.i18n.I18nSupport
-import play.api.mvc._
+import play.api.mvc.*
 import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import businessDetails.views.html.manageBusinesses.cease.IncomeSourceEndDateView
@@ -32,16 +31,18 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 import businessDetails.controllers.manageBusinesses.routes as manageBusinessesRoutes
 import businessDetails.forms.manageBusinesses.cease.CeaseIncomeSourceEndDateFormProvider
+import businessDetails.services.SessionService
 import businessDetails.utils.JourneyCheckerManageBusinesses
-import common.auth.{AuthActions, MtdItUser}
+import common.auth.MtdItUser
 import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler, ShowInternalServerError}
 import common.enums.IncomeSourceJourney.{IncomeSourceType, SelfEmployment}
 import common.enums.JourneyType.{Cease, IncomeSourceJourneyType}
 import common.models.core.{IncomeSourceId, IncomeSourceIdHash, Mode}
-import common.services.{DateService, SessionService}
+import common.services.DateService
+import shared.enums.BeforeSubmissionPage
 
 @Singleton
-class IncomeSourceEndDateController @Inject()(val authActions: AuthActions,
+class IncomeSourceEndDateController @Inject()(val authActions: AuthActionsWithTriggeredMigrationCheck,
                                               val incomeSourceEndDate: IncomeSourceEndDateView,
                                               val sessionService: SessionService,
                                               form: CeaseIncomeSourceEndDateFormProvider,

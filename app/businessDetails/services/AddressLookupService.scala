@@ -19,9 +19,9 @@ package businessDetails.services
 import common.auth.MtdItUser
 import common.config.FrontendAppConfig
 import common.models.core.Mode
-import common.models.incomeSourceDetails.BusinessAddressModel
-import common.models.incomeSourceDetails.viewModels.httpparser.GetAddressLookupDetailsHttpParser.UnexpectedGetStatusFailure
-import common.models.incomeSourceDetails.viewModels.httpparser.PostAddressLookupHttpParser.{PostAddressLookupSuccessResponse, UnexpectedPostStatusFailure}
+import models.incomeSourceDetails.BusinessAddressModel
+import models.incomeSourceDetails.viewmodels.httpparser.GetAddressLookupDetailsHttpParser.UnexpectedGetStatusFailure
+import models.incomeSourceDetails.viewmodels.httpparser.PostAddressLookupHttpParser.{PostAddressLookupSuccessResponse, UnexpectedPostStatusFailure}
 import play.api.Logger
 import uk.gov.hmrc.http.HeaderCarrier
 

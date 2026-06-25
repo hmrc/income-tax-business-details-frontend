@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 package common.auth.actions
 
 import common.config.featureswitch.FeatureSwitching
+import common.viewUtils.InternalUrlHelper
 import common.controllers.errors.routes as errorRoutes
 import common.models.auth.AuthorisedAndEnrolledRequest
-import common.viewUtils.InternalUrlHelper
 import play.api.Logger
 import play.api.mvc.Results.Redirect
 import play.api.mvc.{Request, Result}
@@ -34,8 +34,8 @@ trait AuthoriseHelper extends FeatureSwitching {
 
   type AuthRetrievals = Enrolments ~ Option[Name] ~ Option[Credentials] ~ Option[AffinityGroup] ~ ConfidenceLevel
   type NrsIndividualAuthRetrievals = Enrolments ~ Option[Name] ~ Option[Credentials] ~ Option[AffinityGroup] ~ ConfidenceLevel ~
-    Option[String] ~ Option[String] ~ Option[String] ~ Option[LocalDate] ~ Option[String] ~ Option[String] ~ Option[CredentialRole] ~
-    Option[MdtpInformation] ~ Option[ItmpName] ~ Option[LocalDate] ~ Option[ItmpAddress] ~ Option[String] ~ LoginTimes
+  Option[String] ~ Option[String] ~ Option[String] ~ Option[LocalDate] ~ Option[String] ~ Option[String] ~ Option[CredentialRole] ~
+  Option[MdtpInformation] ~ Option[ItmpName] ~ Option[LocalDate] ~ Option[ItmpAddress] ~ Option[String] ~ LoginTimes
   type NrsAgentAuthRetrievals = Enrolments ~ Option[Name] ~ Option[Credentials] ~ Option[AffinityGroup] ~ ConfidenceLevel ~
     Option[String] ~ Option[String] ~ Option[String] ~ Option[String] ~ Option[LocalDate] ~ Option[String]~ AgentInformation ~
     Option[String] ~ Option[CredentialRole] ~ Option[MdtpInformation] ~ Option[ItmpName] ~ Option[LocalDate] ~
@@ -53,7 +53,7 @@ trait AuthoriseHelper extends FeatureSwitching {
     case authorisationException: AuthorisationException =>
       logger.warn(s"Unauthorised request: ${authorisationException.reason}. Redirect to Sign In.")
       Future.successful(Left(Redirect(InternalUrlHelper.signinCall)))
-    // No catch-all block at end - bubble up to global error handler
+    // No catch all block at end - bubble up to global error handler
     // See investigation: https://github.com/hmrc/income-tax-view-change-frontend/pull/2432
   }
 
@@ -62,13 +62,13 @@ trait AuthoriseHelper extends FeatureSwitching {
     implicit request: Request[A]): PartialFunction[AuthRetrievals, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
     case _ ~ _ ~ _ ~ Some(Agent) ~ _ =>
       logger.error(s"Agent on endpoint for individuals")
-      Future.successful(Left(Redirect(appConfig.getHomePageBaseRoute(true) + "/client-utr")))
+      Future.successful(Left(Redirect(appConfig.enterClientsUTRUrl)))
   }
 
   def redirectIfNotAgent[A]()(
     implicit request: Request[A]): PartialFunction[AuthRetrievals, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
     case _ ~ _ ~ _ ~ Some(ag@(Organisation | Individual)) ~ _ =>
       logger.error(s"$ag on endpoint for agents")
-      Future.successful(Left(Redirect(appConfig.homePageBaseUrl)))
+      Future.successful(Left(Redirect(appConfig.individualHomeUrl)))
   }
 }

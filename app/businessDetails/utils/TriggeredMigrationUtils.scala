@@ -16,10 +16,6 @@
 
 package businessDetails.utils
 
-import play.api.mvc.Call
-
-import common.config.FrontendAppConfig
-
 import common.auth.MtdItUser
 import common.config.featureswitch.FeatureSwitching
 import common.models.admin.TriggeredMigration
@@ -30,14 +26,9 @@ import uk.gov.hmrc.auth.core.AffinityGroup.Agent
 import scala.concurrent.{ExecutionContext, Future}
 
 trait TriggeredMigrationUtils extends FeatureSwitching {
-  val appConfig: FrontendAppConfig
-
   def withTriggeredMigrationFS(comeBlock: => Future[Result])(implicit user: MtdItUser[_], ec: ExecutionContext): Future[Result] = {
     if (!isEnabled(TriggeredMigration)) {
-      user.userType match {
-        case Some(Agent) => Future(Redirect(Call("GET", appConfig.homePageUrl(true))))
-        case _ => Future(Redirect(Call("GET", appConfig.homePageUrl(false))))
-      }
+      Future(Redirect(appConfig.homePageUrl(user.userType.contains(Agent))))
     } else {
       comeBlock
     }

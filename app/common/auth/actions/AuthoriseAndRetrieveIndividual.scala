@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-//noinspection ScalaDeprecation
 package common.auth.actions
 
 import com.google.inject.Singleton
@@ -36,6 +35,7 @@ import uk.gov.hmrc.auth.core.retrieve.v2.Retrievals.*
 import uk.gov.hmrc.auth.core.retrieve.~
 import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.http.HeaderCarrierConverter
+
 import java.net.URLEncoder
 import javax.inject.Inject
 import scala.annotation.{nowarn, unused}
@@ -71,7 +71,7 @@ class AuthoriseAndRetrieveIndividual @Inject()(val authorisedFunctions: Frontend
     authorisedFunctions.authorised(AffinityGroup.Agent or predicate)
       .retrieve(allEnrolments and name and credentials and affinityGroup and confidenceLevel) {
         redirectIfAgent() orElse
-          redirectIfInsufficientConfidence() orElse constructAuthorisedAndEnrolledUser()
+        redirectIfInsufficientConfidence() orElse constructAuthorisedAndEnrolledUser()
       }(hc, executionContext) recoverWith logAndRedirect()
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,16 @@
 
 package common.services
 
-import common.utils.session.SessionKeys
-import common.connectors.SessionDataConnector
+import common.connectors.GetSessionDataConnector
+import common.utils.sessionUtils.SessionKeys
 import common.models.sessionData.SessionDataGetResponse.{SessionDataGetSuccess, SessionDataNotFound, SessionGetResponse}
-import common.models.sessionData.SessionDataModel
-import common.models.sessionData.SessionDataPostResponse.SessionDataPostResponse
 import play.api.mvc.Request
 import uk.gov.hmrc.http.HeaderCarrier
 
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
 
-class SessionDataService @Inject()(sessionDataConnector: SessionDataConnector)
+class SessionDataService @Inject()(sessionDataConnector: GetSessionDataConnector)
                                   (implicit ec: ExecutionContext){
 
   def getSessionData(useCookie: Boolean = false)
@@ -38,11 +36,6 @@ class SessionDataService @Inject()(sessionDataConnector: SessionDataConnector)
     } else {
       sessionDataConnector.getSessionData()
     }
-  }
-
-  //ToDo remove this method if not income-tax-view-change-frontend
-  def postSessionData(sessionDataModel: SessionDataModel)(implicit hc: HeaderCarrier): Future[SessionDataPostResponse] = {
-    sessionDataConnector.postSessionData(sessionDataModel)
   }
 
   private def getSessionResponseFromCookie(implicit request: Request[_]): Future[SessionGetResponse] = {

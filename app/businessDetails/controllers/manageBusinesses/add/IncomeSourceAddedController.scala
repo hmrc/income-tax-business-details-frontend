@@ -16,33 +16,34 @@
 
 package businessDetails.controllers.manageBusinesses.add
 
-import common.config.FrontendAppConfig
-
 import businessDetails.controllers.manageBusinesses.routes as manageBusinessesRoutes
 import businessDetails.controllers.manageBusinesses.manage.routes as manageYourBusinessesRoutes
-import businessDetails.services.IncomeSourceDetailsService
+import businessDetails.services.{IncomeSourceDetailsService, SessionService}
 import businessDetails.utils.JourneyCheckerManageBusinesses
-import common.models.incomeSourceDetails.*
-import common.models.incomeSourceDetails.viewModels.ObligationsViewModel
+import models.incomeSourceDetails.*
+import models.incomeSourceDetails.viewmodels.ObligationsViewModel
 import play.api.Logger
 import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Result}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import businessDetails.views.html.manageBusinesses.add.IncomeSourceAddedObligationsView
 import common.auth.{AuthActions, MtdItUser}
-import common.config.{AgentItvcErrorHandler, ItvcErrorHandler, ShowInternalServerError}
+import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler, ShowInternalServerError}
 import common.config.featureswitch.FeatureSwitching
 import common.enums.IncomeSourceJourney.IncomeSourceType
 import common.enums.JourneyType.{Add, IncomeSourceJourneyType}
-import common.models.UIJourneySessionData
 import common.models.core.IncomeSourceId
-import common.services.{DateServiceInterface, SessionService}
+import common.models.incomeSourceDetails.LatencyDetails
+import common.services.DateServiceInterface
 
 import java.time.LocalDate
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
-import common.services.NextUpdatesService
 import scala.language.postfixOps
+import obligations.controllers.routes as obligationRoutes
+import obligations.controllers.reportingObligations.routes as reportingObligationsRoutes
+import businessDetails.services.NextUpdatesService
+import shared.models.UIJourneySessionData
 
 
 class IncomeSourceAddedController @Inject()(
@@ -62,9 +63,9 @@ class IncomeSourceAddedController @Inject()(
 
   private[controllers] def getNextUpdatesUrl(isAgent: Boolean) =
     if (isAgent) {
-      appConfig.homePageUrl(true) + "/submission-deadlines"
+      obligationRoutes.NextUpdatesController.showAgent().url
     } else {
-      appConfig.homePageUrl(false) + "/submission-deadlines"
+      obligationRoutes.NextUpdatesController.show().url
     }
 
   private[controllers] def getManageBusinessUrl(isAgent: Boolean) =
@@ -75,7 +76,7 @@ class IncomeSourceAddedController @Inject()(
     }
 
   private[controllers] def getReportingFrequencyUrl(isAgent: Boolean) =
-    if (isAgent) appConfig.homePageUrl(true) + "/reporting-frequency" else appConfig.homePageUrl(false) + "/reporting-frequency"
+    reportingObligationsRoutes.ReportingFrequencyPageController.show(isAgent).url
 
   private[controllers] def getIncomeSourceIdFromSession(incomeSourceType: IncomeSourceType)(implicit user: MtdItUser[_]): Future[Option[IncomeSourceId]] = {
 

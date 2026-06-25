@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,11 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class FeatureSwitchRetrievalAction @Inject()(val featureSwitchService: FeatureSwitchService)
-                                            (implicit val appConfig: FrontendAppConfig,
+class FeatureSwitchRetrievalAction @Inject()(
+                                              val featureSwitchService: FeatureSwitchService
+                                            )
+                                            (
+                                              implicit val appConfig: FrontendAppConfig,
                                               val executionContext: ExecutionContext,
                                               val messagesApi: MessagesApi
                                             ) extends ActionRefiner[MtdItUser, MtdItUser] {
@@ -44,3 +47,4 @@ class FeatureSwitchRetrievalAction @Inject()(val featureSwitchService: FeatureSw
     )
   }
 }
+

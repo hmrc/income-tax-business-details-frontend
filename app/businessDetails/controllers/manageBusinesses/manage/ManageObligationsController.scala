@@ -18,6 +18,7 @@ package businessDetails.controllers.manageBusinesses.manage
 
 import businessDetails.controllers.manageBusinesses.routes as manageBusinessesRoutes
 import businessDetails.enums.{AnnualReportingMethod, QuarterlyReportingMethod}
+import businessDetails.services.SessionService
 import businessDetails.utils.JourneyCheckerManageBusinesses
 import businessDetails.views.html.manageBusinesses.manage.ManageObligationsView
 import common.auth.{AuthActions, MtdItUser}
@@ -25,13 +26,13 @@ import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler
 import common.enums.IncomeSourceJourney.{ForeignProperty, IncomeSourceType, SelfEmployment, UkProperty}
 import common.enums.JourneyType.{IncomeSourceJourneyType, Manage}
 import common.models.core.IncomeSourceId
-import common.services.{DateService, SessionService}
-import common.services.NextUpdatesService
-import common.enums.CannotGoBackPage
+import common.services.DateService
 import common.models.incomeSourceDetails.TaxYear.getTaxYearModel
+import businessDetails.services.NextUpdatesService
 import play.api.Logger
 import play.api.i18n.I18nSupport
 import play.api.mvc.*
+import shared.enums.CannotGoBackPage
 import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 

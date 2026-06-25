@@ -22,8 +22,8 @@ import common.config.FrontendAppConfig
 import common.config.featureswitch.FeatureSwitching
 import common.models.core.Mode
 import common.viewUtils.InternalUrlHelper
-import common.models.incomeSourceDetails.viewModels.httpparser.GetAddressLookupDetailsHttpParser.GetAddressLookupDetailsResponse
-import common.models.incomeSourceDetails.viewModels.httpparser.PostAddressLookupHttpParser.PostAddressLookupResponse
+import models.incomeSourceDetails.viewmodels.httpparser.GetAddressLookupDetailsHttpParser.GetAddressLookupDetailsResponse
+import models.incomeSourceDetails.viewmodels.httpparser.PostAddressLookupHttpParser.PostAddressLookupResponse
 import play.api.Logger
 import play.api.i18n.{Lang, MessagesApi}
 import play.api.libs.json.*
@@ -78,7 +78,7 @@ class AddressLookupConnector @Inject()(val appConfig: FrontendAppConfig,
               )
             ),
             "signOutHref" -> JsString(appConfig.itvcFrontendEnvironment + InternalUrlHelper.signoutUrl),
-            "accessibilityFooterUrl" -> JsString(appConfig.itvcFrontendEnvironment + "/accessibility-statement/income-tax-business-details?referrerUrl=%2Fmanage-self-assessment%2Fbusinesses"),
+            "accessibilityFooterUrl" -> JsString(appConfig.itvcFrontendEnvironment + "/accessibility-statement/income-tax-view-change?referrerUrl=%2Freport-quarterly%2Fincome-and-expenses%2Fview"),
             "selectPageConfig" -> JsObject(
               Seq(
                 "proposalListLimit" -> JsNumber(15)
@@ -192,7 +192,7 @@ class AddressLookupConnector @Inject()(val appConfig: FrontendAppConfig,
               )
             ),
             "signOutHref" -> JsString(appConfig.itvcFrontendEnvironment + InternalUrlHelper.signoutUrl),
-            "accessibilityFooterUrl" -> JsString(appConfig.itvcFrontendEnvironment + "/accessibility-statement/income-tax-business-details?referrerUrl=%2Fmanage-self-assessment%2Fbusinesses"),
+            "accessibilityFooterUrl" -> JsString(appConfig.itvcFrontendEnvironment + "/accessibility-statement/income-tax-view-change?referrerUrl=%2Freport-quarterly%2Fincome-and-expenses%2Fview"),
             "selectPageConfig" -> JsObject(
               Seq(
                 "proposalListLimit" -> JsNumber(15)

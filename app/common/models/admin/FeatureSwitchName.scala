@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,8 +59,6 @@ object FeatureSwitchName {
       JsSuccess(PenaltiesAndAppeals)
     case JsString(PenaltiesBackendEnabled.name) =>
       JsSuccess(PenaltiesBackendEnabled)
-    case JsString(OptInOptOutContentUpdateR17.name) =>
-      JsSuccess(OptInOptOutContentUpdateR17)
     case JsString(SelfServeTimeToPayR17.name) =>
       JsSuccess(SelfServeTimeToPayR17)
     case JsString(TriggeredMigration.name) =>
@@ -79,6 +77,10 @@ object FeatureSwitchName {
       JsSuccess(RecentActivity)
     case JsString(MortgageEvidence.name) =>
       JsSuccess(MortgageEvidence)
+    case JsString(IdempotencyKeyForCreateIncomeSource.name) =>
+      JsSuccess(IdempotencyKeyForCreateIncomeSource)
+    case JsString(NoIncomeSourcesRedirect.name) =>
+      JsSuccess(NoIncomeSourcesRedirect)
     case invalidName =>
       Logger("application").error(s"Invalid feature switch Json found: $invalidName")
       JsSuccess(InvalidFS)
@@ -114,7 +116,6 @@ object FeatureSwitchName {
       DisplayBusinessStartDate,
       PenaltiesAndAppeals,
       PenaltiesBackendEnabled,
-      OptInOptOutContentUpdateR17,
       SubmitClaimToAdjustToNrs,
       SelfServeTimeToPayR17,
       TriggeredMigration,
@@ -123,7 +124,9 @@ object FeatureSwitchName {
       NewHomePage,
       OverseasBusinessAddress,
       RecentActivity,
-      MortgageEvidence
+      MortgageEvidence,
+      IdempotencyKeyForCreateIncomeSource,
+      NoIncomeSourcesRedirect
     )
 
   def get(str: String): Option[FeatureSwitchName] = allFeatureSwitches find (_.name == str)
@@ -194,11 +197,6 @@ case object PenaltiesBackendEnabled extends FeatureSwitchName {
   override val toString: String = "Penalties Backend"
 }
 
-case object OptInOptOutContentUpdateR17 extends FeatureSwitchName {
-  override val name = "opt-in-opt-out-content-update-r17"
-  override val toString = "Opt In Opt Out Content Update R17"
-}
-
 case object SelfServeTimeToPayR17 extends FeatureSwitchName {
   override val name: String = "self-serve-time-to-pay-r17"
   override val toString: String = "Self Serve Time To Pay R17"
@@ -244,9 +242,13 @@ case object MortgageEvidence extends FeatureSwitchName {
   override val toString: String = "mortgage-evidence"
 }
 
-
 case object IdempotencyKeyForCreateIncomeSource extends FeatureSwitchName {
   override val name: String = "idempotency-key-for-create-income-source"
   override val toString: String = "Idempotency Key for Create an Income Source"
+}
+
+case object NoIncomeSourcesRedirect extends FeatureSwitchName {
+  override val name: String = "no-income-sources-redirect"
+  override val toString: String = "No Income Sources Redirect"
 }
 

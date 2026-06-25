@@ -1,0 +1,11 @@
+#NextUpdates
+GET         /submission-deadlines                                         obligations.controllers.NextUpdatesController.show(origin: Option[String] ?= None)
+GET         /agents/submission-deadlines                                  obligations.controllers.NextUpdatesController.showAgent()
+
+#Reporting Obligations
+GET         /reporting-frequency                                          obligations.controllers.reportingObligations.ReportingFrequencyPageController.show(isAgent:Boolean = false)
+GET         /agents/reporting-frequency                                   obligations.controllers.reportingObligations.ReportingFrequencyPageController.show(isAgent:Boolean = true)
+
+#You Must Wait Page
+GET          /access-service-from-next-tax-year                           obligations.controllers.reportingObligations.signUp.YouMustWaitToSignUpController.show(isAgent: Boolean = false)
+GET          /agents/view-client-from-next-tax-year                       obligations.controllers.reportingObligations.signUp.YouMustWaitToSignUpController.show(isAgent: Boolean = true)

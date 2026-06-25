@@ -16,18 +16,13 @@
 
 package businessDetails.controllers.manageBusinesses.manage
 
-import play.api.mvc.Call
-
-import common.config.FrontendAppConfig
-
 import businessDetails.enums.{AnnualReportingMethod, QuarterlyReportingMethod, ReportingMethod}
 import businessDetails.models.audit.ManageIncomeSourceCheckYourAnswersAuditModel
 import businessDetails.models.updateIncomeSource.{TaxYearSpecific, UpdateIncomeSourceResponseError, UpdateIncomeSourceResponseModel}
-import businessDetails.services.UpdateIncomeSourceService
+import businessDetails.services.{SessionService, UpdateIncomeSourceService}
 import businessDetails.utils.JourneyCheckerManageBusinesses
-import common.enums.BeforeSubmissionPage
-import common.models.incomeSourceDetails.viewModels.CheckYourAnswersViewModel
-import common.models.incomeSourceDetails.{ManageIncomeSourceData, TaxYear}
+import models.incomeSourceDetails.viewmodels.CheckYourAnswersViewModel
+import models.incomeSourceDetails.ManageIncomeSourceData
 import play.api.Logger
 import play.api.i18n.I18nSupport
 import play.api.mvc.*
@@ -35,12 +30,14 @@ import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import businessDetails.views.html.manageBusinesses.manage.CheckYourAnswersView
 import common.auth.{AuthActions, MtdItUser}
-import common.config.{AgentItvcErrorHandler, ItvcErrorHandler}
+import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler}
 import common.enums.IncomeSourceJourney.{IncomeSourceType, SelfEmployment, UkProperty}
 import common.enums.JourneyType.{IncomeSourceJourneyType, Manage}
 import common.exceptions.MissingSessionKey
 import common.models.core.IncomeSourceId
-import common.services.{AuditingService, SessionService}
+import common.models.incomeSourceDetails.TaxYear
+import common.services.AuditingService
+import shared.enums.BeforeSubmissionPage
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
@@ -71,10 +68,7 @@ class CheckYourAnswersController @Inject()(val checkYourAnswers: CheckYourAnswer
           isAgent,
           incomeSourceType,
           incomeSourceIdOpt,
-          backUrl = {
-            if (isAgent) Call("GET", appConfig.homePageUrl(true))
-            else Call("GET", appConfig.homePageUrl(false))
-          }.url
+          backUrl = appConfig.homePageUrl(isAgent)
         )
       }
   }

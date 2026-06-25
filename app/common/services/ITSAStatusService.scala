@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import common.auth.MtdItUser
 import common.config.FrontendAppConfig
 import common.config.featureswitch.FeatureSwitching
 import common.connectors.ITSAStatusConnector
-import common.models.incomeSourceDetails.*
+import common.models.incomeSourceDetails.{LatencyDetails, LatencyYearsAnnual, LatencyYearsQuarterly, LatencyYearsQuarterlyAndAnnualStatus, TaxYear}
 import common.models.itsaStatus.{ITSAStatusResponseModel, StatusDetail}
 import play.api.Logger
 import uk.gov.hmrc.http.HeaderCarrier
@@ -46,7 +46,23 @@ class ITSAStatusService @Inject()(itsaStatusConnector: ITSAStatusConnector,
         Future.failed(new Exception("Failed to retrieve ITSAStatus"))
     }
   }
+  
+    //At this moment we are defaulting to 21-22 TY
+  def getTaxYears(futureYears: Boolean = true, history: Boolean = false)
+                 (implicit hc: HeaderCarrier, ec: ExecutionContext, user: MtdItUser[_]): Future[List[String]] = {
+    itsaStatusConnector.getITSAStatusDetail(
+      nino = user.nino,
+      taxYear = "21-22",
+      futureYears = futureYears,
+      history = history).flatMap {
+      case Right(itsaStatus) => Future.successful(itsaStatus.map(_.taxYear))
+      case Left(error) =>
+        Logger("application").error(s"$error")
+        Future.failed(new Exception("Failed to retrieve tax years from ITSAStatus"))
+    }
+  }
 
+  
   private def getStatusDetail(itsaStatusResponseModel: ITSAStatusResponseModel): Option[StatusDetail] = {
     itsaStatusResponseModel.itsaStatusDetails.flatMap(statusDetail => statusDetail.headOption)
   }

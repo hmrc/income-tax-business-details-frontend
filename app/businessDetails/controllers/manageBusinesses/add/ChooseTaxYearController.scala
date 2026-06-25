@@ -18,23 +18,24 @@ package businessDetails.controllers.manageBusinesses.add
 
 import businessDetails.forms.manageBusinesses.add.ChooseTaxYearForm
 import businessDetails.forms.models.ChooseTaxYearFormModel
+import businessDetails.services.SessionService
 import businessDetails.services.manageBusinesses.IncomeSourceRFService
 import businessDetails.utils.JourneyCheckerManageBusinesses
-import common.enums.ReportingFrequencyPages
-import common.models.incomeSourceDetails.IncomeSourceReportingFrequencySourceData
+import models.incomeSourceDetails.IncomeSourceReportingFrequencySourceData
 import play.api.Logger
 import play.api.data.Form
 import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents, Result}
-import common.services.CalculationListService
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import businessDetails.views.html.manageBusinesses.add.ChooseTaxYearView
 import common.auth.{AuthActions, MtdItUser}
 import common.config.FrontendAppConfig
 import common.enums.IncomeSourceJourney.IncomeSourceType
 import common.enums.JourneyType.{Add, IncomeSourceJourneyType}
-import common.models.UIJourneySessionData
-import common.services.{DateService, SessionService}
+import common.services.DateService
+import shared.enums.ReportingFrequencyPages
+import shared.models.UIJourneySessionData
+import shared.services.CalculationListService
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}

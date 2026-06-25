@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-//noinspection ScalaDeprecation
 package common.auth.actions
 
 import com.google.inject.Singleton
@@ -72,8 +71,8 @@ class AuthoriseAndRetrieveIndividualForNrs @Inject()(val authorisedFunctions: Fr
 
     authorisedFunctions.authorised(AffinityGroup.Agent or predicate)
       .retrieve(allEnrolments and name and credentials and affinityGroup and confidenceLevel
-        and internalId and externalId and nino and dateOfBirth and email and groupIdentifier and credentialRole
-        and mdtpInformation and itmpName and itmpDateOfBirth and itmpAddress and credentialStrength and loginTimes) {
+      and internalId and externalId and nino and dateOfBirth and email and groupIdentifier and credentialRole
+      and mdtpInformation and itmpName and itmpDateOfBirth and itmpAddress and credentialStrength and loginTimes) {
         redirectIfAgentNrs() orElse
           redirectIfInsufficientConfidenceNrs() orElse constructAuthorisedAndEnrolledUserForNrs()
       }(hc, executionContext) recoverWith logAndRedirect()
@@ -92,7 +91,7 @@ class AuthoriseAndRetrieveIndividualForNrs @Inject()(val authorisedFunctions: Fr
     implicit @unused request: Request[A]): PartialFunction[NrsIndividualAuthRetrievals, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
     case _ ~ _ ~ _ ~ Some(Agent) ~ _ ~ _ ~ _ ~ _ ~ _ ~ _ ~ _ ~ _ ~ _ ~ _ ~ _ ~ _ ~ _ ~ _ =>
       logger.error(s"Agent on endpoint for individuals")
-      Future.successful(Left(Redirect(appConfig.getHomePageBaseRoute(true) + "/client-utr")))
+      Future.successful(Left(Redirect(appConfig.enterClientsUTRUrl)))
   }
 
   private def redirectIfInsufficientConfidenceNrs[A]()(
@@ -108,8 +107,8 @@ class AuthoriseAndRetrieveIndividualForNrs @Inject()(val authorisedFunctions: Fr
   private def constructAuthorisedAndEnrolledUserForNrs[A]()(
     implicit request: Request[A]): PartialFunction[NrsIndividualAuthRetrievals, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
     case enrolments ~ userName ~ credentials ~ affinityGroup ~ confidenceLevel ~ internalId ~ externalId ~ nino ~
-      dateOfBirth ~ email ~ groupIdentifier ~ credentialRole ~ mdtpInformation ~ itmpName ~ itmpDateOfBirth ~ itmpAddress ~
-      credentialStrength ~ loginTimes =>
+    dateOfBirth ~ email ~ groupIdentifier ~ credentialRole ~ mdtpInformation ~ itmpName ~ itmpDateOfBirth ~ itmpAddress ~
+    credentialStrength ~ loginTimes =>
       lazy val optMtdId: Option[String] =
         enrolments.getEnrolment(Constants.mtdEnrolmentName)
           .flatMap(_.getIdentifier(Constants.mtdEnrolmentIdentifierKey))

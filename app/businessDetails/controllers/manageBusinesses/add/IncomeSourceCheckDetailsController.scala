@@ -16,35 +16,37 @@
 
 package businessDetails.controllers.manageBusinesses.add
 
+import businessDetails.auth.AuthActionsWithTriggeredMigrationCheck
 import businessDetails.controllers.triggeredMigration.routes as triggeredMigrationRoutes
+import businessDetails.enums.FailureCategory.ApiFailure
 import businessDetails.models.audit.CreateIncomeSourceAuditModel
 import businessDetails.models.createIncomeSource.CreateIncomeSourceResponse
-import businessDetails.services.CreateBusinessDetailsService
+import businessDetails.services.{CreateBusinessDetailsService, SessionService}
 import businessDetails.utils.JourneyCheckerManageBusinesses
-import common.enums.BeforeSubmissionPage
-import common.models.incomeSourceDetails.IncomeSourceDetailsModel
-import common.models.incomeSourceDetails.viewModels.{CheckBusinessDetailsViewModel, CheckDetailsViewModel, CheckPropertyViewModel}
+import models.incomeSourceDetails.viewmodels.{CheckBusinessDetailsViewModel, CheckDetailsViewModel, CheckPropertyViewModel}
 import play.api.Logger
 import play.api.i18n.I18nSupport
 import play.api.mvc.*
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import businessDetails.views.html.manageBusinesses.add.IncomeSourceCheckDetailsView
-import common.auth.{AuthActions, MtdItUser}
+import common.auth.MtdItUser
 import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler, ShowInternalServerError}
 import common.enums.IncomeSourceJourney.{IncomeSourceType, SelfEmployment}
 import common.enums.JourneyType.{Add, IncomeSourceJourneyType}
 import common.enums.TriggeredMigration.TriggeredMigrationAdded
-import common.models.UIJourneySessionData
 import common.models.admin.OverseasBusinessAddress
 import common.models.core.NormalMode
-import common.services.{AuditingService, SessionService}
+import common.models.incomeSourceDetails.IncomeSourceDetailsModel
+import common.services.AuditingService
+import shared.enums.BeforeSubmissionPage
+import shared.models.UIJourneySessionData
 
 import javax.inject.Inject
 import scala.annotation.unused
 import scala.concurrent.{ExecutionContext, Future}
 
 class IncomeSourceCheckDetailsController @Inject()(val incomeSourceCheckDetailsView: IncomeSourceCheckDetailsView,
-                                                   val authActions: AuthActions,
+                                                   val authActions: AuthActionsWithTriggeredMigrationCheck,
                                                    val businessDetailsService: CreateBusinessDetailsService,
                                                    val auditingService: AuditingService,
                                                    val sessionService: SessionService,
@@ -222,7 +224,7 @@ class IncomeSourceCheckDetailsController @Inject()(val incomeSourceCheckDetailsV
               }
             case Left(ex) =>
               auditingService.extendedAudit(
-                CreateIncomeSourceAuditModel(incomeSourceType, viewModel, Some(common.enums.FailureCategory.ApiFailure), Some(ex.getMessage), None, isTrigMig = isTriggeredMigration)
+                CreateIncomeSourceAuditModel(incomeSourceType, viewModel, Some(ApiFailure), Some(ex.getMessage), None, isTrigMig = isTriggeredMigration)
               )
               Future.failed(ex)
           }

@@ -16,33 +16,31 @@
 
 package businessDetails.controllers.manageBusinesses.add
 
-import common.enums.FreshInitialPage
-
-
+import businessDetails.auth.AuthActionsWithTriggeredMigrationCheck
 import businessDetails.controllers.manageBusinesses.routes as manageBusinessesRoutes
 import businessDetails.forms.manageBusinesses.add.BusinessNameForm
+import businessDetails.services.SessionService
 import businessDetails.utils.{IncomeSourcesUtils, JourneyCheckerManageBusinesses}
-import common.enums.InitialPage
-import common.models.incomeSourceDetails.AddIncomeSourceData
-import play.api.Logger
-import play.api.data.Form
-import play.api.i18n.I18nSupport
-import play.api.mvc._
-import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import businessDetails.views.html.manageBusinesses.add.AddBusinessNameView
-import common.auth.{AuthActions, MtdItUser}
-import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler, ShowInternalServerError}
+import common.auth.MtdItUser
 import common.config.featureswitch.FeatureSwitching
+import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler, ShowInternalServerError}
 import common.enums.IncomeSourceJourney.SelfEmployment
 import common.enums.JourneyType.{Add, IncomeSourceJourneyType}
 import common.models.core.{Mode, NormalMode}
-import common.services.SessionService
+import models.incomeSourceDetails.AddIncomeSourceData
+import play.api.Logger
+import play.api.data.Form
+import play.api.i18n.I18nSupport
+import play.api.mvc.*
+import shared.enums.{FreshInitialPage, InitialPage}
+import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class AddBusinessNameController @Inject()(val authActions: AuthActions,
+class AddBusinessNameController @Inject()(val authActions: AuthActionsWithTriggeredMigrationCheck,
                                           val addBusinessView: AddBusinessNameView,
                                           val sessionService: SessionService)
                                          (implicit val appConfig: FrontendAppConfig,

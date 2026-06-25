@@ -16,7 +16,7 @@
 
 package common.models.core
 
-import common.models.core.CorrelationId.correlationId
+import CorrelationId.correlationId
 import uk.gov.hmrc.http.HeaderCarrier
 
 import java.util.UUID

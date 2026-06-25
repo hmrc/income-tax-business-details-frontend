@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,13 +21,14 @@ import common.config.FrontendAppConfig
 import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
+import common.views.html.NoIncomeSourcesView
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class NoIncomeSourcesController @Inject()(
-                                           val noIncomeSourcesView: common.views.html.NoIncomeSourcesView,
+                                           val noIncomeSourcesView: NoIncomeSourcesView,
                                            val authActions: AuthActions
                                          )(
                                            implicit
@@ -43,7 +44,7 @@ class NoIncomeSourcesController @Inject()(
 
     action.async { implicit user =>
       Future.successful(
-        Ok(noIncomeSourcesView(isAgent, appConfig.noIncomeSourcesContactUrl))
+        Ok(noIncomeSourcesView(appConfig.noIncomeSourcesContactUrl))
       )
     }
   }

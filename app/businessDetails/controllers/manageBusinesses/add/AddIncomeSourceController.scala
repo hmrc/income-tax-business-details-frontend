@@ -16,23 +16,18 @@
 
 package businessDetails.controllers.manageBusinesses.add
 
-import play.api.mvc.Call
-
-import common.config.FrontendAppConfig
-
-import businessDetails.services.IncomeSourceDetailsService
+import businessDetails.services.{IncomeSourceDetailsService, SessionService}
 import businessDetails.utils.IncomeSourcesUtils
-import common.models.incomeSourceDetails.IncomeSourceDetailsModel
 import play.api.Logger
 import play.api.i18n.I18nSupport
 import play.api.mvc._
 import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 import businessDetails.views.html.manageBusinesses.add.AddIncomeSourcesView
 import common.auth.{AuthActions, MtdItUser}
-import common.config.{AgentItvcErrorHandler, ItvcErrorHandler, ShowInternalServerError}
+import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler, ShowInternalServerError}
 import common.enums.JourneyType.Add
 import common.models.admin.DisplayBusinessStartDate
-import common.services.SessionService
+import common.models.incomeSourceDetails.IncomeSourceDetailsModel
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
@@ -50,16 +45,12 @@ class AddIncomeSourceController @Inject()(val authActions: AuthActions,
                                           val mcc: MessagesControllerComponents) extends FrontendController(mcc)
   with I18nSupport with IncomeSourcesUtils {
 
-  private lazy val homePageCall: Call = Call("GET", appConfig.homePageUrl(false))
-  private lazy val homePageCallAgent: Call = Call("GET", appConfig.homePageUrl(true))
-
   def show(): Action[AnyContent] = authActions.asMTDIndividual().async {
     implicit user =>
       handleRequest(
         isAgent = false,
-        homePageCall = homePageCall,
         sources = user.incomeSources,
-        backUrl = appConfig.homePageUrl(false)
+        backUrl = appConfig.individualHomeUrl
       )(implicitly, itvcErrorHandler)
   }
 
@@ -67,15 +58,13 @@ class AddIncomeSourceController @Inject()(val authActions: AuthActions,
     implicit mtdItUser =>
       handleRequest(
         isAgent = true,
-        homePageCall = homePageCallAgent,
         sources = mtdItUser.incomeSources,
-        backUrl = appConfig.homePageUrl(true)
+        backUrl = hub.controllers.routes.HomeController.showAgent().url
       )(implicitly, itvcErrorHandlerAgent)
 
   }
 
   def handleRequest(sources: IncomeSourceDetailsModel,
-                    homePageCall: Call,
                     isAgent: Boolean,
                     backUrl: String)
                    (implicit user: MtdItUser[_], errorHandler: ShowInternalServerError): Future[Result] = {

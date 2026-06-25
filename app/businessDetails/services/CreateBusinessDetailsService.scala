@@ -20,10 +20,10 @@ import businessDetails.connectors.CreateIncomeSourceConnector
 import businessDetails.models.createIncomeSource.*
 import common.auth.MtdItUser
 import common.enums.IncomeSourceJourney.UkProperty
-import common.models.incomeSourceDetails.viewModels.*
+import models.incomeSourceDetails.viewmodels.*
 import play.api.Logger
 import uk.gov.hmrc.http.HeaderCarrier
-import common.utils.Converters.OptionExtension
+import businessDetails.utils.OptionExtension
 
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject

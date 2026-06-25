@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,16 +27,17 @@ import common.services.DateServiceInterface
 import play.api.Logger
 import play.api.mvc.{ActionRefiner, MessagesControllerComponents, Result}
 import uk.gov.hmrc.auth.core.AffinityGroup.{Agent, Individual, Organisation}
-
+import obligations.controllers.reportingObligations.signUp.routes.YouMustWaitToSignUpController
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class ItsaStatusRetrievalAction @Inject()(frontendAppConfig: FrontendAppConfig,
+class ItsaStatusRetrievalAction @Inject()(
+                                           frontendAppConfig: FrontendAppConfig,
                                            itsaStatusConnector: ITSAStatusConnector,
                                            dateService: DateServiceInterface
-                                         )
-                                         (implicit val executionContext: ExecutionContext,
+                                         )(
+                                           implicit val executionContext: ExecutionContext,
                                            individualErrorHandler: ItvcErrorHandler,
                                            agentErrorHandler: AgentItvcErrorHandler,
                                            mcc: MessagesControllerComponents
@@ -69,7 +70,6 @@ class ItsaStatusRetrievalAction @Inject()(frontendAppConfig: FrontendAppConfig,
   override def refine[A](request: MtdItUser[A]): Future[Either[Result, MtdItUser[A]]] = {
 
     implicit val req: MtdItUser[A] = request
-
     lazy val authAction: Future[Either[Result, MtdItUser[A]]] =
       itsaStatusConnector.getITSAStatusDetail(
         nino = req.nino,
@@ -81,17 +81,14 @@ class ItsaStatusRetrievalAction @Inject()(frontendAppConfig: FrontendAppConfig,
           req.authUserDetails.affinityGroup match {
             case Some(Individual) =>
               Logger(getClass).info(s"[ItsaStatusRetrievalAction][refine] Redirecting user to Non-Agent/Individual's YouMustWaitToSignUp page")
-              Left(Redirect(appConfig.youMustWaitToSignUpUrl(false)))
+              Left(Redirect(YouMustWaitToSignUpController.show(isAgent = false)))
             case Some(Organisation) =>
               Logger(getClass).info(s"[ItsaStatusRetrievalAction][refine] Redirecting user to Non-Agent/Organisation's YouMustWaitToSignUp page")
-              Left(Redirect(appConfig.youMustWaitToSignUpUrl(false)))
+              Left(Redirect(YouMustWaitToSignUpController.show(isAgent = false)))
             case Some(Agent) =>
               Logger(getClass).info(s"[ItsaStatusRetrievalAction][refine] Redirecting user to Agent YouMustWaitToSignUp page")
-              Left(Redirect(appConfig.youMustWaitToSignUpUrl(true)))
-            case None =>
-              Logger(getClass).error(s"[ItsaStatusRetrievalAction][refine] Unsuccessful income source and itsa details retrieved or unknown error, redirecting to internal server error page for user")
-              Left(internalServerErrorFor(req, "affinity-group", None))
-            case Some(_) =>
+              Left(Redirect(YouMustWaitToSignUpController.show(isAgent = true)))
+            case _ =>
               Logger(getClass).error(s"[ItsaStatusRetrievalAction][refine] Unsuccessful income source and itsa details retrieved or unknown error, redirecting to internal server error page for user")
               Left(internalServerErrorFor(req, "affinity-group", None))
           }

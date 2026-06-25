@@ -22,10 +22,11 @@
 @import common.views.html.components._
 @import common.views.html.layouts.unifiedLayout
 @import play.twirl.api.HtmlFormat
-@import common.models.incomeSourceDetails.viewModels.ReportingFrequencyCheckDetailsViewModel
+@import models.incomeSourceDetails.viewmodels.ReportingFrequencyCheckDetailsViewModel
 @import common.services.DateServiceInterface
 @import businessDetails.forms.manageBusinesses.add.ChooseSoleTraderAddressForm
-@import common.models.incomeSourceDetails.*
+@import models.incomeSourceDetails.*
+@import common.auth.MtdItUser
 
 @this(
         mainTemplate: unifiedLayout,
@@ -43,7 +44,7 @@
         form: Form[ChooseSoleTraderAddressForm],
         chooseSoleTraderAddressRadioOptionsWithIndex: Seq[(String, Int)],
         backUrl: String,
-)(implicit messages: Messages, user: common.auth.MtdItUser[_])
+)(implicit messages: Messages, user: MtdItUser[_])
 
 @getMessage(key: String) = @{
     messages(s"manageBusinesses.add.chooseSoleTraderAddress.$key")

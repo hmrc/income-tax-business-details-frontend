@@ -17,19 +17,21 @@
 package businessDetails.services.manageBusinesses
 
 import businessDetails.controllers.manageBusinesses.add.routes
+import businessDetails.services.SessionService
 import businessDetails.utils.JourneyCheckerManageBusinesses
 import common.auth.MtdItUser
 import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler, ShowInternalServerError}
 import common.enums.IncomeSourceJourney.IncomeSourceType
 import common.enums.JourneyType.IncomeSourceJourneyType
-import common.models.UIJourneySessionData
+import common.models.incomeSourceDetails.{LatencyDetails, TaxYear}
 import common.models.itsaStatus.StatusDetail
-import common.services.{DateService, ITSAStatusService, SessionService}
-import common.enums.JourneyState
-import common.models.incomeSourceDetails.{IncomeSourceReportingFrequencySourceData, LatencyDetails, TaxYear}
+import common.services.{DateService, ITSAStatusService}
+import models.incomeSourceDetails.IncomeSourceReportingFrequencySourceData
 import play.api.Logger
 import play.api.mvc.Result
 import play.api.mvc.Results.Redirect
+import shared.enums.JourneyState
+import shared.models.UIJourneySessionData
 import uk.gov.hmrc.http.HeaderCarrier
 
 import javax.inject.{Inject, Singleton}

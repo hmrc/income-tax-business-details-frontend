@@ -16,7 +16,7 @@
 
 @import _root_.common.implicits.ImplicitDateFormatterImpl
 @import common.enums.IncomeSourceJourney._
-@import common.models.incomeSourceDetails.viewModels.{CheckBusinessDetailsViewModel, CheckDetailsViewModel, CheckPropertyViewModel}
+@import models.incomeSourceDetails.viewmodels.{CheckBusinessDetailsViewModel, CheckDetailsViewModel, CheckPropertyViewModel}
 @import uk.gov.hmrc.govukfrontend.views.html.components.{FormWithCSRF, _}
 @import uk.gov.hmrc.hmrcfrontend.views.html.components.HmrcPageHeading
 @import uk.gov.hmrc.hmrcfrontend.views.viewmodels.pageheading.PageHeading
@@ -25,6 +25,7 @@
 @import play.twirl.api.HtmlFormat
 @import common.models.core._
 @import businessDetails.controllers.manageBusinesses.add.routes as addBusinessRoutes
+@import common.auth.MtdItUser
 
 @this(
         mainTemplate: unifiedLayout,
@@ -49,7 +50,7 @@
         origin: Option[String] = None,
         isTriggeredMigration: Boolean,
         overseasBusinessAddressEnabled: Boolean = false
-)(implicit messages: Messages, user: common.auth.MtdItUser[_])
+)(implicit messages: Messages, user: MtdItUser[_])
 
 @import implicitDateFormatter.longDate
 
@@ -84,7 +85,7 @@
         if (isNoAddressOnFile) {
             addBusinessRoutes.IsTheNewAddressInTheUKController.show(isAgent, isTriggeredMigration).url
         } else {
-            addBusinessRoutes.ChooseSoleTraderAddressController.show(isAgent).url
+            addBusinessRoutes.ChooseSoleTraderAddressController.show(isAgent, isTriggeredMigration).url
         }
     } else {
         if (isAgent) {

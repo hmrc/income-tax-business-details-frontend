@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import common.controllers.feedback.routes as feedbackRoutes
 import common.controllers.agent.errors.routes as agentErrorRoutes
 
 object InternalUrlHelper {
-
+  
   val signinUrl = appRoutes.SignInController.signIn().url
   val signinCall = appRoutes.SignInController.signIn()
   val signoutUrl = appRoutes.SignOutController.signOut().url

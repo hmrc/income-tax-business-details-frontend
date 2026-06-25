@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -125,7 +125,7 @@ object TaxYear {
   }
 
   def makeTaxYearWithEndYear(endYear: Int): TaxYear = {
-    TaxYear(startYear = endYear - 1, endYear = endYear)
+    TaxYear(startYear = (endYear - 1), endYear = endYear)
   }
 
   def forYearEnd(endYear: Int): TaxYear = {
@@ -138,6 +138,10 @@ object TaxYear {
       case Array(startYear, endYear) => Some(TaxYear(startYear.toInt, endYear.toInt))
       case _ => None
     }
+  }
+
+  def getCYPlusOneTaxYear(implicit dateService: DateServiceInterface): TaxYear = {
+    getTaxYear(dateService.getCurrentDate).nextYear
   }
 
 }
