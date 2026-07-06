@@ -1,124 +1,159 @@
-## Common
+#######################################################################################################################
+## Common ##
+#######################################################################################################################
 
 outage-page.serviceDisplayName                                  = Manage your Self Assessment
 
-## Base
+## Base ##
 base.back                                                       = Back
+base.service_name                                               = Business tax account
+base.service_name.pta                                           = Personal tax account
+base.service_name.itsa                                          = Update and submit an Income Tax Return
+base.phase                                                      = BETA
+base.sign-out                                                   = Sign out
+base.submit                                                     = Submit
+base.error_heading                                              = There’s a problem
 base.backToHome                                                 = Back to Income Tax home
+base.continue                                                   = Continue
+base.error_summary.heading                                      = There is a problem
+base.error-prefix                                               = Error:
+base.govUk                                                      = GOV.UK
 base.confirm-and-continue                                       = Confirm and continue
 base.confirm-and-save                                           = Confirm and save
 base.confirm-this-change                                        = Confirm this change
-base.continue                                                   = Continue
-base.error-prefix                                               = Error:
-base.error_heading                                              = There’s a problem
-base.error_summary.heading                                      = There is a problem
-base.fullstop                                                   = .
-base.govUk                                                      = GOV.UK
-base.or                                                         = or
-base.phase                                                      = BETA
-base.service_name                                               = Business tax account
-base.service_name.itsa                                          = Update and submit an Income Tax Return
-base.service_name.pta                                           = Personal tax account
-base.sign-out                                                   = Sign out
 base.software.compatible.with.mtd.income.tax.link               = software compatible with Making Tax Digital for Income Tax
-base.submit                                                     = Submit
+base.fullstop                                                   = .
+base.or                                                         = or
 
-## Accessibility
+## Accessibility ##
 accessibility.this-section-is                                   = This section is:
 
-## Agent Base
+# Agent Base
 agent.base.service_name                             = Your client’s Income Tax details
 
-## Header
-agent.header.serviceName                            = Manage your Self Assessment
+# Header
 header.serviceName                                  = Manage your Self Assessment
+agent.header.serviceName                            = Manage your Self Assessment
 
-## HTML Titles
+# HTML Titles                                       //notify submission team regarding title changes to htmlTitle.confirmClient in HtmlTitle.scala
 htmlTitle                                           = {0} - Manage your Self Assessment - GOV.UK
 htmlTitle.agent                                     = {0} - Manage your Self Assessment - GOV.UK
-htmlTitle.confirmClient                             = {0} - Manage your Self Assessment - GOV.UK
 htmlTitle.errorPage                                 = {0} - GOV.UK
 htmlTitle.invalidInput                              = Error: {0} - GOV.UK
+htmlTitle.confirmClient                             = {0} - Manage your Self Assessment - GOV.UK
 
-## Add Business Page
-add-business-name.form.error.invalidName                          = Trade and business name cannot be the same
-add-business-name.form.error.invalidNameFormat                    = The business name can only include upper or lower case letters, full stops, commas, digits, &, ’, \, /, -.
-add-business-name.form.error.maxLength                            = Business name must be 105 characters or fewer
-add-business-name.form.error.required                             = Enter your name or the name of your business
-
-## Add Business Trade Page
-add-trade.form.error.empty                      = Enter the trade of your business
-add-trade.form.error.invalid                    = The business trade can only include upper or lower case letters, full stops, commas, digits, &, ’, \, /, -.
-add-trade.form.error.long                       = Trade must be 35 characters or fewer
-add-trade.form.error.same-name                  = Trade and business name cannot be the same
-add-trade.form.error.short                      = Trade must be 2 characters or more
-
-## Agent - Client Relationship Failure
-agent.client_relationship_failure.enter_different_details       = Check another client
+# Agent - Client Relationship Failure
 agent.client_relationship_failure.heading                       = You are not authorised to view this client
 agent.client_relationship_failure.info                          = Your client needs to {0}.
 agent.client_relationship_failure.info.link                     = authorise you as their agent
+agent.client_relationship_failure.enter_different_details       = Check another client
 
-## Agent - No Assignment
-agent.no_assignment.button                                      = Go to agent services account
+# Agent - No Assignment
 agent.no_assignment.heading                                     = Your organisation has not given you access to this client
 agent.no_assignment.p1                                          = This client has authorised your organisation. Your team has not given you access to the client’s tax.
 agent.no_assignment.p2                                          = Ask your team who manages access groups. It will be someone with administrative access to your agent services account.
+agent.no_assignment.button                                      = Go to agent services account
 
-## Agent Error Page
+## Agent - UTR Error
+agent.utr_error.heading                                         = You cannot view this client
+agent.utr_error.title                                           = You cannot view this client - Manage your Self Assessment
+agent.utr_error.utr_wrong                                       = This may be because:
+agent.utr_error.reason.bullet1                                  = you entered the wrong Unique Taxpayer Reference (UTR)
+agent.utr_error.reason.bullet2                                  = your client needs to {0}
+agent.utr_error.reason.bullet2_link                             = sign up for Making Tax Digital for Income Tax
+agent.utr_error.go_back                                         = Enter another UTR
+
+## Agent Error Page ##
 agent-error.heading                                            = You can’t use this service yet
-agent-error.link                                               = set up an agent services account
 agent-error.note                                               = To use this service, you need to
+agent-error.link                                               = set up an agent services account
 
-## Beta Banner
-betaBanner.feedback.link.new                                    = give your feedback
-betaBanner.newService.new                                       = This is a new service. Help us improve it and
+# Agent - Enter clients details
+agent.enter_clients_utr.heading                                 = What is your client’s UTR?
+agent.enter_clients_utr.info                                    = This is the 10 digit Unique Taxpayer Reference (UTR) they received when they registered for Self Assessment. For example, 1234567890
+agent.error.enter_clients_utr.empty                             = Enter your client’s Unique Taxpayer Reference
+agent.error.enter_clients_utr.length                            = Your client’s Unique Taxpayer Reference must be 10 digits long
+agent.error.enter_clients_utr.non_numeric                       = A Unique Taxpayer Reference must only contain numbers
 
-betaBanner.feedback                                             = feedback
-betaBanner.improve                                              = will help us to improve it.
-betaBanner.newService                                           = This is a new service
-betaBanner.your                                                 = – your
+## Agent - Confirm Client
+agent.confirmClient.heading                                     = Confirm your client’s details
+agent.confirmClient.clientName                                  = Client’s name
+agent.confirmClient.clientUtr                                   = Client’s Unique Taxpayer Reference (UTR)
+agent.confirmClient.changeClient                                = Change client
+agent.confirmClient.confirmContinue                             = Confirm and continue
 
-## BTA Partial
-bta_partial.heading                                             = Income Tax reporting through software
-bta_partial.home_button                                         = View your Income Tax details
-bta_partial.p1                                                  = You’ve signed up to report your Income Tax through software. This will replace your Self Assessment tax return.
-bta_partial.p2                                                  = You can view your report deadlines, bills and an estimate for the next tax year.
+agent.confirmClient.supportingAgentAccess.p1                    = Supporting agents cannot access a client’s tax account information that shows:
+agent.confirmClient.supportingAgentAccess.bullet1               = payments, credits and refunds
+agent.confirmClient.supportingAgentAccess.bullet2               = returns
+agent.confirmClient.supportingAgentAccess.bullet3               = next charges due
+agent.confirmClient.supportingAgentAccess.bullet4               = penalties and appeals
+agent.confirmClient.supportingAgentAccess.link                  = Read more about the difference between main and supporting agents on GOV.UK
 
-## Charge Summary
-chargeSummary.paymentAllocations.mfaDebit                          = Payment put towards HMRC adjustment
+## Unauthorised Agent Page ##
+agent-unauthorised.heading                                      = You are not authorised to access this page
+agent-unauthorised.note                                         = You are a supporting agent for this client. Only their main agent can access records that show:
+agent-unauthorised.note.b1                                      = payments, credits and refunds
+agent-unauthorised.note.b2                                      = returns
+agent-unauthorised.note.b3                                      = next charges due
+agent-unauthorised.note.b4                                      = penalties and appeals
+agent-unauthorised.link                                         = Read more about the difference between main and supporting agents on GOV.UK
 
-## Custom Error Page
-error.custom.heading                                            = There is a problem
-error.custom.link                                               = Return to Making Tax Digital for Income Tax
-error.custom.message                                            = The page you’re trying to view has changed
+## Rebrand Service Navigation
+pta.navigation.messages = Messages
+pta.navigation.checkProgress = Check progress
+pta.navigation.profileAndSettings = Profile and settings
+pta.navigation.businessTaxAccount = Business tax account
 
-## Feedback
-feedback.bad                                                    = Bad
-feedback.comments                                               = Comments
-feedback.comments.error.empty                                   = Enter your comments
-feedback.comments.error.length                                  = The comment cannot be longer than 2000 characters
-feedback.comments.hint                                          = Do not include personal or financial information. For example, your National Insurance number or credit card numbers.
+bta.navigation.manageAccount = Manage account
+bta.navigation.messages = Messages
+bta.navigation.helpAndContact = Help and contact
+
+## BTA Links ##
+bta.home                                                        = Business tax home
+bta.messages                                                    = Messages
+bta.manage-account                                              = Manage account
+
+## Feedback ##
+feedback.title                                                  = Give feedback
+feedback.heading                                                = Send your feedback
 feedback.description                                            = We use your feedback to make our services better.
-feedback.email                                                  = Email address
-feedback.email.error                                            = Enter an email address in the correct format, like name@example.com
-feedback.email.error.length                                     = Email address must be 255 characters or fewer
+feedback.radiosDescription                                      = What do you think of this online service?
+feedback.radiosError                                            = Tell us what you think of the service
+feedback.veryGood                                               = Very good
+feedback.good                                                   = Good
+feedback.neutral                                                = Neutral
+feedback.bad                                                    = Bad
+feedback.veryBad                                                = Very bad
 feedback.fullName                                               = Full name
 feedback.fullName.error.empty                                   = Enter your full name
 feedback.fullName.error.invalid                                 = Full name must only include letters a to z, hyphens, full stops, commas, apostrophes and spaces
 feedback.fullName.error.length                                  = Full name cannot be longer than 70 characters
-feedback.good                                                   = Good
-feedback.heading                                                = Send your feedback
-feedback.neutral                                                = Neutral
-feedback.radiosDescription                                      = What do you think of this online service?
-feedback.radiosError                                            = Tell us what you think of the service
-feedback.received                                               = Your feedback has been received.
+feedback.email                                                  = Email address
+feedback.email.error                                            = Enter an email address in the correct format, like name@example.com
+feedback.email.error.length                                     = Email address must be 255 characters or fewer
+feedback.comments                                               = Comments
+feedback.comments.hint                                          = Do not include personal or financial information. For example, your National Insurance number or credit card numbers.
+feedback.comments.error.empty                                   = Enter your comments
+feedback.comments.error.length                                  = The comment cannot be longer than 2000 characters
 feedback.send                                                   = Send
 feedback.thankYou                                               = Thank you
-feedback.veryBad                                                = Very bad
-feedback.veryGood                                               = Very good
+feedback.received                                               = Your feedback has been received.
 
-## Generic Income Sources Messages
+shortMonth.1 =
+shortMonth.2 =
+shortMonth.3 =
+shortMonth.4 =
+shortMonth.5 =
+shortMonth.6 =
+shortMonth.7 =
+shortMonth.8 =
+shortMonth.9 =
+shortMonth.10 =
+shortMonth.11 =
+shortMonth.12 =
+notFound.heading =
+notFound.message =
+
 date.day                     = Day
 date.month                   = Month
 date.year                    = Year
@@ -127,177 +162,117 @@ date.error.day               = day
 date.error.month             = month
 date.error.year              = year
 
-## Language Selector
-language-switcher.english                                       = English
+#Language Selector
 language-switcher.english.hidden                                = Change the language to English
-language-switcher.nav                                           = Language switcher
+language-switcher.english                                       = English
 language-switcher.welsh                                         = Cymraeg
 language-switcher.welsh.hidden                                  = Newid yr iaith ir Gymraeg
+language-switcher.nav                                           = Language switcher
 
-## Manage Income Sources Reporting Method (new - Content FS R17 Enabled)
-manageBusinesses.manage.propertyReportingMethod.new.form.error.annual               = Select yes if you want to opt this new business out of Making Tax Digital for Income Tax
-manageBusinesses.manage.propertyReportingMethod.new.form.error.quarterly            = Select yes if you want to sign this new business up to Making Tax Digital for Income Tax
+#technical helper
+getpagehelp.linkText                                            = Get help with this page
+pagehelp.opensInNewTabText                                      = (opens in new tab)
 
-## Next Updates Page
-nextUpdates.business            							       = Business income
-nextUpdates.crystallised            							   = Final declaration
-nextUpdates.crystallisedAll            							   = All income sources
 
-## Next Updates Page - R17 Content Changes
-nextUpdates.r17.tab.quarterly.table.income.source.foreign          = Foreign property business
-nextUpdates.r17.tab.quarterly.table.income.source.property         = Property business
-nextUpdates.r17.tab.quarterly.table.income.source.uk               = UK property business
+#Not migrated to ETMP
+notmigrated.user.heading                                        = How to claim a refund
+notmigrated.user.content                                        = To claim money that’s in your account from earlier tax years (before you signed up to Making Tax Digital for Income Tax), you need to visit your earlier
+notmigrated.agent.content                                       = To claim money from earlier tax years (before your client signed up to Making Tax Digital for Income Tax), you need to visit your
+notmigrated.agent.content_extra                                 = This will be a different Government Gateway ID and password to your agent services account.
+notmigrated.user.link_title                                     = Self Assessment online account
+notmigrated.agent.link_title                                    = Self Assessment for Agents account
 
-sections.close												       = Hide
-sections.close.all												   = Hide all sections
-sections.open												       = Show
-sections.open.all												   = Show all sections
-
-## No Income Sources Error Page
-noIncomeSources.error.button = Contact us form
-noIncomeSources.error.contact.heading = To contact us:
+## No Income Sources Page ##
+noIncomeSources.error.title = You need to contact us to access this service
 noIncomeSources.error.p1 = A change is required before you can access the Manage your Self Assessment service. This does not mean there is anything wrong with your HMRC records.
-noIncomeSources.error.p2 = We’ll contact you with any updates and let you know how you can access this service.
+noIncomeSources.error.contact.heading = To contact us:
 noIncomeSources.error.step1 = Open the contact us form.
 noIncomeSources.error.step2 = Fill in your name and email address.
 noIncomeSources.error.step3 = In the box labelled "What do you need help with?", type "I need help accessing the Manage your Self Assessment service".
-noIncomeSources.error.title = You need to contact us to access this service
+noIncomeSources.error.p2 = We’ll contact you with any updates and let you know how you can access this service.
+noIncomeSources.error.button = Contact us form
+
+## Custom Error Page ##
+error.custom.heading                                            = There is a problem
+error.custom.message                                            = The page you’re trying to view has changed
+error.custom.link                                               = Return to Making Tax Digital for Income Tax
+
+
+## Timeout page ##
+timeout.heading                                                 = Your session has timed out
+timeout.signIn.1                                                = To view your quarterly reporting details, you’ll have to
+timeout.signIn.2                                                = sign in
+timeout.signIn.3                                                = using your Government Gateway ID.
+
+
+## BTA Partial ##
+bta_partial.heading                                             = Income Tax reporting through software
+bta_partial.p1                                                  = You’ve signed up to report your Income Tax through software. This will replace your Self Assessment tax return.
+bta_partial.p2                                                  = You can view your report deadlines, bills and an estimate for the next tax year.
+bta_partial.home_button                                         = View your Income Tax details
 
 ## Not Enrolled
 not_enrolled.heading                                            = You cannot access this service
 not_enrolled.sign-up                                            = You need to
 not_enrolled.sign-up.link                                       = sign up for Making Tax Digital for Income Tax
 
-## Rebrand Service Navigation
-pta.navigation.businessTaxAccount = Business tax account
-pta.navigation.checkProgress = Check progress
-pta.navigation.messages = Messages
-pta.navigation.profileAndSettings = Profile and settings
-
-bta.navigation.helpAndContact = Help and contact
-bta.navigation.manageAccount = Manage account
-bta.navigation.messages = Messages
-
-## Standard Error Page
+## Standard Error Page ##
 standardError.heading                                           = Sorry, there is a problem with the service
 standardError.message                                           = Try again later.
 
-## Tax Year Summary Page New
-tax-year-summary.agent.message.C15507                              = your client claimed {0} in Property Income Allowance but this is more than turnover for their UK property.
-tax-year-summary.agent.message.C15510                              = the Rent-a-Room relief claimed for a jointly let property cannot be more than {0}% of the Rent-a-Room limit.
-tax-year-summary.agent.message.C55007                              = Period submission does not align to cessation date of {0}. Please amend and resubmit.
-tax-year-summary.agent.message.C55009                              = updates cannot include gaps.
-tax-year-summary.agent.message.C55012                              = the update must align to the accounting period end date of {0}.
-tax-year-summary.message.C15507                                    = you’ve claimed {0} in Property Income Allowance but this is more than turnover for your UK property.
-tax-year-summary.message.C15510                                    = the Rent-a-Room relief claimed for a jointly let property cannot be more than {0}% of the Rent-a-Room limit.
-tax-year-summary.message.C55007                                    = Period submission does not align to cessation date of {0}. Please amend and resubmit.
-tax-year-summary.message.C55009                                    = updates cannot include gaps.
-tax-year-summary.message.C55012                                    = the update must align to the accounting period end date of {0}.
+global.error.InternalServerError500.title                       = Sorry, there is a problem with the service
+global.error.InternalServerError500.heading                     = Sorry, there is a problem with the service
+global.error.InternalServerError500.message                     = Try again later.
 
-## Technical Helper
-getpagehelp.linkText                                            = Get help with this page
-pagehelp.opensInNewTabText                                      = (opens in new tab)
+## Beta Banner ##
+betaBanner.beta                                                 = BETA
+betaBanner.newService.new                                       = This is a new service. Help us improve it and
+betaBanner.feedback.link.new                                    = give your feedback
+
+betaBanner.newService                                           = This is a new service
+betaBanner.your                                                 = – your
+betaBanner.feedback                                             = feedback
+betaBanner.improve                                              = will help us to improve it.
+
+## Regimes
+regimes.UK = UK
+regimes.Scotland = Scotland
+regimes.Wales = Wales
 
 ## Timeout
 button.continue                                                 = Stay signed in
 
-## Timeout Page
-timeout.heading                                                 = Your session has timed out
-timeout.signIn.1                                                = To view your quarterly reporting details, you’ll have to
-timeout.signIn.2                                                = sign in
-timeout.signIn.3                                                = using your Government Gateway ID.
-
-## Unauthorised Agent Page
-agent-unauthorised.heading                                      = You are not authorised to access this page
-agent-unauthorised.link                                         = Read more about the difference between main and supporting agents on GOV.UK
-agent-unauthorised.note                                         = You are a supporting agent for this client. Only their main agent can access records that show:
-agent-unauthorised.note.b1                                      = payments, credits and refunds
-agent-unauthorised.note.b2                                      = returns
-agent-unauthorised.note.b3                                      = next charges due
-agent-unauthorised.note.b4                                      = penalties and appeals
 
 ## Uplift Failure
+upliftFailure.title                                             = You cannot view this page
+upliftFailure.content                                           = This may be because:
+upliftFailure.sign.out                                          = Return to Sign in
 upliftFailure.bullet.1                                          = you took too long to enter information and the service has timed out
 upliftFailure.bullet.2                                          = you have failed to answer enough questions correctly
 upliftFailure.bullet.3                                          = we could not match your details to our system
-upliftFailure.content                                           = This may be because:
-upliftFailure.sign.out                                          = Return to Sign in
-upliftFailure.title                                             = You cannot view this page
 
+sections.open.all												   = Show all sections
+sections.close.all												   = Hide all sections
+sections.open												       = Show
+sections.close												       = Hide
 
-# Triggered migration copied from income-tax-view-change-frontend
-triggered-migration.check-hmrc-records.add-banner.heading            = Added
-triggered-migration.check-hmrc-records.add-banner.text1.SE           = Sole trader business added
-triggered-migration.check-hmrc-records.add-banner.text1.UK           = UK property business added
-triggered-migration.check-hmrc-records.add-banner.text1.FP           = Foreign property business added
-triggered-migration.check-hmrc-records.add-banner.text2              = View your
-triggered-migration.check-hmrc-records.add-banner.link.SE            = sole trader businesses
-triggered-migration.check-hmrc-records.add-banner.link.UK            = UK property business
-triggered-migration.check-hmrc-records.add-banner.link.FP            = foreign property business
-triggered-migration.check-hmrc-records.cessation-banner.heading      = Ceased
-triggered-migration.check-hmrc-records.cessation-banner.text1        = You have ceased a business
-triggered-migration.check-hmrc-records.cessation-banner.text2        = View
-triggered-migration.check-hmrc-records.cessation-banner.link         = your ceased businesses
-triggered-migration.check-hmrc-records.cessation-section.heading     = Your ceased businesses
-triggered-migration.check-hmrc-records.cessation-section.text        = One or more businesses have ceased.
-triggered-migration.check-hmrc-records.cessation-section.text-link   = View all ceased businesses
-triggered-migration.check-hmrc-records.heading                       = Check HMRC records only list your active businesses
-triggered-migration.check-hmrc-records.title                         = Check HMRC records only list your active businesses
-triggered-migration.check-hmrc-records.desc                          = You now have quarterly deadlines for your sole trader and/or property businesses listed here.
-triggered-migration.check-hmrc-records.inset                         = Making sure this page is correct will help avoid both missing deadlines for your active businesses and having deadlines for an income source you may have closed down or sold.
-triggered-migration.check-hmrc-records.bulletStart                   = If necessary, you must:
-triggered-migration.check-hmrc-records.bullet1                       = add any businesses that are missing
-triggered-migration.check-hmrc-records.bullet2                       = cease any that you no longer get income from
-triggered-migration.check-hmrc-records.yourActiveBusinesses.heading  = Your active businesses
-triggered-migration.check-hmrc-records.soleTrader.heading            = Sole trader businesses
-triggered-migration.check-hmrc-records.soleTrader.cease.link         = Cease
-triggered-migration.check-hmrc-records.soleTrader.businessName       = Business name
-triggered-migration.check-hmrc-records.soleTrader.businessState      = Business state
-triggered-migration.check-hmrc-records.soleTrader.active             = Active
-triggered-migration.check-hmrc-records.soleTrader.add.link           = Add a sole trader business
-triggered-migration.check-hmrc-records.soleTrader.guidance           = You’re a sole trader if you run your own business as an individual and work for yourself. This is also known as being self‑employed.
-triggered-migration.check-hmrc-records.soleTrader.unknown            = Unknown
-triggered-migration.check-hmrc-records.property.heading              = Property businesses
-triggered-migration.check-hmrc-records.ukProperty.heading            = UK property
-triggered-migration.check-hmrc-records.ukProperty.cease.link         = Cease
-triggered-migration.check-hmrc-records.ukProperty.businessState      = Business state
-triggered-migration.check-hmrc-records.ukProperty.active             = Active
-triggered-migration.check-hmrc-records.foreignProperty.heading       = Foreign property
-triggered-migration.check-hmrc-records.foreignProperty.cease.link    = Cease
-triggered-migration.check-hmrc-records.foreignProperty.businessState = Business state
-triggered-migration.check-hmrc-records.foreignProperty.active        = Active
-triggered-migration.check-hmrc-records.foreignProperty.add.link      = Add foreign property business
-triggered-migration.check-hmrc-records.noActiveProperties            = If you get income from one or more properties in the UK, you have a UK property business. If the property is abroad, you have a foreign property business. For example: letting houses, flats or holiday homes either on a long or short term basis.
-triggered-migration.check-hmrc-records.confirmRecords.heading = Confirm HMRC records only list your active businesses
-triggered-migration.check-hmrc-records.confirmRecords.text    = This page only needs to list all your active sole trader and property income sources. Any other business details that are not right, misspelt or out of date, can be amended at a later date.
-triggered-migration.check-hmrc-records.confirmRecords.button  = Confirm and continue
-triggered-migration.check-active-businesses-confirm.heading          = Have you checked that HMRC records only list your active businesses?
-triggered-migration.check-active-businesses-confirm.text             = You can change any other business details at a later date.
-triggered-migration.check-active-businesses-confirm.yes              = Yes
-triggered-migration.check-active-businesses-confirm.yes.hint         = If the previous page only lists your active businesses then the check is complete
-triggered-migration.check-active-businesses-confirm.no               = No
-triggered-migration.check-active-businesses-confirm.no.hint          = Select this option if you have not checked the previous page
-triggered-migration.check-active-businesses-confirm.error.required   = Select yes if you’ve checked that HMRC records only list your active businesses
-triggered-migration.checkComplete.greenBoxHeading.1                                     = Check complete
-triggered-migration.checkComplete.greenBoxHeading.2                                     = You have confirmed that HMRC records only list your active businesses
-triggered-migration.checkComplete.whatNext.heading                                      = What to do next
-triggered-migration.checkComplete.whatNext.p1                                           = You now need to provide HMRC a quarterly update for each of your active sole trader and property income sources.
-triggered-migration.checkComplete.whatNext.p2                                           = To do this, you need to:
-triggered-migration.checkComplete.whatNext.ul.li1                                       = get software that works with Making Tax Digital for Income Tax
-triggered-migration.checkComplete.whatNext.ul.li2                                       = find out what is due and submit your late update(s)
-triggered-migration.checkComplete.gettingSoftware.heading                               = Getting software
-triggered-migration.checkComplete.gettingSoftware.p1                                    = To submit your quarterly updates, you or your agent must have software compatible with Making Tax Digital for Income Tax. There are both paid and free options to choose from.
-triggered-migration.checkComplete.gettingSoftware.linkText                              = Find out about compatible software
-triggered-migration.checkComplete.submitUpdates.heading                                 = Submitting your update(s)
-triggered-migration.checkComplete.submitUpdates.p1                                      = In your account you can see which quarterly updates are due and what information you need to provide. Then you must use your compatible software to:
-triggered-migration.checkComplete.submitUpdates.ul.li1                                  = create a digital record of your property and sole trader income and expenses
-triggered-migration.checkComplete.submitUpdates.ul.li2                                  = send your quarterly update(s) to HMRC
-triggered-migration.checkComplete.submitUpdates.linkText                                = Check your latest submission deadlines
+#Generic radio form messages
+radioForm.checkDate.heading                                         = Is this date correct?
+radioForm.yes                                                       = Yes
+radioForm.no                                                        = No
 
-# Business details messages copied from income-tax-view-change-frontend
+# New journey only - business start date check page with dynamic date in heading
+radioForm.checkDate.heading.withDate                                = Is {0} the correct date?
+
+#######################################################################################################################
+## Business Details
+#######################################################################################################################
+
 incomeSources.add.sole-trader                                       = Sole trader
 incomeSources.add.uk-property                                       = UK property
 incomeSources.add.foreign-property                                  = Foreign property
+
+## Add Income Sources Page ##
 incomeSources.add.addIncomeSources.heading                          = Add a new sole trader or property income source
 incomeSources.add.addIncomeSources.selfEmployment.heading           = Sole trader businesses
 incomeSources.add.addIncomeSources.selfEmployment.text              = You do not need to tell us about a business we already know about.
@@ -313,6 +288,7 @@ incomeSources.add.addIncomeSources.tableHead.businessName           = Business n
 incomeSources.add.addIncomeSources.tableHead.dateStarted            = Date started
 incomeSources.add.addIncomeSources.tableHead.dateEnded              = Date ended
 incomeSources.add.addIncomeSources.unknown                          = Unknown
+
 incomeSources.add.reportingFrequency.sole-trader                    = Sole trader
 incomeSources.add.reportingFrequency.uk-property                    = UK property
 incomeSources.add.reportingFrequency.foreign-property               = Foreign property
@@ -327,6 +303,7 @@ incomeSources.add.reportingFrequency.li2                            = your incom
 incomeSources.add.reportingFrequency.form.no-select.error           = Select yes if you want to report quarterly or select no if you want to report annually
 incomeSources.add.reportingFrequency.table.c1                       = Reporting frequency {0} to {1}
 incomeSources.add.reportingFrequency.table.c2                       = Annual
+
 incomeSources.add.reportingFrequency.r17.sole-trader                    = Sole trader
 incomeSources.add.reportingFrequency.r17.uk-property                    = UK property
 incomeSources.add.reportingFrequency.r17.foreign-property               = Foreign property
@@ -339,12 +316,14 @@ incomeSources.add.reportingFrequency.r17.form.h1                        = Do you
 incomeSources.add.reportingFrequency.r17.li1                            = you are voluntarily signed up or required to use Making Tax Digital for Income Tax for your other businesses
 incomeSources.add.reportingFrequency.r17.li2                            = your total gross income from self-employment or property, or both, exceed the {0} threshold
 incomeSources.add.reportingFrequency.r17.form.no-select.error           = Select yes if you want to sign this new business up to Making Tax Digital for Income Tax
+
 incomeSources.add.error.standardError                            = Sorry, there is a problem with the service
 incomeSources.add.error.incomeSourceNotSaved.p1                  = Your {0} business could not be added. We have not saved your answers. Please try again later.
 incomeSources.add.error.incomeSourceNotSaved.se                  = sole trader
 incomeSources.add.error.incomeSourceNotSaved.uk                  = UK property
 incomeSources.add.error.incomeSourceNotSaved.fp                  = foreign property
 incomeSources.add.error.incomeSourceNotSaved.incomeSources       = Your income sources
+
 incomeSources.add.error.reportingMethodNotSaved.heading                          = Sorry, there is a problem with the service
 incomeSources.add.error.reportingMethodNotSaved.p1                               = Your {0} business was added, but we were unable to save any separate reporting obligations you may have set for it.
 incomeSources.add.error.reportingMethodNotSaved.p2                               = For its first two tax years, this business by default is opted out of Making Tax Digital for Income Tax.
@@ -357,9 +336,37 @@ incomeSources.add.error.reportingMethodNotSaved.fp.incomeSource                 
 incomeSources.add.error.reportingMethodNotSaved.se.caption                       = Sole trader
 incomeSources.add.error.reportingMethodNotSaved.uk.caption                       = UK property
 incomeSources.add.error.reportingMethodNotSaved.fp.caption                       = Foreign property
+
+# Income Sources - Cease
+
 incomeSources.cease.sole-trader                                       = Sole trader
 incomeSources.cease.uk-property                                       = UK property
 incomeSources.cease.foreign-property                                  = Foreign property
+
+cease-income-sources.heading                  = Cease an income source
+cease-income-sources.self-employment.h1       = Self employment (sole trader)
+cease-income-sources.table-head.business-name = Business name
+cease-income-sources.table-head.date-started  = Date started
+cease-income-sources.cease                    = Cease
+cease-income-sources.uk-property.h1           = UK property
+cease-income-sources.uk-property.p1           = You should only cease your UK property if you no longer receive any income from it.
+cease-income-sources.foreign-property.h1      = Foreign property
+cease-income-sources.foreign-property.p1      = You should only cease your foreign property if you no longer receive any income from it.
+cease-income-sources.ceased-businesses.h1     = Businesses that have ceased
+cease-income-sources.table-head.date-ended    = Date ended
+cease-income-sources.unknown                  = Unknown
+
+## Add business trade page
+add-trade.heading                               = What is the trade of your business?
+add-trade.trade-info-1                          = The trade of your business is the goods or services that your business provides.
+add-trade.trade-info-2                          = For example: plumbing, electrical work, consulting, hairdressing, personal training, photography work.
+add-trade.form.error.empty                      = Enter the trade of your business
+add-trade.form.error.short                      = Trade must be 2 characters or more
+add-trade.form.error.long                       = Trade must be 35 characters or fewer
+add-trade.form.error.invalid                    = The business trade can only include upper or lower case letters, full stops, commas, digits, &, ’, \, /, -.
+add-trade.form.error.same-name                  = Trade and business name cannot be the same
+
+
 add-business-trade.heading                  = What is the trade of your business?
 add-business-trade.p1                       = For example: plumbing, electrical work, consulting.
 add-business-trade.form.error.empty         = Enter the trade of your business
@@ -367,10 +374,25 @@ add-business-trade.form.error.short         = Business trade must have at least 
 add-business-trade.form.error.long          = Business trade must be 35 characters or fewer
 add-business-trade.form.error.invalid       = The business trade can only include upper or lower case letters, full stops, commas, digits, &, ’, \, /, -.
 add-business-trade.form.error.same-name     = Trade and business name cannot be the same
+
+## Is the new address in the UK page
+add-business-is.the.new.address.in.the.uk.heading   = Is the new address in the UK?
+add-business-is.the.address.of.your.sole.trader.business.in.the.uk.heading  = Is the address of your sole trader business in the UK?
+add-business-is.the.new.address.in.the.uk.error    = Select yes if the new address is in the UK
+add-business-is.the.address.of.your.sole.trader.business.in.the.uk.error    = Select yes if your sole trader business is in the UK
+
+## Add business address page
 add-business-address.select.heading         = Select business address
 add-business-address.lookup.heading         = What is your business address?
 add-business-address.confirm.heading        = Confirm business address
 add-business-address.edit.heading           = Enter your business address
+
+## Add international business address page
+add-international-business-address.heading = Enter your international business address
+add-international-business-address.postcode = Postcode or zipcode
+add-international-business-address.countryPicker.heading = Enter the country or territory for your business address
+add-international-business-address.countryPicker.hint = Enter country or territory
+
 incomeSources.add.UKPropertyStartDate.heading                   = Business start date
 incomeSources.add.UKPropertyStartDate.date-question             = When did your UK property business start?
 incomeSources.add.UKPropertyStartDate.hint                      = The date your business started trading can be today, in the past or up to 7 days in the future.
@@ -383,12 +405,37 @@ incomeSources.add.UKPropertyStartDate.future                    = The date your 
 incomeSources.add.UKPropertyStartDate.error.required            = Enter the date your UK property business started
 incomeSources.add.UKPropertyStartDate.error.future              = The date your UK property business started must be before {0}
 incomeSources.add.UKPropertyStartDate.error.invalid             = The date must be a real date
+add-uk-property-start-date-check.error                          = Select yes if your UK property business start date is correct
+
+#Generic date form messages
+dateForm.hint                                                       = For example, 27 3 2020
+dateForm.error.day.required                                         = The date must include a day
+dateForm.error.month.required                                       = The date must include a month
+dateForm.error.year.required                                        = The date must include a year
+dateForm.error.dayAndMonth.required                                 = The date must include a day and a month
+dateForm.error.dayAndYear.required                                  = The date must include a day and a year
+dateForm.error.monthAndYear.required                                = The date must include a month and a year
+dateForm.error.dayMonthAndYear.required                             = The date must include a day, a month and a year
+dateForm.error.dayMonthAndYear.required.se                          = Enter the date your self-employed business stopped
+dateForm.error.dayMonthAndYear.required.uk                          = Enter the date your UK property business stopped
+dateForm.error.dayMonthAndYear.required.fp                          = Enter the date your foreign property business stopped
+dateForm.error.required.two                                         = The date must include a {0} and a {1}
+dateForm.error.required                                             = The date must include a {0}
+dateForm.error.future                                               = You cannot provide a cessation date that is beyond the current day or a date in the future
+dateForm.error.invalid                                              = The date must be a real date
+dateFrom.error.beforeStartDate                                      = The cessation date cannot be earlier than the start date for the business
+dateForm.check.heading                                              = Is this date correct?
+
+#Generic income sources messages
 incomeSources.generic.unknown                                       = Unknown
+
 incomeSources.cease.endDate.selfEmployment.heading                               = When did your sole trader business stop?
 incomeSources.cease.endDate.selfEmployment.error.invalid                         = The date your self-employed business stopped trading must be a real date
 incomeSources.cease.endDate.selfEmployment.error.beforeEarliestDate              = The cessation date cannot be earlier than the 6th of April 2015
+
 incomeSources.cease.endDate.ukProperty.heading                    = When did your UK property business stop?
 incomeSources.cease.endDate.ukProperty.error.invalid              = The date your UK property business stopped must be a real date
+
 incomeSources.cease.SE.heading                            = Cease sole trader business
 incomeSources.cease.SE.caption                            = Sole trader
 incomeSources.cease.SE.checkboxLabel                      = I confirm I want to cease this business
@@ -397,6 +444,7 @@ incomeSources.cease.SE.hint.noBusinessName                = Only cease your sole
 incomeSources.cease.SE.checkboxError                      = Select that you confirm you no longer get any income from this business
 incomeSources.cease.SE.continue                           = Confirm and continue
 incomeSources.cease.SE.p1                                 = By continuing I confirm I want to cease this business.
+
 incomeSources.cease.UK.heading                            = Cease UK property business
 incomeSources.cease.UK.caption                            = UK property
 incomeSources.cease.UK.checkboxLabel                      = I declare that I no longer get an income from any UK properties
@@ -404,6 +452,7 @@ incomeSources.cease.UK.hint                               = Only cease your UK p
 incomeSources.cease.UK.checkboxError                      = Select that you declare you no longer get any income from UK property
 incomeSources.cease.UK.continue                           = Confirm and continue
 incomeSources.cease.UK.p1                                 = By continuing I confirm I want to cease this business.
+
 incomeSources.cease.FP.heading                            = Cease foreign property business
 incomeSources.cease.FP.caption                            = Foreign property
 incomeSources.cease.FP.checkboxLabel                      = I declare that I no longer get an income from any foreign properties
@@ -411,19 +460,25 @@ incomeSources.cease.FP.hint                               = Only cease your fore
 incomeSources.cease.FP.checkboxError                      = Select that you declare you no longer get any income from foreign property
 incomeSources.cease.FP.continue                           = Confirm and continue
 incomeSources.cease.FP.p1                                 = By continuing I confirm I want to cease this business.
+
 incomeSources.cease.endDate.foreignProperty.heading                = When did your Foreign property business stop?
 incomeSources.cease.endDate.foreignProperty.error.invalid          = The date your foreign property business stopped must be a real date
+
 incomeSources.cease.endDate.selfEmployment.future                  = The date your sole trader business stopped must be today or in the past
 incomeSources.cease.endDate.ukProperty.future                      = The date your UK property business stopped must be today or in the past
 incomeSources.cease.endDate.foreignProperty.future                 = The date your foreign property business stopped must be today or in the past
+
 incomeSources.cease.endDate.selfEmployment.beforeStartDate         = The date your sole trader business stopped must be on or after the date it started trading
 incomeSources.cease.endDate.ukProperty.beforeStartDate             = The date your UK property business stopped must be on or after the date it started trading
 incomeSources.cease.endDate.foreignProperty.beforeStartDate        = The date your foreign property business stopped must be on or after the date it started trading
+
 incomeSources.cease.endDate.selfEmployment.beforeEarliestDate      = The date your sole trader business stopped cannot be earlier than the 6th of April 2015
 incomeSources.cease.endDate.ukProperty.beforeEarliestDate          = The date your UK property business stopped cannot be earlier than the 6th of April 2015
 incomeSources.cease.endDate.foreignProperty.beforeEarliestDate     = The date your foreign property business stopped cannot be earlier than the 6th of April 2015
+
 incomeSources.cease.endDate.ukProperty.hint-1                      = This is the date you last received rental income or made an expense related to your UK property business.
 incomeSources.cease.endDate.foreignProperty.hint-1                 = This is the date you last received rental income or made an expense related to your foreign property business.
+
 incomeSources.add.foreignProperty.startDate.heading                  = Business start date
 incomeSources.add.foreignProperty.startDate.date-question            = When did your foreign property business start?
 incomeSources.add.foreignProperty.startDate.hint                     = The date your business started trading can be today, in the past or up to 7 days in the future.
@@ -434,6 +489,7 @@ incomeSources.add.foreignProperty.startDate.required.all             = Enter the
 incomeSources.add.foreignProperty.startDate.required.two             = The date must include a {0} and a {1}
 incomeSources.add.foreignProperty.startDate.required                 = The date must include a {0}
 incomeSources.add.foreignProperty.startDate.future                   = The date your foreign property business started must be before {0}
+#incomeSources.add.foreignProperty.startDate.error.empty             =
 incomeSources.add.foreignProperty.startDate.error.required           = Enter the date your foreign property business started
 incomeSources.add.foreignProperty.startDate.error.empty              = Enter the date your foreign property business started trading
 incomeSources.add.foreignProperty.startDate.error.missingMonthYear   = The date must include a month and a year
@@ -445,12 +501,48 @@ incomeSources.add.foreignProperty.startDate.error.missingDay         = The date 
 incomeSources.add.foreignProperty.startDate.error.invalid            = The date must be a real date
 incomeSources.add.foreignProperty.startDate.error.future             = The date your foreign property business started must be before {0}
 incomeSources.add.foreignProperty.startDate.check.heading            = Is this date correct?
+add-foreign-property-start-date-check.error                          = Select yes if your foreign property business start date is correct
 incomeSources.add.foreignProperty.startDate.check.radio.yes          = Yes
 incomeSources.add.foreignProperty.startDate.check.radio.no           = No
+
+
+# add Business page
+
 add-business-name.heading1                                        = Business name
 add-business-name.heading2                                        = What is your business name?
+
 add-business-name.p1                                              = This is the business name you used to register for Self Assessment. If your sole trader business does not have a separate name, enter your own first and last name.
 add-business-name.p2                                              = The business name you enter can only include upper or lower case letters, full stops, commas, digits, &, ’, \, /, -.
+add-business-name.form.error.required                             = Enter your name or the name of your business
+add-business-name.form.error.maxLength                            = Business name must be 105 characters or fewer
+add-business-name.form.error.invalidNameFormat                    = The business name can only include upper or lower case letters, full stops, commas, digits, &, ’, \, /, -.
+add-business-name.form.error.invalidName                          = Trade and business name cannot be the same
+
+# add Business start date
+add-business-start-date.heading                      = Business start date
+add-business-start-date.date-question                = When did your business start trading?
+add-business-start-date.hint                         = The date your business started trading can be today, in the past or up to 7 days in the future.
+add-business-start-date.hint2                        = This is the date we’ll use to calculate your Class 2 National Insurance charge, if appropriate.
+add-business-start-date.day                          = Day
+add-business-start-date.month                        = Month
+add-business-start-date.year                         = Year
+add-business-start-date.form.error.emptyDateField    = Enter the date your business started trading
+add-business-start-date.error.future                 = The date your business started trading must be before {0}
+add-business-start-date.error.required.all           = Enter the date your business started trading
+add-business-start-date.error.invalid                = The date must be a real date
+add-business-start-date.invalid                      = The date must be a real date
+add-business-start-date.required.all                 = Enter the date your business started trading
+add-business-start-date.required.two                 = The date must include a {0} and a {1}
+add-business-start-date.required                     = The date must include a {0}
+add-business-start-date.future                       = The date your business started trading must be before {0}
+
+# add Business start date check
+add-business-start-date-check.heading                 = Is this date correct?
+add-business-start-date-check.radio.yes               = Yes
+add-business-start-date-check.radio.no                = No
+add-business-start-date-check.error                   = Select yes if your business start date is correct
+
+## Cease - Check Answers ##
 cease-check-answers.title                                     = Check your answers
 cease-check-answers.caption                                   = Sole trader
 cease-check-answers.cease-date                                = Date business stopped
@@ -459,222 +551,41 @@ cease-check-answers.trade                                     = Business trade
 cease-check-answers.address                                   = Address
 cease-check-answers.unknown                                   = Unknown
 cease-check-answers.change                                    = Change
-incomeSources.add.incomeSourceReportingMethod.heading                   =   Choose a reporting method
-incomeSources.add.incomeSourceReportingMethod.description1              =   Your business qualifies for a grace period available up until April {0} where you can report annually.
-incomeSources.add.incomeSourceReportingMethod.description2              =   This involves a single update no later than 31 January.
-incomeSources.add.incomeSourceReportingMethod.description3              =   This grace period is not affected by either:
-incomeSources.add.incomeSourceReportingMethod.description4.bullet1      =   your level of income from other sources
-incomeSources.add.incomeSourceReportingMethod.description4.bullet2      =   the turnover you expect your new business to make
-incomeSources.add.incomeSourceReportingMethod.description4.bullet3      =   how you report with any existing income sources
-incomeSources.add.incomeSourceReportingMethod.chooseReport              =   Choose how you want to report
-incomeSources.add.incomeSourceReportingMethod.taxYear                   =   Tax year {0}-{1}
-incomeSources.add.incomeSourceReportingMethod.chooseAnnualReport        =   Choose annual reporting
-incomeSources.add.incomeSourceReportingMethod.chooseQuarterlyReport     =   Choose quarterly reporting
-incomeSources.add.incomeSourceReportingMethod.error                     =   Select if you want to report annually or quarterly for tax year {0} to {1}
-incomeSources.add.incomeSourceReportingMethod.se.caption                =   Sole trader
-incomeSources.add.incomeSourceReportingMethod.uk.caption                =   UK property
-incomeSources.add.incomeSourceReportingMethod.fp.caption                =   Foreign property
-incomeSources.manage.propertyReportingMethod.checkbox.annual        = Yes, I want to switch to annual reporting
-incomeSources.manage.propertyReportingMethod.checkbox.quarterly     = Yes, I want to switch to quarterly reporting
-incomeSources.manage.propertyReportingMethod.error.quarterly        = Select that you want to switch to quarterly reporting
-incomeSources.manage.propertyReportingMethod.error.annual           = Select that you want to switch to annual reporting
-incomeSources.manage.propertyReportingMethod.changingToAnnualWarning.individual         = HMRC will remove any income updates you’ve already submitted for this tax year. You’ll need to include any previously submitted income in your annual tax return.
-incomeSources.manage.propertyReportingMethod.changingToAnnualWarning.agent              = HMRC will remove any income updates your client has already submitted for this tax year. Any previously submitted income will need to be included in your client’s annual tax return.
-incomeSources.manage.propertyReportingMethod.changingToQuarterlyWarning.individual      = HMRC will remove any income updates you’ve already submitted for this tax year. You’ll need to include any previously submitted income in your quarterly tax return.
-incomeSources.manage.propertyReportingMethod.changingToQuarterlyWarning.agent           = HMRC will remove any income updates your client has already submitted for this tax year. Any previously submitted income will need to be included in your client’s quarterly tax return.
-incomeSources.add.manageObligations.title                             = {0} will report {1} for the tax year {2} to {3}
-incomeSources.add.manageObligations.panel.title                       = {0}
-incomeSources.add.manageObligations.panel.body                        =   will report {0} for the tax year {1} to {2}
-incomeSources.add.manageObligations.annually                          =   annually
-incomeSources.add.manageObligations.quarterly                         =   quarterly
-incomeSources.add.manageObligations.to                                =   to
-incomeSources.add.manageObligations.sole-trader                       =   Sole trader business
-incomeSources.add.manageObligations.uk-property                       =   UK property
-incomeSources.add.manageObligations.foreign-property                  =   Foreign property
-incomeSources.add.manageObligations.heading                           =   What you must do
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.title = {0} has been {1} Making Tax Digital for Income Tax for the {2} to {3} tax year
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.title                       = {0}
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.body = has been {0} Making Tax Digital for Income Tax for the {1} to {2} tax year
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.signedUp = signed up to
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.optedOut = opted out of
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.heading = Your revised deadlines
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.inset = Your deadlines for this business will be available in the next few minutes.
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.beforeLink = Even if they are not displayed right away on the
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.link = submission deadlines
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.afterLink = page, your account has been updated.
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para2 = For this new business you may have overdue updates for the {0} to {1} tax year. You must submit these updates with all required income and expenses through your compatible software.
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.link = View your businesses
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.afterLink = to add, manage or cease a business or income source.
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.sole-trader                       =   Sole trader business
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.uk-property                       =   UK property
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.foreign-property                  =   Foreign property
-incomeSources.manage.quarterly-period                                 =   Update period
-incomeSources.manage.quarterly-period.standard                        =   Standard
-incomeSources.manage.quarterly-period.calendar                        =   Calendar
-incomeSources.manage.quarterly-period.standard.summary                =   What is a standard update period?
-incomeSources.manage.quarterly-period.calendar.summary                =   What is a calendar update period?
-incomeSources.manage.quarterly-period.standard.content.p1             =   This business is reporting from 6 April in line with the tax year, also known as using standard update periods.
-incomeSources.manage.quarterly-period.standard.content.p2             =   If your software supports it, you can choose to report using calendar update periods which end on the last day of the month.
-incomeSources.manage.quarterly-period.calendar.content.p1             =   This business is currently reporting from 1 April using calendar update periods.
-incomeSources.manage.quarterly-period.calendar.content.p2             =   You can change to use standard update periods, in line with the tax year, so you report from 6 April. This change can only be made in your compatible software.
-incomeSources.manage.quarterly-period.content.p3                      =   Learn more about standard and calendar quarters
-incomeSources.manage.business-manage-details.heading                  =   Manage your details
-incomeSources.manage.business-manage-details.sole-trader-section      =   Sole trader
-incomeSources.manage.business-manage-details.business-name            =   Business name
-incomeSources.manage.business-manage-details.business-address         =   Address
-incomeSources.manage.business-manage-details.date-started             =   Date started
-incomeSources.manage.business-manage-details.reporting-method         =   Reporting frequency {0} to {1}
-incomeSources.manage.business-manage-details.change                   =   Change
-incomeSources.manage.business-manage-details.quarterly                =   Quarterly
-incomeSources.manage.business-manage-details.annually                 =   Annual
-incomeSources.manage.business-manage-details.quarterly.graceperiod    =   Quarterly
-incomeSources.manage.business-manage-details.annually.graceperiod     =   Annual
-incomeSources.manage.business-manage-details.tradetype                =   Type of trade
-incomeSources.manage.business-manage-details.reportingFrequency       =   View and change your reporting frequency for all your businesses
-incomeSources.manage.business-manage-details.insetText                =   Because this is still a new business, you can change how often you report for it for up to 2 tax years. From April {0}, you could be required to report quarterly.
-incomeSources.manage.uk-property-manage-details.uk-property-section              =   UK property
-incomeSources.manage.foreign-property-manage-details.foreign-property-section    =   Foreign property
-incomeSources.manage.new.business-manage-details.heading                  =   Manage your details
-incomeSources.manage.new.business.details.heading                         =   Manage your details
-incomeSources.manage.new.business.details.sole.trader.section             =   Sole trader
-incomeSources.manage.new.business.details.business.name                   =   Business name
-incomeSources.manage.new.business.details.business.address                =   Address
-incomeSources.manage.new.business.details.date.started                    =   Date started
-incomeSources.manage.new.business.details.reporting.method                =   Reporting frequency {0} to {1}
-incomeSources.manage.new.business.details.change                          =   Change
-incomeSources.manage.new.business.details.quarterly                       =   Quarterly
-incomeSources.manage.new.business.details.annually                        =   Annual
-incomeSources.manage.new.business.details.quarterly.grace.period          =   Quarterly
-incomeSources.manage.new.business.details.annually.grace.period           =   Annual
-incomeSources.manage.new.business.details.trade.type                      =   Type of trade
-incomeSources.manage.new.uk.property.manage.details.uk.property.section              =   UK property
-incomeSources.manage.new.foreign.property.manage.details.foreign.property.section    =   Foreign property
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.paragraph      =   Because this is still a new business, for up to 2 tax years you can choose if you want to use Making Tax Digital for Income Tax. From April {0}, you could be required to use the service.
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.reportingFrequencyPrefix       =   Depending on your circumstances, you may be able to
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.reportingFrequencyLink         =   view and change your reporting obligations for all your businesses
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage = Using Making Tax Digital for Income Tax for {0} to {1}
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage.yes  = Yes
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage.no  = No
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.signup = Sign up
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.optOut = Opt out
-incomeSources.cease.error.UK.notCeased.text                       = Your UK property business could not be ceased. We have not saved your answers. Please try again later.
-incomeSources.cease.error.FP.notCeased.text                       = Your foreign property business could not be ceased. We have not saved your answers. Please try again later.
-incomeSources.cease.error.SE.notCeased.text                       = Your sole trader business could not be ceased. We have not saved your answers. Please try again later.
-incomeSources.cease.error.notCeased.link.prefix                   = Back to
-incomeSources.cease.error.notCeased.link.text                     = your businesses
-incomeSources.manage.reportingMethodError.hyperlink1            = manage your details
-incomeSources.manage.reportingMethodError.hyperlink2            = view and manage income sources
-incomeSources.manage.reportingMethodError.p3                    = Or go back to
-incomeSources.manage.businessReportingMethodError.p1            = We were unable to update your sole trader business reporting frequency.
-incomeSources.manage.businessReportingMethodError.p2            = You can try to change your sole trader business reporting frequency again in
-incomeSources.manage.uKPropertyReportingMethodError.p1        = We were unable to update your UK property business reporting frequency.
-incomeSources.manage.uKPropertyReportingMethodError.p2        = You can try to change your UK property business reporting frequency again in
-incomeSources.manage.foreignPropertyReportingMethodError.p1   = We were unable to update your foreign property business reporting frequency.
-incomeSources.manage.foreignPropertyReportingMethodError.p2   = You can try to change your foreign property business reporting frequency again in
-incomeSources.manage.businessReportingMethodError.text          = We were unable to update your sole trader business reporting frequency.
-incomeSources.manage.foreignPropertyReportingMethodError.text   = We were unable to update your foreign property business reporting frequency.
-incomeSources.manage.uKPropertyReportingMethodError.text        = We were unable to update your UK property business reporting frequency.
-incomeSources.ceased-income-sources.heading                     =   Businesses that have ceased
-incomeSources.ceased-income-sources.table-head.business-name    =   Business name
-incomeSources.ceased-income-sources.table-head.date-started     =   Date started
-incomeSources.ceased-income-sources.table-head.date-ended       =   Date ended
-incomeSources.ceased-income-sources.uk-property                 =   UK property
-incomeSources.ceased-income-sources.foreign-property            =   Foreign property
-incomeSources.ceased-income-sources.unknown-sole-trader         =   Sole trader business
 
-# Missing keys copied from income-tax-view-change-frontend after test run
-add-business-start-date-check.error                   = Select yes if your business start date is correct
-add-business-start-date.error.invalid                = The date must be a real date
-add-business-start-date.heading                      = Business start date
-add-business-start-date.hint                         = The date your business started trading can be today, in the past or up to 7 days in the future.
-add-business-start-date.required.all                 = Enter the date your business started trading
-add-foreign-property-start-date-check.error                          = Select yes if your foreign property business start date is correct
-add-trade.heading                               = What is the trade of your business?
-add-uk-property-start-date-check.error                          = Select yes if your UK property business start date is correct
-business-ceased.obligation.heading2.text                            = Your revised deadlines
-business-ceased.obligation.inset.text                               = Your deadlines for this business will be available in the next few minutes.
-business-ceased.obligation.panel.title                              = {0}
-business.added.foreign-property.panel.title                               = Foreign property
-business.added.uk-property.panel.title                                    = UK property
-check-details-fp.description                            = Once you confirm these details, you will not be able to amend them in the next step and will need to contact HMRC to do so.
-check-details-fp.title                                  = Confirm this information is correct
-check-details-uk.description                            = Once you confirm these details, you will not be able to amend them in the next step and will need to contact HMRC to do so.
-check-details-uk.title                                  = Confirm this information is correct
-check-details.description                               = Once you confirm these details, you will not be able to amend them in the next step and will need to contact HMRC to do so.
+cease-check-answers-uk.caption                                = UK property
+cease-check-answers-fp.caption                                = Foreign property
+
+
+# check business details
+
 check-details.title                                     = Confirm this information is correct
-dateForm.error.monthAndYear.required                                = The date must include a month and a year
-dateForm.error.required                                             = The date must include a {0}
-dateForm.hint                                                       = For example, 27 3 2020
-income-sources.check-details-reporting-frequency.r17.change-rf-key              = Do you want to sign this new business up to Making Tax Digital for Income Tax?
-income-sources.check-details-reporting-frequency.title                          = Check your answers
-income.source.added.your.revised.deadlines.h2                                               = Your revised deadlines
-manage.your.businesses.addIncomeSources.foreignProperty.link             = Add foreign property business
-manage.your.businesses.addIncomeSources.property.link                    = Add property business
-manage.your.businesses.addIncomeSources.ukProperty.link                  = Add UK property business
-manage.your.businesses.heading                                           = Your businesses
-manage.your.businesses.property-h2                                       = Property businesses
-manageBusinesses.add.chooseSoleTraderAddress.heading                                                         = What is the address of your sole trader business?
-manageBusinesses.add.chooseSoleTraderAddress.radio.option.newAddress                                         = None of these, I want to add a new address
-radioForm.checkDate.heading.withDate                                = Is {0} the correct date?
-radioForm.yes                                                       = Yes
-
-
-# Business Details messages copied from income-tax-view-change-frontend
-add-international-business-address.heading = Enter your international business address
-add-international-business-address.postcode = Postcode or zipcode
-add-international-business-address.countryPicker.heading = Enter the country or territory for your business address
-add-international-business-address.countryPicker.hint = Enter country or territory
-radioForm.checkDate.heading                                         = Is this date correct?
-radioForm.no                                                        = No
-add-business-start-date.date-question                = When did your business start trading?
-add-business-start-date.hint2                        = This is the date we’ll use to calculate your Class 2 National Insurance charge, if appropriate.
-add-business-start-date.day                          = Day
-add-business-start-date.month                        = Month
-add-business-start-date.year                         = Year
-add-business-start-date.form.error.emptyDateField    = Enter the date your business started trading
-add-business-start-date.error.future                 = The date your business started trading must be before {0}
-add-business-start-date.error.required.all           = Enter the date your business started trading
-add-business-start-date.invalid                      = The date must be a real date
-add-business-start-date.required.two                 = The date must include a {0} and a {1}
-add-business-start-date.required                     = The date must include a {0}
-add-business-start-date.future                       = The date your business started trading must be before {0}
-manage.your.businesses.self-employed-h2                                  = Sole trader businesses
-manage.your.businesses.sole-trader-inset                                 = Do not add limited companies or business partnerships here.
-manage.your.businesses.self-employed-desc                                = You’re a sole trader if you run your own business as an individual and work for yourself. This is also known as being self‑employed.
-manage.your.businesses.addIncomeSources.selfEmployment.link              = Add a sole trader business
-manage.your.businesses.property-desc                                     = If you get income from one or more properties in the UK, you have a UK property business. If the property is outside the UK, you have a foreign property business. For example: letting houses, flats or holiday homes either on a long or short term basis.
-manage.your.businesses.unknown-field                                     = Unknown
-manage.your.businesses.ceasedBusinesses.heading                          = Businesses that have ceased
-manage.your.businesses.ceasedBusinesses.single                           = 1 business has ceased.
-manage.your.businesses.ceasedBusinesses.multiple                         = {0} businesses have ceased.
-manage.your.businesses.ceasedBusinesses.viewall                          = View all ceased businesses
-manage.your.businesses.view.manage                                       = View and manage
-manage.your.businesses.cease                                             = Cease
-manage.your.businesses.name                                              = Name
-manage.your.businesses.datestarted                                       = Date started
-manage.your.businesses.startdate                                         = Start date
-manage.your.businesses.UK                                                = UK property
-manage.your.businesses.Foreign                                           = Foreign property
-
-
-# More Business Details messages copied from income-tax-view-change-frontend
 check-details.heading                                   = Sole trader
 check-details.business-name                             = Business name
 check-details.start-date                                = Trading start date
 check-details.trade                                     = Type of trade
 check-details.address                                   = Address
 check-details.change                                    = Change
+check-details.description                               = Once you confirm these details, you will not be able to amend them in the next step and will need to contact HMRC to do so.
+
 check-details.added-address                             = Added address for this business
 check-details.added-international-address               = Added international address for this business
+
+check-details-uk.title                                  = Confirm this information is correct
 check-details-uk.heading                                = UK property
 check-details-uk.start-date                             = Start date
 check-details-uk.change                                 = Change
+check-details-uk.description                            = Once you confirm these details, you will not be able to amend them in the next step and will need to contact HMRC to do so.
+
+check-details-fp.title                                  = Confirm this information is correct
 check-details-fp.heading                                = Foreign property
 check-details-fp.start-date                             = Start date
 check-details-fp.change                                 = Change
+check-details-fp.description                            = Once you confirm these details, you will not be able to amend them in the next step and will need to contact HMRC to do so.
+
 business.added.text                                           = What you must do
 business.added.deadlines                                      = Your revised deadlines
 business.added.to                                             = to
+
 business.added.quarterly.heading                              = Send quarterly updates
 business.added.quarterly.p1                                   = You must send quarterly updates of your income and expenses using compatible software by the following deadlines:
 business.added.final.declaration.heading                      = Submit final declarations and pay your tax
@@ -684,7 +595,10 @@ business.added.table.heading.2                                = Deadline
 business.added.income.sources.button                          = Your income sources
 business.added.previous.tax.years.heading                     = Previous tax years
 business.added.previous.tax.years.t1                          = You must make sure that you have sent all the required income and expenses, and final declarations for tax years earlier than
+
+
 business.added.view.all.businesses                                                          = View all your businesses
+
 business.added.obligation.inset.single.annual.overdue.text                                  = You have <b>1 overdue update</b>. You must submit your yearly tax return and pay the tax you owe.
 business.added.obligation.inset.single.quarterly.overdue.text                               = You have <b>1 overdue update</b> for 3 months of the {0} to {1} tax year. You must submit these updates with all required income and expenses through your compatible software.
 business.added.obligation.inset.multiple.quarterly.overdue.text                             = You have <b>{0} overdue updates</b> for {1} months of the {2} to {3} tax year. You must submit these updates with all required income and expenses through your compatible software.
@@ -694,54 +608,93 @@ business.added.obligation.inset.single.historic.overdue.text                    
 business.added.obligation.inset.multiple.historic.overdue.text                              = You have <b>{0} overdue updates</b>. You must make sure that you have sent all the required income and expenses for tax years earlier than {1} to {2}.
 business.added.obligation.view.overdue.upcoming.updates.text                                = View your overdue and upcoming updates
 business.added.obligation.view.upcoming.updates.text                                        = View your upcoming updates
+
 business.added.next.quarterly.obligation.text                                               = Your next quarterly update for the {0} to {1} tax year is due by <b>{2}</b> for the quarterly period {3} to {4}
 business.added.final.declaration.text                                                       = You must submit your final declarations and pay the tax you owe by the deadline.
+
+####### Income Source Added page - h1 intentionally empty for green card #######
+
+#### Shared Messages
+
+income.source.added.your.revised.deadlines.h2                                               = Your revised deadlines
 income.source.added.few.minutes.inset                                                       = Your deadlines for this business will be available in the next few minutes.
+
 income.source.added.submit.software.h2                                                      = Submit updates in software
 income.source.added.submit.software.quarterly.p                                             = For any tax year you are reporting quarterly, you will need
 income.source.added.submit.software.quarterly.link                                          = software compatible with Making Tax Digital for Income Tax
+
+
 income.source.added.submit.annual.text.p                                                    = When reporting annually, you can submit your tax return directly through your HMRC online account or
 income.source.added.submit.software.annual.link                                             = software compatible with Making Tax Digital for Income Tax
+
 income.source.added.submit.annual.text.full                                                 = When reporting annually, you can submit your tax return directly through your HMRC online account or compatible software.
 income.source.added.obligation.list.text                                                    = Your tax return for the {0} to {1} tax year is due by <b>{2}</b>
+
+
+###### Income Source Added Scenario 1 - SignUpNextYearOnly  #######
+
 income.source.added.scenario.one.account.updated.p.a                                        = Even if they are not displayed right away on the
 income.source.added.scenario.one.account.updated.p.link                                     = submission deadlines
 income.source.added.scenario.one.account.updated.p.b                                        = page, your account has been updated.
+
 income.source.added.scenario.one.view.reporting.obligations.p.a                             = Depending on your circumstances, you may be able to
 income.source.added.scenario.one.view.reporting.obligations.link                            = view and change your reporting obligations
 income.source.added.scenario.one.view.reporting.obligations.p.b                             = for all your businesses.
+
 income.source.added.scenario.one.view.businesses.link                                       = View your businesses
 income.source.added.scenario.one.view.businesses.p                                          = to add, manage or cease a business or income source.
+
+###### Income Source Added Scenario 2 - NotSigningUp  #######
+
 income.source.added.scenario.two.account.updated.p.a                                        = Even if they are not displayed right away on the
 income.source.added.scenario.two.account.updated.p.link                                     = submission deadlines
 income.source.added.scenario.two.account.updated.p.b                                        = page, your account has been updated.
+
 income.source.added.scenario.two.view.reporting.obligations.p.a                             = This new business is opted out of Making Tax Digital for Income Tax. Find out more about
 income.source.added.scenario.two.view.reporting.obligations.link                            = your reporting obligations
+
 income.source.added.scenario.two.view.businesses.link                                       = View your businesses
 income.source.added.scenario.two.view.businesses.p                                          = to add, manage or cease a business or income source.
+
+###### Income Source Added Scenario 3 - SignUpCurrentYearOnly || SignUpBothYears #######
+
 income.source.added.few.minutes.overdue.updates                                             = For this new business you may have overdue updates for the {0} to {1} tax year. You must submit these updates with all required income and expenses through your compatible software.
+
 income.source.added.scenario.three.account.updated.p.a                                      = Even if they are not displayed right away on the
 income.source.added.scenario.three.account.updated.p.link                                   = submission deadlines
 income.source.added.scenario.three.account.updated.p.b                                      = page, your account has been updated.
+
 income.source.added.scenario.three.view.reporting.obligations.p.a                           = Depending on your circumstances, you may be able to
 income.source.added.scenario.three.view.reporting.obligations.link                          = view and change your reporting obligations
 income.source.added.scenario.three.view.reporting.obligations.p.b                           = for all your businesses.
+
 income.source.added.scenario.three.view.businesses.link                                     = View your businesses
 income.source.added.scenario.three.view.businesses.p                                        = to add, manage or cease a business or income source.
+
+###### Income Source Added Scenario 4 - OnlyOneBusinessInLatency || OptedOut  #######
+
 income.source.added.few.minutes.overdue.updates                                             = For this new business you may have overdue updates for the {0} to {1} tax year. You must submit these updates with all required income and expenses through your compatible software.
+
 income.source.added.scenario.four.account.updated.p.a                                       = Even if they are not displayed right away on the
 income.source.added.scenario.four.account.updated.p.link                                    = submission deadlines
 income.source.added.scenario.four.account.updated.p.b                                       = page, your account has been updated.
+
 income.source.added.scenario.four.view.reporting.obligations.p                              = This new business is opted out of Making Tax Digital for Income Tax. Find out more about
 income.source.added.scenario.four.view.reporting.obligations.link                           = your reporting obligations
+
 income.source.added.scenario.four.view.businesses.link                                      = View your businesses
 income.source.added.scenario.four.view.businesses.p                                         = to add, manage or cease a business or income source.
+
+#### Added a Business Messages
+
 business.added.sole-trader.text                                           = What you must do
 business.added.sole-trader.revised.deadlines                              = Your revised deadlines
 business.added.sole-trader.to                                             = to
+
 business.added.sole-trader.title                                          = {0} has been added to your account
 business.added.sole-trader.panel.title                                    = {0}
 business.added.sole-trader.panel.body                                     = has been added to your account
+
 business.added.sole-trader.quarterly.heading                              = Send quarterly updates
 business.added.sole-trader.quarterly.p1                                   = You must send quarterly updates of your income and expenses using compatible software by the following deadlines:
 business.added.sole-trader.final.declaration.heading                      = Submit final declarations and pay your tax
@@ -751,23 +704,35 @@ business.added.sole-trader.table.heading.2                                = Dead
 business.added.sole-trader.income.sources.button                          = Your income sources
 business.added.sole-trader.previous.tax.years.heading                     = Previous tax years
 business.added.sole-trader.previous.tax.years.t1                          = You must make sure that you have sent all the required income and expenses, and final declarations for tax years earlier than
+
 business.added.sole-trader.view.all.businesses                            = View all your businesses
 business.added.sole-trader.obligation.view.overdue.upcoming.updates.text  = View your overdue and upcoming updates
 business.added.sole-trader.obligation.view.upcoming.updates.text          = View your upcoming updates
+
 business.added.sole-trader.next.quarterly.obligation.text                 = Your next quarterly update for the {0} to {1} tax year is due by <b>{2}</b> for the quarterly period {3} to {4}
 business.added.sole-trader.final.dec.text                                 = Your tax return for the {0} to {1} tax year is due by <b>{2}</b>
+
 business.added.sole-trader.quarterly.annual.reporting.frequency.a         = Depending on your circumstances, you may be able to
 business.added.sole-trader.quarterly.annual.reporting.frequency.link      = view and change your reporting frequency
 business.added.sole-trader.quarterly.annual.reporting.frequency.b         = for all your businesses.
+
+
 business.added.sole-trader.submit.tax.return                              = Submit your tax return
 business.added.sole-trader.submit.tax.return.text                         = When reporting annually, you can submit your tax return directly through your HMRC online account or
 business.added.sole-trader.submit.tax.return.link.a                       = software compatible with Making Tax Digital for Income Tax
+
 business.added.sole-trader.submit.annual.text                             = When reporting annually, you can submit your tax return directly through your HMRC online account or compatible software.
+
+##### UK Property Text
+
 business.added.uk-property.text                                           = What you must do
 business.added.uk-property.revised.deadlines                                      = Your revised deadlines
 business.added.uk-property.to                                             = to
+
 business.added.uk-property.title                                          = UK property has been added to your account
+business.added.uk-property.panel.title                                    = UK property
 business.added.uk-property.panel.body                                     = has been added to your account
+
 business.added.uk-property.quarterly.heading                              = Send quarterly updates
 business.added.uk-property.quarterly.p1                                   = You must send quarterly updates of your income and expenses using compatible software by the following deadlines:
 business.added.uk-property.final.declaration.heading                      = Submit final declarations and pay your tax
@@ -777,23 +742,35 @@ business.added.uk-property.table.heading.2                                = Dead
 business.added.uk-property.income.sources.button                          = Your income sources
 business.added.uk-property.previous.tax.years.heading                     = Previous tax years
 business.added.uk-property.previous.tax.years.t1                          = You must make sure that you have sent all the required income and expenses, and final declarations for tax years earlier than
+
 business.added.uk-property.view.all.businesses                            = View all your businesses
 business.added.uk-property.obligation.view.overdue.upcoming.updates.text  = View your overdue and upcoming updates
 business.added.uk-property.obligation.view.upcoming.updates.text          = View your upcoming updates
+
 business.added.uk-property.next.quarterly.obligation.text                 = Your next quarterly update for the {0} to {1} tax year is due by <b>{2}</b> for the quarterly period {3} to {4}
 business.added.uk-property.final.dec.text                                 = Your tax return for the {0} to {1} tax year is due by <b>{2}</b>
+
 business.added.uk-property.quarterly.annual.reporting.frequency.a         = Depending on your circumstances, you may be able to
 business.added.uk-property.quarterly.annual.reporting.frequency.link      = view and change your reporting frequency
 business.added.uk-property.quarterly.annual.reporting.frequency.b         = for all your properties.
+
+
 business.added.uk-property.submit.tax.return                              = Submit your tax return
 business.added.uk-property.submit.tax.return.text                         = When reporting annually, you can submit your tax return directly through your HMRC online account or
+
 business.added.uk-property.submit.annual.text                             = When reporting annually, you can submit your tax return directly through your HMRC online account or compatible software.
 business.added.uk-property.submit.annual.annual.text                      = When reporting annually, you can submit your tax return directly through your HMRC online account or
+
+##### Foreign Property Text #####
+
 business.added.foreign-property.text                                      = What you must do
 business.added.foreign-property.revised.deadlines                         = Your revised deadlines
 business.added.foreign-property.to                                        = to
+
 business.added.foreign-property.title                                     = Foreign property has been added to your account
+business.added.foreign-property.panel.title                               = Foreign property
 business.added.foreign-property.panel.body                                = has been added to your account
+
 business.added.foreign-property.quarterly.heading                         = Send quarterly updates
 business.added.foreign-property.quarterly.p1                              = You must send quarterly updates of your income and expenses using compatible software by the following deadlines:
 business.added.foreign-property.final.declaration.heading                 = Submit final declarations and pay your tax
@@ -803,22 +780,62 @@ business.added.foreign-property.table.heading.2                           = Dead
 business.added.foreign-property.income.sources.button                     = Your income sources
 business.added.foreign-property.previous.tax.years.heading                = Previous tax years
 business.added.foreign-property.previous.tax.years.t1                     = You must make sure that you have sent all the required income and expenses, and final declarations for tax years earlier than
+
 business.added.foreign-property.view.all.businesses                             = View all your businesses
 business.added.foreign-property.obligation.view.overdue.upcoming.updates.text   = View your overdue and upcoming updates
 business.added.foreign-property.obligation.view.upcoming.updates.text           = View your upcoming updates
+
 business.added.foreign-property.next.quarterly.obligation.text               = Your next quarterly update for the {0} to {1} tax year is due by <b>{2}</b> for the quarterly period {3} to {4}
 business.added.foreign-property.final.dec.text                               = Your tax return for the {0} to {1} tax year is due by <b>{2}</b>
+
 business.added.foreign-property.quarterly.annual.reporting.frequency.a       = Depending on your circumstances, you may be able to
 business.added.foreign-property.quarterly.annual.reporting.frequency.link    = view and change your reporting frequency
 business.added.foreign-property.quarterly.annual.reporting.frequency.b       = for all your properties.
+
+
 business.added.foreign-property.submit.tax.return                            = Submit your tax return
 business.added.foreign-property.submit.tax.return.text                       = When reporting annually, you can submit your tax return directly through your HMRC online account or
+
+
+####### Income Source Added page End #######
+
+## You cannot go back - Your business has been added page ##
+
+cannotGoBack.heading                                      = You cannot go back
+cannotGoBack.soleTraderAdded                              = Your sole trader business has been added
+cannotGoBack.ukPropertyAdded                              = Your UK property business has been added
+cannotGoBack.foreignPropertyAdded                         = Your foreign property business has been added
+
+cannotGoBack.manage.UK                                    = Your reporting method for your UK property business for tax year {0} to {1}
+cannotGoBack.manage.FP                                    = Your reporting method for your foreign property business for tax year {0} to {1}
+cannotGoBack.manage.SE                                    = Your reporting method for your sole trader business for tax year {0} to {1}
+cannotGoBack.manage.reportingMethod                       = has changed to {0} reporting.
+cannotGoBack.manage.annual                                = annual
+cannotGoBack.manage.quarterly                             = quarterly
+
+cannotGoBack.youCan                                       = You can:
+cannotGoBack.manageLink                                   = view and manage your income sources
+cannotGoBack.homeLink                                     = go back to the homepage
+
+cannotGoBack.sole-trader-ceased                           = Your sole trader business has ceased.
+cannotGoBack.uk-property-ceased                           = Your UK property business has ceased.
+cannotGoBack.foreign-property-ceased                      = Your foreign property business has ceased.
+
+cannotGoBack.warningMessage                               = You still need to choose a reporting method. If you leave this page, you will be set to report annually for up to two tax years.
+cannotGoBack.hasBeenAdded1                                = You can manage it from the
+cannotGoBack.hasBeenAdded2                                = page.
+cannotGoBack.needToChoose                                 = You now need to choose how often you want to send income and expense updates to HMRC for this income source.
+
+## Income Source Ceased Obligation Page ##
 business-ceased.obligation.title                                    = {0} has ceased
+business-ceased.obligation.panel.title                              = {0}
 business-ceased.obligation.panel.body                               = has ceased
 business-ceased.obligation.sole-trader                              = Sole trader business
 business-ceased.obligation.uk-property                              = UK property
 business-ceased.obligation.foreign-property                         = Foreign property
 business-ceased.obligation.heading2.text.incomeSources              = What you must do
+business-ceased.obligation.heading2.text                            = Your revised deadlines
+business-ceased.obligation.inset.text                               = Your deadlines for this business will be available in the next few minutes.
 business-ceased.obligation.p1.text.1                                = Even if they are not displayed right away on the
 business-ceased.obligation.p1.text.2                                = page, your account has been updated.
 business-ceased.obligation.p1.link                                  = submission deadlines
@@ -844,6 +861,7 @@ business-ceased.obligation.inset.quarterly.single.text              = You must s
 business-ceased.obligation.inset.quarterly.multiple.text            = You must submit these updates with all required income and expenses through your record keeping software.
 business-ceased.obligation.inset.annually.text                      = You must submit your final declarations and pay the tax you owe
 business-ceased.obligation.inset.previous-year.text                 = You must make sure that you have sent all the required income and expenses for the tax year earlier than {0} to {1}.
+
 business-ceased.obligation.quarterly-heading                        = Send quarterly updates
 business-ceased.obligation.quarterly-p1                             = You must send quarterly updates of your income and expenses using compatible software by the following deadlines:
 business-ceased.obligation.final-declaration-heading                = Submit final declarations and pay your tax
@@ -854,23 +872,256 @@ business-ceased.obligation.income-sources-button                    = Your incom
 business-ceased.obligation.previous-tax-years-heading               = Previous tax years
 business-ceased.obligation.previous-tax-years-t1                    = You must make sure that you have sent all the required income and expenses, and final declarations for tax years earlier than
 business-ceased.obligation.to                                       =  to
-income-sources.check-details-reporting-frequency.heading                        = Sole trader
-income-sources.check-details-reporting-frequency.change                         = Change
-income-sources.check-details-reporting-frequency.yes                            = Yes
-income-sources.check-details-reporting-frequency.no                             = No
-income-sources.check-details-reporting-frequency.taxYear                        = {0} to {1}
-income-sources.check-details-reporting-frequency.change-rf-key                  = Do you want to change to report quarterly?
-income-sources.check-details-reporting-frequency.change-choose-tax-year-key     = Which tax year(s) do you want to report quarterly for?
-income-sources.check-details-reporting-frequency.r17.change-choose-tax-year-key = Which tax year(s) do you want to sign up for?
+
+# Income source reporting method
+incomeSources.add.incomeSourceReportingMethod.heading                   =   Choose a reporting method
+incomeSources.add.incomeSourceReportingMethod.description1              =   Your business qualifies for a grace period available up until April {0} where you can report annually.
+incomeSources.add.incomeSourceReportingMethod.description2              =   This involves a single update no later than 31 January.
+incomeSources.add.incomeSourceReportingMethod.description3              =   This grace period is not affected by either:
+incomeSources.add.incomeSourceReportingMethod.description4.bullet1      =   your level of income from other sources
+incomeSources.add.incomeSourceReportingMethod.description4.bullet2      =   the turnover you expect your new business to make
+incomeSources.add.incomeSourceReportingMethod.description4.bullet3      =   how you report with any existing income sources
+incomeSources.add.incomeSourceReportingMethod.chooseReport              =   Choose how you want to report
+incomeSources.add.incomeSourceReportingMethod.taxYear                   =   Tax year {0}-{1}
+incomeSources.add.incomeSourceReportingMethod.chooseAnnualReport        =   Choose annual reporting
+incomeSources.add.incomeSourceReportingMethod.chooseQuarterlyReport     =   Choose quarterly reporting
+incomeSources.add.incomeSourceReportingMethod.error                     =   Select if you want to report annually or quarterly for tax year {0} to {1}
+incomeSources.add.incomeSourceReportingMethod.se.caption                =   Sole trader
+incomeSources.add.incomeSourceReportingMethod.uk.caption                =   UK property
+incomeSources.add.incomeSourceReportingMethod.fp.caption                =   Foreign property
+
+# manage uk property reporting method
+incomeSources.manage.propertyReportingMethod.checkbox.annual        = Yes, I want to switch to annual reporting
+incomeSources.manage.propertyReportingMethod.checkbox.quarterly     = Yes, I want to switch to quarterly reporting
+incomeSources.manage.propertyReportingMethod.error.quarterly        = Select that you want to switch to quarterly reporting
+incomeSources.manage.propertyReportingMethod.error.annual           = Select that you want to switch to annual reporting
+incomeSources.manage.propertyReportingMethod.changingToAnnualWarning.individual         = HMRC will remove any income updates you’ve already submitted for this tax year. You’ll need to include any previously submitted income in your annual tax return.
+incomeSources.manage.propertyReportingMethod.changingToAnnualWarning.agent              = HMRC will remove any income updates your client has already submitted for this tax year. Any previously submitted income will need to be included in your client’s annual tax return.
+incomeSources.manage.propertyReportingMethod.changingToQuarterlyWarning.individual      = HMRC will remove any income updates you’ve already submitted for this tax year. You’ll need to include any previously submitted income in your quarterly tax return.
+incomeSources.manage.propertyReportingMethod.changingToQuarterlyWarning.agent           = HMRC will remove any income updates your client has already submitted for this tax year. Any previously submitted income will need to be included in your client’s quarterly tax return.
+
+# manage obligations page
+incomeSources.add.manageObligations.title                             = {0} will report {1} for the tax year {2} to {3}
+incomeSources.add.manageObligations.panel.title                       = {0}
+incomeSources.add.manageObligations.panel.body                        =   will report {0} for the tax year {1} to {2}
+incomeSources.add.manageObligations.annually                          =   annually
+incomeSources.add.manageObligations.quarterly                         =   quarterly
+incomeSources.add.manageObligations.to                                =   to
+incomeSources.add.manageObligations.sole-trader                       =   Sole trader business
+incomeSources.add.manageObligations.uk-property                       =   UK property
+incomeSources.add.manageObligations.foreign-property                  =   Foreign property
+incomeSources.add.manageObligations.heading                           =   What you must do
+
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.title = {0} has been {1} Making Tax Digital for Income Tax for the {2} to {3} tax year
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.title                       = {0}
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.body = has been {0} Making Tax Digital for Income Tax for the {1} to {2} tax year
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.signedUp = signed up to
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.optedOut = opted out of
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.heading = Your revised deadlines
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.inset = Your deadlines for this business will be available in the next few minutes.
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.beforeLink = Even if they are not displayed right away on the
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.link = submission deadlines
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.afterLink = page, your account has been updated.
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para2 = For this new business you may have overdue updates for the {0} to {1} tax year. You must submit these updates with all required income and expenses through your compatible software.
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.link = View your businesses
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.afterLink = to add, manage or cease a business or income source.
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.sole-trader                       =   Sole trader business
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.uk-property                       =   UK property
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.foreign-property                  =   Foreign property
+
+####### Manage journey manage income source
+
+incomeSources.manage.quarterly-period                                 =   Update period
+incomeSources.manage.quarterly-period.standard                        =   Standard
+incomeSources.manage.quarterly-period.calendar                        =   Calendar
+incomeSources.manage.quarterly-period.standard.summary                =   What is a standard update period?
+incomeSources.manage.quarterly-period.calendar.summary                =   What is a calendar update period?
+incomeSources.manage.quarterly-period.standard.content.p1             =   Standard update periods align to the tax year (6 April to 5 April).
+incomeSources.manage.quarterly-period.standard.content.p2             =   If your accounting period doesn’t end on 31 March, standard update periods will make your record keeping simpler.
+incomeSources.manage.quarterly-period.standard.content.p3             =   You can choose to report using calendar update periods (which run from 1 April to 31 March) instead. You can only make the change:
+incomeSources.manage.quarterly-period.standard.content.bullet1        =   in compatible software that supports this option
+incomeSources.manage.quarterly-period.standard.content.bullet2        =   before you send your first quarterly update of the tax year
+incomeSources.manage.quarterly-period.calendar.content.p1             =   Calendar update periods run from 1 April to 31 March each year. They do not align with the standard tax year (6 April to 5 April).
+incomeSources.manage.quarterly-period.calendar.content.p2             =   If your accounting period ends on 31 March, calendar update periods will make your record keeping simpler.
+incomeSources.manage.quarterly-period.calendar.content.p3             =   You can choose to report using standard update periods (which run from 6 April to 5 April) instead. You can only make the change:
+incomeSources.manage.quarterly-period.calendar.content.bullet1        =   in compatible software that supports this option
+incomeSources.manage.quarterly-period.calendar.content.bullet2        =   before you send your first quarterly update of the tax year
+incomeSources.manage.quarterly-period.content.p4                      =   Learn more about standard and calendar quarters
+
+incomeSources.manage.business-manage-details.heading                  =   Manage your details
+incomeSources.manage.business-manage-details.sole-trader-section      =   Sole trader
+incomeSources.manage.business-manage-details.business-name            =   Business name
+incomeSources.manage.business-manage-details.business-address         =   Address
+incomeSources.manage.business-manage-details.date-started             =   Date started
+incomeSources.manage.business-manage-details.reporting-method         =   Reporting frequency {0} to {1}
+incomeSources.manage.business-manage-details.change                   =   Change
+incomeSources.manage.business-manage-details.quarterly                =   Quarterly
+incomeSources.manage.business-manage-details.annually                 =   Annual
+incomeSources.manage.business-manage-details.quarterly.graceperiod    =   Quarterly
+incomeSources.manage.business-manage-details.annually.graceperiod     =   Annual
+incomeSources.manage.business-manage-details.tradetype                =   Type of trade
+incomeSources.manage.business-manage-details.reportingFrequency       =   View and change your reporting frequency for all your businesses
+incomeSources.manage.business-manage-details.insetText                =   Because this is still a new business, you can change how often you report for it for up to 2 tax years. From April {0}, you could be required to report quarterly.
+
+incomeSources.manage.uk-property-manage-details.uk-property-section              =   UK property
+
+incomeSources.manage.foreign-property-manage-details.foreign-property-section    =   Foreign property
 
 
-# Reporting frequency check details property headings
-income-sources.check-details-reporting-frequency-uk.heading = UK property
-income-sources.check-details-reporting-frequency-fp.heading = Foreign property
+##################### New - Manage journey manage income source #####################
+
+incomeSources.manage.new.business-manage-details.heading                  =   Manage your details
+
+incomeSources.manage.new.business.details.heading                         =   Manage your details
+incomeSources.manage.new.business.details.sole.trader.section             =   Sole trader
+incomeSources.manage.new.business.details.business.name                   =   Business name
+incomeSources.manage.new.business.details.business.address                =   Address
+incomeSources.manage.new.business.details.date.started                    =   Date started
+incomeSources.manage.new.business.details.reporting.method                =   Reporting frequency {0} to {1}
+incomeSources.manage.new.business.details.change                          =   Change
+incomeSources.manage.new.business.details.quarterly                       =   Quarterly
+incomeSources.manage.new.business.details.annually                        =   Annual
+incomeSources.manage.new.business.details.quarterly.grace.period          =   Quarterly
+incomeSources.manage.new.business.details.annually.grace.period           =   Annual
+incomeSources.manage.new.business.details.trade.type                      =   Type of trade
+incomeSources.manage.new.business.details.business.income           	  = Business income
 
 
-# Added for businessDetails migration
+incomeSources.manage.new.uk.property.manage.details.uk.property.section              =   UK property
+
+incomeSources.manage.new.foreign.property.manage.details.foreign.property.section    =   Foreign property
+
+
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.paragraph      =   Because this is still a new business, for up to 2 tax years you can choose if you want to use Making Tax Digital for Income Tax. From April {0}, you could be required to use the service.
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.reportingFrequencyPrefix       =   Depending on your circumstances, you may be able to
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.reportingFrequencyLink         =   view and change your reporting obligations for all your businesses
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage = Using Making Tax Digital for Income Tax for {0} to {1}
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage.yes  = Yes
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage.no  = No
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.signup = Sign up
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.optOut = Opt out
+
+
+incomeSources.cease.error.UK.notCeased.text                       = Your UK property business could not be ceased. We have not saved your answers. Please try again later.
+incomeSources.cease.error.FP.notCeased.text                       = Your foreign property business could not be ceased. We have not saved your answers. Please try again later.
+incomeSources.cease.error.SE.notCeased.text                       = Your sole trader business could not be ceased. We have not saved your answers. Please try again later.
+incomeSources.cease.error.notCeased.link.prefix                   = Back to
+incomeSources.cease.error.notCeased.link.text                     = your businesses
+
+incomeSources.manage.reportingMethodError.hyperlink1            = manage your details
+incomeSources.manage.reportingMethodError.hyperlink2            = view and manage income sources
+incomeSources.manage.reportingMethodError.p3                    = Or go back to
+
+incomeSources.manage.businessReportingMethodError.p1            = We were unable to update your sole trader business reporting frequency.
+incomeSources.manage.businessReportingMethodError.p2            = You can try to change your sole trader business reporting frequency again in
+
+incomeSources.manage.uKPropertyReportingMethodError.p1        = We were unable to update your UK property business reporting frequency.
+incomeSources.manage.uKPropertyReportingMethodError.p2        = You can try to change your UK property business reporting frequency again in
+
+incomeSources.manage.foreignPropertyReportingMethodError.p1   = We were unable to update your foreign property business reporting frequency.
+incomeSources.manage.foreignPropertyReportingMethodError.p2   = You can try to change your foreign property business reporting frequency again in
+
+incomeSources.manage.reportingMethodError.hyperlink1            = manage your details
+incomeSources.manage.reportingMethodError.hyperlink2            = view and manage income sources
+incomeSources.manage.reportingMethodError.p3                    = Or go back to
+
+incomeSources.manage.businessReportingMethodError.p1            = We were unable to update your sole trader business reporting frequency.
+incomeSources.manage.businessReportingMethodError.p2            = You can try to change your sole trader business reporting frequency again in
+
+incomeSources.manage.uKPropertyReportingMethodError.p1        = We were unable to update your UK property business reporting frequency.
+incomeSources.manage.uKPropertyReportingMethodError.p2        = You can try to change your UK property business reporting frequency again in
+
+incomeSources.manage.foreignPropertyReportingMethodError.p1   = We were unable to update your foreign property business reporting frequency.
+incomeSources.manage.foreignPropertyReportingMethodError.p2   = You can try to change your foreign property business reporting frequency again in
+
+incomeSources.manage.businessReportingMethodError.text          = We were unable to update your sole trader business reporting frequency.
+incomeSources.manage.foreignPropertyReportingMethodError.text   = We were unable to update your foreign property business reporting frequency.
+incomeSources.manage.uKPropertyReportingMethodError.text        = We were unable to update your UK property business reporting frequency.
+
+# ceased income sources
+incomeSources.ceased-income-sources.heading                     =   Businesses that have ceased
+incomeSources.ceased-income-sources.table-head.business-name    =   Business name
+incomeSources.ceased-income-sources.table-head.date-started     =   Date started
+incomeSources.ceased-income-sources.table-head.date-ended       =   Date ended
+incomeSources.ceased-income-sources.uk-property                 =   UK property
+incomeSources.ceased-income-sources.foreign-property            =   Foreign property
+incomeSources.ceased-income-sources.unknown-sole-trader         =   Sole trader business
+
+# manage your businesses
+manage.your.businesses.heading                                           = Your businesses
+manage.your.businesses.self-employed-h2                                  = Sole trader businesses
+manage.your.businesses.sole-trader-inset                                 = Do not add limited companies or business partnerships here.
+manage.your.businesses.self-employed-desc                                = You’re a sole trader if you run your own business as an individual and work for yourself. This is also known as being self‑employed.
+manage.your.businesses.addIncomeSources.selfEmployment.link              = Add a sole trader business
+manage.your.businesses.addIncomeSources.ukProperty.link                  = Add UK property business
+manage.your.businesses.addIncomeSources.foreignProperty.link             = Add foreign property business
+manage.your.businesses.addIncomeSources.property.link                    = Add property business
+manage.your.businesses.property-h2                                       = Property businesses
+manage.your.businesses.property-desc                                     = If you get income from one or more properties in the UK, you have a UK property business. If the property is outside the UK, you have a foreign property business. For example: letting houses, flats or holiday homes either on a long or short term basis.
+manage.your.businesses.unknown-field                                     = Unknown
+manage.your.businesses.ceasedBusinesses.heading                          = Businesses that have ceased
+manage.your.businesses.ceasedBusinesses.single                           = 1 business has ceased.
+manage.your.businesses.ceasedBusinesses.multiple                         = {0} businesses have ceased.
+manage.your.businesses.ceasedBusinesses.viewall                          = View all ceased businesses
+manage.your.businesses.view.manage                                       = View and manage
+manage.your.businesses.cease                                             = Cease
+manage.your.businesses.name                                              = Name
+manage.your.businesses.datestarted                                       = Date started
+manage.your.businesses.startdate                                         = Start date
+manage.your.businesses.UK                                                = UK property
+manage.your.businesses.Foreign                                           = Foreign property
+
+# type of property business
+manageBusinesses.type-of-property.heading                                = Type of property business
+manageBusinesses.type-of-property.text1                                  = Select the type of property business you’d like to add. If you have both, you can start with one and add the other later.
+manageBusinesses.type-of-property.text2                                  = If you get income from one or more properties in the UK, you have a UK property business.
+manageBusinesses.type-of-property.text3                                  = If you get income from one or more properties outside the UK, you have a foreign property business. For example: letting houses, flats or holiday homes either on a long or short term basis.
+manageBusinesses.type-of-property.h2                                     = What type of property business do you have?
+manageBusinesses.type-of-property.uk                                     = UK property business
+manageBusinesses.type-of-property.foreign                                = Foreign property business
+manageBusinesses.type-of-property.error                                  = Select an option
+
+# manage income sources reporting method (new - content FS R17 enabled)
+manageBusinesses.manage.propertyReportingMethod.new.heading.annual                  = Opt out of Making Tax Digital for Income Tax for the {0} to {1} tax year
+manageBusinesses.manage.propertyReportingMethod.new.heading.quarterly               = Signing up to Making Tax Digital for Income Tax for the {0} to {1} tax year
+manageBusinesses.manage.propertyReportingMethod.new.description.annual              = This will mean you no longer need to submit quarterly updates through compatible software for this income source.
+manageBusinesses.manage.propertyReportingMethod.new.inset.annual                    = If for this tax year you have already submitted to HMRC any quarterly updates for this new business, you will need to resubmit this information in your tax return.
+manageBusinesses.manage.propertyReportingMethod.new.description.quarterly.CYplus    = This will mean you need to submit quarterly updates through compatible software for this income source.
+manageBusinesses.manage.propertyReportingMethod.new.ul.description                  = This will mean you:
+manageBusinesses.manage.propertyReportingMethod.new.ul.el1                          = need to submit quarterly updates for this income source
+manageBusinesses.manage.propertyReportingMethod.new.ul.el2                          = could have at least one quarterly update overdue
+manageBusinesses.manage.propertyReportingMethod.new.inset.quarterly                 = If for this tax year you have already submitted to HMRC a quarterly update for this new business, you will need to resubmit this information in your next quarterly update.
+manageBusinesses.manage.propertyReportingMethod.new.form.heading.signUp             = Do you want to sign up for the {0} to {1} tax year?
+manageBusinesses.manage.propertyReportingMethod.new.form.heading.optOut             = Do you want to opt out of the {0} to {1} tax year?
+manageBusinesses.manage.propertyReportingMethod.new.form.error.annual               = Select yes if you want to opt this new business out of Making Tax Digital for Income Tax
+manageBusinesses.manage.propertyReportingMethod.new.form.error.quarterly            = Select yes if you want to sign this new business up to Making Tax Digital for Income Tax
+
+manageBusinesses.manage.propertyReportingMethod.new.subHeading.UkProperty           = UK property
+manageBusinesses.manage.propertyReportingMethod.new.subHeading.ForeignProperty      = Foreign property
+manageBusinesses.manage.propertyReportingMethod.new.subHeading.SelfEmployment       = Sole trader
+manageBusinesses.manage.propertyReportingMethod.new.description.quarterly           = Changing to quarterly reporting will mean you need to submit your quarterly updates through compatible software.
+manageBusinesses.manage.propertyReportingMethod.new.confirm                         = Confirm and save
+
+
+# manage income sources reporting method (old - content FS R17 disabled)
+
+# businesses that have ceased
+
 manageBusinesses.ceased.heading                                          = Businesses that have ceased
+
+# manage business check your answers
+manageBusinesses.check-answers.SelfEmployment.heading                    = Sole trader
+manageBusinesses.check-answers.UkProperty.heading                        = UK property
+manageBusinesses.check-answers.ForeignProperty.heading                   = Foreign property
+manageBusinesses.check-answers.text                                      = Check your answers
+manageBusinesses.check-answers.reporting-frequency                       = Reporting frequency {0} to {1}
+manageBusinesses.check-answers.reporting.quarterly                       = Quarterly
+manageBusinesses.check-answers.reporting.annually                        = Annually
+manageBusinesses.check-answers.confirm                                   = Confirm and continue
+manageBusinesses.check-answers.change                                    = Change
+
+# manage business choose reporting methods for years
+
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.heading                                  = Which tax year(s) do you want to report quarterly for?
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.heading.feature.switched                 = Which tax year(s) do you want to sign up for?
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.SelfEmployment.subHeading                = Sole trader
@@ -883,18 +1134,102 @@ manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.error.header
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.error.description                        = Select the tax years you want to report quarterly
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.error.description.feature.switched       = Select the tax years you want to sign up for
 
+# choose international sole trader address
+manageBusinesses.add.chooseSoleTraderAddress.heading                                                         = What is the address of your sole trader business?
+manageBusinesses.add.chooseSoleTraderAddress.radio.option.newAddress                                         = None of these, I want to add a new address
+manageBusinesses.add.chooseSoleTraderAddress.radio.option.error                                              = Select an option to continue
 
-# Added for businessDetails migration - date form
-dateForm.check.heading                                              = Is this date correct?
-dateForm.error.day.required                                         = The date must include a day
-dateForm.error.dayAndMonth.required                                 = The date must include a day and a month
-dateForm.error.dayAndYear.required                                  = The date must include a day and a year
-dateForm.error.dayMonthAndYear.required                             = The date must include a day, a month and a year
-dateForm.error.dayMonthAndYear.required.fp                          = Enter the date your foreign property business stopped
-dateForm.error.dayMonthAndYear.required.se                          = Enter the date your self-employed business stopped
-dateForm.error.dayMonthAndYear.required.uk                          = Enter the date your UK property business stopped
-dateForm.error.future                                               = You cannot provide a cessation date that is beyond the current day or a date in the future
-dateForm.error.invalid                                              = The date must be a real date
-dateForm.error.month.required                                       = The date must include a month
-dateForm.error.required.two                                         = The date must include a {0} and a {1}
-dateForm.error.year.required                                        = The date must include a year
+# Manage Businesses Add
+income-sources.check-details-reporting-frequency.heading                        = Sole trader
+income-sources.check-details-reporting-frequency-uk.heading                     = UK property
+income-sources.check-details-reporting-frequency-fp.heading                     = Foreign property
+income-sources.check-details-reporting-frequency.title                          = Check your answers
+income-sources.check-details-reporting-frequency.change                         = Change
+income-sources.check-details-reporting-frequency.yes                            = Yes
+income-sources.check-details-reporting-frequency.no                             = No
+income-sources.check-details-reporting-frequency.taxYear                        = {0} to {1}
+income-sources.check-details-reporting-frequency.change-rf-key                  = Do you want to change to report quarterly?
+income-sources.check-details-reporting-frequency.change-choose-tax-year-key     = Which tax year(s) do you want to report quarterly for?
+
+income-sources.check-details-reporting-frequency.r17.change-rf-key              = Do you want to sign this new business up to Making Tax Digital for Income Tax?
+income-sources.check-details-reporting-frequency.r17.change-choose-tax-year-key = Which tax year(s) do you want to sign up for?
+
+# Triggered Migration Journey
+# Check HMRC records page
+triggered-migration.check-hmrc-records.add-banner.heading            = Added
+triggered-migration.check-hmrc-records.add-banner.text1.SE           = Sole trader business added
+triggered-migration.check-hmrc-records.add-banner.text1.UK           = UK property business added
+triggered-migration.check-hmrc-records.add-banner.text1.FP           = Foreign property business added
+triggered-migration.check-hmrc-records.add-banner.text2              = View your
+triggered-migration.check-hmrc-records.add-banner.link.SE            = sole trader businesses
+triggered-migration.check-hmrc-records.add-banner.link.UK            = UK property business
+triggered-migration.check-hmrc-records.add-banner.link.FP            = foreign property business
+
+triggered-migration.check-hmrc-records.cessation-banner.heading      = Ceased
+triggered-migration.check-hmrc-records.cessation-banner.text1        = You have ceased a business
+triggered-migration.check-hmrc-records.cessation-banner.text2        = View
+triggered-migration.check-hmrc-records.cessation-banner.link         = your ceased businesses
+
+triggered-migration.check-hmrc-records.cessation-section.heading     = Your ceased businesses
+triggered-migration.check-hmrc-records.cessation-section.text        = One or more businesses have ceased.
+triggered-migration.check-hmrc-records.cessation-section.text-link   = View all ceased businesses
+
+triggered-migration.check-hmrc-records.heading                       = Check HMRC records only list your active businesses
+triggered-migration.check-hmrc-records.title                         = Check HMRC records only list your active businesses
+triggered-migration.check-hmrc-records.desc                          = You now have quarterly deadlines for your sole trader and/or property businesses listed here.
+triggered-migration.check-hmrc-records.inset                         = Making sure this page is correct will help avoid both missing deadlines for your active businesses and having deadlines for an income source you may have closed down or sold.
+triggered-migration.check-hmrc-records.bulletStart                   = If necessary, you must:
+triggered-migration.check-hmrc-records.bullet1                       = add any businesses that are missing
+triggered-migration.check-hmrc-records.bullet2                       = cease any that you no longer get income from
+
+triggered-migration.check-hmrc-records.yourActiveBusinesses.heading  = Your active businesses
+triggered-migration.check-hmrc-records.soleTrader.heading            = Sole trader businesses
+triggered-migration.check-hmrc-records.soleTrader.cease.link         = Cease
+triggered-migration.check-hmrc-records.soleTrader.businessName       = Business name
+triggered-migration.check-hmrc-records.soleTrader.businessState      = Business state
+triggered-migration.check-hmrc-records.soleTrader.active             = Active
+triggered-migration.check-hmrc-records.soleTrader.add.link           = Add a sole trader business
+triggered-migration.check-hmrc-records.soleTrader.guidance           = You’re a sole trader if you run your own business as an individual and work for yourself. This is also known as being self‑employed.
+triggered-migration.check-hmrc-records.soleTrader.unknown            = Unknown
+
+triggered-migration.check-hmrc-records.property.heading              = Property businesses
+triggered-migration.check-hmrc-records.ukProperty.heading            = UK property
+triggered-migration.check-hmrc-records.ukProperty.cease.link         = Cease
+triggered-migration.check-hmrc-records.ukProperty.businessState      = Business state
+triggered-migration.check-hmrc-records.ukProperty.active             = Active
+triggered-migration.check-hmrc-records.foreignProperty.heading       = Foreign property
+triggered-migration.check-hmrc-records.foreignProperty.cease.link    = Cease
+triggered-migration.check-hmrc-records.foreignProperty.businessState = Business state
+triggered-migration.check-hmrc-records.foreignProperty.active        = Active
+triggered-migration.check-hmrc-records.foreignProperty.add.link      = Add foreign property business
+triggered-migration.check-hmrc-records.noActiveProperties            = If you get income from one or more properties in the UK, you have a UK property business. If the property is abroad, you have a foreign property business. For example: letting houses, flats or holiday homes either on a long or short term basis.
+
+triggered-migration.check-hmrc-records.confirmRecords.heading = Confirm HMRC records only list your active businesses
+triggered-migration.check-hmrc-records.confirmRecords.text    = This page only needs to list all your active sole trader and property income sources. Any other business details that are not right, misspelt or out of date, can be amended at a later date.
+triggered-migration.check-hmrc-records.confirmRecords.button  = Confirm and continue
+
+# Triggered migration – Check Active Businesses Confirm page
+triggered-migration.check-active-businesses-confirm.heading          = Have you checked that HMRC records only list your active businesses?
+triggered-migration.check-active-businesses-confirm.text             = You can change any other business details at a later date.
+triggered-migration.check-active-businesses-confirm.yes              = Yes
+triggered-migration.check-active-businesses-confirm.yes.hint         = If the previous page only lists your active businesses then the check is complete
+triggered-migration.check-active-businesses-confirm.no               = No
+triggered-migration.check-active-businesses-confirm.no.hint          = Select this option if you have not checked the previous page
+triggered-migration.check-active-businesses-confirm.error.required   = Select yes if you’ve checked that HMRC records only list your active businesses
+
+# Triggered migration - Check complete page
+triggered-migration.checkComplete.greenBoxHeading.1                                     = Check complete
+triggered-migration.checkComplete.greenBoxHeading.2                                     = You have confirmed that HMRC records only list your active businesses
+triggered-migration.checkComplete.whatNext.heading                                      = What to do next
+triggered-migration.checkComplete.whatNext.p1                                           = You now need to provide HMRC a quarterly update for each of your active sole trader and property income sources.
+triggered-migration.checkComplete.whatNext.p2                                           = To do this, you need to:
+triggered-migration.checkComplete.whatNext.ul.li1                                       = get software that works with Making Tax Digital for Income Tax
+triggered-migration.checkComplete.whatNext.ul.li2                                       = find out what is due and submit your late update(s)
+triggered-migration.checkComplete.gettingSoftware.heading                               = Getting software
+triggered-migration.checkComplete.gettingSoftware.p1                                    = To submit your quarterly updates, you or your agent must have software compatible with Making Tax Digital for Income Tax. There are both paid and free options to choose from.
+triggered-migration.checkComplete.gettingSoftware.linkText                              = Find out about compatible software
+triggered-migration.checkComplete.submitUpdates.heading                                 = Submitting your update(s)
+triggered-migration.checkComplete.submitUpdates.p1                                      = In your account you can see which quarterly updates are due and what information you need to provide. Then you must use your compatible software to:
+triggered-migration.checkComplete.submitUpdates.ul.li1                                  = create a digital record of your property and sole trader income and expenses
+triggered-migration.checkComplete.submitUpdates.ul.li2                                  = send your quarterly update(s) to HMRC
+triggered-migration.checkComplete.submitUpdates.linkText                                = Check your latest submission deadlines

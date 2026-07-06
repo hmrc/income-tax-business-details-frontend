@@ -29,9 +29,9 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
   lazy val hasEnabledTestOnlyRoutes: Boolean = config.get[String]("play.http.router") == "testOnlyDoNotUseInAppConf.Routes"
 
   //App
-  lazy val baseUrl: String = "/manage-self-assessment/businesses"
-  lazy val agentBaseUrl: String = s"$baseUrl/agents"
-  lazy val itvcFrontendEnvironment: String = servicesConfig.getString("base.url")
+  lazy val basePath: String = servicesConfig.getString("base.context-root")
+  lazy val baseUrl: String = servicesConfig.getString("base.url")
+  lazy val agentBasePath: String = s"$basePath/agents"
   lazy val appName: String = servicesConfig.getString("appName")
 
   //Feedback Config
@@ -40,8 +40,8 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
   lazy val contactFormServiceIdentifier: String = "ITVC"
   lazy val contactFrontendBaseUrl: String = s"$contactFrontendService"
   lazy val reportAProblemNonJSUrl: String = s"$contactHost/contact/problem_reports_nonjs?service=$contactFormServiceIdentifier"
-  lazy val betaFeedbackUrl = s"/$baseUrl/feedback"
-  lazy val agentBetaFeedbackUrl = s"/$agentBaseUrl/feedback"
+  lazy val betaFeedbackUrl = s"$basePath/feedback"
+  lazy val agentBetaFeedbackUrl = s"$agentBasePath/feedback"
   lazy val noIncomeSourcesContactUrl: String = s"$contactHost/contact/report-technical-problem?service=$contactFormServiceIdentifier"
 
   //Income tax obligations service
@@ -49,18 +49,19 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
 
   //Income tax business details service
   lazy val incomeTaxBusinessDetailsBaseUrl: String = servicesConfig.baseUrl("income-tax-business-details")
- 
+
   //Income tax calculation service
   lazy val incomeTaxCalculationService: String = servicesConfig.baseUrl("income-tax-calculation")
-  
+
   //Address lookup service
   lazy val addressLookupService: String = servicesConfig.baseUrl("address-lookup-frontend")
   lazy val addressLookupExternalHost: String = servicesConfig.getString("address-lookup.external-host")
-  
+  lazy val accessibilityHost: String = servicesConfig.getString("accessibility-statement.host")
+  lazy val accessibilityUrl: String = accessibilityHost + "/accessibility-statement" + servicesConfig.getString("accessibility-statement.service-path")
+
   //GG Sign In via BAS Gateway
   lazy val signInUrl: String = servicesConfig.getString("base.sign-in")
   lazy val ggSignInUrl: String = servicesConfig.getString("government-gateway.sign-in.url")
-//  lazy val homePageUrl: String = servicesConfig.getString("base.fullUrl")
 
   //Exit Survey
   lazy val exitSurveyBaseUrl: String = servicesConfig.getString("feedback-frontend.host") + servicesConfig.getString("feedback-frontend.url")

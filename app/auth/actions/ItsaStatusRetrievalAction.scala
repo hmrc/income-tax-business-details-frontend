@@ -83,10 +83,10 @@ class ItsaStatusRetrievalAction @Inject()(
           req.authUserDetails.affinityGroup match {
             case Some(Individual) =>
               Logger(getClass).info(s"[ItsaStatusRetrievalAction][refine] Redirecting user to Non-Agent/Individual's YouMustWaitToSignUp page")
-              Left(Redirect(appConfig.obligationsWaitToSignUpAgentUrl(newObligationsEnabled)))
+              Left(Redirect(appConfig.obligationsWaitToSignUpIndividualUrl(newObligationsEnabled)))
             case Some(Organisation) =>
               Logger(getClass).info(s"[ItsaStatusRetrievalAction][refine] Redirecting user to Non-Agent/Organisation's YouMustWaitToSignUp page")
-              Left(Redirect(appConfig.obligationsWaitToSignUpAgentUrl(newObligationsEnabled)))
+              Left(Redirect(appConfig.obligationsWaitToSignUpIndividualUrl(newObligationsEnabled)))
             case Some(Agent) =>
               Logger(getClass).info(s"[ItsaStatusRetrievalAction][refine] Redirecting user to Agent YouMustWaitToSignUp page")
               Left(Redirect(appConfig.obligationsWaitToSignUpAgentUrl(newObligationsEnabled)))

@@ -76,6 +76,9 @@ class ManageIncomeSourceDetailsController @Inject()(view: ManageIncomeSourceDeta
       itvcErrorHandler
     }
 
+  lazy val newObligationsEnabled: Boolean =
+    //ToDo get this from feature switch for Obligations once implemented
+    false
 
   def show(
             isAgent: Boolean,
@@ -163,7 +166,8 @@ class ManageIncomeSourceDetailsController @Inject()(view: ManageIncomeSourceDeta
         viewModel = viewModel,
         isAgent = isAgent,
         showStartDate = isEnabled(DisplayBusinessStartDate),
-        backUrl = backUrl
+        backUrl = backUrl,
+        newObligationsEnabled = newObligationsEnabled
       ))
     }
 
@@ -191,7 +195,8 @@ class ManageIncomeSourceDetailsController @Inject()(view: ManageIncomeSourceDeta
             viewModel = viewModel,
             isAgent = isAgent,
             showStartDate = isEnabled(DisplayBusinessStartDate),
-            backUrl = backUrl
+            backUrl = backUrl,
+            newObligationsEnabled = newObligationsEnabled
           ))
         }.recover {
           case ex =>

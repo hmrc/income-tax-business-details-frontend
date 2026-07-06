@@ -15,6 +15,7 @@
  *@
 
 @import _root_.implicits.ImplicitDateFormatterImpl
+@import config.FrontendAppConfig
 @import controllers.manageBusinesses.manage.routes as manageBusinessesRoutes
 @import enums.IncomeSourceJourney.{ForeignProperty, SelfEmployment, UkProperty}
 @import models.core.AddressModel
@@ -50,8 +51,9 @@
         viewModel: ManageIncomeSourceDetailsViewModel,
         isAgent: Boolean,
         showStartDate: Boolean,
-        backUrl: String
-)(implicit messages: Messages, user: MtdItUser[_])
+        backUrl: String,
+        newObligationsEnabled: Boolean
+)(implicit messages: Messages, user: MtdItUser[_], appConfig: FrontendAppConfig)
 
 @import implicitDateFormatter.longDate
 
@@ -95,7 +97,7 @@ val rows = {
                     key = Key(
                         content = Text(messages("incomeSources.manage.new.business.details.business.name"))
                     ),
-                    value = Value(content = Text(messages("nextUpdates.business")))
+                    value = Value(content = Text(messages("incomeSources.manage.new.business.details.business.income")))
                 ))
             case Some(name) =>
                 Some(SummaryListRow(
@@ -276,7 +278,7 @@ val rows = {
 }
 
 @reportingFrequencyURL(isAgent: Boolean) = @{
-    "#"
+    appConfig.obligationsReportingFrequencyUrl(isAgent, newObligationsEnabled)
 }
 
 @getQuarterlyType = @{
