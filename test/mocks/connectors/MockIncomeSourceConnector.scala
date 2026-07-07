@@ -16,14 +16,14 @@
 
 package mocks.connectors
 
-import common.connectors.IncomeSourceConnector
-import common.models.incomeSourceDetails.{IncomeSourceDetailsError, IncomeSourceDetailsResponse}
-import org.mockito.ArgumentMatchers
-import org.mockito.Mockito.*
-import org.scalatest.BeforeAndAfterEach
+import connectors.IncomeSourceConnector
+import models.incomeSourceDetails.{IncomeSourceDetailsError, IncomeSourceDetailsResponse}
 import testConstants.BaseTestConstants.{testErrorMessage, testErrorStatus}
 import testConstants.IncomeSourceDetailsTestConstants.*
 import testUtils.UnitSpec
+import org.mockito.ArgumentMatchers
+import org.mockito.Mockito.*
+import org.scalatest.BeforeAndAfterEach
 
 import scala.concurrent.Future
 

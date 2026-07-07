@@ -1,124 +1,160 @@
-## Common
+#######################################################################################################################
+## Common ##
+#######################################################################################################################
 
 outage-page.serviceDisplayName                                  = Rheoli’ch Hunanasesiad
 
-## Base
+## Base ##
 base.back                                                       = Yn ôl
+base.service_name                                               = Cyfrif Treth Busnes
+base.service_name.pta                                           = Cyfrif treth personol
+base.service_name.itsa                                          = Diweddaru a chyflwyno Ffurflen Dreth Incwm
+base.phase                                                      = BETA
+base.sign-out                                                   = Allgofnodi
+base.submit                                                     = Cyflwyno
+base.error_heading                                              = Mae problem wedi codi
+base.error_summary.heading                                      = Mae problem wedi codi
+base.error-prefix                                               = Gwall:
 base.backToHome                                                 = Yn ôl i hafan Treth Incwm
+base.continue                                                   = Yn eich blaen
+base.govUk                                                      = GOV.UK
 base.confirm-and-continue                                       = Cadarnhau ac yn eich blaen
 base.confirm-and-save                                           = Cadarnhau a chadw
 base.confirm-this-change                                        = Cadarnhau’r newid hwn
-base.continue                                                   = Yn eich blaen
-base.error-prefix                                               = Gwall:
-base.error_heading                                              = Mae problem wedi codi
-base.error_summary.heading                                      = Mae problem wedi codi
-base.fullstop                                                   = .
-base.govUk                                                      = GOV.UK
-base.or                                                         = neu
-base.phase                                                      = BETA
-base.service_name                                               = Cyfrif Treth Busnes
-base.service_name.itsa                                          = Diweddaru a chyflwyno Ffurflen Dreth Incwm
-base.service_name.pta                                           = Cyfrif treth personol
-base.sign-out                                                   = Allgofnodi
 base.software.compatible.with.mtd.income.tax.link               = feddalwedd sy’n cydweddu â’r cynllun Troi Treth yn Ddigidol
-base.submit                                                     = Cyflwyno
+base.fullstop                                                   = .
+base.or                                                         = neu
 
-## Accessibility
+
+## Accessibility ##
 accessibility.this-section-is                                   = Teitl yr adran hon yw
 
-## Agent Base
+# Agent Base
 agent.base.service_name                                        = Treth Incwm fanylion eich cleient
 
-## Header
-agent.header.serviceName                                       = Rheoli’ch Hunanasesiad
+# Header
 header.serviceName                                             = Rheoli’ch Hunanasesiad
+agent.header.serviceName                                       = Rheoli’ch Hunanasesiad
 
-## HTML Titles
+# HTML Titles
 htmlTitle                                                       = {0} - Rheoli’ch Hunanasesiad - GOV.UK
 htmlTitle.agent                                                 = {0} - Rheoli’ch Hunanasesiad - GOV.UK
-htmlTitle.confirmClient                                         = {0} - Rheoli’ch Hunanasesiad - GOV.UK
 htmlTitle.errorPage                                             = {0} - GOV.UK
 htmlTitle.invalidInput                                          = Gwall: {0} - GOV.UK
+htmlTitle.confirmClient                                         = {0} - Rheoli’ch Hunanasesiad - GOV.UK
 
-## Add Business Page
-add-business-name.form.error.invalidName                          = Ni all enw’r busnes a’r enw masnachu fod yr un peth
-add-business-name.form.error.invalidNameFormat                    = Gall enw’r busnes gynnwys llythrennau mawr neu fach, atalnodau llawn, comas, digidau, &, ’, \, /, - yn unig.
-add-business-name.form.error.maxLength                            = Mae’n rhaid i enw’r busnes fod yn 105 o gymeriadau neu lai
-add-business-name.form.error.required                             = Nodwch eich enw neu enw’ch busnes
-
-## Add Business Trade Page
-add-trade.form.error.empty                      = Nodwch fasnach eich busnes
-add-trade.form.error.invalid                    = Gall masnach y busnes gynnwys llythrennau mawr neu fach, atalnodau llawn, comas, digidau, &, ’, \, /, - yn unig.
-add-trade.form.error.long                       = Mae’n rhaid i’r fasnach fod yn 35 o gymeriadau neu lai
-add-trade.form.error.same-name                  = Ni all enw’r busnes a’r enw masnachu fod yr un peth
-add-trade.form.error.short                      = Mae’n rhaid i’r fasnach fod yn 2 o gymeriadau neu fwy
-
-## Agent - Client Relationship Failure
-agent.client_relationship_failure.enter_different_details       = Gwirio cleient arall
+# Agent - Client Relationship Failure
 agent.client_relationship_failure.heading                       = Nid ydych wedi’ch awdurdodi i fwrw golwg dros y cleient hwn
 agent.client_relationship_failure.info                          = Mae angen i’ch cleient {0}.
 agent.client_relationship_failure.info.link                     = eich awdurdodi fel ei asiant
+agent.client_relationship_failure.enter_different_details       = Gwirio cleient arall
 
-## Agent - No Assignment
-agent.no_assignment.button                                      = Ewch i gyfrif gwasanaethau asiant
+# Agent - No Assignment
 agent.no_assignment.heading                                     = Nid yw’ch sefydliad wedi rhoi’r caniatâd i chi gael mynediad at y cleient hwn
 agent.no_assignment.p1                                          = Mae’r cleient hwn wedi awdurdodi’ch sefydliad. Nid yw’ch tîm wedi rhoi’r caniatâd i chi gael mynediad at y cleient hwn.
 agent.no_assignment.p2                                          = Gofynnwch i’ch tîm pwy sy’n rheoli grwpiau mynediad. Fe fydd yn rhywun sydd â mynediad gweinyddol i’ch cyfrif gwasanaethau asiant.
+agent.no_assignment.button                                      = Ewch i gyfrif gwasanaethau asiant
 
-## Agent Error Page
+## Agent - UTR Error
+agent.utr_error.heading                                         = Ni allwch fwrw golwg dros y cleient hwn
+agent.utr_error.title                                           = Ni allwch fwrw golwg dros y cleient hwn - Rheoli’ch Hunanasesiad
+agent.utr_error.utr_wrong                                       = Gallai hyn fod oherwydd y canlynol:
+agent.utr_error.reason.bullet1                                  = rydych wedi nodi Cyfeirnod Unigryw y Trethdalwr (UTR) anghywir
+agent.utr_error.reason.bullet2                                  = mae angen i’ch cleient {0}
+agent.utr_error.reason.bullet2_link                             = gofrestru ar gyfer y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
+agent.utr_error.go_back                                         = Nodwch UTR arall
+
+## Agent Error Page ##
 agent-error.heading                                             = Ni allwch ddefnyddio’r gwasanaeth hwn ar hyn o bryd
-agent-error.link                                                = cyfrif gwasanaethau asiant
 agent-error.note                                                = I ddefnyddio’r gwasanaeth hwn, mae’n rhaid i chi sefydlu
+agent-error.link                                                = cyfrif gwasanaethau asiant
 
-## Beta Banner
-betaBanner.feedback.link.new                                    = rhoi eich adborth
-betaBanner.newService.new                                       = Gwasanaeth newydd yw hwn. Helpwch ni i’w wella a
+# Agent - Enter clients details
+agent.enter_clients_utr.heading                                 = Beth yw UTR eich cleient?
+agent.enter_clients_utr.info                                    = Dyma’r Cyfeirnod Unigryw y Trethdalwr (UTR) 10 digid a gafodd wrth gofrestru ar gyfer Hunanasesiad. Er enghraifft, 1234567890
+agent.error.enter_clients_utr.empty                             = Nodwch Gyfeirnod Unigryw y Trethdalwr eich cleient
+agent.error.enter_clients_utr.length                            = Mae’n rhaid i Gyfeirnod Unigryw y Trethdalwr eich cleient fod yn 10 digid
+agent.error.enter_clients_utr.non_numeric                       = Mae’n rhaid i Gyfeirnod Unigryw y Trethdalwr gynnwys rhifau yn unig
 
-betaBanner.feedback                                             = adborth
-betaBanner.improve                                              = yn ein helpu i’w wella.
-betaBanner.newService                                           = Mae hwn yn wasanaeth newydd
-betaBanner.your                                                 = – bydd eich
+## Agent - Confirm Client
+agent.confirmClient.heading                                     = Cadarnhau manylion eich cleient
+agent.confirmClient.clientName                                  = Enw’r cleient
+agent.confirmClient.clientUtr                                   = Cyfeirnod Unigryw y Trethdalwr (UTR) y cleient
+agent.confirmClient.changeClient                                = Newid cleient
+agent.confirmClient.confirmContinue                             = Cadarnhau ac yn eich blaen
 
-## BTA Partial
-bta_partial.heading                                             = Rhoi gwybod am eich Treth Incwm drwy feddalwedd
-bta_partial.home_button                                         = Bwrw golwg ar fanylion eich Treth Incwm
-bta_partial.p1                                                  = Rydych wedi cofrestru i roi gwybod am eich Treth Incwm drwy feddalwedd. Bydd hyn yn disodli’ch Ffurflen Dreth Hunanasesiad.
-bta_partial.p2                                                  = Gallwch fwrw golwg ar ddyddiadau cau eich adroddiadau, eich biliau ac amcangyfrif ar gyfer y flwyddyn dreth nesaf.
+agent.confirmClient.supportingAgentAccess.p1                    = Ni all asiantau ategol gael mynediad at wybodaeth yng nghyfrif treth cwsmer sy’n dangos y canlynol:
+agent.confirmClient.supportingAgentAccess.bullet1               = taliadau, credydau ac ad-daliadau
+agent.confirmClient.supportingAgentAccess.bullet2               = Ffurflenni Treth
+agent.confirmClient.supportingAgentAccess.bullet3               = y ffioedd sy’n ddyledus nesaf
+agent.confirmClient.supportingAgentAccess.bullet4               = cosbau ac apeliadau
+agent.confirmClient.supportingAgentAccess.link                  = Darllenwch ragor am y gwahaniaeth rhwng prif asiantau ac asiantau ategol ar GOV.UK
 
-## Charge Summary
-chargeSummary.paymentAllocations.mfaDebit                       = Taliad wedi’i roi tuag at addasiad CThEF
+## Unauthorised Agent Page ##
+agent-unauthorised.heading                                      = Nid ydych wedi’ch awdurdodi i gael mynediad at y dudalen hon
+agent-unauthorised.note                                         = Rydych yn asiant ategol ar gyfer y cleient hwn. Y prif asiant yn unig sy’n gallu cael mynediad at gofnodion sy’n dangos:
+agent-unauthorised.note.b1                                      = taliadau, credydau ac ad-daliadau
+agent-unauthorised.note.b2                                      = Ffurflenni Treth
+agent-unauthorised.note.b3                                      = y ffioedd sy’n ddyledus nesaf
+agent-unauthorised.note.b4                                      = cosbau ac apeliadau
+agent-unauthorised.link                                         = Darllenwch ragor am y gwahaniaeth rhwng prif asiantau ac asiantau ategol ar GOV.UK
 
-## Custom Error Page
-error.custom.heading                                           = Mae problem wedi codi
-error.custom.link                                              = Ewch yn ôl i ‘Troi Treth yn Ddigidol ar gyfer Treth Incwm’
-error.custom.message                                           = Mae’r dudalen rydych yn ceisio’i gweld wedi newid
+## Rebrand Service Navigation
+pta.navigation.messages = Negeseuon
+pta.navigation.checkProgress = Gwirio cynnydd
+pta.navigation.profileAndSettings = Proffil a gosodiadau
+pta.navigation.businessTaxAccount = Cyfrif treth busnes
 
-## Feedback
-feedback.bad                                                    = Gwael
-feedback.comments                                               = Sylwadau
-feedback.comments.error.empty                                   = Rhowch eich sylwadau
-feedback.comments.error.length                                  = Ni all y sylwadau fod yn hirach na 2000 o gymeriadau
-feedback.comments.hint                                          = Peidiwch â chynnwys unrhyw wybodaeth bersonol nac ariannol. Er enghraifft, eich rhif Yswiriant Gwladol neu rif eich cerdyn credyd.
+bta.navigation.manageAccount = Rheoli’r cyfrif
+bta.navigation.messages = Negeseuon
+bta.navigation.helpAndContact = Cymorth a chysylltu
+
+## BTA Links ##
+bta.home                                                        = Treth Busnes – Hafan
+bta.messages                                                    = Negeseuon
+bta.manage-account                                              = Rheoli’r cyfrif
+
+## Feedback ##
+feedback.title                                                  = Rhoi adborth
+feedback.heading                                                = Anfon eich adborth
 feedback.description                                            = Rydym yn defnyddio’ch adborth i wella ein gwasanaethau.
-feedback.email                                                  = Cyfeiriad e-bost
-feedback.email.error                                            = Nodwch gyfeiriad e-bost yn y fformat cywir, megis enw@enghraifft.com
-feedback.email.error.length                                     = Ni all eich e-bost fod yn hirach na 255 o gymeriadau
+feedback.radiosDescription                                      = Beth yw eich barn am y gwasanaeth ar-lein hwn?
+feedback.radiosError                                            = Rhowch wybod i ni beth yw eich barn am y gwasanaeth
+feedback.veryGood                                               = Da iawn
+feedback.good                                                   = Da
+feedback.neutral                                                = Niwtral
+feedback.bad                                                    = Gwael
+feedback.veryBad                                                = Gwael iawn
 feedback.fullName                                               = Enw llawn
 feedback.fullName.error.empty                                   = Rhowch eich enw
 feedback.fullName.error.invalid                                 = Rhowch lythrennau neu atalnodi’n unig
 feedback.fullName.error.length                                  = Ni all eich enw fod yn hirach na 70 o gymeriadau
-feedback.good                                                   = Da
-feedback.heading                                                = Anfon eich adborth
-feedback.neutral                                                = Niwtral
-feedback.radiosDescription                                      = Beth yw eich barn am y gwasanaeth ar-lein hwn?
-feedback.radiosError                                            = Rhowch wybod i ni beth yw eich barn am y gwasanaeth
-feedback.received                                               = Mae eich adborth wedi dod i law.
+feedback.email                                                  = Cyfeiriad e-bost
+feedback.email.error                                            = Nodwch gyfeiriad e-bost yn y fformat cywir, megis enw@enghraifft.com
+feedback.email.error.length                                     = Ni all eich e-bost fod yn hirach na 255 o gymeriadau
+feedback.comments                                               = Sylwadau
+feedback.comments.hint                                          = Peidiwch â chynnwys unrhyw wybodaeth bersonol nac ariannol. Er enghraifft, eich rhif Yswiriant Gwladol neu rif eich cerdyn credyd.
+feedback.comments.error.empty                                   = Rhowch eich sylwadau
+feedback.comments.error.length                                  = Ni all y sylwadau fod yn hirach na 2000 o gymeriadau
 feedback.send                                                   = Anfon
 feedback.thankYou                                               = Diolch
-feedback.veryBad                                                = Gwael iawn
-feedback.veryGood                                               = Da iawn
+feedback.received                                               = Mae eich adborth wedi dod i law.
 
-## Generic Income Sources Messages
+shortMonth.1     = Ion
+shortMonth.2     = Chwe
+shortMonth.3     = Maw
+shortMonth.4     = Ebr
+shortMonth.5     = Mai
+shortMonth.6     = Meh
+shortMonth.7     = Gor
+shortMonth.8     = Aws
+shortMonth.9     = Med
+shortMonth.10    = Hyd
+shortMonth.11    = Tach
+shortMonth.12    = Rhag
+notFound.heading = Ni ellir dod o hyd i’r dudalen hon
+notFound.message = Gwiriwch eich bod wedi nodi’r cyfeiriad gwe cywir.
+
 date.day                     = Diwrnod
 date.month                   = Mis
 date.year                    = Blwyddyn
@@ -127,177 +163,117 @@ date.error.day               = diwrnod
 date.error.month             = mis
 date.error.year              = blwyddyn
 
-## Language Selector
-language-switcher.english                                       = English
+#Language Selector
 language-switcher.english.hidden                                = Change the language to English
-language-switcher.nav                                           = Switcher iaith
+language-switcher.english                                       = English
 language-switcher.welsh                                         = Cymraeg
 language-switcher.welsh.hidden                                  = Newid yr iaith ir Gymraeg
+language-switcher.nav                                           = Switcher iaith
 
-## Manage Income Sources Reporting Method (new - Content FS R17 Enabled)
-manageBusinesses.manage.propertyReportingMethod.new.form.error.annual               = Dewiswch ‘Iawn’ os ydych am optio’r busnes newydd hwn allan o’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
-manageBusinesses.manage.propertyReportingMethod.new.form.error.quarterly            = Dewiswch ‘Iawn’ os ydych am gofrestru’r busnes newydd hwn â’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
+#technical helper
+getpagehelp.linkText                                            = Help gyda’r dudalen hon
+pagehelp.opensInNewTabText                                      = (yn agor tab newydd)
 
-## Next Updates Page
-nextUpdates.business            							    = Incwm busnes
-nextUpdates.crystallised            							= Datganiad terfynol
-nextUpdates.crystallisedAll            							= Pob ffynhonnell incwm
 
-## Next Updates Page - R17 Content Changes
-nextUpdates.r17.tab.quarterly.table.income.source.foreign          = Busnes eiddo tramor
-nextUpdates.r17.tab.quarterly.table.income.source.property         = Busnes eiddo
-nextUpdates.r17.tab.quarterly.table.income.source.uk               = Busnes eiddo yn y DU
+#Not migrated to ETMP
+notmigrated.user.heading                                        = Sut i hawlio ad-daliad
+notmigrated.user.content                                        = Er mwyn bwrw golwg dros yr arian yn eich cyfrif o flynyddoedd treth blaenorol (cyn y gwnaethoch gofrestru ar gyfer y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm) mae angen i chi fynd i’ch
+notmigrated.agent.content                                       = I hawlio arian o flynyddoedd treth blaenorol (cyn y gwnaeth eich cleient gofrestru am y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm), bydd angen i chi fewngofnodi i’ch
+notmigrated.agent.content_extra                                 = Bydd hwn yn Ddynodydd Defnyddiwr (ID) a chyfrinair ar gyfer Porth y Llywodraeth gwahanol i’ch cyfrif gwasanaethau asiant.
+notmigrated.user.link_title                                     = cyfrif Hunanasesiad ar-lein
+notmigrated.agent.link_title                                    = cyfrif Hunanasesiad ar gyfer Asiantau
 
-sections.close												    = Cuddio
-sections.close.all												= Cuddio pob adran
-sections.open												    = Dangos
-sections.open.all												= Dangos pob adran
-
-## No Income Sources Error Page
-noIncomeSources.error.button                                    = Ffurflen gyswllt
-noIncomeSources.error.contact.heading                           = Y ffordd o gysylltu â ni:
+## No Income Sources Error Page ##
+noIncomeSources.error.title                                     = Mae angen i chi gysylltu â ni er mwyn defnyddio’r gwasanaeth hwn
 noIncomeSources.error.p1                                        = Mae angen newid cyn y gallwch gael mynediad at y gwasanaeth rheoli’ch Hunanasesiad. Nid yw hyn yn golygu bod unrhyw beth o’i le gyda’ch cofnodion CThEF.
-noIncomeSources.error.p2                                        = Byddwn yn cysylltu â chi i rannu unrhyw ddiweddariadau ac i roi gwybod i chi pryd y gallwch gael mynediad at y gwasanaeth hwn.
+noIncomeSources.error.contact.heading                           = Y ffordd o gysylltu â ni:
 noIncomeSources.error.step1                                     = Agorwch y ffurflen gyswllt.
 noIncomeSources.error.step2                                     = Nodwch eich enw a’ch cyfeiriad e-bost.
 noIncomeSources.error.step3                                     = Yn y blwch sydd wedi’i labelu “Gyda beth ydych angen help?”, nodwch “Rwyf angen help i gael mynediad at y gwasanaeth Rheoli’ch Hunanasesiad”.
-noIncomeSources.error.title                                     = Mae angen i chi gysylltu â ni er mwyn defnyddio’r gwasanaeth hwn
+noIncomeSources.error.p2                                        = Byddwn yn cysylltu â chi i rannu unrhyw ddiweddariadau ac i roi gwybod i chi pryd y gallwch gael mynediad at y gwasanaeth hwn.
+noIncomeSources.error.button                                    = Ffurflen gyswllt
+
+## Custom Error Page ##
+error.custom.heading                                           = Mae problem wedi codi
+error.custom.message                                           = Mae’r dudalen rydych yn ceisio’i gweld wedi newid
+error.custom.link                                              = Ewch yn ôl i ‘Troi Treth yn Ddigidol ar gyfer Treth Incwm’
+
+
+## Timeout page ##
+timeout.heading                                                 = Mae’ch sesiwn wedi dod i ben
+timeout.signIn.1                                                = Er mwyn gweld eich manylion adrodd chwarterol, bydd yn rhaid i chi
+timeout.signIn.2                                                = fewngofnodi
+timeout.signIn.3                                                = gan ddefnyddio’ch Dynodydd Defnyddiwr (ID) Porth y Llywodraeth.
+
+
+## BTA Partial ##
+bta_partial.heading                                             = Rhoi gwybod am eich Treth Incwm drwy feddalwedd
+bta_partial.p1                                                  = Rydych wedi cofrestru i roi gwybod am eich Treth Incwm drwy feddalwedd. Bydd hyn yn disodli’ch Ffurflen Dreth Hunanasesiad.
+bta_partial.p2                                                  = Gallwch fwrw golwg ar ddyddiadau cau eich adroddiadau, eich biliau ac amcangyfrif ar gyfer y flwyddyn dreth nesaf.
+bta_partial.home_button                                         = Bwrw golwg ar fanylion eich Treth Incwm
 
 ## Not Enrolled
 not_enrolled.heading                                            = Ni allwch gael mynediad at y gwasanaeth hwn
 not_enrolled.sign-up                                            = Mae angen i chi
 not_enrolled.sign-up.link                                       = gofrestru ar gyfer y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
 
-## Rebrand Service Navigation
-pta.navigation.businessTaxAccount = Cyfrif treth busnes
-pta.navigation.checkProgress = Gwirio cynnydd
-pta.navigation.messages = Negeseuon
-pta.navigation.profileAndSettings = Proffil a gosodiadau
-
-bta.navigation.helpAndContact = Cymorth a chysylltu
-bta.navigation.manageAccount = Rheoli’r cyfrif
-bta.navigation.messages = Negeseuon
-
-## Standard Error Page
+## Standard Error Page ##
 standardError.heading                                           = Mae’n ddrwg gennym, mae problem gyda’r gwasanaeth
 standardError.message                                           = Rhowch gynnig arall arni yn nes ymlaen.
 
-## Tax Year Summary Page New
-tax-year-summary.agent.message.C15507                          = mae’ch cleient wedi hawlio {0} o Lwfans Incwm o Eiddo ond mae hyn yn fwy na’ch trosiant ar gyfer ei eiddo yn y DU.
-tax-year-summary.agent.message.C15510                          = ni all y rhyddhad Rhentu Ystafell a hawliwyd ar gyfer eiddo sydd wedi’i osod ar y cyd fod yn fwy na {0}% o’r terfyn ar gyfer y cynllun Rhentu Ystafell.
-tax-year-summary.agent.message.C55007                          = Nid yw’r cais ar gyfer y cyfnod yn cyd-fynd â’r dyddiad darfod, sef {0}. Diwygiwch ac ailgyflwynwch eich cais.
-tax-year-summary.agent.message.C55009                          = ni all y diweddariadau gynnwys bylchau.
-tax-year-summary.agent.message.C55012                          = mae’n rhaid i’r diweddariad gyd-fynd â dyddiad dod i ben y cyfnod cyfrifyddu, sef {0}.
-tax-year-summary.message.C15507                                = rydych wedi hawlio {0}  Lwfans Incwm  Eiddo ond mae hyn yn fwy na’ch trosiant ar gyfer eich eiddo yn y DU
-tax-year-summary.message.C15510                                = ni all y rhyddhad Rhentu Ystafell a hawliwyd ar gyfer eiddo sydd wedi’i osod ar y cyd fod yn fwy na {0}% o’r terfyn ar gyfer y cynllun Rhentu Ystafell.
-tax-year-summary.message.C55007                                = Nid yw’r cais ar gyfer y cyfnod yn cyd-fynd â’r dyddiad darfod, sef {0}. Diwygiwch ac ailgyflwynwch eich cais.
-tax-year-summary.message.C55009                                = ni all y diweddariadau gynnwys bylchau.
-tax-year-summary.message.C55012                                = mae’n rhaid i’r diweddariad alinio â dyddiad dechrau’r cyfnod cyfrifyddu sef, {0}.
+global.error.InternalServerError500.title                       = Mae’n ddrwg gennym, mae problem gyda’r gwasanaeth
+global.error.InternalServerError500.heading                     = Mae’n ddrwg gennym, mae problem gyda’r gwasanaeth
+global.error.InternalServerError500.message                     = Rhowch gynnig arall arni yn nes ymlaen.
 
-## Technical Helper
-getpagehelp.linkText                                            = Help gyda’r dudalen hon
-pagehelp.opensInNewTabText                                      = (yn agor tab newydd)
+## Beta Banner ##
+betaBanner.beta                                                 = BETA
+betaBanner.newService.new                                       = Gwasanaeth newydd yw hwn. Helpwch ni i’w wella a
+betaBanner.feedback.link.new                                    = rhoi eich adborth
+
+betaBanner.newService                                           = Mae hwn yn wasanaeth newydd
+betaBanner.your                                                 = – bydd eich
+betaBanner.feedback                                             = adborth
+betaBanner.improve                                              = yn ein helpu i’w wella.
+
+## Regimes
+regimes.UK = Y DU
+regimes.Scotland = Yr Alban
+regimes.Wales = Cymru
 
 ## Timeout
 button.continue                                                 = Arhoswch wedi’ch mewngofnodi
 
-## Timeout Page
-timeout.heading                                                 = Mae’ch sesiwn wedi dod i ben
-timeout.signIn.1                                                = Er mwyn gweld eich manylion adrodd chwarterol, bydd yn rhaid i chi
-timeout.signIn.2                                                = fewngofnodi
-timeout.signIn.3                                                = gan ddefnyddio’ch Dynodydd Defnyddiwr (ID) Porth y Llywodraeth.
-
-## Unauthorised Agent Page
-agent-unauthorised.heading                                      = Nid ydych wedi’ch awdurdodi i gael mynediad at y dudalen hon
-agent-unauthorised.link                                         = Darllenwch ragor am y gwahaniaeth rhwng prif asiantau ac asiantau ategol ar GOV.UK
-agent-unauthorised.note                                         = Rydych yn asiant ategol ar gyfer y cleient hwn. Y prif asiant yn unig sy’n gallu cael mynediad at gofnodion sy’n dangos:
-agent-unauthorised.note.b1                                      = taliadau, credydau ac ad-daliadau
-agent-unauthorised.note.b2                                      = Ffurflenni Treth
-agent-unauthorised.note.b3                                      = y ffioedd sy’n ddyledus nesaf
-agent-unauthorised.note.b4                                      = cosbau ac apeliadau
 
 ## Uplift Failure
+upliftFailure.title                                             = Ni allwch fwrw golwg dros y dudalen hon
+upliftFailure.content                                           = Gallai hyn fod oherwydd y canlynol:
+upliftFailure.sign.out                                          = REwch yn ôl i fewngofnodi
 upliftFailure.bullet.1                                          = gwnaethoch gymryd gormod o amser i nodi gwybodaeth ac mae’ch cyfle i ddefnyddio’r gwasanaeth wedi dod i ben
 upliftFailure.bullet.2                                          = rydych wedi methu ag ateb digon o gwestiynau’n gywir
 upliftFailure.bullet.3                                          = nid oeddem yn gallu paru’ch manylion â’r hyn sydd ar ein system
-upliftFailure.content                                           = Gallai hyn fod oherwydd y canlynol:
-upliftFailure.sign.out                                          = REwch yn ôl i fewngofnodi
-upliftFailure.title                                             = Ni allwch fwrw golwg dros y dudalen hon
 
+sections.open.all												= Dangos pob adran
+sections.close.all												= Cuddio pob adran
+sections.open												    = Dangos
+sections.close                                                  = Cuddio
 
-# Triggered migration copied from income-tax-view-change-frontend
-triggered-migration.check-hmrc-records.add-banner.heading            = Wedi ychwanegu
-triggered-migration.check-hmrc-records.add-banner.text1.SE           = Busnes Unig fasnachwr wedi’i ychwanegu
-triggered-migration.check-hmrc-records.add-banner.text1.UK           = Busnes Eiddo yn y DU wedi’i ychwanegu
-triggered-migration.check-hmrc-records.add-banner.text1.FP           = Busnes Eiddo Tramor wedi’i ychwanegu
-triggered-migration.check-hmrc-records.add-banner.text2              = Bwrw golwg dros eich
-triggered-migration.check-hmrc-records.add-banner.link.SE            = busnes unig fasnachwr sydd wedi’i ychwanegu
-triggered-migration.check-hmrc-records.add-banner.link.UK            = busnes eiddo yn y DU
-triggered-migration.check-hmrc-records.add-banner.link.FP            = busnes eiddo Tramor
-triggered-migration.check-hmrc-records.cessation-banner.heading      = Wedi dod i ben
-triggered-migration.check-hmrc-records.cessation-banner.text1        = Rydych chi wedi dod â busnes i ben
-triggered-migration.check-hmrc-records.cessation-banner.text2        = Gweld
-triggered-migration.check-hmrc-records.cessation-banner.link         = eich busnesau sydd wedi dod i ben
-triggered-migration.check-hmrc-records.cessation-section.heading     = Eich busnesau sydd wedi dod i ben
-triggered-migration.check-hmrc-records.cessation-section.text        = Mae un neu ragor o fusnesau wedi dod i ben.
-triggered-migration.check-hmrc-records.cessation-section.text-link   = Gweld eich holl fusnesau sydd wedi dod i ben
-triggered-migration.check-hmrc-records.heading                       = Gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
-triggered-migration.check-hmrc-records.title                         = Gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
-triggered-migration.check-hmrc-records.desc                          = Nawr, mae’ch dyddiadau cau chwarterol ar gyfer eich busnesau fel unig fasnachwr a/neu eich busnesau eiddo wedi’u rhestru yma.
-triggered-migration.check-hmrc-records.inset                         = Bydd sicrhau bod y manylion ar y dudalen hon yn gywir yn eich helpu chi i osgoi colli dyddiadau cau ar gyfer eich busnesau cyfredol, ac yn osgoi rhoi dyddiadau cau i chi ar gyfer ffynonellau incwm y gallech fod wedi’u cau neu eu gwerthu.
-triggered-migration.check-hmrc-records.bulletStart                   = Bydd yn rhaid i chi wneud y canlynol, os oes angen:
-triggered-migration.check-hmrc-records.bullet1                       = ychwanegu unrhyw fusnesau sydd ar goll
-triggered-migration.check-hmrc-records.bullet2                       = dod ag unrhyw fusnesau, nad ydynt bellach yn rhoi incwm i chi, i ben
-triggered-migration.check-hmrc-records.yourActiveBusinesses.heading  = Eich busnesau cyfredol
-triggered-migration.check-hmrc-records.soleTrader.heading            = Busnesau unig fasnachwr
-triggered-migration.check-hmrc-records.soleTrader.cease.link         = Wedi dod i ben
-triggered-migration.check-hmrc-records.soleTrader.businessName       = Enw’r busnes
-triggered-migration.check-hmrc-records.soleTrader.businessState      = Statws y busnes
-triggered-migration.check-hmrc-records.soleTrader.active             = Cyfredol
-triggered-migration.check-hmrc-records.soleTrader.add.link           = Ychwanegu busnes unig fasnachwr
-triggered-migration.check-hmrc-records.soleTrader.guidance           = Rydych yn unig fasnachwr os ydych yn rhedeg eich busnes eich hun fel unigolyn ac yn gweithio i chi’ch hun. Enw arall ar hyn yw bod yn hunangyflogedig.
-triggered-migration.check-hmrc-records.soleTrader.unknown            = Anhysbys
-triggered-migration.check-hmrc-records.property.heading              = Busnesau eiddo
-triggered-migration.check-hmrc-records.ukProperty.heading            = Eiddo yn y DU
-triggered-migration.check-hmrc-records.ukProperty.cease.link         = Wedi dod i ben
-triggered-migration.check-hmrc-records.ukProperty.businessState      = Statws y busnes
-triggered-migration.check-hmrc-records.ukProperty.active             = Cyfredol
-triggered-migration.check-hmrc-records.foreignProperty.heading       = Eiddo Tramor
-triggered-migration.check-hmrc-records.foreignProperty.cease.link    = Wedi dod i ben
-triggered-migration.check-hmrc-records.foreignProperty.businessState = Statws y busnes
-triggered-migration.check-hmrc-records.foreignProperty.active        = Cyfredol
-triggered-migration.check-hmrc-records.foreignProperty.add.link      = Ychwanegu eiddo busnes tramor
-triggered-migration.check-hmrc-records.noActiveProperties            = Os ydych yn cael incwm o un eiddo neu fwy yn y DU, mae gennych fusnes eiddo yn y DU. Os yw’r eiddo dramor, mae gennych fusnes eiddo tramor. Er enghraifft: incwm o roi tai, fflatiau, neu gartrefi gwyliau ar osod, a hynny naill ai ar sail tymor hir neu dymor byr.
-triggered-migration.check-hmrc-records.confirmRecords.heading = Cadarnhau bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
-triggered-migration.check-hmrc-records.confirmRecords.text    = Dylai’r dudalen hon dim ond rhestru’ch ffynonellau incwm cyfredol o fod yn unig fasnachwr a’ch ffynonellau incwm cyfredol o eiddo. Gall unrhyw fanylion busnes eraill sy’n anghywir, sydd wedi’u camsillafu, neu sydd ddim yn gyfredol, gael eu diweddaru yn nes ymlaen.
-triggered-migration.check-hmrc-records.confirmRecords.button  = Cadarnhau a pharhau
-triggered-migration.check-active-businesses-confirm.heading          = A ydych wedi gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol?
-triggered-migration.check-active-businesses-confirm.text             = Gallwch newid unrhyw fanylion busnes eraill yn nes ymlaen.
-triggered-migration.check-active-businesses-confirm.yes              = Iawn
-triggered-migration.check-active-businesses-confirm.yes.hint         = Os ywr dudalen flaenorol dim ond yn cynnwys eich busnesau cyfredol, mae’r gwiriad wedi’i gwblhau
-triggered-migration.check-active-businesses-confirm.no               = Na
-triggered-migration.check-active-businesses-confirm.no.hint          = Dewiswch yr opsiwn hwn os nad ydych wedi gwirio’r dudalen flaenorol
-triggered-migration.check-active-businesses-confirm.error.required   = Dewiswch ‘Iawn’ os ydych wedi gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
-triggered-migration.checkComplete.greenBoxHeading.1                                     = Gwiriad wedi’i gwblhau
-triggered-migration.checkComplete.greenBoxHeading.2                                     = Rydych wedi cadarnhau bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
-triggered-migration.checkComplete.whatNext.heading                                      = Yr hyn i’w wneud nesaf
-triggered-migration.checkComplete.whatNext.p1                                           = Mae angen i chi roi diweddariad chwarterol i CThEF ar gyfer pob un o’ch ffynonellau incwm cyfredol o fod yn unig fasnachwr a’ch ffynonellau incwm cyfredol o eiddo.
-triggered-migration.checkComplete.whatNext.p2                                           = I wneud hyn, bydd angen i chi wneud y canlynol:
-triggered-migration.checkComplete.whatNext.ul.li1                                       = defnyddio meddalwedd sy’n cydweddu â’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
-triggered-migration.checkComplete.whatNext.ul.li2                                       = cael gwybod yr hyn sy’n ddyledus a chyflwyno’ch diweddariad(au) hwyr
-triggered-migration.checkComplete.gettingSoftware.heading                               = Cael meddalwedd
-triggered-migration.checkComplete.gettingSoftware.p1                                    = Er mwyn cyflwyno’ch diweddariadau chwarterol, mae’n rhaid i chi, neu’ch asiant, ddefnyddio meddalwedd sy’n cydweddu â’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm. Mae sawl meddalwedd ar gael i chi, gan gynnwys rhai sy’n rhad ac am ddim a rhai y mae angen talu amdanynt.
-triggered-migration.checkComplete.gettingSoftware.linkText                              = Dysgwch ragor am feddalwedd sy’n cydweddu
-triggered-migration.checkComplete.submitUpdates.heading                                 = Cyflwyno’ch diweddariad(au)
-triggered-migration.checkComplete.submitUpdates.p1                                      = Mae’r diweddariadau chwarterol sy’n ddyledus, a’r wybodaeth y mae angen i chi ei darparu, i’w gweld yn eich cyfrif. Wedyn, bydd yn rhaid i chi ddefnyddio’ch meddalwedd sy’n cydweddu i wneud y canlynol:
-triggered-migration.checkComplete.submitUpdates.ul.li1                                  = creu cofnod digidol o’ch incwm o eiddo a’ch incwm o fod yn unig fasnachwr, a’r treuliau cysylltiedig
-triggered-migration.checkComplete.submitUpdates.ul.li2                                  = anfon eich diweddariad(au) chwarterol at CThEF
-triggered-migration.checkComplete.submitUpdates.linkText                                = Gwiriwch eich dyddiadau cau diweddaraf ar gyfer cyflwyno
+#Generic radio form messages
+radioForm.checkDate.heading                                         = A yw’r dyddiad hwn yn gywir?
+radioForm.yes                                                       = Iawn
+radioForm.no                                                        = Na
 
-# Business details messages copied from income-tax-view-change-frontend
+# New journey only - business start date check page with dynamic date in heading
+radioForm.checkDate.heading.withDate                                = Ai {0} yw’r dyddiad cywir?
+
+#######################################################################################################################
+## Business Details
+#######################################################################################################################
+
 incomeSources.add.sole-trader                                       = Unig fasnachwr
 incomeSources.add.uk-property                                       = Eiddo yn y DU
 incomeSources.add.foreign-property                                  = Eiddo tramor
+
+## Add Income Sources Page ##
 incomeSources.add.addIncomeSources.heading                          = Unig fasnachwr a incwm o eiddo
 incomeSources.add.addIncomeSources.selfEmployment.heading           = Busnesau unig fasnachwr
 incomeSources.add.addIncomeSources.selfEmployment.text              = Nid oes angen i chi roi gwybod i ni am fusnes y gwyddwn amdano eisoes.
@@ -313,12 +289,14 @@ incomeSources.add.addIncomeSources.tableHead.businessName           = Enw’r bu
 incomeSources.add.addIncomeSources.tableHead.dateStarted            = Dyddiad cychwyn
 incomeSources.add.addIncomeSources.tableHead.dateEnded              = Y dyddiad dod i ben
 incomeSources.add.addIncomeSources.unknown                          = Anhysbys
+
 incomeSources.add.error.standardError                            = Mae’n ddrwg gennym – mae problem gyda’r gwasanaeth
 incomeSources.add.error.incomeSourceNotSaved.p1                  = Nid oedd modd ychwanegu eich busnes {0}. Nid ydym wedi cadw’ch atebion. Rhowch gynnig arall arni yn nes ymlaen.
 incomeSources.add.error.incomeSourceNotSaved.se                  = unig fasnachwr
 incomeSources.add.error.incomeSourceNotSaved.uk                  = eiddo yn y DU
 incomeSources.add.error.incomeSourceNotSaved.fp                  = eiddo tramor
 incomeSources.add.error.incomeSourceNotSaved.incomeSources       = Eich ffynonellau incwm
+
 incomeSources.add.error.reportingMethodNotSaved.heading                         = Mae’n ddrwg gennym, mae problem gyda’r gwasanaeth
 incomeSources.add.error.reportingMethodNotSaved.p1                              = Ychwanegwyd eich busnes newydd, ond nid oedd modd i ni gadw unrhyw rwymedigaethau adrodd ar wahân y gallech fod wedi’u gosod ar ei gyfer.
 incomeSources.add.error.reportingMethodNotSaved.p2                              = Ar gyfer ei ddwy flynedd dreth gyntaf, mae’r busnes hwn yn ddiofyn yn cael ei optio allan o’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm.
@@ -331,6 +309,7 @@ incomeSources.add.error.reportingMethodNotSaved.fp.incomeSource                 
 incomeSources.add.error.reportingMethodNotSaved.se.caption                      = Unig fasnachwr
 incomeSources.add.error.reportingMethodNotSaved.uk.caption                      = Eiddo yn y DU
 incomeSources.add.error.reportingMethodNotSaved.fp.caption                      = Eiddo tramor
+
 incomeSources.add.reportingFrequency.sole-trader                    = Unig fasnachwr
 incomeSources.add.reportingFrequency.uk-property                    = Eiddo yn y DU
 incomeSources.add.reportingFrequency.foreign-property               = Eiddo tramor
@@ -345,6 +324,7 @@ incomeSources.add.reportingFrequency.li2                            = mae’ch i
 incomeSources.add.reportingFrequency.form.no-select.error           = Dewiswch ‘Iawn’ os hoffech chi gyflwyno’n chwarterol neu dewiswch ‘Na’ os hoffech chi gyflwyno’n flynyddol
 incomeSources.add.reportingFrequency.table.c1                       = Amlder cyflwyno {0} i {1}
 incomeSources.add.reportingFrequency.table.c2                       = Blynyddol
+
 incomeSources.add.reportingFrequency.r17.sole-trader                    = Unig fasnachwr
 incomeSources.add.reportingFrequency.r17.uk-property                    = Eiddo yn y DU
 incomeSources.add.reportingFrequency.r17.foreign-property               = Eiddo tramor
@@ -357,9 +337,37 @@ incomeSources.add.reportingFrequency.r17.form.h1                        = A ydyc
 incomeSources.add.reportingFrequency.r17.li1                            = rydych wedi cofrestru’n wirfoddol neu os yw’n ofynnol i chi ddefnyddio’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm ar gyfer eich busnesau eraill
 incomeSources.add.reportingFrequency.r17.li2                            = mae cyfanswm eich incwm gros o hunangyflogaeth neu eiddo, neu’r ddau, yn fwy na’r trothwy o {0}
 incomeSources.add.reportingFrequency.r17.form.no-select.error           = Dewiswch ‘Iawn’ os ydych am gofrestru’r busnes newydd hwn â’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
+
+# Income Sources - Cease
+
 incomeSources.cease.sole-trader               = Unig fasnachwr
 incomeSources.cease.uk-property               = Eiddo yn y DU
 incomeSources.cease.foreign-property          = Eiddo tramor
+
+cease-income-sources.heading                  = Dod â ffynhonnell incwm i ben
+cease-income-sources.self-employment.h1       = Hunangyflogaeth (unig fasnachwr)
+cease-income-sources.table-head.business-name = Enw’r busnes
+cease-income-sources.table-head.date-started  = Dyddiad cychwyn
+cease-income-sources.cease                    = Dod i ben
+cease-income-sources.uk-property.h1           = Eiddo yn y DU
+cease-income-sources.uk-property.p1           = Dylech ond dod â’ch eiddo yn y DU i ben os nad ydych yn cael unrhyw incwm oddi wrtho mwyach.
+cease-income-sources.foreign-property.h1      = Eiddo tramor
+cease-income-sources.foreign-property.p1      = Dylech ond dod â’ch eiddo tramor i ben os nad ydych yn cael unrhyw incwm oddi wrtho mwyach.
+cease-income-sources.ceased-businesses.h1     = Busnesau sydd wedi dod i ben
+cease-income-sources.table-head.date-ended    = Y dyddiad dod i ben
+cease-income-sources.unknown                  = Anhysbys
+
+## Add business trade page
+add-trade.heading                               = Beth yw masnach eich busnes?
+add-trade.trade-info-1                          = Masnach eich busnes yw’r nwyddau neu’r gwasanaethau mae eich busnes yn eu darparu.
+add-trade.trade-info-2                          = Er enghraifft: plymio, gwaith trydanol, ymgynghori, gwaith ffotograffiaeth, hyfforddiant personol, trin gwallt.
+add-trade.form.error.empty                      = Nodwch fasnach eich busnes
+add-trade.form.error.short                      = Mae’n rhaid i’r fasnach fod yn 2 o gymeriadau neu fwy
+add-trade.form.error.long                       = Mae’n rhaid i’r fasnach fod yn 35 o gymeriadau neu lai
+add-trade.form.error.invalid                    = Gall masnach y busnes gynnwys llythrennau mawr neu fach, atalnodau llawn, comas, digidau, &, ’, \, /, - yn unig.
+add-trade.form.error.same-name                  = Ni all enw’r busnes a’r enw masnachu fod yr un peth
+
+
 add-business-trade.heading                  = Beth yw masnach eich busnes?
 add-business-trade.p1                       = Er enghraifft: plymio, gwaith trydanol, ymgynghori.
 add-business-trade.form.error.empty         = Nodwch fasnach eich busnes
@@ -367,10 +375,25 @@ add-business-trade.form.error.short         = Mae’n rhaid i fasnach y busnes g
 add-business-trade.form.error.long          = Mae’n rhaid i fasnach y busnes fod yn 35 o gymeriadau neu lai
 add-business-trade.form.error.invalid       = Gall masnach y busnes gynnwys llythrennau mawr neu fach, atalnodau llawn, comas, digidau, &, ’, \, /, - yn unig.
 add-business-trade.form.error.same-name     = Ni all enw’r busnes a’r enw masnachu fod yr un peth
+
+## Is the new address in the UK page
+add-business-is.the.new.address.in.the.uk.heading   = A yw’r cyfeiriad newydd yn y DU?
+add-business-is.the.address.of.your.sole.trader.business.in.the.uk.heading   = A yw cyfeiriad eich busnes unig fasnachwr yn y DU?
+add-business-is.the.new.address.in.the.uk.error    = Dewiswch ‘Iawn’ os yw’r cyfeiriad newydd yn y DU
+add-business-is.the.address.of.your.sole.trader.business.in.the.uk.error    = Dewiswch ‘Iawn’ os yw’ch busnes unig fasnachwr yn y DU
+
+## Add business address page
 add-business-address.select.heading         = Dewiswch gyfeiriad y busnes
 add-business-address.lookup.heading         = Beth yw cyfeiriad eich busnes?
 add-business-address.confirm.heading        = Cadarnhewch gyfeiriad y busnes
 add-business-address.edit.heading           = Nodwch gyfeiriad eich busnes
+
+## Add international business address page
+add-international-business-address.heading = Nodwch gyfeiriad rhyngwladol eich busnes
+add-international-business-address.postcode =  Cod post neu god ‘zip’
+add-international-business-address.countryPicker.heading = Nodwch y wlad neu’r diriogaeth ar gyfer cyfeiriad eich busnes
+add-international-business-address.countryPicker.hint = Nodwch wlad neu diriogaeth
+
 incomeSources.add.UKPropertyStartDate.heading                   = Dyddiad dechrau’r busnes
 incomeSources.add.UKPropertyStartDate.date-question             = Pryd y dechreuodd eich busnes eiddo yn y DU?
 incomeSources.add.UKPropertyStartDate.hint                      = Gall y dyddiad y dechreuodd eich busnes fasnachu fod heddiw, yn y gorffennol neu hyd at 7 diwrnod yn y dyfodol.
@@ -383,12 +406,37 @@ incomeSources.add.UKPropertyStartDate.future                    = Mae’n rhaid 
 incomeSources.add.UKPropertyStartDate.error.required            = Nodwch y dyddiad y dechreuodd eich busnes eiddo yn y DU
 incomeSources.add.UKPropertyStartDate.error.future              = Mae’n rhaid i’r dyddiad y dechreuodd eich busnes eiddo yn y DU fod cyn {0}
 incomeSources.add.UKPropertyStartDate.error.invalid             = Mae’n rhaid i’r dyddiad fod yn ddyddiad go iawn
+add-uk-property-start-date-check.error                          = Dewiswch ‘Iawn’ os yw dyddiad dechrau’r busnes eiddo yn y DU yn gywir
+
+#Generic date form messages
+dateForm.hint                                                       = Er enghraifft, 27 3 2020
+dateForm.error.day.required                                         = Mae’n rhaid i’r dyddiad gynnwys diwrnod
+dateForm.error.month.required                                       = Mae’n rhaid i’r dyddiad gynnwys mis
+dateForm.error.year.required                                        = Mae’n rhaid i’r dyddiad gynnwys blwyddyn
+dateForm.error.dayAndMonth.required                                 = Mae’n rhaid i’r dyddiad gynnwys diwrnod a mis
+dateForm.error.dayAndYear.required                                  = Mae’n rhaid i’r dyddiad gynnwys diwrnod a blwyddyn
+dateForm.error.monthAndYear.required                                = Mae’n rhaid i’r dyddiad gynnwys mis a blwyddyn
+dateForm.error.dayMonthAndYear.required                             = Mae’n rhaid i’r dyddiad gynnwys diwrnod, mis a blwyddyn
+dateForm.error.dayMonthAndYear.required.se                          = Nodwch y dyddiad y daeth eich busnes hunangyflogaeth i ben
+dateForm.error.dayMonthAndYear.required.uk                          = Nodwch y dyddiad y daeth eich busnes eiddo yn y DU i ben
+dateForm.error.dayMonthAndYear.required.fp                          = Nodwch y dyddiad y gwnaeth eich busnes eiddo tramor stopio
+dateForm.error.required.two                                         = Mae’n rhaid i’r dyddiad gynnwys {0} a {1}
+dateForm.error.required                                             = Mae’n rhaid i’r dyddiad gynnwys {0}
+dateForm.error.future                                               = Ni allwch nodi dyddiad dod i ben sydd y tu hwnt i’r diwrnod presennol na dyddiad yn y dyfodol
+dateForm.error.invalid                                              = Mae’n rhaid i’r dyddiad fod yn ddyddiad go iawn
+dateFrom.error.beforeStartDate                                      = TNi all y dyddiad dod i ben ar gyfer y busnes fod cyn y dyddiad dechrau
+dateForm.check.heading                                              = A yw’r dyddiad hwn yn gywir?
+
+#Generic income sources messages
 incomeSources.generic.unknown                                       = Anhysbys
+
 incomeSources.cease.endDate.selfEmployment.heading                               = Pryd y daeth eich busnes unig fasnachwr i ben?
 incomeSources.cease.endDate.selfEmployment.error.invalid                         = Mae’n rhaid i’r dyddiad y gwnaeth eich busnes hunangyflogedig roi’r gorau i fasnachu fod yn ddyddiad go iawn
 incomeSources.cease.endDate.selfEmployment.error.beforeEarliestDate              = Ni all y dyddiad dod i ben fod cyn 6 Ebrill 2015
+
 incomeSources.cease.endDate.ukProperty.heading                    = Pryd y gwnaeth y busnes eiddo yn y DU ddod i ben?
 incomeSources.cease.endDate.ukProperty.error.invalid              = Mae’n rhaid i’r dyddiad y daeth eich busnes eiddo yn y DU i ben fod yn ddyddiad go iawn
+
 incomeSources.cease.SE.heading                            = Dod â busnes unig fasnachwr i ben
 incomeSources.cease.SE.caption                            = Unig fasnachwr
 incomeSources.cease.SE.checkboxLabel                      = Rwyf yn cadarnhau fy mod am ddod â’r busnes hwn i ben
@@ -397,6 +445,7 @@ incomeSources.cease.SE.hint.noBusinessName                = Ond dod â’ch busn
 incomeSources.cease.SE.checkboxError                      = Dewiswch eich bod yn cadarnhau nad ydych bellach yn cael unrhyw incwm o’r busnes hwn
 incomeSources.cease.SE.continue                           = Cadarnhau ac yn eich blaen
 incomeSources.cease.SE.p1                                 = Trwy barhau, rwy’n cadarnhau fy mod am ddod â’r busnes hwn i ben.
+
 incomeSources.cease.UK.heading                            = Dod â busnes eiddo yn y DU i ben
 incomeSources.cease.UK.caption                            = Eiddo yn y DU
 incomeSources.cease.UK.checkboxLabel                      = Rwy’n datgan nad wyf bellach yn cael incwm o unrhyw eiddo yn y DU
@@ -404,6 +453,7 @@ incomeSources.cease.UK.hint                               = Dim ond os nad ydych
 incomeSources.cease.UK.checkboxError                      = Dewiswch eich bod yn datgan nad ydych bellach yn cael incwm o unrhyw eiddo yn y DU
 incomeSources.cease.UK.continue                           = Cadarnhau ac yn eich blaen
 incomeSources.cease.UK.p1                                 = Trwy barhau, rwy’n cadarnhau fy mod am ddod â’r busnes hwn i ben.
+
 incomeSources.cease.FP.heading                            = Dod â busnes eiddo tramor i ben
 incomeSources.cease.FP.caption                            = Eiddo tramor
 incomeSources.cease.FP.checkboxLabel                      = Rwy’n datgan nad wyf bellach yn cael incwm o unrhyw eiddo tramor
@@ -411,19 +461,25 @@ incomeSources.cease.FP.hint                               = Dim ond os nad ydych
 incomeSources.cease.FP.checkboxError                      = Dewiswch eich bod yn datgan nad ydych bellach yn cael unrhyw incwm o eiddo tramor
 incomeSources.cease.FP.continue                           = Cadarnhau ac yn eich blaen
 incomeSources.cease.FP.p1                                 = Trwy barhau, rwy’n cadarnhau fy mod am ddod â’r busnes hwn i ben.
+
 incomeSources.cease.endDate.foreignProperty.heading                      = Pryd y gwnaeth eich busnes eiddo tramor ddod i ben?
 incomeSources.cease.endDate.foreignProperty.error.invalid                = Mae’n rhaid i’r dyddiad y daeth eich busnes eiddo tramor i ben fod yn ddyddiad go iawn
+
 incomeSources.cease.endDate.selfEmployment.future                  = Mae’n rhaid i’r dyddiad y daeth eich busnes unig fasnachwr i ben fod heddiw neu yn y gorffennol
 incomeSources.cease.endDate.ukProperty.future                      = Mae’n rhaid i’r dyddiad y daeth eich busnes eiddo yn y DU i ben fod heddiw neu yn y gorffennol
 incomeSources.cease.endDate.foreignProperty.future                 = Mae’n rhaid i’r dyddiad y daeth eich busnes eiddo tramor i ben fod heddiw neu yn y gorffennol
+
 incomeSources.cease.endDate.selfEmployment.beforeStartDate         = Mae’n rhaid i’r dyddiad y daeth eich busnes unig fasnachwr i ben fod ar neu ar ôl y dyddiad dechrau masnachu
 incomeSources.cease.endDate.ukProperty.beforeStartDate             = Mae’n rhaid i’r dyddiad y daeth eich busnes eiddo yn y DU i ben fod ar neu ar ôl y dyddiad y dechreuodd fasnachu
 incomeSources.cease.endDate.foreignProperty.beforeStartDate        = Mae’n rhaid i’r dyddiad y daeth eich busnes eiddo tramor i ben fod ar neu ar ôl y dyddiad y dechreuodd fasnachu
+
 incomeSources.cease.endDate.selfEmployment.beforeEarliestDate      = Ni all y dyddiad y daeth eich busnes unig fasnachwr i ben fod yn gynharach na’r 6ed o Ebrill 2015
 incomeSources.cease.endDate.ukProperty.beforeEarliestDate          = Ni all y dyddiad y daeth eich busnes eiddo yn y DU i ben fod yn gynharach na’r 6ed o Ebrill 2015
 incomeSources.cease.endDate.foreignProperty.beforeEarliestDate     = Ni all y dyddiad y daeth eich busnes eiddo tramor i ben fod yn gynharach na’r 6ed o Ebrill 2015
+
 incomeSources.cease.endDate.ukProperty.hint-1                      = Dyma’r dyddiad diwethaf i chi gael incwm rhent neu wedi gwneud cost yn ymwneud â’ch busnes eiddo yn y DU.
 incomeSources.cease.endDate.foreignProperty.hint-1                 = Dyma’r dyddiad y gwnaethoch gael incwm rhent ddiwethaf neu wedi gwneud cost sy’n gysylltiedig â’ch busnes eiddo tramor.
+
 incomeSources.add.foreignProperty.startDate.heading                  = Dyddiad dechrau’r busnes
 incomeSources.add.foreignProperty.startDate.date-question            = Pryd y dechreuodd eich busnes eiddo tramor?
 incomeSources.add.foreignProperty.startDate.hint                     = Gall y dyddiad y dechreuodd eich busnes fasnachu fod heddiw, yn y gorffennol neu hyd at 7 diwrnod yn y dyfodol.
@@ -443,14 +499,50 @@ incomeSources.add.foreignProperty.startDate.error.missingYear        = Mae’n r
 incomeSources.add.foreignProperty.startDate.error.missingMonth       = Mae’n rhaid i’r dyddiad gynnwys mis
 incomeSources.add.foreignProperty.startDate.error.missingDay         = Mae’n rhaid i’r dyddiad gynnwys diwrnod
 incomeSources.add.foreignProperty.startDate.error.invalid            = Mae’n rhaid i’r dyddiad fod yn ddyddiad go iawn
+incomeSources.add.foreignProperty.startDate.required.all             = Nodwch y dyddiad y dechreuodd eich busnes eiddo tramor
 incomeSources.add.foreignProperty.startDate.error.future             = Mae’n rhaid i’r dyddiad y dechreuodd eich busnes eiddo tramor fod cyn {0}
 incomeSources.add.foreignProperty.startDate.check.heading            = A yw’r dyddiad hwn yn gywir?
+add-foreign-property-start-date-check.error                          = Dewiswch ‘Iawn’ os yw dyddiad dechrau’r busnes eiddo tramor yn gywir
 incomeSources.add.foreignProperty.startDate.check.radio.yes          = Iawn
 incomeSources.add.foreignProperty.startDate.check.radio.no           = Na
+
+# add Business page
+
 add-business-name.heading1                                        = Enw’r busnes
 add-business-name.heading2                                        = Beth yw enw’ch busnes?
+
 add-business-name.p1                                              = Dyma enw’r busnes a ddefnyddioch i gofrestru ar gyfer Hunanasesiad. Os nad oes enw gwahanol ar eich busnes unig fasnachwr, nodwch eich enw cyntaf ac enw olaf.
 add-business-name.p2                                              = Gall enw’r busnes rydych yn ei nodi gynnwys llythrennau mawr neu fach, atalnodau llawn, comas, digidau, &, {0}, \, /, - yn unig.
+add-business-name.form.error.required                             = Nodwch eich enw neu enw’ch busnes
+add-business-name.form.error.maxLength                            = Mae’n rhaid i enw’r busnes fod yn 105 o gymeriadau neu lai
+add-business-name.form.error.invalidNameFormat                    = Gall enw’r busnes gynnwys llythrennau mawr neu fach, atalnodau llawn, comas, digidau, &, ’, \, /, - yn unig.
+add-business-name.form.error.invalidName                          = Ni all enw’r busnes a’r enw masnachu fod yr un peth
+
+# add Business start date
+add-business-start-date.heading                      = Dyddiad dechrau’r busnes
+add-business-start-date.date-question                = Pryd y dechreuodd eich busnes fasnachu?
+add-business-start-date.hint                         = Gall y dyddiad y dechreuodd eich busnes fasnachu fod heddiw, yn y gorffennol neu hyd at 7 diwrnod yn y dyfodol.
+add-business-start-date.hint2                        = Byddwn yn defnyddio hwn i gyfrifo eich ffi Yswiriant Gwladol Dosbarth 2, os yw’n briodol.
+add-business-start-date.day                          = Diwrnod
+add-business-start-date.month                        = Mis
+add-business-start-date.year                         = Blwyddyn
+add-business-start-date.form.error.emptyDateField    = Nodwch y dyddiad y dechreuodd eich busnes fasnachu
+add-business-start-date.error.future                 = Mae’n rhaid i’r dyddiad y dechreuodd eich busnes eiddo tramor fod cyn {0}
+add-business-start-date.error.required.all           = Nodwch y dyddiad y dechreuodd eich busnes fasnachu
+add-business-start-date.error.invalid                = Mae’n rhaid i’r dyddiad fod yn ddyddiad go iawn
+add-business-start-date.invalid                      = Mae’n rhaid i’r dyddiad fod yn ddyddiad go iawn
+add-business-start-date.required.all                 = Nodwch y dyddiad y dechreuodd eich busnes fasnachu
+add-business-start-date.required.two                 = Mae’n rhaid i’r dyddiad gynnwys {0} a {1}
+add-business-start-date.required                     = Mae’n rhaid i’r dyddiad gynnwys {0}
+add-business-start-date.future                       = Mae’n rhaid i’r dyddiad y dechreuodd eich busnes fasnachu fod cyn {0}
+
+# add Business start date check
+add-business-start-date-check.heading                = A yw’r dyddiad hwn yn gywir?
+add-business-start-date-check.radio.yes              = Iawn
+add-business-start-date-check.radio.no               = Na
+add-business-start-date-check.error                  = Dewiswch ’Iawn’ os yw dyddiad dechrau’ch busnes yn gywir
+
+## Cease - Check Answers ##
 cease-check-answers.title                                     = Gwirio’ch atebion
 cease-check-answers.caption                                   = Unig fasnachwr
 cease-check-answers.cease-date                                = Dyddiad y gwnaeth y busnes stopio
@@ -459,225 +551,45 @@ cease-check-answers.trade                                     = Masnach y busnes
 cease-check-answers.address                                   = Cyfeiriad
 cease-check-answers.change                                    = Newid
 cease-check-answers.unknown                                   = Anhysbys
-incomeSources.add.incomeSourceReportingMethod.heading                   =   Dewis dull o gyflwyno adroddiad
-incomeSources.add.incomeSourceReportingMethod.description1              =   Mae’ch busnes yn gymwys i gael cyfnod gras hyd at Ebrill {0}, lle y gallwch gyflwyno adroddiadau’n flynyddol.
-incomeSources.add.incomeSourceReportingMethod.description2              =   Bydd yn rhaid gwneud un diweddariad, a hynny erbyn 31 Ionawr fan bellaf.
-incomeSources.add.incomeSourceReportingMethod.description3              =   Nid yw’r canlynol yn cael effaith ar eich cyfnod gras:
-incomeSources.add.incomeSourceReportingMethod.description4.bullet1      =   lefel eich incwm o ffynonellau eraill
-incomeSources.add.incomeSourceReportingMethod.description4.bullet2      =   y trosiant rydych yn disgwyl i’ch busnes newydd ei wneud
-incomeSources.add.incomeSourceReportingMethod.description4.bullet3      =   sut yr ydych yn cyflwyno adroddiadau ar gyfer unrhyw ffynonellau incwm presennol
-incomeSources.add.incomeSourceReportingMethod.chooseReport              =   Dewiswch sut yr hoffech gyflwyno adroddiadau
-incomeSources.add.incomeSourceReportingMethod.taxYear                   =   Blwyddyn dreth {0}-{1}
-incomeSources.add.incomeSourceReportingMethod.chooseAnnualReport        =   Dewis cyflwyno adroddiadau’n flynyddol
-incomeSources.add.incomeSourceReportingMethod.chooseQuarterlyReport     =   Dewis cyflwyno adroddiadau’n chwarterol
-incomeSources.add.incomeSourceReportingMethod.error                     =   Dewiswch a hoffech gyflwyno adroddiad yn flynyddol neu’n chwarterol ar gyfer blwyddyn dreth {0} i {1}
-incomeSources.add.incomeSourceReportingMethod.se.caption                =   Unig fasnachwr
-incomeSources.add.incomeSourceReportingMethod.uk.caption                =   Eiddo yn y DU
-incomeSources.add.incomeSourceReportingMethod.fp.caption                =   Eiddo tramor
-incomeSources.manage.propertyReportingMethod.checkbox.annual                       = Hoffwn newid i adrodd yn flynyddol
-incomeSources.manage.propertyReportingMethod.checkbox.quarterly                    = Hoffwn newid i adrodd yn chwarterol
-incomeSources.manage.propertyReportingMethod.error.quarterly                       = Dewiswch eich bod am newid i gyflwyno adroddiadau’n chwarterol
-incomeSources.manage.propertyReportingMethod.error.annual                          = Dewiswch eich bod am newid i gyflwyno adroddiadau’n flynyddol
-incomeSources.manage.propertyReportingMethod.changingToAnnualWarning.individual    = Bydd CThEF yn tynnu unrhyw ddiweddariadau incwm rydych eisoes wedi’u cyflwyno ar gyfer y flwyddyn dreth hon. Bydd angen i chi gynnwys unrhyw incwm a gyflwynwyd yn flaenorol ar eich Ffurflen Dreth flynyddol.
-incomeSources.manage.propertyReportingMethod.changingToAnnualWarning.agent         = Bydd CThEF yn tynnu unrhyw ddiweddariadau incwm mae’ch cleient eisoes wedi’u cyflwyno ar gyfer y flwyddyn dreth hon. Bydd angen i chi gynnwys unrhyw incwm a gyflwynwyd yn flaenorol ar Ffurflen Dreth flynyddol eich cleient.
-incomeSources.manage.propertyReportingMethod.changingToQuarterlyWarning.individual = Bydd CThEF yn tynnu unrhyw ddiweddariadau incwm rydych eisoes wedi’u cyflwyno ar gyfer y flwyddyn dreth hon. Bydd angen i chi gynnwys unrhyw incwm a gyflwynwyd yn flaenorol yn eich Ffurflen Dreth chwarterol.
-incomeSources.manage.propertyReportingMethod.changingToQuarterlyWarning.agent      = Bydd CThEF yn tynnu unrhyw ddiweddariadau incwm mae’ch cleient eisoes wedi’u cyflwyno ar gyfer y flwyddyn dreth hon. Bydd angen i chi gynnwys unrhyw incwm a gyflwynwyd yn flaenorol ar Ffurflen Dreth chwarterol eich cleient.
-incomeSources.add.manageObligations.title                             =   Bydd {0} yn cyflwyno adroddiadau’n {1} ar gyfer blwyddyn dreth {2} i {3}
-incomeSources.add.manageObligations.panel.title                       =   Bydd {0}
-incomeSources.add.manageObligations.panel.body                        =   yn cyflwyno adroddiadau’n {0} ar gyfer blwyddyn dreth {1} i {2}
-incomeSources.add.manageObligations.annually                          =   flynyddol
-incomeSources.add.manageObligations.quarterly                         =   chwarterol
-incomeSources.add.manageObligations.to                                =   i
-incomeSources.add.manageObligations.sole-trader                       =   y busnes unig fasnachwr
-incomeSources.add.manageObligations.uk-property                       =   eiddo yn y DU
-incomeSources.add.manageObligations.foreign-property                  =   eiddo tramor
-incomeSources.add.manageObligations.heading                           =   Yr hyn y mae’n rhaid i chi ei wneud
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.title = {0} wedi’i {1} cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm ar gyfer blwyddyn dreth {2} i {3}
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.title                       = {0}
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.body = wedi’i {0} cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm ar gyfer blwyddyn dreth {1} i {2}
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.signedUp = cofrestru
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.optedOut = optio allan o
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.heading = Eich dyddiadau cau sydd wedi’u haddasu
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.inset = Bydd eich dyddiadau cau ar gyfer cyflwyno ar gyfer y busnes hwn ar gael yn y munudau nesaf
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.beforeLink = Hyd yn oed os nad ydynt yn cael eu harddangos ar y dudalen
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.link = dyddiadau cau ar gyfer cyflwyno
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.afterLink = ar unwaith, mae’ch cyfrif wedi’i ddiweddaru.
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para2 = Ar gyfer y busnes newydd hwn mae’n bosibl bod gennych ddiweddariadau hwyr ar gyfer blwyddyn dreth 2024 i 2025. Mae’n rhaid i chi gyflwyno’r diweddariadau hyn, ynghyd â’r holl incwm a threuliau sydd eu hangen, drwy ddefnyddio’ch meddalwedd sy’n cydweddu.
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.link = Bwrw golwg dros eich busnes
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.afterLink = er mwyn ychwanegu, rheoli neu ddod â busnes neu ffynhonnell incwm i ben.
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.sole-trader                       =   y busnes unig fasnachwr
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.uk-property                       =   eiddo yn y DU
-incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.foreign-property                  =   eiddo tramor
-incomeSources.manage.quarterly-period                                 =   Cyfnod diweddaru
-incomeSources.manage.quarterly-period.standard                        =   Safonol
-incomeSources.manage.quarterly-period.calendar                        =   Calendr
-incomeSources.manage.quarterly-period.standard.summary                =   Beth yw cyfnod diweddaru safonol?
-incomeSources.manage.quarterly-period.calendar.summary                =   Beth yw cyfnod diweddaru calendr?
-incomeSources.manage.quarterly-period.standard.content.p1             =   Mae’r busnes hwn yn cyflwyno adroddiadau o 6 Ebrill yn unol â’r flwyddyn dreth – enw arall ar hyn yw ‘defnyddio cyfnodau diweddaru safonol’.
-incomeSources.manage.quarterly-period.standard.content.p2             =   Gallwch ddewis adrodd gan ddefnyddio cyfnodau diweddaru calendr sy’n dod i ben ar ddiwrnod olaf y mis, os yw’ch meddalwedd yn caniatáu hyn.
-incomeSources.manage.quarterly-period.calendar.content.p1             =   Ar hyn o bryd, mae’r busnes hwn yn cyflwyno adroddiadau o 1 Ebrill gan ddefnyddio cyfnodau diweddaru calendr.
-incomeSources.manage.quarterly-period.calendar.content.p2             =   Gallwch newid hyn i adrodd yn ôl cyfnodau diweddaru safonol, yn unol â’r flwyddyn dreth, fel y gallwch adrodd o 6 Ebrill ymlaen. Gellir gwneud y newid hwn drwy’ch meddalwedd sy’n cydweddu yn unig.
-incomeSources.manage.quarterly-period.content.p3                      =   Dysgwch ragor am chwarterau safonol a chwarterau calendr
-incomeSources.manage.business-manage-details.heading                  =   Gwirio’ch manylion
-incomeSources.manage.business-manage-details.sole-trader-section      =   Unig fasnachwr
-incomeSources.manage.business-manage-details.business-name            =   Enw’r busnes
-incomeSources.manage.business-manage-details.business-address         =   Cyfeiriad
-incomeSources.manage.business-manage-details.date-started             =   Dyddiad cychwyn
-incomeSources.manage.business-manage-details.reporting-method         =   Amlder cyflwyno {0} i {1}
-incomeSources.manage.business-manage-details.change                   =   Newid
-incomeSources.manage.business-manage-details.quarterly                =   Bob chwarter
-incomeSources.manage.business-manage-details.annually                 =   Blynyddol
-incomeSources.manage.business-manage-details.quarterly.graceperiod    =   Bob chwarter
-incomeSources.manage.business-manage-details.annually.graceperiod     =   Blynyddol
-incomeSources.manage.business-manage-details.tradetype                =   Math o fasnach
-incomeSources.manage.business-manage-details.reportingFrequency       =   Bwrw golwg dros a newid amlder eich adroddiadau ar gyfer eich holl fusnesau
-incomeSources.manage.business-manage-details.insetText                =   Gan mai busnes newydd yw hwn o hyd, gallwch newid pa mor aml rydych yn cyflwyno adroddiadau ar ei gyfer am hyd at ddwy flwyddyn dreth. O fis Ebrill {0} ymlaen, gallai fod yn ofynnol i chi gyflwyno adroddiadau chwarterol.
-incomeSources.manage.uk-property-manage-details.uk-property-section              =   Eiddo yn y DU
-incomeSources.manage.foreign-property-manage-details.foreign-property-section    =   Eiddo tramor
-incomeSources.manage.new.business-manage-details.heading                  =   Manage your details
-incomeSources.manage.new.business.details.heading                         =   Gwirio’ch manylion
-incomeSources.manage.new.business.details.sole.trader.section             =   Unig fasnachwr
-incomeSources.manage.new.business.details.business.name                   =   Enw’r busnes
-incomeSources.manage.new.business.details.business.address                =   Cyfeiriad
-incomeSources.manage.new.business.details.date.started                    =   Dyddiad cychwyn
-incomeSources.manage.new.business.details.reporting.method                =   Amlder cyflwyno {0} i {1}
-incomeSources.manage.new.business.details.change                          =   Newid
-incomeSources.manage.new.business.details.quarterly                       =   Bob chwarter
-incomeSources.manage.new.business.details.annually                        =   Blynyddol
-incomeSources.manage.new.business.details.quarterly.grace.period          =   Bob chwarter
-incomeSources.manage.new.business.details.annually.grace.period           =   Blynyddol
-incomeSources.manage.new.business.details.trade.type                      =   Math o fasnach
-incomeSources.manage.new.uk.property.manage.details.uk.property.section              =   Eiddo yn y DU
-incomeSources.manage.new.foreign.property.manage.details.foreign.property.section    =   Eiddo tramor
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.paragraph                      =   Gan mai busnes newydd yw hwn, gallwch benderfynu os ydych am ddefnyddio’r gwasanaeth Troi Treth yn Ddigidol ar gyfer Treth Incwm am hyd at 2 flwyddyn dreth. O fis Ebrill {0} ymlaen, gallai fod yn ofynnol i chi ddefnyddio’r gwasanaeth hwn.
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.reportingFrequencyPrefix       =   Yn dibynnu ar eich amgylchiadau, mae’n bosibl y byddwch yn gallu
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.reportingFrequencyLink         =   bwrw golwg dros a newid eich rhwymedigaethau adrodd ar gyfer eich holl fusnesau
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage                       = Defnyddio Troi Treth yn Ddigidol ar gyfer Treth Incwm ar gyfer {0} i {1}
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage.yes                   = Iawn
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage.no                    = Na
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.signup                         = Cofrestru
-incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.optOut                         = Optio allan
-incomeSources.cease.error.UK.notCeased.text                       = Nid oedd modd dod â’ch busnes eiddo yn y DU i ben. Rhowch gynnig arall arni yn nes ymlaen.
-incomeSources.cease.error.FP.notCeased.text                       = Nid oedd modd dod â’ch busnes eiddo tramor i ben. Rhowch gynnig arall arni yn nes ymlaen.
-incomeSources.cease.error.SE.notCeased.text                       = Nid oedd modd dod â’ch busnes unig fasnachwr i ben. Rhowch gynnig arall arni yn nes ymlaen.
-incomeSources.cease.error.notCeased.link.prefix                   = Yn ôl i
-incomeSources.cease.error.notCeased.link.text                     = eich busnesau
-incomeSources.manage.reportingMethodError.hyperlink1            = rheoli eich manylion
-incomeSources.manage.reportingMethodError.hyperlink2            = weld a rheoli ffynonellau incwm
-incomeSources.manage.reportingMethodError.p3                    = Neu ewch yn ôl i
-incomeSources.manage.businessReportingMethodError.p1            = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes unig fasnachwr.
-incomeSources.manage.businessReportingMethodError.p2            = Gallwch geisio newid pa mor aml y mae’ch busnes unig fasnachwr yn cyflwyno adroddiadau eto yn
-incomeSources.manage.uKPropertyReportingMethodError.p1        = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo yn y DU.
-incomeSources.manage.uKPropertyReportingMethodError.p2        = Gallwch geisio newid pa mor aml y mae’ch busnes eiddo yn y DU yn cyflwyno adroddiadau eto yn
-incomeSources.manage.foreignPropertyReportingMethodError.p1   = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo tramor.
-incomeSources.manage.foreignPropertyReportingMethodError.p2   = Gallwch geisio newid pa mor aml y mae’ch busnes eiddo tramor yn cyflwyno adroddiadau eto yn
-incomeSources.manage.businessReportingMethodError.text          = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes unig fasnachwr.
-incomeSources.manage.uKPropertyReportingMethodError.text        = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo yn y DU.
-incomeSources.manage.foreignPropertyReportingMethodError.text   = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo tramor.
-incomeSources.ceased-income-sources.heading                     =   Busnesau sydd wedi dod i ben
-incomeSources.ceased-income-sources.table-head.business-name    =   Enw’r busnes
-incomeSources.ceased-income-sources.table-head.date-started     =   Dyddiad cychwyn
-incomeSources.ceased-income-sources.table-head.date-ended       =   Y dyddiad dod i ben
-incomeSources.ceased-income-sources.uk-property                 =   Eiddo yn y DU
-incomeSources.ceased-income-sources.foreign-property            =   Eiddo tramor
-incomeSources.ceased-income-sources.unknown-sole-trader         =   Busnesau unig fasnachwr
 
-# Missing keys copied from income-tax-view-change-frontend after test run
-add-business-start-date-check.error                  = Dewiswch ’Iawn’ os yw dyddiad dechrau’ch busnes yn gywir
-add-business-start-date.error.invalid                = Mae’n rhaid i’r dyddiad fod yn ddyddiad go iawn
-add-business-start-date.heading                      = Dyddiad dechrau’r busnes
-add-business-start-date.hint                         = Gall y dyddiad y dechreuodd eich busnes fasnachu fod heddiw, yn y gorffennol neu hyd at 7 diwrnod yn y dyfodol.
-add-business-start-date.required.all                 = Nodwch y dyddiad y dechreuodd eich busnes fasnachu
-add-foreign-property-start-date-check.error                          = Dewiswch ‘Iawn’ os yw dyddiad dechrau’r busnes eiddo tramor yn gywir
-add-trade.heading                               = Beth yw masnach eich busnes?
-add-uk-property-start-date-check.error                          = Dewiswch ‘Iawn’ os yw dyddiad dechrau’r busnes eiddo yn y DU yn gywir
-business-ceased.obligation.heading2.text                            = Eich dyddiadau cau sydd wedi’u haddasu
-business-ceased.obligation.inset.text                               = Bydd eich dyddiadau cau ar gyfer y busnes hwn ar gael yn y munudau nesaf.
-business-ceased.obligation.panel.title                              = Mae {0}
-business.added.foreign-property.panel.title             = Mae eiddo tramor
-business.added.uk-property.panel.title                  = Mae eiddo yn y DU
-check-details-fp.description                            = Unwaith y byddwch yn cadarnhau’r manylion hyn, ni fyddwch yn gallu eu diwygio yn y cam nesaf a bydd angen i chi gysylltu â CThEF i wneud hynny.
-check-details-fp.title                                  = Cadarnhewch fod yr wybodaeth hon yn gywir
-check-details-uk.description                            = Unwaith y byddwch yn cadarnhau’r manylion hyn, ni fyddwch yn gallu eu diwygio yn y cam nesaf a bydd angen i chi gysylltu â CThEF i wneud hynny.
-check-details-uk.title                                  = Cadarnhewch fod yr wybodaeth hon yn gywir
-check-details.description                               = Unwaith y byddwch yn cadarnhau’r manylion hyn, ni fyddwch yn gallu eu diwygio yn y cam nesaf a bydd angen i chi gysylltu â CThEF i wneud hynny.
+cease-check-answers-uk.caption                                = Eiddo yn y DU
+cease-check-answers-fp.caption                                = Eiddo tramor
+
+
+# check business details
 check-details.title                                     = Cadarnhewch fod yr wybodaeth hon yn gywir
-dateForm.error.monthAndYear.required                                = Mae’n rhaid i’r dyddiad gynnwys mis a blwyddyn
-dateForm.error.required                                             = Mae’n rhaid i’r dyddiad gynnwys {0}
-dateForm.hint                                                       = Er enghraifft, 27 3 2020
-income-sources.check-details-reporting-frequency.r17.change-rf-key              = A ydych am gofrestru’r busnes newydd hwn gyda’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm?
-income-sources.check-details-reporting-frequency.title                          = Gwirio’ch manylion
-income.source.added.your.revised.deadlines.h2                                               = Eich dyddiadau cau sydd wedi’u haddasu
-manage.your.businesses.addIncomeSources.foreignProperty.link             = Ychwanegu busnes eiddo tramor
-manage.your.businesses.addIncomeSources.property.link                    = Ychwanegu busnes eiddo
-manage.your.businesses.addIncomeSources.ukProperty.link                  = Ychwanegu busnes eiddo yn y DU
-manage.your.businesses.heading                                           = Eich busnesau
-manage.your.businesses.property-h2                                       = Busnesau eiddo
-manageBusinesses.add.chooseSoleTraderAddress.heading                                                         = Beth yw cyfeiriad eich busnes unig fasnachwr?
-manageBusinesses.add.chooseSoleTraderAddress.radio.option.newAddress                                         = Dim un o’r rhain, rwyf am ychwanegu cyfeiriad newydd
-radioForm.checkDate.heading.withDate                                = Ai {0} yw’r dyddiad cywir?
-radioForm.yes                                                       = Iawn
-
-
-# Business Details messages copied from income-tax-view-change-frontend
-add-international-business-address.heading = Nodwch gyfeiriad rhyngwladol eich busnes
-add-international-business-address.postcode =  Cod post neu god ‘zip’
-add-international-business-address.countryPicker.heading = Nodwch y wlad neu’r diriogaeth ar gyfer cyfeiriad eich busnes
-add-international-business-address.countryPicker.hint = Nodwch wlad neu diriogaeth
-radioForm.checkDate.heading                                         = A yw’r dyddiad hwn yn gywir?
-radioForm.no                                                        = Na
-add-business-start-date.date-question                = Pryd y dechreuodd eich busnes fasnachu?
-add-business-start-date.hint2                        = Byddwn yn defnyddio hwn i gyfrifo eich ffi Yswiriant Gwladol Dosbarth 2, os yw’n briodol.
-add-business-start-date.day                          = Diwrnod
-add-business-start-date.month                        = Mis
-add-business-start-date.year                         = Blwyddyn
-add-business-start-date.form.error.emptyDateField    = Nodwch y dyddiad y dechreuodd eich busnes fasnachu
-add-business-start-date.error.future                 = Mae’n rhaid i’r dyddiad y dechreuodd eich busnes eiddo tramor fod cyn {0}
-add-business-start-date.error.required.all           = Nodwch y dyddiad y dechreuodd eich busnes fasnachu
-add-business-start-date.invalid                      = Mae’n rhaid i’r dyddiad fod yn ddyddiad go iawn
-add-business-start-date.required.two                 = Mae’n rhaid i’r dyddiad gynnwys {0} a {1}
-add-business-start-date.required                     = Mae’n rhaid i’r dyddiad gynnwys {0}
-add-business-start-date.future                       = Mae’n rhaid i’r dyddiad y dechreuodd eich busnes fasnachu fod cyn {0}
-manage.your.businesses.self-employed-h2                                  = Busnesau unig fasnachwr
-manage.your.businesses.sole-trader-inset                                 = Peidiwch ag ychwanegu cwmnïau cyfyngedig na phartneriaethau busnes yma.
-manage.your.businesses.self-employed-desc                                = Rydych yn unig fasnachwr os ydych yn rhedeg eich busnes eich hun fel unigolyn ac yn gweithio i chi’ch hun. Enw arall ar hyn yw bod yn hunangyflogedig.
-manage.your.businesses.addIncomeSources.selfEmployment.link              = Ychwanegu busnes unig fasnachwr
-manage.your.businesses.property-desc                                     = Os ydych yn cael incwm o un eiddo neu fwy yn y DU, mae gennych fusnes eiddo yn y DU. Os yw’r eiddo y tu allan i’r DU, mae gennych fusnes eiddo tramor. Er enghraifft: incwm o roi tai, fflatiau, neu gartrefi gwyliau ar osod a hynny naill ai ar sail tymor hir neu dymor byr.
-manage.your.businesses.unknown-field                                     = Anhysbys
-manage.your.businesses.ceasedBusinesses.heading                          = Busnesau sydd wedi dod i ben
-manage.your.businesses.ceasedBusinesses.single                           = Mae 1 busnes wedi dod i ben.
-manage.your.businesses.ceasedBusinesses.multiple                         = Mae {0} fusnes wedi dod i ben.
-manage.your.businesses.ceasedBusinesses.viewall                          = Bwrw golwg dros yr holl fusnesau sydd wedi dod i ben
-manage.your.businesses.view.manage                                       = Gweld a rheoli
-manage.your.businesses.cease                                             = Dod i ben
-manage.your.businesses.name                                              = Enw
-manage.your.businesses.datestarted                                       = Dyddiad cychwyn
-manage.your.businesses.startdate                                         = Dyddiad dechrau
-manage.your.businesses.UK                                                = Eiddo yn y DU
-manage.your.businesses.Foreign                                           = Eiddo tramor
-
-
-# More Business Details messages copied from income-tax-view-change-frontend
 check-details.heading                                   = Unig fasnachwr
 check-details.business-name                             = Enw’r busnes
 check-details.start-date                                = Dyddiad dechrau masnachu
 check-details.trade                                     = Math o fasnach
 check-details.address                                   = Cyfeiriad
 check-details.change                                    = Newid
+check-details.description                               = Unwaith y byddwch yn cadarnhau’r manylion hyn, ni fyddwch yn gallu eu diwygio yn y cam nesaf a bydd angen i chi gysylltu â CThEF i wneud hynny.
+
 check-details.added-address                             = Cyfeiriad wedi’i ychwanegu ar gyfer y busnes hwn
 check-details.added-international-address               = Cyfeiriad rhyngwladol ar gyfer y busnes hwn wedi’i ychwanegu
+
+check-details-uk.title                                  = Cadarnhewch fod yr wybodaeth hon yn gywir
 check-details-uk.heading                                = Eiddo yn y DU
 check-details-uk.start-date                             = Dyddiad dechrau
 check-details-uk.change                                 = Newid
+check-details-uk.description                            = Unwaith y byddwch yn cadarnhau’r manylion hyn, ni fyddwch yn gallu eu diwygio yn y cam nesaf a bydd angen i chi gysylltu â CThEF i wneud hynny.
+
+check-details-fp.title                                  = Cadarnhewch fod yr wybodaeth hon yn gywir
 check-details-fp.heading                                = Eiddo tramor
 check-details-fp.start-date                             = Dyddiad dechrau
 check-details-fp.change                                 = Newid
+check-details-fp.description                            = Unwaith y byddwch yn cadarnhau’r manylion hyn, ni fyddwch yn gallu eu diwygio yn y cam nesaf a bydd angen i chi gysylltu â CThEF i wneud hynny.
+
+# business added page
 business.added.text                                     = Yr hyn y mae’n rhaid i chi ei wneud
 business.added.deadlines                                = Eich dyddiadau cau sydd wedi’u haddasu
 business.added.to                                       = i
+
 business.added.quarterly.heading                        = Anfon diweddariadau chwarterol
 business.added.quarterly.p1                             = Mae’n rhaid i chi anfon diweddariadau chwarterol o’ch incwm a’ch treuliau, gan ddefnyddio meddalwedd sy’n cydweddu, erbyn y dyddiadau cau canlynol:
 business.added.final.declaration.heading                = Cyflwyno’ch datganiadau terfynol a thalu’ch treth
+
 business.added.view.all.businesses                              = Bwrw golwg dros eich holl fusnesau
 business.added.obligation.list.text                                                     = Mae’n rhaid i chi gyflwyno’ch Ffurflen Dreth ar gyfer blwyddyn dreth {0} i {1} erbyn <b>{2}</b>
 business.added.obligation.inset.single.annual.overdue.text                              = Mae gennych <b>1 diweddariad sy’n hwyr</b>. Mae’n rhaid i chi gyflwyno’ch Ffurflen Dreth flynyddol a thalu’r dreth sydd arnoch.
@@ -689,136 +601,243 @@ business.added.obligation.inset.single.historic.overdue.text                    
 business.added.obligation.inset.multiple.historic.overdue.text                          = Mae gennych <b>{0} ddiweddariad sy’n hwyr</b>. Mae’n rhaid i chi wneud yn siŵr eich bod wedi anfon yr holl incwm a threuliau sydd eu hangen ar gyfer blynyddoedd treth cyn {1} i {2}.
 business.added.obligation.view.overdue.upcoming.updates.text                            = Bwrw golwg dros eich diweddariadau sy’n hwyr a’r rhai sydd ar y gweill
 business.added.obligation.view.upcoming.updates.text                                    = Bwrw golwg dros eich diweddariadau sydd ar y gweill
+
 business.added.table.heading.1                          = Blwyddyn dreth
 business.added.table.heading.2                          = Dyddiad cau
 business.added.income.sources.button                    = Eich ffynonellau incwm
 business.added.previous.tax.years.heading               = Blynyddoedd treth blaenorol
 business.added.previous.tax.years.t1                    = Mae’n rhaid i chi wneud yn siŵr eich bod wedi anfon yr holl Incwm a threuliau, a datganiadau terfynol ar gyfer blynyddoedd treth cyn
+
 business.added.next.quarterly.obligation.text           = Mae’n rhaid i chi gyflwyno’ch Ffurflen Dreth ar gyfer blwyddyn dreth {0} i {1} erbyn <b>{2}</b>
 business.added.final.declaration.text                   = Bydd yn rhaid i chi gyflwyno’ch datganiadau terfynol a thalu’r dreth sydd arnoch erbyn y dyddiad cau.
+
+
+####### Income Source Added page - h1 intentionally empty for green card #######
+
+#### Shared Messages
+
+income.source.added.your.revised.deadlines.h2                                               = Eich dyddiadau cau sydd wedi’u haddasu
 income.source.added.few.minutes.inset                                                       = Bydd eich dyddiadau cau o ran cyflwyno ar gyfer y busnes hwn ar gael yn y munudau nesaf.
+
 income.source.added.submit.software.h2                                                      = Cyflwyno diweddariadau drwy ddefnyddio meddalwedd
 income.source.added.submit.software.quarterly.p                                             = Os ydych yn adrodd am flwyddyn dreth yn chwarterol, bydd angen i chi ddefnyddio
 income.source.added.submit.software.quarterly.link                                          = meddalwedd sy’n cydweddu â’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
+
+
 income.source.added.submit.annual.text.p                                                    = Wrth adrodd yn flynyddol, gallwch gyflwyno’ch Ffurflen Dreth yn uniongyrchol drwy’ch cyfrif ar.lein CThEF neu drwy ddefnyddio
 income.source.added.submit.software.annual.link                                             = meddalwedd sy’n cydweddu â’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
+
 income.source.added.submit.annual.text.full                                                 = Wrth adrodd yn flynyddol, gallwch gyflwyno’ch Ffurflen Dreth yn uniongyrchol drwy’ch cyfrif ar.lein CThEF neu drwy ddefnyddio compatible software.
 income.source.added.obligation.list.text                                                    = Mae eich ffurflen dreth ar gyfer y flwyddyn dreth {0} i {1} yn ddyledus erbyn <b>{2}</b>
+
+
+###### Income Source Added Scenario 1 - SignUpNextYearOnly  #######
+
 income.source.added.scenario.one.account.updated.p.a                                        = Hyd yn oed os nad ydynt yn ymddangos ar unwaith ar y dudalen
 income.source.added.scenario.one.account.updated.p.link                                     = dyddiadau cau ar gyfer cyflwyno
 income.source.added.scenario.one.account.updated.p.b                                        = mae’ch cyfrif wedi’i ddiweddaru.
+
 income.source.added.scenario.one.view.reporting.obligations.p.a                             = Yn dibynnu ar eich amgylchiadau, mae’n bosibl y byddwch yn gallu
 income.source.added.scenario.one.view.reporting.obligations.link                            = bwrw golwg dros a newid eich ymrwymiadau adrodd
 income.source.added.scenario.one.view.reporting.obligations.p.b                             = ar gyfer eich holl fusnesau.
+
 income.source.added.scenario.one.view.businesses.link                                       = Bwrw golwg dros eich busnesau
 income.source.added.scenario.one.view.businesses.p                                          = er mwyn ychwanegu, rheoli neu ddod â busnes neu ffynhonnell incwm i ben.
+
+###### Income Source Added Scenario 2 - NotSigningUp  #######
+
 income.source.added.scenario.two.account.updated.p.a                                        = Hyd yn oed os nad ydynt yn ymddangos ar unwaith ar y dudalen
 income.source.added.scenario.two.account.updated.p.link                                     = dyddiadau cau ar gyfer cyflwyno
 income.source.added.scenario.two.account.updated.p.b                                        = mae’ch cyfrif wedi’i ddiweddaru.
+
 income.source.added.scenario.two.view.reporting.obligations.p.a                             = Mae’r busnes newydd hwn wedi optio allan o’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm. Dysgwch ragor am
 income.source.added.scenario.two.view.reporting.obligations.link                            = eich ymrwymiadau adrodd
+
 income.source.added.scenario.two.view.businesses.link                                       = Bwrw golwg dros eich busnesau
 income.source.added.scenario.two.view.businesses.p                                          = er mwyn ychwanegu, rheoli neu ddod â busnes neu ffynhonnell incwm i ben.
+
+###### Income Source Added Scenario 3 - SignUpCurrentYearOnly || SignUpBothYears #######
+
 income.source.added.few.minutes.overdue.updates                                             = Ar gyfer y busnes newydd hwn, mae’n bosibl bod gennych ddiweddariadau hwyr ar gyfer blwyddyn dreth {0} i {1}. Mae’n rhaid i chi gyflwyno’r diweddariadau hyn, ynghyd â’r holl incwm a threuliau sydd eu hangen, drwy ddefnyddio’ch meddalwedd sy’n cydweddu.
+
 income.source.added.scenario.three.account.updated.p.a                                      = Hyd yn oed os nad ydynt yn ymddangos ar unwaith ar y dudalen
 income.source.added.scenario.three.account.updated.p.link                                   = dyddiadau cau ar gyfer cyflwyno
 income.source.added.scenario.three.account.updated.p.b                                      = mae’ch cyfrif wedi’i ddiweddaru.
+
 income.source.added.scenario.three.view.reporting.obligations.p.a                           = Yn dibynnu ar eich amgylchiadau, mae’n bosibl y byddwch yn gallu
 income.source.added.scenario.three.view.reporting.obligations.link                          = bwrw golwg dros a newid eich ymrwymiadau adrodd
 income.source.added.scenario.three.view.reporting.obligations.p.b                           = ar gyfer eich holl fusnesau.
+
 income.source.added.scenario.three.view.businesses.link                                     = Bwrw golwg dros eich busnesau
 income.source.added.scenario.three.view.businesses.p                                        = er mwyn ychwanegu, rheoli neu ddod â busnes neu ffynhonnell incwm i ben.
+
+###### Income Source Added Scenario 4 - OnlyOneBusinessInLatency || OptedOut  #######
+
 income.source.added.few.minutes.overdue.updates                                             = Ar gyfer y busnes newydd hwn, mae’n bosibl bod gennych ddiweddariadau hwyr ar gyfer blwyddyn dreth {0} i {1}. Mae’n rhaid i chi gyflwyno’r diweddariadau hyn, ynghyd â’r holl incwm a threuliau sydd eu hangen, drwy ddefnyddio’ch meddalwedd sy’n cydweddu.
+
 income.source.added.scenario.four.account.updated.p.a                                       = Hyd yn oed os nad ydynt yn ymddangos ar unwaith ar y dudalen
 income.source.added.scenario.four.account.updated.p.link                                    = dyddiadau cau ar gyfer cyflwyno
 income.source.added.scenario.four.account.updated.p.b                                       = mae’ch cyfrif wedi’i ddiweddaru.
+
 income.source.added.scenario.four.view.reporting.obligations.p                              = Mae’r busnes newydd hwn wedi optio allan o’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm. Dysgwch ragor am
 income.source.added.scenario.four.view.reporting.obligations.link                           = eich ymrwymiadau adrodd
+
 income.source.added.scenario.four.view.businesses.link                                      = Bwrw golwg dros eich busnesau
 income.source.added.scenario.four.view.businesses.p                                         = er mwyn ychwanegu, rheoli neu ddod â busnes neu ffynhonnell incwm i ben.
+
+
+#### Sole Trade ####
+
 business.added.sole-trader.text                                     = Yr hyn y mae’n rhaid i chi ei wneud
 business.added.sole-trader.revised.deadlines                        = Eich dyddiadau cau sydd wedi’u haddasu
 business.added.sole-trader.to                                       = i
+
 business.added.sole-trader.title                                    = Ychwanegwyd {0} i’ch cyfrif
 business.added.sole-trader.panel.title                              = Ychwanegwyd {0}
 business.added.sole-trader.panel.body                               = i’ch cyfrif
+
 business.added.sole-trader.quarterly.heading                        = Anfon diweddariadau chwarterol
 business.added.sole-trader.quarterly.p1                             = Mae’n rhaid i chi anfon diweddariadau chwarterol o’ch incwm a’ch treuliau, gan ddefnyddio meddalwedd sy’n cydweddu, erbyn y dyddiadau cau canlynol:
 business.added.sole-trader.final.declaration.heading                = Cyflwyno’ch datganiadau terfynol a thalu’ch treth
+
 business.added.sole-trader.table.heading.1                          = Blwyddyn dreth
 business.added.sole-trader.table.heading.2                          = Dyddiad cau
 business.added.sole-trader.income.sources.button                    = Eich ffynonellau incwm
 business.added.sole-trader.previous.tax.years.heading               = Blynyddoedd treth blaenorol
 business.added.sole-trader.previous.tax.years.t1                    = Mae’n rhaid i chi wneud yn siŵr eich bod wedi anfon yr holl Incwm a threuliau, a datganiadau terfynol ar gyfer blynyddoedd treth cyn
+
 business.added.sole-trader.obligation.list.text                                                     = Mae’n rhaid i chi gyflwyno’ch Ffurflen Dreth ar gyfer blwyddyn dreth {0} i {1} erbyn <b>{2}</b>
 business.added.sole-trader.view.all.businesses                      = Bwrw golwg dros eich holl fusnesau
 business.added.sole-trader.obligation.view.overdue.upcoming.updates.text                = Bwrw golwg dros eich diweddariadau sy’n hwyr a’r rhai sydd ar y gweill
 business.added.sole-trader.obligation.view.upcoming.updates.text    = Bwrw golwg dros eich diweddariadau sydd ar y gweill
+
 business.added.sole-trader.next.quarterly.obligation.text               = Mae’n rhaid i chi gyflwyno’ch diweddariad chwarterol nesaf, ar gyfer blwyddyn dreth {0} i {1}, erbyn <b>{2}</b> ar gyfer cyfnod chwarterol {3} i {4}
 business.added.sole-trader.final.dec.text                               = Mae’n rhaid i chi gyflwyno’ch Ffurflen Dreth ar gyfer blwyddyn dreth {0} i {1} erbyn <b>{2}</b>
+
 business.added.sole-trader.quarterly.annual.reporting.frequency.a              = Yn dibynnu ar eich amgylchiadau, mae’n bosibl y byddwch yn gallu
 business.added.sole-trader.quarterly.annual.reporting.frequency.link           = bwrw golwg dros a newid amlder eich adroddiadau
 business.added.sole-trader.quarterly.annual.reporting.frequency.b              = ar gyfer pob un o’ch busnesau
+
+
 business.added.sole-trader.submit.tax.return                            = Cyflwyno’ch Ffurflen Dreth
 business.added.sole-trader.submit.tax.return.text                       = Wrth adrodd yn flynyddol, gallwch gyflwyno’ch Ffurflen Dreth yn uniongyrchol drwy’ch cyfrif ar.lein CThEF neu drwy ddefnyddio
 business.added.sole-trader.submit.tax.return.link.a                       = Wrth adrodd yn flynyddol, gallwch gyflwyno’ch Ffurflen Dreth yn uniongyrchol drwy’ch cyfrif ar.lein CThEF neu drwy ddefnyddio
+
 business.added.sole-trader.submit.annual.text                           = Wrth adrodd yn flynyddol, gallwch gyflwyno’ch Ffurflen Dreth yn uniongyrchol drwy’ch cyfrif ar.lein CThEF neu drwy ddefnyddio meddalwedd sy’n cydweddu.
+
+##### UK Property Text #####
+
 business.added.uk-property.text                                     = Yr hyn y mae’n rhaid i chi ei wneud
 business.added.uk-property.revised.deadlines                        = Eich dyddiadau cau sydd wedi’u haddasu
 business.added.uk-property.to                                       = i
+
 business.added.uk-property.title                        = Mae eiddo yn y DU wedi cael ei ychwanegu i’ch cyfrif
+business.added.uk-property.panel.title                  = Mae eiddo yn y DU
 business.added.uk-property.panel.body                   = wedi cael ei ychwanegu i’ch cyfrif
+
 business.added.uk-property.quarterly.heading                        = Anfon diweddariadau chwarterol
 business.added.uk-property.quarterly.p1                             = Mae’n rhaid i chi anfon diweddariadau chwarterol o’ch incwm a’ch treuliau, gan ddefnyddio meddalwedd sy’n cydweddu, erbyn y dyddiadau cau canlynol:
 business.added.uk-property.final.declaration.heading                = Cyflwyno’ch datganiadau terfynol a thalu’ch treth
+
 business.added.uk-property.table.heading.1                          = Blwyddyn dreth
 business.added.uk-property.table.heading.2                          = Dyddiad cau
 business.added.uk-property.income.sources.button                    = Eich ffynonellau incwm
 business.added.uk-property.previous.tax.years.heading               = Blynyddoedd treth blaenorol
 business.added.uk-property.previous.tax.years.t1                    = Mae’n rhaid i chi wneud yn siŵr eich bod wedi anfon yr holl Incwm a threuliau, a datganiadau terfynol ar gyfer blynyddoedd treth cyn
+
 business.added.uk-property.obligation.list.text                                                     = Mae’n rhaid i chi gyflwyno’ch Ffurflen Dreth ar gyfer blwyddyn dreth {0} i {1} erbyn <b>{2}</b>
 business.added.uk-property.view.all.businesses                              = Bwrw golwg dros eich holl fusnesau
 business.added.uk-property.obligation.view.overdue.upcoming.updates.text                = Bwrw golwg dros eich diweddariadau sy’n hwyr a’r rhai sydd ar y gweill
 business.added.uk-property.obligation.view.upcoming.updates.text            = Bwrw golwg dros eich diweddariadau sydd ar y gweill
+
 business.added.uk-property.next.quarterly.obligation.text               = Mae’n rhaid i chi gyflwyno’ch diweddariad chwarterol nesaf, ar gyfer blwyddyn dreth {0} i {1}, erbyn <b>{2}</b> ar gyfer cyfnod chwarterol {3} i {4}
 business.added.uk-property.final.dec.text                               = Mae’n rhaid i chi gyflwyno’ch Ffurflen Dreth ar gyfer blwyddyn dreth {0} i {1} erbyn <b>{2}</b>
+
 business.added.uk-property.quarterly.annual.reporting.frequency.a              = Yn dibynnu ar eich amgylchiadau, mae’n bosibl y byddwch yn gallu
 business.added.uk-property.quarterly.annual.reporting.frequency.link           = bwrw golwg dros a newid amlder eich adroddiadau
 business.added.uk-property.quarterly.annual.reporting.frequency.b              = ar gyfer pob un o’ch busnesau
+
+
 business.added.uk-property.submit.annual.annual.text                    = Rydych wedi dewis cyflwyno adroddiadau blynyddol ar gyfer eich busnes newydd. Rhagor o wybodaeth am
+
 business.added.uk-property.submit.tax.return                            = Cyflwyno’ch Ffurflen Dreth
 business.added.uk-property.submit.tax.return.text                       = Wrth adrodd yn flynyddol, gallwch gyflwyno’ch Ffurflen Dreth yn uniongyrchol drwy’ch cyfrif ar.lein CThEF neu drwy ddefnyddio
+
 business.added.uk-property.submit.annual.text                           = Wrth adrodd yn flynyddol, gallwch gyflwyno’ch Ffurflen Dreth yn uniongyrchol drwy’ch cyfrif ar.lein CThEF neu drwy ddefnyddio meddalwedd sy’n cydweddu.
+
+##### Foreign Property Text #####
+
 business.added.foreign-property.text                                     = Yr hyn y mae’n rhaid i chi ei wneud
 business.added.foreign-property.revised.deadlines                        = Eich dyddiadau cau sydd wedi’u haddasu
 business.added.foreign-property.to                                       = i
+
 business.added.foreign-property.title                   = Mae eiddo tramor wedi cael ei ychwanegu i’ch cyfrif
+business.added.foreign-property.panel.title             = Mae eiddo tramor
 business.added.foreign-property.panel.body              = wedi cael ei ychwanegu i’ch cyfrif
+
 business.added.foreign-property.quarterly.heading                        = Anfon diweddariadau chwarterol
 business.added.foreign-property.quarterly.p1                             = Mae’n rhaid i chi anfon diweddariadau chwarterol o’ch incwm a’ch treuliau, gan ddefnyddio meddalwedd sy’n cydweddu, erbyn y dyddiadau cau canlynol:
 business.added.foreign-property.final.declaration.heading                = Cyflwyno’ch datganiadau terfynol a thalu’ch treth
+
 business.added.foreign-property.table.heading.1                          = Blwyddyn dreth
 business.added.foreign-property.table.heading.2                          = Dyddiad cau
 business.added.foreign-property.income.sources.button                    = Eich ffynonellau incwm
 business.added.foreign-property.previous.tax.years.heading               = Blynyddoedd treth blaenorol
 business.added.foreign-property.previous.tax.years.t1                    = Mae’n rhaid i chi wneud yn siŵr eich bod wedi anfon yr holl Incwm a threuliau, a datganiadau terfynol ar gyfer blynyddoedd treth cyn
+
 business.added.foreign-property.obligation.list.text                                                     = Mae’n rhaid i chi gyflwyno’ch Ffurflen Dreth ar gyfer blwyddyn dreth {0} i {1} erbyn <b>{2}</b>
 business.added.foreign-property.view.all.businesses                         = Bwrw golwg dros eich holl fusnesau
 business.added.foreign-property.obligation.view.overdue.upcoming.updates.text                = Bwrw golwg dros eich diweddariadau sy’n hwyr a’r rhai sydd ar y gweill
 business.added.foreign-property.obligation.view.upcoming.updates.text            = Bwrw golwg dros eich diweddariadau sydd ar y gweill
+
 business.added.foreign-property.next.quarterly.obligation.text               = Mae’n rhaid i chi gyflwyno’ch diweddariad chwarterol nesaf, ar gyfer blwyddyn dreth {0} i {1}, erbyn <b>{2}</b> ar gyfer cyfnod chwarterol {3} i {4}
 business.added.foreign-property.final.dec.text                               = Mae’n rhaid i chi gyflwyno’ch Ffurflen Dreth ar gyfer blwyddyn dreth {0} i {1} erbyn <b>{2}</b>
+
 business.added.foreign-property.quarterly.annual.reporting.frequency.a              = Yn dibynnu ar eich amgylchiadau, mae’n bosibl y byddwch yn gallu
 business.added.foreign-property.quarterly.annual.reporting.frequency.link           = bwrw golwg dros a newid amlder eich adroddiadau
 business.added.foreign-property.quarterly.annual.reporting.frequency.b              = ar gyfer pob un o’ch busnesau
+
+
 business.added.foreign-property.submit.tax.return                            = Cyflwyno’ch Ffurflen Dreth
 business.added.foreign-property.submit.tax.return.text                       = Wrth adrodd yn flynyddol, gallwch gyflwyno’ch Ffurflen Dreth yn uniongyrchol drwy’ch cyfrif ar.lein CThEF neu drwy ddefnyddio
+
+## You cannot go back - Your business has been added page ##
+
+cannotGoBack.heading                                      = Ni allwch fynd yn ôl
+cannotGoBack.soleTraderAdded                              = Mae’ch busnes unig fasnachwr wedi’i ychwanegu
+cannotGoBack.ukPropertyAdded                              = Mae’ch busnes eiddo yn y DU wedi’i ychwanegu
+cannotGoBack.foreignPropertyAdded                         = Mae’ch busnes eiddo tramor wedi’i ychwanegu
+
+cannotGoBack.manage.UK                                    = Mae’ch dull o adrodd ar gyfer eich busnes eiddo yn y DU ar gyfer blwyddyn dreth {0} to {1}
+cannotGoBack.manage.FP                                    = Mae’ch dull o adrodd ar gyfer eich busnes eiddo tramor ar gyfer blwyddyn dreth {0} to {1}
+cannotGoBack.manage.SE                                    = Mae’ch dull o adrodd ar gyfer eich busnes unig fasnachwr ar gyfer blwyddyn dreth {0} to {1}
+cannotGoBack.manage.reportingMethod                       = wedi newid i adroddiadau {0}.
+cannotGoBack.manage.annual                                = blynyddol
+cannotGoBack.manage.quarterly                             = chwarterol
+
+cannotGoBack.youCan                                   = Gallwch wneud y canlynol:
+cannotGoBack.manageLink                               = bwrw golwg dros eich ffynonellau incwm a’u rheoli
+cannotGoBack.homeLink                                 = mynd yn ôl i’r hafan
+
+cannotGoBack.sole-trader-ceased                       = Mae’ch busnes unig fasnachwr wedi dod i ben.
+cannotGoBack.uk-property-ceased                       = Mae’ch busnes eiddo yn y DU wedi dod i ben.
+cannotGoBack.foreign-property-ceased                  = Mae’ch busnes eiddo tramor wedi dod i ben.
+
+cannotGoBack.warningMessage                        = Mae dal angen i chi ddewis dull o adrodd.  Os byddwch yn gadael y dudalen hon, byddwch wedi’ch trefnu i adrodd yn flynyddol am hyd at ddwy flwyddyn dreth.
+cannotGoBack.hasBeenAdded1                         = Gallwch ei reoli o’r dudalen
+cannotGoBack.hasBeenAdded2                         =
+cannotGoBack.needToChoose                          = Nawr mae angen i chi ddewis pa mor aml yr hoffech anfon diweddariadau am eich incwm a’ch treuliau at CThEF ar gyfer y ffynhonnell incwm hon.
+
+## Income Source Creased Obligation Page ##
 business-ceased.obligation.title                                    = Mae {0} wedi dod i ben
+business-ceased.obligation.panel.title                              = Mae {0}
 business-ceased.obligation.panel.body                               = wedi dod i ben
 business-ceased.obligation.sole-trader                              = Busnes unig fasnachwr
 business-ceased.obligation.uk-property                              = Eiddo yn y DU
 business-ceased.obligation.foreign-property                         = Eiddo tramor
 business-ceased.obligation.heading2.text.incomeSources              = Yr hyn y mae’n rhaid i chi ei wneud
+business-ceased.obligation.heading2.text                            = Eich dyddiadau cau sydd wedi’u haddasu
+business-ceased.obligation.inset.text                               = Bydd eich dyddiadau cau ar gyfer y busnes hwn ar gael yn y munudau nesaf.
 business-ceased.obligation.p1.text.1                                = Mae’ch cyfrif wedi’i ddiweddaru, hyd yn oed os nad yw’r diweddariadau hyn yn ymddangos ar unwaith ar y
 business-ceased.obligation.p1.text.2                                =
 business-ceased.obligation.p1.link                                  = dyddiadau cau ar gyfer cyflwyno
@@ -844,6 +863,7 @@ business-ceased.obligation.inset.quarterly.single.text              = Mae’n rh
 business-ceased.obligation.inset.quarterly.multiple.text            = Mae’n rhaid i chi gyflwyno’r diweddariadau hyn gyda’r holl incwm a threuliau sydd eu hangen trwy eich meddalwedd cadw cofnodion.
 business-ceased.obligation.inset.annually.text                      = Bydd yn rhaid i chi gyflwyno’ch datganiadau terfynol a thalu’r dreth sydd arnoch.
 business-ceased.obligation.inset.previous-year.text                 = Mae’n rhaid i chi wneud yn siŵr eich bod wedi anfon yr holl incwm a threuliau sydd eu hangen ar gyfer blynyddoedd treth cyn {0} i {1}.
+
 business-ceased.obligation.quarterly-heading                        = Anfon diweddariadau chwarterol
 business-ceased.obligation.quarterly-p1                             = Mae’n rhaid i chi anfon diweddariadau chwarterol o’ch incwm a’ch treuliau, gan ddefnyddio meddalwedd sy’n cydweddu, erbyn y dyddiadau cau canlynol:
 business-ceased.obligation.final-declaration-heading                = Cyflwyno’ch datganiadau terfynol a thalu’ch treth
@@ -854,23 +874,253 @@ business-ceased.obligation.income-sources-button                    = Eich ffyno
 business-ceased.obligation.previous-tax-years-heading               = Blynyddoedd treth blaenorol
 business-ceased.obligation.previous-tax-years-t1                    = Mae’n rhaid i chi wneud yn siŵr eich bod wedi anfon yr holl Incwm a threuliau, a datganiadau terfynol ar gyfer blynyddoedd treth cyn
 business-ceased.obligation.to                                       = i
-income-sources.check-details-reporting-frequency.heading                        = Unig fasnachwr
-income-sources.check-details-reporting-frequency.change                         = Newid
-income-sources.check-details-reporting-frequency.yes                            = Iawn
-income-sources.check-details-reporting-frequency.no                             = Na
-income-sources.check-details-reporting-frequency.taxYear                        = {0} i {1}
-income-sources.check-details-reporting-frequency.change-rf-key                  = A ydych am newid i gyflwyno’n chwarterol?
-income-sources.check-details-reporting-frequency.change-choose-tax-year-key     = Ar gyfer pa flwyddyn dreth neu flynyddoedd treth rydych chi am gyflwyno’n chwarterol?
-income-sources.check-details-reporting-frequency.r17.change-choose-tax-year-key = Ar gyfer pa flwyddyn dreth neu flynyddoedd treth rydych chi am gofrestru?
+
+# Income source reporting method
+incomeSources.add.incomeSourceReportingMethod.heading                   =   Dewis dull o gyflwyno adroddiad
+incomeSources.add.incomeSourceReportingMethod.description1              =   Mae’ch busnes yn gymwys i gael cyfnod gras hyd at Ebrill {0}, lle y gallwch gyflwyno adroddiadau’n flynyddol.
+incomeSources.add.incomeSourceReportingMethod.description2              =   Bydd yn rhaid gwneud un diweddariad, a hynny erbyn 31 Ionawr fan bellaf.
+incomeSources.add.incomeSourceReportingMethod.description3              =   Nid yw’r canlynol yn cael effaith ar eich cyfnod gras:
+incomeSources.add.incomeSourceReportingMethod.description4.bullet1      =   lefel eich incwm o ffynonellau eraill
+incomeSources.add.incomeSourceReportingMethod.description4.bullet2      =   y trosiant rydych yn disgwyl i’ch busnes newydd ei wneud
+incomeSources.add.incomeSourceReportingMethod.description4.bullet3      =   sut yr ydych yn cyflwyno adroddiadau ar gyfer unrhyw ffynonellau incwm presennol
+incomeSources.add.incomeSourceReportingMethod.chooseReport              =   Dewiswch sut yr hoffech gyflwyno adroddiadau
+incomeSources.add.incomeSourceReportingMethod.taxYear                   =   Blwyddyn dreth {0}-{1}
+incomeSources.add.incomeSourceReportingMethod.chooseAnnualReport        =   Dewis cyflwyno adroddiadau’n flynyddol
+incomeSources.add.incomeSourceReportingMethod.chooseQuarterlyReport     =   Dewis cyflwyno adroddiadau’n chwarterol
+incomeSources.add.incomeSourceReportingMethod.error                     =   Dewiswch a hoffech gyflwyno adroddiad yn flynyddol neu’n chwarterol ar gyfer blwyddyn dreth {0} i {1}
+incomeSources.add.incomeSourceReportingMethod.se.caption                =   Unig fasnachwr
+incomeSources.add.incomeSourceReportingMethod.uk.caption                =   Eiddo yn y DU
+incomeSources.add.incomeSourceReportingMethod.fp.caption                =   Eiddo tramor
+
+# manage uk property reporting method
+incomeSources.manage.propertyReportingMethod.checkbox.annual                       = Hoffwn newid i adrodd yn flynyddol
+incomeSources.manage.propertyReportingMethod.checkbox.quarterly                    = Hoffwn newid i adrodd yn chwarterol
+incomeSources.manage.propertyReportingMethod.error.quarterly                       = Dewiswch eich bod am newid i gyflwyno adroddiadau’n chwarterol
+incomeSources.manage.propertyReportingMethod.error.annual                          = Dewiswch eich bod am newid i gyflwyno adroddiadau’n flynyddol
+incomeSources.manage.propertyReportingMethod.changingToAnnualWarning.individual    = Bydd CThEF yn tynnu unrhyw ddiweddariadau incwm rydych eisoes wedi’u cyflwyno ar gyfer y flwyddyn dreth hon. Bydd angen i chi gynnwys unrhyw incwm a gyflwynwyd yn flaenorol ar eich Ffurflen Dreth flynyddol.
+incomeSources.manage.propertyReportingMethod.changingToAnnualWarning.agent         = Bydd CThEF yn tynnu unrhyw ddiweddariadau incwm mae’ch cleient eisoes wedi’u cyflwyno ar gyfer y flwyddyn dreth hon. Bydd angen i chi gynnwys unrhyw incwm a gyflwynwyd yn flaenorol ar Ffurflen Dreth flynyddol eich cleient.
+incomeSources.manage.propertyReportingMethod.changingToQuarterlyWarning.individual = Bydd CThEF yn tynnu unrhyw ddiweddariadau incwm rydych eisoes wedi’u cyflwyno ar gyfer y flwyddyn dreth hon. Bydd angen i chi gynnwys unrhyw incwm a gyflwynwyd yn flaenorol yn eich Ffurflen Dreth chwarterol.
+incomeSources.manage.propertyReportingMethod.changingToQuarterlyWarning.agent      = Bydd CThEF yn tynnu unrhyw ddiweddariadau incwm mae’ch cleient eisoes wedi’u cyflwyno ar gyfer y flwyddyn dreth hon. Bydd angen i chi gynnwys unrhyw incwm a gyflwynwyd yn flaenorol ar Ffurflen Dreth chwarterol eich cleient.
+
+# manage obligations page
+incomeSources.add.manageObligations.title                             =   Bydd {0} yn cyflwyno adroddiadau’n {1} ar gyfer blwyddyn dreth {2} i {3}
+incomeSources.add.manageObligations.panel.title                       =   Bydd {0}
+incomeSources.add.manageObligations.panel.body                        =   yn cyflwyno adroddiadau’n {0} ar gyfer blwyddyn dreth {1} i {2}
+incomeSources.add.manageObligations.annually                          =   flynyddol
+incomeSources.add.manageObligations.quarterly                         =   chwarterol
+incomeSources.add.manageObligations.to                                =   i
+incomeSources.add.manageObligations.sole-trader                       =   y busnes unig fasnachwr
+incomeSources.add.manageObligations.uk-property                       =   eiddo yn y DU
+incomeSources.add.manageObligations.foreign-property                  =   eiddo tramor
+incomeSources.add.manageObligations.heading                           =   Yr hyn y mae’n rhaid i chi ei wneud
+
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.title = {0} wedi’i {1} cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm ar gyfer blwyddyn dreth {2} i {3}
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.title                       = {0}
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.body = wedi’i {0} cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm ar gyfer blwyddyn dreth {1} i {2}
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.signedUp = cofrestru
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.panel.optedOut = optio allan o
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.heading = Eich dyddiadau cau sydd wedi’u haddasu
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.inset = Bydd eich dyddiadau cau ar gyfer cyflwyno ar gyfer y busnes hwn ar gael yn y munudau nesaf
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.beforeLink = Hyd yn oed os nad ydynt yn cael eu harddangos ar y dudalen
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.link = dyddiadau cau ar gyfer cyflwyno
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para1.afterLink = ar unwaith, mae’ch cyfrif wedi’i ddiweddaru.
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.para2 = Ar gyfer y busnes newydd hwn mae’n bosibl bod gennych ddiweddariadau hwyr ar gyfer blwyddyn dreth 2024 i 2025. Mae’n rhaid i chi gyflwyno’r diweddariadau hyn, ynghyd â’r holl incwm a threuliau sydd eu hangen, drwy ddefnyddio’ch meddalwedd sy’n cydweddu.
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.link = Bwrw golwg dros eich busnes
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.manage.afterLink = er mwyn ychwanegu, rheoli neu ddod â busnes neu ffynhonnell incwm i ben.
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.sole-trader                       =   y busnes unig fasnachwr
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.uk-property                       =   eiddo yn y DU
+incomeSources.add.manageObligations.OptInOptOutContentUpdateR17.foreign-property                  =   eiddo tramor
+
+####### Manage journey manage income source
+
+incomeSources.manage.quarterly-period                                 =   Cyfnod diweddaru
+incomeSources.manage.quarterly-period.standard                        =   Safonol
+incomeSources.manage.quarterly-period.calendar                        =   Calendr
+incomeSources.manage.quarterly-period.standard.summary                =   Beth yw cyfnod diweddaru safonol?
+incomeSources.manage.quarterly-period.calendar.summary                =   Beth yw cyfnod diweddaru calendr?
+incomeSources.manage.quarterly-period.standard.content.p1             =   Mae cyfnodau diweddaru safonol yn cyd-fynd â’r flwyddyn dreth (6 Ebrill i 5 Ebrill).
+incomeSources.manage.quarterly-period.standard.content.p2             =   Os nad yw’ch cyfnod cyfrifyddu yn dod i ben ar 31 Mawrth, bydd cyfnodau diweddaru safonol yn hwyluso eich gwaith o gadw cofnodion.
+incomeSources.manage.quarterly-period.standard.content.p3             =   Gallwch ddewis adrodd drwy ddefnyddio cyfnodau diweddaru calendr (sy’n rhedeg o 1 Ebrill i 31 Mawrth) yn lle. Gallwch ond gwneud y newid:
+incomeSources.manage.quarterly-period.standard.content.bullet1        =   mewn meddalwedd sy’n cydweddu sy’n cefnogi’r opsiwn hwn
+incomeSources.manage.quarterly-period.standard.content.bullet2        =   cyn i chi anfon eich diweddariad chwarterol cyntaf ar gyfer y flwyddyn
+incomeSources.manage.quarterly-period.calendar.content.p1             =   Mae cyfnodau diweddaru calendr yn rhedeg o 1 Ebrill i 31 Mawrth pob blwyddyn. Nid ydynt yn cyd-fynd â’r flwyddyn dreth safonol (6 Ebrill i 5 Ebrill).
+incomeSources.manage.quarterly-period.calendar.content.p2             =   Os yw’ch cyfnod cyfrifyddu yn dod i ben ar 31 Mawrth, bydd cyfnodau diweddaru calendr yn hwyluso eich gwaith o gadw cofnodion.
+incomeSources.manage.quarterly-period.calendar.content.p3             =   Gallwch ddewis adrodd drwy ddefnyddio cyfnodau diweddaru safonol (sy’n rhedeg o 6 Ebrill i 5 Ebrill) yn lle. Gallwch ond gwneud y newid:
+incomeSources.manage.quarterly-period.calendar.content.bullet1        =   mewn meddalwedd sy’n cydweddu sy’n cefnogi’r opsiwn hwn
+incomeSources.manage.quarterly-period.calendar.content.bullet2        =   cyn i chi anfon eich diweddariad chwarterol cyntaf ar gyfer y flwyddyn
+incomeSources.manage.quarterly-period.content.p4                      =   Dysgwch ragor am chwarterau safonol a chwarterau calendr
+
+incomeSources.manage.business-manage-details.heading                  =   Gwirio’ch manylion
+incomeSources.manage.business-manage-details.sole-trader-section      =   Unig fasnachwr
+incomeSources.manage.business-manage-details.business-name            =   Enw’r busnes
+incomeSources.manage.business-manage-details.business-address         =   Cyfeiriad
+incomeSources.manage.business-manage-details.date-started             =   Dyddiad cychwyn
+incomeSources.manage.business-manage-details.reporting-method         =   Amlder cyflwyno {0} i {1}
+incomeSources.manage.business-manage-details.change                   =   Newid
+incomeSources.manage.business-manage-details.quarterly                =   Bob chwarter
+incomeSources.manage.business-manage-details.annually                 =   Blynyddol
+incomeSources.manage.business-manage-details.quarterly.graceperiod    =   Bob chwarter
+incomeSources.manage.business-manage-details.annually.graceperiod     =   Blynyddol
+incomeSources.manage.business-manage-details.tradetype                =   Math o fasnach
+incomeSources.manage.business-manage-details.reportingFrequency       =   Bwrw golwg dros a newid amlder eich adroddiadau ar gyfer eich holl fusnesau
+incomeSources.manage.business-manage-details.insetText                =   Gan mai busnes newydd yw hwn o hyd, gallwch newid pa mor aml rydych yn cyflwyno adroddiadau ar ei gyfer am hyd at ddwy flwyddyn dreth. O fis Ebrill {0} ymlaen, gallai fod yn ofynnol i chi gyflwyno adroddiadau chwarterol.
+
+incomeSources.manage.uk-property-manage-details.uk-property-section              =   Eiddo yn y DU
+incomeSources.manage.foreign-property-manage-details.foreign-property-section    =   Eiddo tramor
+
+##################### New - Manage journey manage income source #####################
+
+incomeSources.manage.new.business-manage-details.heading                  =   Manage your details
+
+incomeSources.manage.new.business.details.heading                         =   Gwirio’ch manylion
+incomeSources.manage.new.business.details.sole.trader.section             =   Unig fasnachwr
+incomeSources.manage.new.business.details.business.name                   =   Enw’r busnes
+incomeSources.manage.new.business.details.business.address                =   Cyfeiriad
+incomeSources.manage.new.business.details.date.started                    =   Dyddiad cychwyn
+incomeSources.manage.new.business.details.reporting.method                =   Amlder cyflwyno {0} i {1}
+incomeSources.manage.new.business.details.change                          =   Newid
+incomeSources.manage.new.business.details.quarterly                       =   Bob chwarter
+incomeSources.manage.new.business.details.annually                        =   Blynyddol
+incomeSources.manage.new.business.details.quarterly.grace.period          =   Bob chwarter
+incomeSources.manage.new.business.details.annually.grace.period           =   Blynyddol
+incomeSources.manage.new.business.details.trade.type                      =   Math o fasnach
+incomeSources.manage.new.business.details.business.income                 =   Incwm busnes
+
+incomeSources.manage.new.uk.property.manage.details.uk.property.section              =   Eiddo yn y DU
+incomeSources.manage.new.foreign.property.manage.details.foreign.property.section    =   Eiddo tramor
 
 
-# Reporting frequency check details property headings
-income-sources.check-details-reporting-frequency-uk.heading = UK property
-income-sources.check-details-reporting-frequency-fp.heading = Foreign property
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.paragraph                      =   Gan mai busnes newydd yw hwn, gallwch benderfynu os ydych am ddefnyddio’r gwasanaeth Troi Treth yn Ddigidol ar gyfer Treth Incwm am hyd at 2 flwyddyn dreth. O fis Ebrill {0} ymlaen, gallai fod yn ofynnol i chi ddefnyddio’r gwasanaeth hwn.
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.reportingFrequencyPrefix       =   Yn dibynnu ar eich amgylchiadau, mae’n bosibl y byddwch yn gallu
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.reportingFrequencyLink         =   bwrw golwg dros a newid eich rhwymedigaethau adrodd ar gyfer eich holl fusnesau
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage                       = Defnyddio Troi Treth yn Ddigidol ar gyfer Treth Incwm ar gyfer {0} i {1}
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage.yes                   = Iawn
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.mtdUsage.no                    = Na
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.signup                         = Cofrestru
+incomeSources.manage.new.business.details.optInOptOutContentUpdateR17.optOut                         = Optio allan
 
 
-# Added for businessDetails migration
+incomeSources.cease.error.UK.notCeased.text                       = Nid oedd modd dod â’ch busnes eiddo yn y DU i ben. Rhowch gynnig arall arni yn nes ymlaen.
+incomeSources.cease.error.FP.notCeased.text                       = Nid oedd modd dod â’ch busnes eiddo tramor i ben. Rhowch gynnig arall arni yn nes ymlaen.
+incomeSources.cease.error.SE.notCeased.text                       = Nid oedd modd dod â’ch busnes unig fasnachwr i ben. Rhowch gynnig arall arni yn nes ymlaen.
+incomeSources.cease.error.notCeased.link.prefix                   = Yn ôl i
+incomeSources.cease.error.notCeased.link.text                     = eich busnesau
+
+incomeSources.manage.reportingMethodError.hyperlink1            = rheoli eich manylion
+incomeSources.manage.reportingMethodError.hyperlink2            = weld a rheoli ffynonellau incwm
+incomeSources.manage.reportingMethodError.p3                    = Neu ewch yn ôl i
+
+incomeSources.manage.businessReportingMethodError.p1            = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes unig fasnachwr.
+incomeSources.manage.businessReportingMethodError.p2            = Gallwch geisio newid pa mor aml y mae’ch busnes unig fasnachwr yn cyflwyno adroddiadau eto yn
+
+incomeSources.manage.uKPropertyReportingMethodError.p1        = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo yn y DU.
+incomeSources.manage.uKPropertyReportingMethodError.p2        = Gallwch geisio newid pa mor aml y mae’ch busnes eiddo yn y DU yn cyflwyno adroddiadau eto yn
+
+incomeSources.manage.foreignPropertyReportingMethodError.p1   = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo tramor.
+incomeSources.manage.foreignPropertyReportingMethodError.p2   = Gallwch geisio newid pa mor aml y mae’ch busnes eiddo tramor yn cyflwyno adroddiadau eto yn
+
+incomeSources.manage.reportingMethodError.hyperlink1            = rheoli eich manylion
+incomeSources.manage.reportingMethodError.hyperlink2            = weld a rheoli ffynonellau incwm
+incomeSources.manage.reportingMethodError.p3                    = Neu ewch yn ôl i
+
+incomeSources.manage.businessReportingMethodError.p1            = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes unig fasnachwr.
+incomeSources.manage.businessReportingMethodError.p2            = Gallwch geisio newid pa mor aml y mae’ch busnes unig fasnachwr yn cyflwyno adroddiadau eto yn
+
+incomeSources.manage.uKPropertyReportingMethodError.p1        = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo yn y DU.
+incomeSources.manage.uKPropertyReportingMethodError.p2        = Gallwch geisio newid pa mor aml y mae’ch busnes eiddo yn y DU yn cyflwyno adroddiadau eto yn
+
+incomeSources.manage.foreignPropertyReportingMethodError.p1   = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo tramor.
+incomeSources.manage.foreignPropertyReportingMethodError.p2   = Gallwch geisio newid pa mor aml y mae’ch busnes eiddo tramor yn cyflwyno adroddiadau eto yn
+
+incomeSources.manage.businessReportingMethodError.text          = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes unig fasnachwr.
+incomeSources.manage.uKPropertyReportingMethodError.text        = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo yn y DU.
+incomeSources.manage.foreignPropertyReportingMethodError.text   = Nid oedd modd i ni ddiweddaru’r manylion ynghylch amlder cyflwyno adroddiadau ar gyfer eich busnes eiddo tramor.
+
+# ceased income sources
+incomeSources.ceased-income-sources.heading                     =   Busnesau sydd wedi dod i ben
+incomeSources.ceased-income-sources.table-head.business-name    =   Enw’r busnes
+incomeSources.ceased-income-sources.table-head.date-started     =   Dyddiad cychwyn
+incomeSources.ceased-income-sources.table-head.date-ended       =   Y dyddiad dod i ben
+incomeSources.ceased-income-sources.uk-property                 =   Eiddo yn y DU
+incomeSources.ceased-income-sources.foreign-property            =   Eiddo tramor
+incomeSources.ceased-income-sources.unknown-sole-trader         =   Busnesau unig fasnachwr
+
+# manage your businesses
+manage.your.businesses.heading                                           = Eich busnesau
+manage.your.businesses.self-employed-h2                                  = Busnesau unig fasnachwr
+manage.your.businesses.sole-trader-inset                                 = Peidiwch ag ychwanegu cwmnïau cyfyngedig na phartneriaethau busnes yma.
+manage.your.businesses.self-employed-desc                                = Rydych yn unig fasnachwr os ydych yn rhedeg eich busnes eich hun fel unigolyn ac yn gweithio i chi’ch hun. Enw arall ar hyn yw bod yn hunangyflogedig.
+manage.your.businesses.addIncomeSources.selfEmployment.link              = Ychwanegu busnes unig fasnachwr
+manage.your.businesses.addIncomeSources.ukProperty.link                  = Ychwanegu busnes eiddo yn y DU
+manage.your.businesses.addIncomeSources.foreignProperty.link             = Ychwanegu busnes eiddo tramor
+manage.your.businesses.addIncomeSources.property.link                    = Ychwanegu busnes eiddo
+manage.your.businesses.property-h2                                       = Busnesau eiddo
+manage.your.businesses.property-desc                                     = Os ydych yn cael incwm o un eiddo neu fwy yn y DU, mae gennych fusnes eiddo yn y DU. Os yw’r eiddo y tu allan i’r DU, mae gennych fusnes eiddo tramor. Er enghraifft: incwm o roi tai, fflatiau, neu gartrefi gwyliau ar osod a hynny naill ai ar sail tymor hir neu dymor byr.
+manage.your.businesses.unknown-field                                     = Anhysbys
+manage.your.businesses.ceasedBusinesses.heading                          = Busnesau sydd wedi dod i ben
+manage.your.businesses.ceasedBusinesses.single                           = Mae 1 busnes wedi dod i ben.
+manage.your.businesses.ceasedBusinesses.multiple                         = Mae {0} fusnes wedi dod i ben.
+manage.your.businesses.ceasedBusinesses.viewall                          = Bwrw golwg dros yr holl fusnesau sydd wedi dod i ben
+manage.your.businesses.view.manage                                       = Gweld a rheoli
+manage.your.businesses.cease                                             = Dod i ben
+manage.your.businesses.name                                              = Enw
+manage.your.businesses.datestarted                                       = Dyddiad cychwyn
+manage.your.businesses.startdate                                         = Dyddiad dechrau
+manage.your.businesses.UK                                                = Eiddo yn y DU
+manage.your.businesses.Foreign                                           = Eiddo tramor
+
+# type of property business
+manageBusinesses.type-of-property.heading                                = Y math o fusnes eiddo
+manageBusinesses.type-of-property.text1                                  = Dewiswch y math o fusnes eiddo yr hoffech ei ychwanegu. Os oes gennych y ddau, gallwch ddechrau gydag un ac ychwanegu’r llall yn nes ymlaen.
+manageBusinesses.type-of-property.text2                                  = Os ydych yn cael incwm o un eiddo neu fwy yn y DU, mae gennych fusnes eiddo yn y DU.
+manageBusinesses.type-of-property.text3                                  = Os ydych yn cael incwm o un eiddo neu fwy y tu allan i’r DU, mae gennych fusnes eiddo tramor. Er enghraifft: incwm o roi tai, fflatiau, neu gartrefi gwyliau ar osod a hynny naill ai ar sail tymor hir neu dymor byr.
+manageBusinesses.type-of-property.h2                                     = Pa fath o fusnes eiddo sydd gennych?
+manageBusinesses.type-of-property.uk                                     = Busnes eiddo yn y DU
+manageBusinesses.type-of-property.foreign                                = Busnes eiddo tramor
+manageBusinesses.type-of-property.error                                  = Dewiswch opsiwn
+
+# manage income sources reporting method (new - content FS R17 enabled)
+manageBusinesses.manage.propertyReportingMethod.new.heading.annual                  = Optio allan o’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm ar gyfer y flwyddyn dreth {0} i {1}
+manageBusinesses.manage.propertyReportingMethod.new.heading.quarterly               = Cofrestru ar gyfer y cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm ar gyfer y flwyddyn dreth {0} i {1}
+manageBusinesses.manage.propertyReportingMethod.new.description.annual              = Bydd hyn yn golygu nad oes angen i chi gyflwyno diweddariadau chwarterol mwyach trwy feddalwedd sy’n cydweddu ar gyfer y ffynhonnell incwm hon.
+manageBusinesses.manage.propertyReportingMethod.new.inset.annual                    = Os ydych eisoes wedi cyflwyno i CThEF unrhyw ddiweddariadau chwarterol ar gyfer y busnes newydd hwn ar gyfer y flwyddyn dreth hon, bydd angen i chi ailgyflwyno’r wybodaeth hon yn eich Ffurflen Dreth.
+manageBusinesses.manage.propertyReportingMethod.new.description.quarterly.CYplus    = Bydd hyn yn golygu bod angen i chi gyflwyno diweddariadau chwarterol trwy feddalwedd sy’n cydweddu ar gyfer y ffynhonnell incwm hon.
+manageBusinesses.manage.propertyReportingMethod.new.ul.description                  = Bydd hyn yn golygu’r canlynol:
+manageBusinesses.manage.propertyReportingMethod.new.ul.el1                          = angen cyflwyno diweddariadau chwarterol argyfer y ffynhonnell incwm hon
+manageBusinesses.manage.propertyReportingMethod.new.ul.el2                          = gallech gael o leiaf un diweddariad chwarterolsy’n hwyr
+manageBusinesses.manage.propertyReportingMethod.new.inset.quarterly                 = Os ydych eisoes wedi cyflwyno i CThEF unrhyw ddiweddariadau chwarterol ar gyfer y busnes newydd hwn ar gyfer y flwyddyn dreth hon, bydd angen i chi ailgyflwyno’r wybodaeth hon yn eich Ffurflen Dreth.
+manageBusinesses.manage.propertyReportingMethod.new.form.heading.signUp             = A ydych am gofrestru ar gyfer y flwyddyn dreth {0} i {1}?
+manageBusinesses.manage.propertyReportingMethod.new.form.heading.optOut             = A ydych am optio allan o’r flwyddyn dreth {0} i {1}?
+manageBusinesses.manage.propertyReportingMethod.new.form.error.annual               = Dewiswch ‘Iawn’ os ydych am optio’r busnes newydd hwn allan o’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
+manageBusinesses.manage.propertyReportingMethod.new.form.error.quarterly            = Dewiswch ‘Iawn’ os ydych am gofrestru’r busnes newydd hwn â’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
+
+manageBusinesses.manage.propertyReportingMethod.new.subHeading.UkProperty           = Eiddo yn y DU
+manageBusinesses.manage.propertyReportingMethod.new.subHeading.ForeignProperty      = Eiddo tramor
+manageBusinesses.manage.propertyReportingMethod.new.subHeading.SelfEmployment       = Unig fasnachwr
+manageBusinesses.manage.propertyReportingMethod.new.description.quarterly           = Bydd newid i adrodd yn chwarterol yn golygu y bydd angen i chi gyflwyno’ch diweddariadau chwarterol drwy feddalwedd sy’n cydweddu.
+manageBusinesses.manage.propertyReportingMethod.new.confirm                         = Cadarnhau a chadw
+
+
+# manage income sources reporting method (old - content FS R17 disabled)
+
+
+# businesses that have ceased
+
 manageBusinesses.ceased.heading                                          = Busnesau sydd wedi dod i ben
+
+# manage business check your answers
+manageBusinesses.check-answers.SelfEmployment.heading                    = Unig fasnachwr
+manageBusinesses.check-answers.UkProperty.heading                        = Eiddo yn y DU
+manageBusinesses.check-answers.ForeignProperty.heading                   = Eiddo tramor
+manageBusinesses.check-answers.text                                      = Gwirio’ch atebion
+manageBusinesses.check-answers.reporting-frequency                       = Amlder cyflwyno {0} i {1}
+manageBusinesses.check-answers.reporting.quarterly                       = Bob chwarter
+manageBusinesses.check-answers.reporting.annually                        = Bob blwyddyn
+manageBusinesses.check-answers.confirm                                   = Cadarnhau ac yn eich blaen
+manageBusinesses.check-answers.change                                    = Newid
+
+# manage business sole trader reporting frequency
+
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.heading                                     = Ar gyfer pa flwyddyn dreth neu flynyddoedd treth rydych chi am gyflwyno’n chwarterol?
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.heading.feature.switched                    = Ar gyfer pa flwyddyn dreth neu flynyddoedd treth rydych chi am gofrestru?
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.SelfEmployment.subHeading                   = Unig fasnachwr
@@ -883,18 +1133,102 @@ manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.error.header
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.error.description                           = Dewiswch y blynyddoedd treth yr hoffech gyflwyno’n chwarterol ar eu cyfer
 manageBusinesses.add.addReportingFrequency.soleTrader.chooseTaxYear.error.description.feature.switched          = Dewiswch y blynyddoedd treth yr ydych am gofrestru ar eu cyfer
 
+# choose international sole trader address
+manageBusinesses.add.chooseSoleTraderAddress.heading                                                         = Beth yw cyfeiriad eich busnes unig fasnachwr?
+manageBusinesses.add.chooseSoleTraderAddress.radio.option.newAddress                                         = Dim un o’r rhain, rwyf am ychwanegu cyfeiriad newydd
+manageBusinesses.add.chooseSoleTraderAddress.radio.option.error                                              = Dewiswch opsiwn er mwyn parhau
 
-# Added for businessDetails migration - date form
-dateForm.check.heading                                              = A yw’r dyddiad hwn yn gywir?
-dateForm.error.day.required                                         = Mae’n rhaid i’r dyddiad gynnwys diwrnod
-dateForm.error.dayAndMonth.required                                 = Mae’n rhaid i’r dyddiad gynnwys diwrnod a mis
-dateForm.error.dayAndYear.required                                  = Mae’n rhaid i’r dyddiad gynnwys diwrnod a blwyddyn
-dateForm.error.dayMonthAndYear.required                             = Mae’n rhaid i’r dyddiad gynnwys diwrnod, mis a blwyddyn
-dateForm.error.dayMonthAndYear.required.fp                          = Nodwch y dyddiad y gwnaeth eich busnes eiddo tramor stopio
-dateForm.error.dayMonthAndYear.required.se                          = Nodwch y dyddiad y daeth eich busnes hunangyflogaeth i ben
-dateForm.error.dayMonthAndYear.required.uk                          = Nodwch y dyddiad y daeth eich busnes eiddo yn y DU i ben
-dateForm.error.future                                               = Ni allwch nodi dyddiad dod i ben sydd y tu hwnt i’r diwrnod presennol na dyddiad yn y dyfodol
-dateForm.error.invalid                                              = Mae’n rhaid i’r dyddiad fod yn ddyddiad go iawn
-dateForm.error.month.required                                       = Mae’n rhaid i’r dyddiad gynnwys mis
-dateForm.error.required.two                                         = Mae’n rhaid i’r dyddiad gynnwys {0} a {1}
-dateForm.error.year.required                                        = Mae’n rhaid i’r dyddiad gynnwys blwyddyn
+# Manage Businesses Add
+income-sources.check-details-reporting-frequency.heading                        = Unig fasnachwr
+income-sources.check-details-reporting-frequency-uk.heading                     = Eiddo yn y DU
+income-sources.check-details-reporting-frequency-fp.heading                     = Eiddo tramor
+income-sources.check-details-reporting-frequency.title                          = Gwirio’ch manylion
+income-sources.check-details-reporting-frequency.change                         = Newid
+income-sources.check-details-reporting-frequency.yes                            = Iawn
+income-sources.check-details-reporting-frequency.no                             = Na
+income-sources.check-details-reporting-frequency.taxYear                        = {0} i {1}
+income-sources.check-details-reporting-frequency.change-rf-key                  = A ydych am newid i gyflwyno’n chwarterol?
+income-sources.check-details-reporting-frequency.change-choose-tax-year-key     = Ar gyfer pa flwyddyn dreth neu flynyddoedd treth rydych chi am gyflwyno’n chwarterol?
+
+income-sources.check-details-reporting-frequency.r17.change-rf-key              = A ydych am gofrestru’r busnes newydd hwn gyda’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm?
+income-sources.check-details-reporting-frequency.r17.change-choose-tax-year-key = Ar gyfer pa flwyddyn dreth neu flynyddoedd treth rydych chi am gofrestru?
+
+# Triggered Migration Journey
+# Check HMRC records page
+triggered-migration.check-hmrc-records.add-banner.heading            = Wedi ychwanegu
+triggered-migration.check-hmrc-records.add-banner.text1.SE           = Busnes Unig fasnachwr wedi’i ychwanegu
+triggered-migration.check-hmrc-records.add-banner.text1.UK           = Busnes Eiddo yn y DU wedi’i ychwanegu
+triggered-migration.check-hmrc-records.add-banner.text1.FP           = Busnes Eiddo Tramor wedi’i ychwanegu
+triggered-migration.check-hmrc-records.add-banner.text2              = Bwrw golwg dros eich
+triggered-migration.check-hmrc-records.add-banner.link.SE            = busnes unig fasnachwr sydd wedi’i ychwanegu
+triggered-migration.check-hmrc-records.add-banner.link.UK            = busnes eiddo yn y DU
+triggered-migration.check-hmrc-records.add-banner.link.FP            = busnes eiddo Tramor
+
+triggered-migration.check-hmrc-records.cessation-banner.heading      = Wedi dod i ben
+triggered-migration.check-hmrc-records.cessation-banner.text1        = Rydych chi wedi dod â busnes i ben
+triggered-migration.check-hmrc-records.cessation-banner.text2        = Gweld
+triggered-migration.check-hmrc-records.cessation-banner.link         = eich busnesau sydd wedi dod i ben
+
+triggered-migration.check-hmrc-records.cessation-section.heading     = Eich busnesau sydd wedi dod i ben
+triggered-migration.check-hmrc-records.cessation-section.text        = Mae un neu ragor o fusnesau wedi dod i ben.
+triggered-migration.check-hmrc-records.cessation-section.text-link   = Gweld eich holl fusnesau sydd wedi dod i ben
+
+triggered-migration.check-hmrc-records.heading                       = Gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
+triggered-migration.check-hmrc-records.title                         = Gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
+triggered-migration.check-hmrc-records.desc                          = Nawr, mae’ch dyddiadau cau chwarterol ar gyfer eich busnesau fel unig fasnachwr a/neu eich busnesau eiddo wedi’u rhestru yma.
+triggered-migration.check-hmrc-records.inset                         = Bydd sicrhau bod y manylion ar y dudalen hon yn gywir yn eich helpu chi i osgoi colli dyddiadau cau ar gyfer eich busnesau cyfredol, ac yn osgoi rhoi dyddiadau cau i chi ar gyfer ffynonellau incwm y gallech fod wedi’u cau neu eu gwerthu.
+triggered-migration.check-hmrc-records.bulletStart                   = Bydd yn rhaid i chi wneud y canlynol, os oes angen:
+triggered-migration.check-hmrc-records.bullet1                       = ychwanegu unrhyw fusnesau sydd ar goll
+triggered-migration.check-hmrc-records.bullet2                       = dod ag unrhyw fusnesau, nad ydynt bellach yn rhoi incwm i chi, i ben
+
+triggered-migration.check-hmrc-records.yourActiveBusinesses.heading  = Eich busnesau cyfredol
+triggered-migration.check-hmrc-records.soleTrader.heading            = Busnesau unig fasnachwr
+triggered-migration.check-hmrc-records.soleTrader.cease.link         = Wedi dod i ben
+triggered-migration.check-hmrc-records.soleTrader.businessName       = Enw’r busnes
+triggered-migration.check-hmrc-records.soleTrader.businessState      = Statws y busnes
+triggered-migration.check-hmrc-records.soleTrader.active             = Cyfredol
+triggered-migration.check-hmrc-records.soleTrader.add.link           = Ychwanegu busnes unig fasnachwr
+triggered-migration.check-hmrc-records.soleTrader.guidance           = Rydych yn unig fasnachwr os ydych yn rhedeg eich busnes eich hun fel unigolyn ac yn gweithio i chi’ch hun. Enw arall ar hyn yw bod yn hunangyflogedig.
+triggered-migration.check-hmrc-records.soleTrader.unknown            = Anhysbys
+
+triggered-migration.check-hmrc-records.property.heading              = Busnesau eiddo
+triggered-migration.check-hmrc-records.ukProperty.heading            = Eiddo yn y DU
+triggered-migration.check-hmrc-records.ukProperty.cease.link         = Wedi dod i ben
+triggered-migration.check-hmrc-records.ukProperty.businessState      = Statws y busnes
+triggered-migration.check-hmrc-records.ukProperty.active             = Cyfredol
+triggered-migration.check-hmrc-records.foreignProperty.heading       = Eiddo Tramor
+triggered-migration.check-hmrc-records.foreignProperty.cease.link    = Wedi dod i ben
+triggered-migration.check-hmrc-records.foreignProperty.businessState = Statws y busnes
+triggered-migration.check-hmrc-records.foreignProperty.active        = Cyfredol
+triggered-migration.check-hmrc-records.foreignProperty.add.link      = Ychwanegu eiddo busnes tramor
+triggered-migration.check-hmrc-records.noActiveProperties            = Os ydych yn cael incwm o un eiddo neu fwy yn y DU, mae gennych fusnes eiddo yn y DU. Os yw’r eiddo dramor, mae gennych fusnes eiddo tramor. Er enghraifft: incwm o roi tai, fflatiau, neu gartrefi gwyliau ar osod, a hynny naill ai ar sail tymor hir neu dymor byr.
+
+triggered-migration.check-hmrc-records.confirmRecords.heading = Cadarnhau bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
+triggered-migration.check-hmrc-records.confirmRecords.text    = Dylai’r dudalen hon dim ond rhestru’ch ffynonellau incwm cyfredol o fod yn unig fasnachwr a’ch ffynonellau incwm cyfredol o eiddo. Gall unrhyw fanylion busnes eraill sy’n anghywir, sydd wedi’u camsillafu, neu sydd ddim yn gyfredol, gael eu diweddaru yn nes ymlaen.
+triggered-migration.check-hmrc-records.confirmRecords.button  = Cadarnhau a pharhau
+
+# Triggered migration – Check Active Businesses Confirm page
+triggered-migration.check-active-businesses-confirm.heading          = A ydych wedi gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol?
+triggered-migration.check-active-businesses-confirm.text             = Gallwch newid unrhyw fanylion busnes eraill yn nes ymlaen.
+triggered-migration.check-active-businesses-confirm.yes              = Iawn
+triggered-migration.check-active-businesses-confirm.yes.hint         = Os ywr dudalen flaenorol dim ond yn cynnwys eich busnesau cyfredol, mae’r gwiriad wedi’i gwblhau
+triggered-migration.check-active-businesses-confirm.no               = Na
+triggered-migration.check-active-businesses-confirm.no.hint          = Dewiswch yr opsiwn hwn os nad ydych wedi gwirio’r dudalen flaenorol
+triggered-migration.check-active-businesses-confirm.error.required   = Dewiswch ‘Iawn’ os ydych wedi gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
+
+# Triggered migration – Complete page
+triggered-migration.checkComplete.greenBoxHeading.1                                     = Gwiriad wedi’i gwblhau
+triggered-migration.checkComplete.greenBoxHeading.2                                     = Rydych wedi cadarnhau bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
+triggered-migration.checkComplete.whatNext.heading                                      = Yr hyn i’w wneud nesaf
+triggered-migration.checkComplete.whatNext.p1                                           = Mae angen i chi roi diweddariad chwarterol i CThEF ar gyfer pob un o’ch ffynonellau incwm cyfredol o fod yn unig fasnachwr a’ch ffynonellau incwm cyfredol o eiddo.
+triggered-migration.checkComplete.whatNext.p2                                           = I wneud hyn, bydd angen i chi wneud y canlynol:
+triggered-migration.checkComplete.whatNext.ul.li1                                       = defnyddio meddalwedd sy’n cydweddu â’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm
+triggered-migration.checkComplete.whatNext.ul.li2                                       = cael gwybod yr hyn sy’n ddyledus a chyflwyno’ch diweddariad(au) hwyr
+triggered-migration.checkComplete.gettingSoftware.heading                               = Cael meddalwedd
+triggered-migration.checkComplete.gettingSoftware.p1                                    = Er mwyn cyflwyno’ch diweddariadau chwarterol, mae’n rhaid i chi, neu’ch asiant, ddefnyddio meddalwedd sy’n cydweddu â’r cynllun Troi Treth yn Ddigidol ar gyfer Treth Incwm. Mae sawl meddalwedd ar gael i chi, gan gynnwys rhai sy’n rhad ac am ddim a rhai y mae angen talu amdanynt.
+triggered-migration.checkComplete.gettingSoftware.linkText                              = Dysgwch ragor am feddalwedd sy’n cydweddu
+triggered-migration.checkComplete.submitUpdates.heading                                 = Cyflwyno’ch diweddariad(au)
+triggered-migration.checkComplete.submitUpdates.p1                                      = Mae’r diweddariadau chwarterol sy’n ddyledus, a’r wybodaeth y mae angen i chi ei darparu, i’w gweld yn eich cyfrif. Wedyn, bydd yn rhaid i chi ddefnyddio’ch meddalwedd sy’n cydweddu i wneud y canlynol:
+triggered-migration.checkComplete.submitUpdates.ul.li1                                  = creu cofnod digidol o’ch incwm o eiddo a’ch incwm o fod yn unig fasnachwr, a’r treuliau cysylltiedig
+triggered-migration.checkComplete.submitUpdates.ul.li2                                  = anfon eich diweddariad(au) chwarterol at CThEF
+triggered-migration.checkComplete.submitUpdates.linkText                                = Gwiriwch eich dyddiadau cau diweddaraf ar gyfer cyflwyno

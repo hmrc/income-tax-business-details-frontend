@@ -8,9 +8,10 @@ import uk.gov.hmrc.versioning.SbtGitVersioning.autoImport.majorVersion
 
 val appName = "income-tax-business-details-frontend"
 
+val cryptoJsonVersion = "8.4.0"
 val bootstrapPlayVersion = "10.7.0"
 val playPartialsVersion = "10.2.0"
-val playFrontendHMRCVersion = "12.32.0"
+val playFrontendHMRCVersion = "13.7.0"
 val catsVersion = "2.13.0"
 val jsoupVersion = "1.22.1"
 val mockitoVersion = "5.23.0"
@@ -20,10 +21,13 @@ val hmrcMongoVersion = "2.12.0"
 val currentScalaVersion = "3.3.6"
 val playVersion = "play-30"
 
+val wErrorScalacOption: String = "-Werror"
+
 scalacOptions ++= Seq(
   "-feature",
   "-Wconf:src=target/.*:silent",
-  "-Wconf:msg=value name in trait Retrievals is deprecated:silent")
+  "-unchecked",
+  wErrorScalacOption)
 
 val compile = Seq(
   ws,
@@ -32,7 +36,7 @@ val compile = Seq(
   "org.typelevel" %% "cats-core" % catsVersion,
   "uk.gov.hmrc.mongo" %% s"hmrc-mongo-$playVersion" % hmrcMongoVersion,
   "uk.gov.hmrc" %% s"play-frontend-hmrc-$playVersion" % playFrontendHMRCVersion,
-  "uk.gov.hmrc" %% s"crypto-json-$playVersion" % "8.4.0",
+  "uk.gov.hmrc" %% s"crypto-json-$playVersion" % cryptoJsonVersion,
   "org.jsoup" % "jsoup" % jsoupVersion,
 )
 
@@ -45,7 +49,7 @@ def test(scope: String = "test"): Seq[ModuleID] = Seq(
   "org.scalatestplus" %% "scalacheck-1-15" % "3.2.11.0" % scope,
   "uk.gov.hmrc" %% s"bootstrap-test-$playVersion" % bootstrapPlayVersion % "test",
   caffeine,
-  "uk.gov.hmrc" %% s"crypto-json-$playVersion" % "8.1.0"
+  "uk.gov.hmrc" %% s"crypto-json-$playVersion" % cryptoJsonVersion
 )
 
 def it(scope: String = "test"): Seq[ModuleID] = Seq(
@@ -63,13 +67,25 @@ lazy val appDependenciesIt: Seq[ModuleID] = it()
 lazy val plugins: Seq[Plugins] = Seq.empty
 lazy val playSettings: Seq[Setting[_]] = Seq.empty
 
+lazy val scoverageSettings = {
+  import scoverage.ScoverageKeys
+  Seq(
+    ScoverageKeys.coverageExcludedPackages := "<empty>;controllers\\..*Reverse.*;models/.data/..*;" +
+      "filters.*;.handlers.*;components.*;.*BuildInfo.*;.*standardError*.*;.*Routes.*;views.html.*;appConfig.*;" +
+      "controllers.feedback.*;app.*;prod.*;appConfig.*;com.*;testOnlyDoNotUseInAppConf.*;testOnly.*;\"",
+    ScoverageKeys.coverageMinimumStmtTotal := 70.0,
+    ScoverageKeys.coverageFailOnMinimum := false,
+    ScoverageKeys.coverageHighlighting := true
+  )
+}
+
 lazy val microservice = Project(appName, file("."))
   .enablePlugins(play.sbt.PlayScala, SbtDistributablesPlugin)
   .disablePlugins(JUnitXmlReportPlugin)
   .settings(playSettings *)
   .settings(scalaSettings *)
   .settings(scalaVersion := currentScalaVersion)
-  .settings(CodeCoverageSettings.settings *)
+  .settings(scoverageSettings *)
   .settings(defaultSettings() *)
   .settings(majorVersion := 1)
   .settings(
@@ -90,10 +106,9 @@ lazy val microservice = Project(appName, file("."))
     TwirlKeys.templateImports ++= Seq(
       "uk.gov.hmrc.govukfrontend.views.html.components.implicits._",
       "uk.gov.hmrc.hmrcfrontend.views.html.helpers._",
-      "uk.gov.hmrc.hmrcfrontend.views.html.components.implicits._",
-      "common.auth"
+      "uk.gov.hmrc.hmrcfrontend.views.html.components.implicits._"
     ),
-    RoutesKeys.routesImport := Seq("common.enums.IncomeSourceJourney._", "common.models.admin._", "common.models.core._"),
+    RoutesKeys.routesImport := Seq("enums.IncomeSourceJourney._", "models.admin._", "models.core._"),
   )
   .settings(ThisBuild / scalacOptions += "-Wconf:msg=Flag.*repeatedly:s")
   .settings(
@@ -107,6 +122,7 @@ lazy val microservice = Project(appName, file("."))
       "-Wunused:privates"
     ),
   )
+
 lazy val it = project
   .dependsOn(microservice % "test->test")
   .settings(DefaultBuildSettings.itSettings().head)
@@ -119,6 +135,8 @@ lazy val it = project
   .settings(
     testForkedParallel := true
   )
-  .settings(libraryDependencies ++= AppDependencies.it)
+  .settings(scalacOptions += wErrorScalacOption)
+  .settings(
+    libraryDependencies ++= appDependenciesIt)
 
 addCommandAlias("compileAll", "compile ; test:compile ; it/test:compile")

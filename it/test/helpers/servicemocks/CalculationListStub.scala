@@ -16,12 +16,12 @@
 
 package helpers.servicemocks
 
-import common.helpers.WiremockHelper
+import helpers.WiremockHelper
 import play.api.http.Status.{INTERNAL_SERVER_ERROR, OK}
 
 object CalculationListStub {
 
-  def legacyUrl(nino: String, taxYearEnd: String): String = s"""/income-tax-business-details/list-of-calculation-results/$nino/$taxYearEnd"""
+  def legacyUrl(nino: String, taxYearEnd: String): String = s"""/income-tax-view-change/list-of-calculation-results/$nino/$taxYearEnd"""
 
   def url(nino: String, taxYearRange: String): String = s"""/income-tax-calculation/calculation-list/$nino/$taxYearRange"""
 

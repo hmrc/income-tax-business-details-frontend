@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,13 @@
 
 package testConstants
 
-import common.enums.IncomeSourceJourney.SelfEmployment
-import common.models.core.*
-import common.models.core.IncomeSourceId.mkIncomeSourceId
-import common.models.incomeSourceDetails.*
-import common.models.incomeSourceDetails.viewModels.{BusinessDetailsViewModel, CeaseBusinessDetailsViewModel, CeasedBusinessDetailsViewModel, ViewBusinessDetailsViewModel}
-import common.models.obligations.{GroupedObligationsModel, ObligationsModel, SingleObligationModel, StatusFulfilled}
+import models.incomeSourceDetails.viewmodels.{BusinessDetailsViewModel, CeaseBusinessDetailsViewModel, CeasedBusinessDetailsViewModel, ViewBusinessDetailsViewModel}
+import enums.IncomeSourceJourney.SelfEmployment
+import models.core.IncomeSourceId.mkIncomeSourceId
+import models.core.*
+import models.incomeSourceDetails.{BusinessDetailsModel, LatencyDetails, QuarterTypeElection}
 import testConstants.BaseTestConstants.*
-import testConstants.NextUpdatesTestConstants.{fakeNextUpdatesModel, openObligation, overdueObligation}
+import models.{GroupedObligationsModel, ObligationsModel, SingleObligationModel, StatusFulfilled}
 
 import java.time.{LocalDate, Month}
 
@@ -87,7 +86,6 @@ object BusinessDetailsTestConstants {
     postCode = Some("ZL1 064"),
     countryCode = Some("GB")
   )
-  val testContactDetails = ContactDetailsModel(Some("123456789"), Some("0123456789"), Some("8008135"), Some("google@chuckNorris.com"))
   val testCessation = CessationModel(Some(LocalDate.of(year2018, Month.JANUARY, 1)))
   val testCessation2 = CessationModel(Some(LocalDate.of(year2019, Month.JANUARY, 1)))
   val testCessation3 = CessationModel(Some(LocalDate.of(year2022, Month.JANUARY, 1)))
@@ -552,6 +550,39 @@ object BusinessDetailsTestConstants {
     address = Some(address),
   )
 
+  val mockedCurrentTime20171031: LocalDate = LocalDate.of(2017, 10, 31)
+
+  def fakeNextUpdatesModel(m: SingleObligationModel): SingleObligationModel =
+    SingleObligationModel(m.start, m.end, m.due, m.obligationType, m.dateReceived, m.periodKey, StatusFulfilled)
+
+  val overdueObligation: SingleObligationModel = fakeNextUpdatesModel(SingleObligationModel(
+    start = LocalDate.of(2017, 7, 1),
+    end = LocalDate.of(2017, 9, 30),
+    due = LocalDate.of(2017, 10, 30),
+    obligationType = "Quarterly",
+    dateReceived = None,
+    periodKey = "#002",
+    StatusFulfilled
+  ))
+
+  val openObligation: SingleObligationModel = fakeNextUpdatesModel(SingleObligationModel(
+    start = LocalDate.of(2017, 7, 1),
+    end = LocalDate.of(2017, 9, 30),
+    due = mockedCurrentTime20171031,
+    obligationType = "Quarterly",
+    dateReceived = None,
+    periodKey = "#003",
+    StatusFulfilled
+  ))
+  
+  val nextUpdatesDataPropertySuccessModel: GroupedObligationsModel = GroupedObligationsModel(
+    testPropertyIncomeId,
+    List(
+      openObligation.copy(periodKey = "#004"),
+      overdueObligation.copy(periodKey = "#005")
+    )
+  )
+  
   val businessNotValidObligationType = fakeNextUpdatesModel(SingleObligationModel(
     start = LocalDate.of(2017, 7, 1),
     end = LocalDate.of(2017, 9, 30),
@@ -609,11 +640,30 @@ object BusinessDetailsTestConstants {
     cessation = None,
     address = Some(address),
   )
-
-  val businessErrorModel = ErrorModel(testErrorStatus, testErrorMessage)
-
+  
   val obligationsDataSuccessModel: GroupedObligationsModel = GroupedObligationsModel(testSelfEmploymentId, List(overdueObligation, openObligation))
   val obligationsAllDeadlinesSuccessNotValidObligationType: ObligationsModel = ObligationsModel(
     Seq(GroupedObligationsModel(testSelfEmploymentId, List(businessNotValidObligationType))))
 
+  val testObligationsModel: ObligationsModel = ObligationsModel(Seq(
+    GroupedObligationsModel("123", List(SingleObligationModel(
+      LocalDate.of(taxYear, 1, 6),
+      LocalDate.of(taxYear, 4, 5),
+      LocalDate.of(taxYear, 5, 5),
+      "Quarterly",
+      None,
+      "#001",
+      StatusFulfilled),
+      SingleObligationModel(
+        LocalDate.of(taxYear, 1, 6),
+        LocalDate.of(taxYear, 4, 5),
+        LocalDate.of(taxYear, 5, 5),
+        "Quarterly",
+        None,
+        "#002",
+        StatusFulfilled
+      )
+    ))
+  ))
+  
 }

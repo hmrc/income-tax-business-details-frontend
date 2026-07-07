@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,18 @@
 
 package testConstants
 
-import common.enums.IncomeSourceJourney.{ForeignProperty, IncomeSourceType, SelfEmployment, UkProperty}
-import common.enums.JourneyType.{Add, IncomeSourceJourneyType}
-import common.enums.TriggeredMigration.Channel.HmrcUnconfirmed
-import common.models.UIJourneySessionData
-import common.models.core.{AddressModel, IncomeSourceId}
-import common.models.incomeSourceDetails.*
-import common.models.incomeSourceDetails.viewModels.{CeaseIncomeSourcesViewModel, CheckCeaseIncomeSourceDetailsViewModel}
+import models.incomeSourceDetails.{AddIncomeSourceData, Address, CeaseIncomeSourceData, Country, ManageIncomeSourceData}
+import models.incomeSourceDetails.viewmodels.{CeaseIncomeSourcesViewModel, CheckCeaseIncomeSourceDetailsViewModel}
+import enums.IncomeSourceJourney.{ForeignProperty, IncomeSourceType, SelfEmployment, UkProperty}
+import enums.JourneyType.{Add, IncomeSourceJourneyType}
+import enums.TriggeredMigration.Channel.HmrcUnconfirmed
+import models.core.{AddressModel, IncomeSourceId}
 import testConstants.BaseTestConstants.*
 import testConstants.BusinessDetailsTestConstants.*
 import testConstants.PropertyDetailsTestConstants.*
+import models.incomeSourceDetails.{IncomeSourceDetailsError, IncomeSourceDetailsModel}
+import models.incomeSourceDetails.*
+import models.UIJourneySessionData
 
 import java.time.LocalDate
 
