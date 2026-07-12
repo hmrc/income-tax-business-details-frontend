@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package common.models.core
+package businessDetails.core
 
-import IncomeSourceIdHash.mkIncomeSourceIdHash
+import businessDetails.core.IncomeSourceIdHash.mkIncomeSourceIdHash
 
 case class IncomeSourceId(value: String) {
 

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package common.enums
+package businessDetails.enums
 
-import common.enums.IncomeSourceJourney.ForeignProperty
+import businessDetails.enums.IncomeSourceJourney.ForeignProperty
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import play.api.libs.json.{JsString, Json}

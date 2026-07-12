@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-package common.utils
+package shared.utils
 
 import common.mocks.services.MockDateService
 import common.services.DateService
 import common.testUtils.TestSupport
 import org.mockito.Mockito.when
-import shared.utils.MtdConstants
 
 import java.time.LocalDate
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package common.models.core
+package businessDetails.core
 
 import common.exceptions.{MultipleIncomeSourcesFound, NoIncomeSourceFound}
 

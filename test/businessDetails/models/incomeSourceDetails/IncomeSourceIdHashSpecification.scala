@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package common.models.incomeSourceDetails
+package businessDetails.models.incomeSourceDetails
 
-import common.models.core.IncomeSourceId.*
-import common.models.core.IncomeSourceIdHash.*
+import businessDetails.core.IncomeSourceId.*
+import businessDetails.core.IncomeSourceIdHash.*
 import org.scalacheck.Prop.forAll
 import org.scalacheck.{Gen, Properties}
 

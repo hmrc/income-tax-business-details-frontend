@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package businessDetails.mocks.connectors
+package common.mocks.connectors
 
 import common.connectors.BusinessDetailsConnector
 import common.models.incomeSourceDetails.IncomeSourceDetailsResponse

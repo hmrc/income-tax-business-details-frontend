@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package common.enums.TriggeredMigration
+package businessDetails.enums.TriggeredMigration
 
-import common.enums.IncomeSourceJourney.{ForeignProperty, IncomeSourceType, SelfEmployment, UkProperty}
+import businessDetails.enums.IncomeSourceJourney.{ForeignProperty, IncomeSourceType, SelfEmployment, UkProperty}
 
 sealed trait TriggeredMigrationState {
   val messageKeyValue: String

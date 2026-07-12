@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package common.enums.JourneyType
+package shared.enums.JourneyType
 
-import common.enums.IncomeSourceJourney.IncomeSourceType
+import businessDetails.enums.IncomeSourceJourney.IncomeSourceType
 
 sealed trait JourneyType
 
@@ -38,20 +38,6 @@ case object Manage extends Operation {
 
 case object Cease extends Operation {
   override val operationType = "CEASE"
-}
-
-case class Opt(optJourney: OptJourney) extends JourneyType {
-  override def toString: String = optJourney.toString
-}
-
-sealed trait OptJourney extends JourneyType
-
-case object SignUpJourney extends OptJourney {
-  override val toString = "SIGNUP"
-}
-
-case object OptOutJourney extends OptJourney {
-  override val toString = "OPTOUT"
 }
 
 case object TriggeredMigrationJourney extends JourneyType {

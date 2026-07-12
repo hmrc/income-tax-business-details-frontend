@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package common.enums.IncomeSourceJourney
+package businessDetails.enums.IncomeSourceJourney
 
 import play.api.libs.json.{JsString, Writes}
 import play.api.mvc.JavascriptLiteral
