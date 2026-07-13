@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package common.models.incomeSourceDetails
+package businessDetails.models.incomeSourceDetails
 
+import businessDetails.core.IncomeSourceId.mkIncomeSourceId
+import businessDetails.core.IncomeSourceIdHash.mkIncomeSourceIdHash
+import businessDetails.core.{IncomeSourceId, IncomeSourceIdHash}
 import common.exceptions.{MultipleIncomeSourcesFound, NoIncomeSourceFound}
-import common.models.core.IncomeSourceId.mkIncomeSourceId
-import common.models.core.IncomeSourceIdHash.mkIncomeSourceIdHash
-import common.models.core.{IncomeSourceId, IncomeSourceIdHash}
 import common.testConstants.BaseTestConstants.{testSelfEmploymentId, testSelfEmploymentId2, testSelfEmploymentIdValidation}
 import common.testUtils.UnitSpec
 

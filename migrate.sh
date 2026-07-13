@@ -10,6 +10,8 @@ cp app/common/models/liabilitycalculation/LiabilityCalculationResponse.scala tmp
 cp app/businessDetails/models/SensitiveUIJourneySessionData.scala tmp/.
 cp app/shared/models/UIJourneySessionData.scala tmp/.
 cp app/common/models/obligations/ObligationsResponseModel.scala tmp/.
+cp -r app/shared/enums/journeyType tmp/.
+cp
 
 echo "Removing main code from the app folder"
 rm -rf app/common
@@ -29,9 +31,12 @@ cp tmp/LiabilityCalculationResponse.scala app/common/models/liabilitycalculation
 cp tmp/SensitiveUIJourneySessionData.scala app/businessDetails/models/.
 cp tmp/UIJourneySessionData.scala app/shared/models/.
 cp tmp/ObligationsResponseModel.scala app/common/models/obligations/.
+cp -r tmp/journeyType app/shared/enums/.
 
 echo "Removing unused files"
 rm -rf app/shared/implicits
+rm app/shared/enums/CodingOutType.scala
+rm app/shared/enums/DocumentType.scala
 
 echo "Removing files from tmp folder"
 rm -rf tmp/*
