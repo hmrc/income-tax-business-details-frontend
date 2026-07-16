@@ -82,6 +82,7 @@ object FeatureSwitchName {
       JsSuccess(BusinessDetailsFrontend)
     case invalidName =>
       Logger("application").error(s"Invalid feature switch Json found: $invalidName")
+      JsSuccess(InvalidFS)
   }
 
   implicit val formats: Format[FeatureSwitchName] =
