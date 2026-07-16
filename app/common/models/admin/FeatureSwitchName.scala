@@ -16,6 +16,7 @@
 
 package common.models.admin
 
+import play.api.Logger
 import play.api.libs.json._
 import play.api.mvc.PathBindable
 
