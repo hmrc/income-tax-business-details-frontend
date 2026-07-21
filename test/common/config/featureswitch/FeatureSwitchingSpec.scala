@@ -42,28 +42,13 @@ class FeatureSwitchingSpec extends TestSupport with MockitoSugar {
   }
 
   val allFeatureSwitches: Set[FeatureSwitchName] = Set(
-    ITSASubmissionIntegration,
-    ChargeHistory,
-    CreditsRefundsRepay,
-    PaymentHistoryRefunds,
-    OptOutFs,
-    SignUpFs,
     DisplayBusinessStartDate,
-    PenaltiesAndAppeals,
-    PenaltiesBackendEnabled,
-    SelfServeTimeToPayR17,
-    SubmitClaimToAdjustToNrs,
     TriggeredMigration,
-    PostFinalisationAmendmentsR18,
     `CY+1YouMustWaitToSignUpPageEnabled`,
     OverseasBusinessAddress,
-    RecentActivity,
-    MortgageEvidence,
     IdempotencyKeyForCreateIncomeSource,
     NoIncomeSourcesRedirect,
-    BusinessDetailsFrontend, 
-    ObligationsFrontend,
-    FinancialsFrontend
+    ObligationsFrontend
   )
 
   "FeatureSwitchName" when {
