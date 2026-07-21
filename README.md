@@ -5,7 +5,11 @@
 
 This is the repository for the Income Tax View and Change frontend.
 
-Backend: https://github.com/hmrc/income-tax-business-details
+Backend:  
+https://github.com/hmrc/income-tax-business-details 
+https://github.com/hmrc/income-tax-calculation 
+https://github.com/hmrc/income-tax-obligations
+https://github.com/hmrc/income-tax-financial-details
 
 Stub: https://github.com/hmrc/income-tax-vc-fs-and-stub
 
