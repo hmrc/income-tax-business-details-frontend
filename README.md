@@ -1,11 +1,11 @@
 # income-tax-business-details-frontend
+This is the repository for the Income Tax Business Details frontend.
 
-[![Build Status](https://travis-ci.org/hmrc/income-tax-view-change-frontend.svg)](https://travis-ci.org/hmrc/income-tax-view-change-frontend) [ ![Download](https://api.bintray.com/packages/hmrc/releases/income-tax-view-change-frontend/images/download.svg) ](https://bintray.com/hmrc/releases/income-tax-view-change-frontend/_latestVersion)
-
-
-This is the repository for the Income Tax View and Change frontend.
-
-Backend: https://github.com/hmrc/income-tax-business-details
+Backend:  
+https://github.com/hmrc/income-tax-business-details 
+https://github.com/hmrc/income-tax-calculation 
+https://github.com/hmrc/income-tax-obligations
+https://github.com/hmrc/income-tax-financial-details
 
 Stub: https://github.com/hmrc/income-tax-vc-fs-and-stub
 
@@ -30,7 +30,7 @@ sbt compileAll
 To start all Service Manager services from the latest RELEASE version instead of snapshot execute the following:
 
 ```
-sm2 --start ITVC_ALL --appendArgs '{"CITIZEN_DETAILS":["-Dmongodb.cid-sautr-cache.enabled=false"]}'
+sm2 --start ITVC_FRONTEND_FEATURE_TEST --appendArgs '{"CITIZEN_DETAILS":["-Dmongodb.cid-sautr-cache.enabled=false"]}'
 ```
 
 
