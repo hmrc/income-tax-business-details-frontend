@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package businessDetails.auth.actions
+package common.auth.actions
 
-import businessDetails.controllers.triggeredMigration.routes as triggeredMigrationRoutes
 import common.auth.MtdItUser
 import common.config.featureswitch.FeatureSwitching
 import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler}
@@ -26,6 +25,7 @@ import common.enums.TaxYearSummary.CalculationRecord.LATEST
 import common.models.admin.TriggeredMigration
 import common.models.liabilitycalculation.{LiabilityCalculationError, LiabilityCalculationResponse}
 import common.services.{CustomerFactsUpdateService, DateServiceInterface, ITSAStatusService}
+import businessDetails.controllers.triggeredMigration.routes as triggeredMigrationRoutes
 import play.api.Logger
 import play.api.mvc.{ActionRefiner, MessagesControllerComponents, Result}
 import uk.gov.hmrc.auth.core.AffinityGroup.Agent
@@ -58,9 +58,10 @@ class TriggeredMigrationRetrievalAction @Inject()(
         implicit val req: MtdItUser[A] = request
 
         lazy val authAction: Future[Either[Result, MtdItUser[A]]] = {
-          (request.incomeSources.isConfirmedUser) match {
-            case true => Future(Right(req))
-            case false =>
+          (request.incomeSources.isConfirmedUser, isTriggeredMigrationPage) match {
+            case (true, false) => Future(Right(req))
+            case (true, true) => Future(Left(redirectToHome(req.isAgent)))
+            case (false, _) =>
               isItsaStatusVoluntaryOrMandated().flatMap {
                 case Right(false) => confirmIneligibleUser(req, isTriggeredMigrationPage)
                 case Left(errorResult) => Future(Left(errorResult))

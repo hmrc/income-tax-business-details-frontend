@@ -30,7 +30,7 @@ import common.testConstants.BaseIntegrationTestConstants.*
 import businessDetails.testConstants.NewCalcBreakdownItTestConstants.liabilityCalculationModelSuccessfulNotCrystallised
 import common.testConstants.IncomeSourceDetailsTestConstants.singleBusinessIncome
 import common.helpers.GetInsourceDetailsStub
-import businessDetails.enums.TriggeredMigration.Channel.HmrcUnconfirmed
+import common.enums.TriggeredMigration.Channel.HmrcUnconfirmed
 import common.models.incomeSourceDetails.IncomeSourceDetailsModel
 
 class CheckActiveBusinessesConfirmControllerISpec extends ControllerISpecHelper {
@@ -105,6 +105,17 @@ class CheckActiveBusinessesConfirmControllerISpec extends ControllerISpecHelper 
 
         "redirect to home page when TriggeredMigration FS is disabled" in {
           stubAuthorised(mtdRole)
+          GetInsourceDetailsStub.stubGetIncomeSourceDetailsResponse(testMtditid)(OK, singleBusinessIncome)
+
+          val result = buildGETMTDClient(path, additionalCookies).futureValue
+          result should have(
+            httpStatus(SEE_OTHER),
+            redirectURI(expectedRedirect)
+          )
+        }
+
+        "redirect to the home page when the user is already confirmed" in {
+          stubAuthorised(mtdRole, List(TriggeredMigration))
           GetInsourceDetailsStub.stubGetIncomeSourceDetailsResponse(testMtditid)(OK, singleBusinessIncome)
 
           val result = buildGETMTDClient(path, additionalCookies).futureValue
