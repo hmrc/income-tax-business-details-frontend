@@ -44,7 +44,6 @@ class FeatureSwitchingSpec extends TestSupport with MockitoSugar {
   val allFeatureSwitches: Set[FeatureSwitchName] = Set(
     DisplayBusinessStartDate,
     TriggeredMigration,
-    `CY+1YouMustWaitToSignUpPageEnabled`,
     OverseasBusinessAddress,
     IdempotencyKeyForCreateIncomeSource,
     NoIncomeSourcesRedirect,

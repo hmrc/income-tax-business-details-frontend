@@ -41,8 +41,6 @@ object FeatureSwitchName {
       JsSuccess(DisplayBusinessStartDate)
     case JsString(TriggeredMigration.name) =>
       JsSuccess(TriggeredMigration)
-    case JsString(`CY+1YouMustWaitToSignUpPageEnabled`.name) =>
-      JsSuccess(`CY+1YouMustWaitToSignUpPageEnabled`)
     case JsString(ObligationsFrontend.name) =>
       JsSuccess(ObligationsFrontend)
     case JsString(OverseasBusinessAddress.name) =>
@@ -77,7 +75,6 @@ object FeatureSwitchName {
     Set(
       DisplayBusinessStartDate,
       TriggeredMigration,
-      `CY+1YouMustWaitToSignUpPageEnabled`,
       OverseasBusinessAddress,
       IdempotencyKeyForCreateIncomeSource,
       NoIncomeSourcesRedirect,
@@ -105,11 +102,6 @@ case object DisplayBusinessStartDate extends FeatureSwitchName {
 case object TriggeredMigration extends FeatureSwitchName {
   override val name: String = "triggered-migration"
   override val toString: String = "Triggered Migration"
-}
-
-case object `CY+1YouMustWaitToSignUpPageEnabled` extends FeatureSwitchName {
-  override val name: String = "cy-plus-one-you-must-wait-to-sign-up-page-enabled"
-  override val toString: String = "CY+1 You Must Wait To Sign Up Page Enabled"
 }
 
 case object OverseasBusinessAddress extends FeatureSwitchName {
