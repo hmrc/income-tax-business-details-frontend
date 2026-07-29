@@ -29,8 +29,8 @@ class FeatureSwitchServiceSpec extends TestSupport with MockFeatureSwitchConnect
 
   val mockFrontendAppConfig: FrontendAppConfig = mock[FrontendAppConfig]
 
-  val exampleFSName: FeatureSwitchName = FeatureSwitchName.get("display-business-start-date").get
-  val anotherFSName: FeatureSwitchName = FeatureSwitchName.get("triggered-migration").get
+  val exampleFSName: FeatureSwitchName = FeatureSwitchName.get("triggered-migration").get
+  val anotherFSName: FeatureSwitchName = FeatureSwitchName.get("overseas-business-address").get
 
   object TestFSService extends FeatureSwitchService(
     mockFeatureSwitchConnector,

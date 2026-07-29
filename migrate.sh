@@ -13,7 +13,6 @@ cp app/common/models/obligations/ObligationsResponseModel.scala tmp/.
 cp -r app/shared/enums/journeyType tmp/.
 cp app/common/connectors/FeatureSwitchConnector.scala tmp/.
 cp app/common/models/admin/FeatureSwitchName.scala tmp/.
-cp app/common/services/admin/FeatureSwitchService.scala tmp/.
 cp app/common/auth/actions/TriggeredMigrationRetrievalAction.scala tmp/.
 
 echo "Removing main code from the app folder"
@@ -37,7 +36,6 @@ cp tmp/ObligationsResponseModel.scala app/common/models/obligations/.
 cp -r tmp/journeyType app/shared/enums/.
 cp tmp/FeatureSwitchConnector.scala app/common/connectors/.
 cp tmp/FeatureSwitchName.scala app/common/models/admin/.
-cp tmp/FeatureSwitchService.scala app/common/services/admin/.
 cp tmp/TriggeredMigrationRetrievalAction.scala app/common/auth/actions/.
 
 echo "Removing unused files"
