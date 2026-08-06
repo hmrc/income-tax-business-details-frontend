@@ -4,5 +4,3 @@ service-type: frontend
 tags: []
 test-repositories:
   - income-tax-view-change-acceptance-tests
-script:
-  - name: ./run_businessDetailsAgent.sh && ./run_businessDetailsIndividuals.sh && ./run_businessDetailsSupportingAgent.sh
