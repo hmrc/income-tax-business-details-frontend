@@ -49,6 +49,8 @@ object FeatureSwitchName {
       JsSuccess(IdempotencyKeyForCreateIncomeSource)
     case JsString(NoIncomeSourcesRedirect.name) =>
       JsSuccess(NoIncomeSourcesRedirect)
+    case JsString(NewHubContextRootEnabled.name) =>
+      JsSuccess(NewHubContextRootEnabled)
     case notRequiredFS =>
       Logger("application").error("Feature switch not required in this service")
       JsSuccess(NotRequiredFS)
@@ -78,7 +80,8 @@ object FeatureSwitchName {
       OverseasBusinessAddress,
       IdempotencyKeyForCreateIncomeSource,
       NoIncomeSourcesRedirect,
-      ObligationsFrontend
+      ObligationsFrontend,
+      NewHubContextRootEnabled
     )
 
   def get(str: String): Option[FeatureSwitchName] = allFeatureSwitches find (_.name == str)
@@ -117,4 +120,9 @@ case object IdempotencyKeyForCreateIncomeSource extends FeatureSwitchName {
 case object NoIncomeSourcesRedirect extends FeatureSwitchName {
   override val name: String = "no-income-sources-redirect"
   override val toString: String = "No Income Sources Redirect"
+}
+
+case object NewHubContextRootEnabled extends FeatureSwitchName {
+  override val name: String = "enable-new-hub-context-root"
+  override val toString: String = "New Hub Context-root Enabled"
 }

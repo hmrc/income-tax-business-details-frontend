@@ -42,6 +42,7 @@ echo "Removing unused files"
 rm -rf app/shared/implicits
 rm app/shared/enums/CodingOutType.scala
 rm app/shared/enums/DocumentType.scala
+rm app/shared/enums/ChargeClassificationType.scala
 
 echo "Removing files from tmp folder"
 rm -rf tmp/*
