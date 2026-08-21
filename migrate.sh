@@ -53,7 +53,6 @@ echo "Copying files to tmp folder which we don't want to overwrite"
 cp test/common/models/liabilityCalculation/LiabilityCalculationResponseModelSpec.scala tmp/.
 cp test/common/config/featureswitch/FeatureSwitchingSpec.scala tmp/.
 cp test/common/admin/FeatureSwitchNameSpec.scala tmp/.
-cp test/common/auth/actions/FeatureSwitchRetrievalActionSpec.scala tmp/.
 cp test/common/services/admin/FeatureSwitchServiceSpec.scala tmp/.
 cp test/common/mocks/connectors/MockFeatureSwitchConnector.scala tmp/.
 
@@ -75,7 +74,6 @@ echo "Copying files back from tmp folder to test folder"
 cp tmp/LiabilityCalculationResponseModelSpec.scala test/common/models/liabilityCalculation/.
 cp tmp/FeatureSwitchingSpec.scala test/common/config/featureswitch/.
 cp tmp/FeatureSwitchNameSpec.scala test/common/admin/.
-cp tmp/FeatureSwitchRetrievalActionSpec.scala test/common/auth/actions/.
 cp tmp/FeatureSwitchServiceSpec.scala test/common/services/admin/.
 cp tmp/MockFeatureSwitchConnector.scala test/common/mocks/connectors/.
 
