@@ -85,7 +85,7 @@ trait ComponentSpecBase extends TestSuite with CustomMatchers
   with WiremockHelper with BeforeAndAfterEach with BeforeAndAfterAll with Eventually
   with SessionCookieBaker {
 
-  lazy val newHubContextRootEnabled = false
+  lazy val newHubContextRootEnabled = true
   val mockHost: String = WiremockHelper.wiremockHost
   val mockPort: String = WiremockHelper.wiremockPort.toString
   val mockUrl: String = s"http://$mockHost:$mockPort"
@@ -166,6 +166,7 @@ trait ComponentSpecBase extends TestSuite with CustomMatchers
     "microservice.services.citizen-details.port" -> mockPort,
     "feature-switches.read-from-mongo" -> "true",
     "feature-switch.enable-time-machine" -> "false",
+    "feature-switch.enable-new-hub-context-root" -> s"$newHubContextRootEnabled",
     "time-machine.add-years" -> "0",
     "time-machine.add-days" -> "0"
   )
