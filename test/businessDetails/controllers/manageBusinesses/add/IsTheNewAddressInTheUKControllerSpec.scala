@@ -113,7 +113,7 @@ class IsTheNewAddressInTheUKControllerSpec extends MockAuthActions with MockSess
                 setupMockCreateSession(true)
                 setupMockGetMongo(Right(Some(emptyUIJourneySessionData(IncomeSourceJourneyType(Manage, SelfEmployment))
                   .copy(addIncomeSourceData = Some(AddIncomeSourceData())))))
-                
+
                 val result = action(fakeRequest)
 
                 val document: Document = Jsoup.parse(contentAsString(result))
