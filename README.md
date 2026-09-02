@@ -27,10 +27,10 @@ sbt compileAll
 ## Run the application
 
 
-To start all Service Manager services from the latest RELEASE version instead of snapshot execute the following:
+To start all related Service Manager services from the latest RELEASE version instead of snapshot execute the following:
 
 ```
-sm2 --start ITVC_FRONTEND_FEATURE_TEST --appendArgs '{"CITIZEN_DETAILS":["-Dmongodb.cid-sautr-cache.enabled=false"]}'
+sm2 --start ITVC_BUSINESS_DETAILS_TEST --appendArgs '{"CITIZEN_DETAILS":["-Dmongodb.cid-sautr-cache.enabled=false"]}'
 ```
 
 
