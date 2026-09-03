@@ -17,6 +17,7 @@
 package common.config
 
 import play.api.Configuration
+import play.api.i18n.Messages
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
 
 trait ExternalRedirectHelper {
@@ -109,5 +110,22 @@ trait ExternalRedirectHelper {
     else
       obligationsReportingFrequencyIndividualUrl(newObligationsEnabled)
   }
+  
+  //triggered migration routes
+  import businessDetails.controllers.triggeredMigration.routes as triggeredMigrationRoutes
+
+  def triggeredMigrationCompleteStepsUrl(isAgent: Boolean, businessDetailsFrontendEnabled: Boolean): String = {
+    triggeredMigrationRoutes.CompleteStepsController.show(isAgent).url
+  }
+
+  //external links
+
+  def findOutHowLink(implicit messages: Messages): String =
+    messages.lang.code match {
+      case "cy" => "https://www.gov.uk/government/collections/troi-treth-yn-ddigidol-ar-gyfer-treth-incwm.cy"
+      case _ => "https://www.gov.uk/government/collections/making-tax-digital-for-income-tax"
+    }
+  
+  
 
 }

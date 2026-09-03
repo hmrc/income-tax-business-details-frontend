@@ -22,10 +22,9 @@ import common.config.{AgentItvcErrorHandler, FrontendAppConfig, ItvcErrorHandler
 import common.connectors.IncomeTaxCalculationConnector
 import common.controllers.BaseController
 import common.enums.TaxYearSummary.CalculationRecord.LATEST
-import common.models.admin.TriggeredMigration
+import common.models.admin.{BusinessDetailsFrontend, TriggeredMigration}
 import common.models.liabilitycalculation.{LiabilityCalculationError, LiabilityCalculationResponse}
 import common.services.{CustomerFactsUpdateService, DateServiceInterface, ITSAStatusService, YearOfMigrationService}
-import businessDetails.controllers.triggeredMigration.routes as triggeredMigrationRoutes
 import play.api.Logging
 import play.api.mvc.{ActionRefiner, MessagesControllerComponents, Result}
 import uk.gov.hmrc.auth.core.AffinityGroup.Agent
@@ -75,7 +74,7 @@ class TriggeredMigrationRetrievalAction @Inject()(
                           Future.successful(Right(req))
                         } else {
                           Future.successful(
-                            Left(Redirect(triggeredMigrationRoutes.CheckHmrcRecordsController.show(req.isAgent)))
+                            Left(Redirect(appConfig.triggeredMigrationCompleteStepsUrl(req.isAgent, isEnabled(BusinessDetailsFrontend))))
                           )
                         }
                       case Left(errorResult) =>
@@ -137,7 +136,6 @@ class TriggeredMigrationRetrievalAction @Inject()(
   }
 
   private def showErrorPageBasedOnContext(request: MtdItUser[_], context: String): Result = {
-
     logger.error(context)
 
     (request.authUserDetails.affinityGroup, context) match {
@@ -150,7 +148,8 @@ class TriggeredMigrationRetrievalAction @Inject()(
 
   private def redirectToHome[A](isAgent: Boolean, newHubContextRootEnabled: Boolean): Result = Redirect(appConfig.homePageUrl(isAgent, newHubContextRootEnabled))
 
-  private def confirmIneligibleUser[A](req: MtdItUser[A], isTriggeredMigrationPage: Boolean)(implicit hc: HeaderCarrier) = {
+  private def confirmIneligibleUser[A](req: MtdItUser[A], isTriggeredMigrationPage: Boolean)
+                                      (implicit hc: HeaderCarrier): Future[Either[Result, MtdItUser[A]]] = {
     customerFactsUpdateService.updateCustomerFacts(req.mtditid).map {
       _ =>
         if (isTriggeredMigrationPage) {

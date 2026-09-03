@@ -13,7 +13,6 @@ cp app/common/models/obligations/ObligationsResponseModel.scala tmp/.
 cp -r app/shared/enums/journeyType tmp/.
 cp app/common/connectors/FeatureSwitchConnector.scala tmp/.
 cp app/common/models/admin/FeatureSwitchName.scala tmp/.
-cp app/common/auth/actions/TriggeredMigrationRetrievalAction.scala tmp/.
 cp app/common/viewUtils/InternalUrlHelper.scala tmp/.
 
 echo "Removing main code from the app folder"
@@ -26,6 +25,10 @@ echo "Copying main code from the income-tax-view-change-frontend to app folder"
 cp -r ../income-tax-view-change-frontend/app/common app/.
 cp -r ../income-tax-view-change-frontend/app/shared app/.
 cp -r ../income-tax-view-change-frontend/app/businessDetails app/.
+cp ../income-tax-view-change-frontend/conf/messages conf/.
+cp ../income-tax-view-change-frontend/conf/messages.cy conf/.
+cp ../income-tax-view-change-frontend/conf/businessDetails.routes conf/.
+cp ../income-tax-view-change-frontend/conf/manageBusinesses.routes conf/.
 
 echo "Copying files back from tmp folder to app folder"
 cp tmp/ExternalRedirectHelper.scala app/common/config/.
@@ -37,7 +40,6 @@ cp tmp/ObligationsResponseModel.scala app/common/models/obligations/.
 cp -r tmp/journeyType app/shared/enums/.
 cp tmp/FeatureSwitchConnector.scala app/common/connectors/.
 cp tmp/FeatureSwitchName.scala app/common/models/admin/.
-cp tmp/TriggeredMigrationRetrievalAction.scala app/common/auth/actions/.
 cp tmp/InternalUrlHelper.scala app/common/viewUtils/.
 
 echo "Removing unused files"
