@@ -30,11 +30,6 @@
         mainTemplate: unifiedLayout,
         implicitDateFormatter: ImplicitDateFormatterImpl,
         h1: h1,
-        h2: h2,
-        p: p,
-        link: link,
-        hr: hr,
-        govukTable: GovukTable,
         ceasedBusinesses: CeasedBusinesses
 )
 
@@ -59,6 +54,6 @@
 
     @h1(msg = getMessage("heading"), id = Some("heading"))
 
-    @ceasedBusinesses(sources.ceasedBusinesses, sources.displayStartDate)
+    @ceasedBusinesses(sources.ceasedBusinesses, false)
 
 }
