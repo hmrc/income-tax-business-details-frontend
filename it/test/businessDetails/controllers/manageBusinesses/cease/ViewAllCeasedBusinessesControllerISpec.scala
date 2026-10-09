@@ -60,26 +60,8 @@ class ViewAllCeasedBusinessesControllerISpec extends ControllerISpecHelper {
                 pageTitle(mtdUserRole, pageTitleMsgKey),
                 elementTextByID("ceased-businesses-table-head-name")(businessNameMessage),
                 elementTextByID("ceased-business-table-row-trading-name-0")(soleTraderBusinessName1),
-                elementTextByID("ceased-business-table-row-date-ended-0")(propertyEndDate),
-                elementTextByID("ceased-businesses-table-head-date-started")(startDateMessage),
-                elementTextByID("ceased-business-table-row-date-started-0")(propertyStartDate),
-              )
-            }
-
-            "DisplayBusinessStartDate FS is disabled" in {
-              stubAuthorised(mtdUserRole)
-              GetInsourceDetailsStub.stubGetIncomeSourceDetailsResponse(testMtditid)(OK, multipleBusinessesWithBothPropertiesAndCeasedBusiness)
-              val result = buildGETMTDClient(path, additionalCookies).futureValue
-              GetInsourceDetailsStub.verifyGetIncomeSourceDetails(testMtditid)
-
-              result should have(
-                httpStatus(OK),
-                pageTitle(mtdUserRole, pageTitleMsgKey),
-                elementTextByID("ceased-businesses-table-head-name")(businessNameMessage),
-                elementTextByID("ceased-business-table-row-trading-name-0")(soleTraderBusinessName1),
-                elementTextByID("ceased-business-table-row-date-ended-0")(propertyEndDate),
-                elementTextByID("ceased-businesses-table-head-date-started")(""),
-                elementTextByID("ceased-business-table-row-date-started-0")(""),
+                elementTextByID("ceased-businesses-table-head-date-ended")(ceasedDateMessage),
+                elementTextByID("ceased-business-table-row-date-ended-0")(propertyEndDate)
               )
             }
 
@@ -95,9 +77,7 @@ class ViewAllCeasedBusinessesControllerISpec extends ControllerISpecHelper {
                 elementTextByID("ceased-businesses-table-head-name")(businessNameMessage),
                 elementTextByID("ceased-businesses-table-head-date-ended")(ceasedDateMessage),
                 elementTextByID("ceased-business-table-row-trading-name-0")(ceasedBusinessName),
-                elementTextByID("ceased-businesses-table-head-date-started")(startDateMessage),
-                elementTextByID("ceased-business-table-row-date-ended-0")(propertyStartDate1),
-                elementTextByID("ceased-business-table-row-date-started-0")(propertyStartDate)
+                elementTextByID("ceased-business-table-row-date-ended-0")(propertyStartDate1)
               )
             }
           }
