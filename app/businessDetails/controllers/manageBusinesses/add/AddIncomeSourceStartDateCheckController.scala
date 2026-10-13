@@ -98,7 +98,7 @@ class AddIncomeSourceStartDateCheckController @Inject()(val authActions: AuthAct
           }
         case None =>
           logger.error("Failed to get income source start date from session")
-          Future.successful(errorHandler(isAgent).showInternalServerError())
+          Future(Redirect(routes.AddBusinessNameController.show(mode = NormalMode)))
       }
     }
   }.recover {
@@ -146,7 +146,7 @@ class AddIncomeSourceStartDateCheckController @Inject()(val authActions: AuthAct
           )
         case None =>
           logger.error("Failed to get income source start date from session")
-          Future.successful(errorHandler(isAgent).showInternalServerError())
+          Future(Redirect(routes.AddBusinessNameController.show(mode = NormalMode)))
       }
     }
   }.recover {
