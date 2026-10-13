@@ -42,10 +42,6 @@ object WiremockHelper extends Eventually with IntegrationPatience {
   val url = s"http://$wiremockHost:$wiremockPort"
   val basePath = MicroserviceSpecificConstants.basePath
   val baseUrl = MicroserviceSpecificConstants.baseUrl
-  val hubBasePath: Boolean => String = newHubContextRootEnabled =>
-    MicroserviceSpecificConstants.hubBasePath(newHubContextRootEnabled)
-  val hubBaseUrl: Boolean => String = newHubContextRootEnabled =>
-    MicroserviceSpecificConstants.hubBaseUrl(newHubContextRootEnabled)
 
   def verifyPost(uri: String, optBody: Option[String] = None): Unit = {
     val uriMapping = postRequestedFor(urlEqualTo(uri))

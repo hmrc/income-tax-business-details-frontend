@@ -16,7 +16,8 @@
 
 package common.auth.actions
 
-import common.auth.{MtdItUser, RequestWithFeatureSwitches}
+import common.auth.MtdItUser
+import common.auth.actions.AuthActionsTestData.getMtdItUser
 import common.models.admin.{FeatureSwitch, NoIncomeSourcesRedirect}
 import common.services.admin.FeatureSwitchService
 import org.mockito.ArgumentMatchers.any
@@ -27,6 +28,7 @@ import play.api.Application
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.mvc.{Result, Results}
 import play.api.test.Helpers.*
+import uk.gov.hmrc.auth.core.AffinityGroup.Individual
 import uk.gov.hmrc.http.HeaderCarrier
 
 import scala.concurrent.Future
@@ -42,37 +44,36 @@ class FeatureSwitchRetrievalActionSpec extends AuthActionsSpecHelper {
   }
 
   def defaultAsyncBody(
-                        requestTestCase: RequestWithFeatureSwitches[_] => Assertion
-                      ): RequestWithFeatureSwitches[_] => Future[Result] = testRequest => {
+                        requestTestCase: MtdItUser[_] => Assertion
+                      ): MtdItUser[_] => Future[Result] = testRequest => {
     requestTestCase(testRequest)
     Future.successful(Results.Ok("Successful"))
   }
 
-  def defaultAsync: MtdItUser[_] => Future[Result] = (_) => Future.successful(Results.Ok("Successful"))
-
   lazy val action = app.injector.instanceOf[FeatureSwitchRetrievalAction]
 
+  def mtdItUser: MtdItUser[_] = getMtdItUser(Individual)(fakeRequestWithActiveSession)
 
   "refine" when {
     "The feature switches are retrieved" should {
-      "Return list of feature switches" in {
+      "Add the list of feature switches to the MtdItUser" in {
         val featureSwitch = List(FeatureSwitch(NoIncomeSourcesRedirect, true))
         when(mockFeatureSwitchService.getAll()(any[HeaderCarrier]))
           .thenReturn(Future.successful(featureSwitch))
 
         val result = action.invokeBlock(
-          fakeRequestWithActiveSession,
-          defaultAsyncBody (_.featureSwitches shouldBe featureSwitch)
+          mtdItUser,
+          defaultAsyncBody(_.featureSwitches shouldBe featureSwitch)
         )
 
         status(result) shouldBe OK
         contentAsString(result) shouldBe "Successful"
       }
-      "Return empty list of feature switches" in {
+      "Add an empty list of feature switches to the MtdItUser" in {
         when(mockFeatureSwitchService.getAll()(any[HeaderCarrier]))
           .thenReturn(Future.successful(List.empty))
         val result = action.invokeBlock(
-          fakeRequestWithActiveSession,
+          mtdItUser,
           defaultAsyncBody(_.featureSwitches shouldBe List.empty)
         )
 
