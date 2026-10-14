@@ -217,7 +217,8 @@ class AddIncomeSourceStartDateCheckControllerSpec extends MockAuthActions with I
                 setupMockGetMongo(Right(Some(sessionData(journeyType(incomeSourceType)))))
 
                 val result = action(fakeRequest)
-                status(result) shouldBe INTERNAL_SERVER_ERROR
+                status(result) shouldBe 303
+                redirectLocation(result) shouldBe Some(routes.AddBusinessNameController.show(mode = NormalMode).url)
               }
             }
           }
