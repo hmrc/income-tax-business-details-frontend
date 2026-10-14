@@ -27,8 +27,8 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class SessionTimeoutAction @Inject()()(implicit val executionContext: ExecutionContext, val appConfig: FrontendAppConfig)
-  extends ActionRefiner[Request, Request] with Logging {
+class SessionTimeoutAction @Inject()(val parser: BodyParsers.Default)(implicit val executionContext: ExecutionContext, val appConfig: FrontendAppConfig)
+  extends ActionRefiner[Request, Request] with ActionBuilder[Request, AnyContent] with Logging {
 
   override def refine[A](request: Request[A]): Future[Either[Result, Request[A]]] = {
 
@@ -47,5 +47,4 @@ class SessionTimeoutAction @Inject()()(implicit val executionContext: ExecutionC
         Future.successful(Right(mtdItUserWithUpdatedHeaders))
     }
   }
-
 }

@@ -26,7 +26,6 @@ import javax.inject.{Inject, Singleton}
 @Singleton
 class AuthActions @Inject()(
                              frontendAppConfig: FrontendAppConfig,
-                             val actionBuilder: DefaultActionBuilder,
                              val checkSessionTimeout: SessionTimeoutAction,
                              val authoriseAndRetrieve: AuthoriseAndRetrieve,
                              val authoriseAndRetrieveIndividual: AuthoriseAndRetrieveIndividual,
@@ -47,8 +46,7 @@ class AuthActions @Inject()(
   override val appConfig: FrontendAppConfig = frontendAppConfig
 
   def asMTDIndividual(isTriggeredMigrationPage: Boolean = false): ActionBuilder[MtdItUser, AnyContent] = {
-    actionBuilder andThen
-      checkSessionTimeout andThen
+    checkSessionTimeout andThen
       authoriseAndRetrieveIndividual andThen
       incomeSourceRetrievalAction andThen
       retrieveFeatureSwitches andThen
@@ -57,8 +55,7 @@ class AuthActions @Inject()(
   }
 
   def asMTDIndividualForNrs: ActionBuilder[MtdItUser, AnyContent] = {
-    actionBuilder andThen
-      checkSessionTimeout andThen
+    checkSessionTimeout andThen
       authoriseAndRetrieveIndividualForNrs andThen
       incomeSourceRetrievalAction andThen
       retrieveFeatureSwitches andThen
@@ -66,12 +63,10 @@ class AuthActions @Inject()(
   }
 
   def asAgent(arnRequired: Boolean = true): ActionBuilder[AuthorisedUserRequest, AnyContent] =
-    actionBuilder andThen
-      checkSessionTimeout andThen authoriseAndRetrieveAgent.authorise(arnRequired)
+    checkSessionTimeout andThen authoriseAndRetrieveAgent.authorise(arnRequired)
 
   def asMTDAgentWithConfirmedClient(isTriggeredMigrationPage: Boolean = false): ActionBuilder[MtdItUser, AnyContent] = {
-    actionBuilder andThen
-      checkSessionTimeout andThen
+    checkSessionTimeout andThen
       authoriseAndRetrieveAgent.authorise() andThen
       retrieveClientData.authorise() andThen
       authoriseAndRetrieveMtdAgent andThen
@@ -82,8 +77,7 @@ class AuthActions @Inject()(
   }
 
   def asMTDAgentWithUnconfirmedClient: ActionBuilder[MtdItUser, AnyContent] = {
-    actionBuilder andThen
-      checkSessionTimeout andThen
+    checkSessionTimeout andThen
       authoriseAndRetrieveAgent.authorise() andThen
       retrieveClientData.authorise(useCookies = true) andThen
       authoriseAndRetrieveMtdAgent andThen
@@ -92,8 +86,7 @@ class AuthActions @Inject()(
   }
 
   def asMTDPrimaryAgent(isTriggeredMigrationPage: Boolean = false): ActionBuilder[MtdItUser, AnyContent] = {
-    actionBuilder andThen
-      checkSessionTimeout andThen
+    checkSessionTimeout andThen
       authoriseAndRetrieveAgent.authorise() andThen
       retrieveClientData.authorise() andThen
       authoriseAndRetrieveMtdAgent andThen
@@ -104,8 +97,7 @@ class AuthActions @Inject()(
   }
   
   def asMTDPrimaryAgentForNrs: ActionBuilder[MtdItUser, AnyContent] = {
-    actionBuilder andThen
-      checkSessionTimeout andThen
+    checkSessionTimeout andThen
       authoriseAndRetrieveAgentForNrs.authorise() andThen
       retrieveClientData.authorise() andThen
       authoriseAndRetrieveMtdAgent andThen
@@ -124,8 +116,7 @@ class AuthActions @Inject()(
     asMTDPrimaryAgent(isTriggeredMigrationPage) andThen redirectIfNoIncomeSourcesAction
 
   def asMTDIndividualForNoIncomeSourcesPage: ActionBuilder[MtdItUser, AnyContent] = {
-    actionBuilder andThen
-      checkSessionTimeout andThen
+    checkSessionTimeout andThen
       authoriseAndRetrieveIndividual andThen
       incomeSourceRetrievalAction andThen
       retrieveFeatureSwitches andThen
@@ -133,8 +124,7 @@ class AuthActions @Inject()(
   }
 
   def asMTDAgentWithConfirmedClientForNoIncomeSourcesPage: ActionBuilder[MtdItUser, AnyContent] = {
-    actionBuilder andThen
-      checkSessionTimeout andThen
+    checkSessionTimeout andThen
       authoriseAndRetrieveAgent.authorise() andThen
       retrieveClientData.authorise() andThen
       authoriseAndRetrieveMtdAgent andThen
@@ -168,8 +158,7 @@ class AuthActions @Inject()(
   }
 
   def asAuthorisedUser: ActionBuilder[AuthorisedUserRequest, AnyContent] = {
-    actionBuilder andThen
-      checkSessionTimeout andThen authoriseAndRetrieve
+    checkSessionTimeout andThen authoriseAndRetrieve
   }
 }
 
