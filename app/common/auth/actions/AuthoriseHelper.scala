@@ -16,7 +16,8 @@
 
 package common.auth.actions
 
-import common.auth.{AuthorisedAndEnrolledRequest, RequestWithFeatureSwitches}
+import play.api.mvc.Request
+import common.auth.{AuthorisedAndEnrolledRequest}
 import common.config.FrontendAppConfig
 import common.config.featureswitch.FeatureSwitching
 import common.viewUtils.InternalUrlHelper
@@ -43,7 +44,7 @@ trait AuthoriseHelper extends FeatureSwitching with Logging {
     Option[String] ~ Option[CredentialRole] ~ Option[MdtpInformation] ~ Option[ItmpName] ~ Option[LocalDate] ~
     Option[ItmpAddress] ~ Option[String] ~ LoginTimes
 
-  def logAndRedirect[A](implicit request: RequestWithFeatureSwitches[_]): PartialFunction[Throwable, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
+  def logAndRedirect[A](implicit request: Request[_]): PartialFunction[Throwable, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
     case _: BearerTokenExpired =>
       logger.warn("Bearer Token Timed Out.")
       Future.successful(Left(Redirect(InternalUrlHelper.timeoutCall)))
@@ -59,16 +60,16 @@ trait AuthoriseHelper extends FeatureSwitching with Logging {
 
 
   def redirectIfAgent[A]()(
-    implicit request: RequestWithFeatureSwitches[A]): PartialFunction[AuthRetrievals, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
+    implicit request: Request[A]): PartialFunction[AuthRetrievals, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
     case _ ~ _ ~ _ ~ Some(Agent) ~ _ =>
       logger.error(s"Agent on endpoint for individuals")
-      Future.successful(Left(Redirect(appConfig.enterClientsUTRUrl(request.newHubContextRootEnabled))))
+      Future.successful(Left(Redirect(appConfig.enterClientsUTRUrl)))
   }
 
   def redirectIfNotAgent[A]()(
-    implicit request: RequestWithFeatureSwitches[A]): PartialFunction[AuthRetrievals, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
+    implicit request: Request[A]): PartialFunction[AuthRetrievals, Future[Either[Result, AuthorisedAndEnrolledRequest[A]]]] = {
     case _ ~ _ ~ _ ~ Some(ag@(Organisation | Individual)) ~ _ =>
       logger.error(s"$ag on endpoint for agents")
-      Future.successful(Left(Redirect(appConfig.individualHomeUrl(request.newHubContextRootEnabled))))
+      Future.successful(Left(Redirect(appConfig.individualHomeUrl)))
   }
 }

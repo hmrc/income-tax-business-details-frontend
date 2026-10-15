@@ -163,7 +163,7 @@ class IsTheNewAddressInTheUKControllerSpec extends MockAuthActions with MockSess
               val result = action(fakeRequest)
 
               status(result) shouldBe SEE_OTHER
-              redirectLocation(result).get should include(appConfig.individualHomeUrl(newHubContextRootEnabled))
+              redirectLocation(result).get should include(appConfig.individualHomeUrl)
             }
           }
         }

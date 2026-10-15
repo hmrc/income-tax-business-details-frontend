@@ -24,97 +24,52 @@ trait ExternalRedirectHelper {
 
   val servicesConfig: ServicesConfig
   val config: Configuration
-  lazy val hubContextRootEnabledConfig: Boolean = servicesConfig.getBoolean("feature-switch.enable-new-hub-context-root")
 
   // hub routes
-  lazy val vcFrontendBaseUrl: String = servicesConfig.getString("income-tax-view-change-frontend.baseUrl")
-  lazy val vcFrontendAgentBaseUrl: String = s"${vcFrontendBaseUrl}/agents"
+  lazy val hubBaseUrl: String = servicesConfig.getString("income-tax-view-change-frontend.hubBaseUrl")
+  lazy val hubAgentBaseUrl: String = s"$hubBaseUrl/agents"
 
-  def hubBaseUrl(newHubContextRootEnabled: Boolean): String =
-    if (newHubContextRootEnabled) servicesConfig.getString("income-tax-view-change-frontend.hubBaseUrl") else vcFrontendBaseUrl
+  def individualHomeUrl: String = s"$hubBaseUrl/income-tax"
 
-  def hubAgentBaseUrl(newHubContextRootEnabled: Boolean): String =
-    s"${hubBaseUrl(newHubContextRootEnabled)}/agents"
+  def individualHomeUrlWithOrigin(origin: Option[String]): String =
+    origin.fold(individualHomeUrl)(o => s"$individualHomeUrl?origin=$o")
 
-  def individualHomeUrl(newHubContextRootEnabled: Boolean = hubContextRootEnabledConfig): String =
-    s"${hubBaseUrl(newHubContextRootEnabled)}/income-tax"
+  def agentHomeUrl: String = s"$hubAgentBaseUrl/client-income-tax"
 
-  def individualHomeUrlWithOrigin(newHubContextRootEnabled: Boolean, origin: Option[String]): String =
-    origin.fold(individualHomeUrl(newHubContextRootEnabled))(o => s"${individualHomeUrl(newHubContextRootEnabled)}?origin=$o")
+  def homePageUrl(isAgent: Boolean, origin: Option[String] = None): String =
+    if (isAgent) agentHomeUrl else individualHomeUrlWithOrigin(origin)
 
-  def agentHomeUrl(newHubContextRootEnabled: Boolean): String =
-    s"${hubAgentBaseUrl(newHubContextRootEnabled)}/client-income-tax"
+  def enterClientsUTRUrl: String = s"$hubAgentBaseUrl/client-utr"
 
-  def homePageUrl(isAgent: Boolean, newHubContextRootEnabled: Boolean = hubContextRootEnabledConfig, origin: Option[String] = None): String =
-    if (isAgent) agentHomeUrl(newHubContextRootEnabled) else individualHomeUrlWithOrigin(newHubContextRootEnabled, origin)
+  def confirmClientUTRUrl: String = s"$hubAgentBaseUrl/confirm-client-details"
 
-
-  def enterClientsUTRUrl(newHubContextRootEnabled: Boolean = hubContextRootEnabledConfig): String =
-    s"${hubAgentBaseUrl(newHubContextRootEnabled)}/client-utr"
-
-  def confirmClientUTRUrl(newHubContextRootEnabled: Boolean): String =
-    s"${hubAgentBaseUrl(newHubContextRootEnabled)}/confirm-client-details"
-  
   //Obligation routes
 
   lazy val obligationsBaseUrl: String = servicesConfig.getString("income-tax-obligations-frontend.baseUrl")
   lazy val obligationsAgentBaseUrl: String = s"$obligationsBaseUrl/agents"
 
-  lazy val obligationsWaitToSignUpIndividualUrl: Boolean => String = newObligationsEnabled =>
-    if (newObligationsEnabled)
-      s"$obligationsBaseUrl/access-service-from-next-tax-year"
-    else
-      s"$vcFrontendBaseUrl/access-service-from-next-tax-year"
+  lazy val obligationsWaitToSignUpIndividualUrl: String = s"$obligationsBaseUrl/access-service-from-next-tax-year"
 
-  lazy val obligationsWaitToSignUpAgentUrl: Boolean => String = newObligationsEnabled =>
-    if (newObligationsEnabled)
-      s"$obligationsAgentBaseUrl/view-client-from-next-tax-year"
-    else
-      s"$vcFrontendAgentBaseUrl/view-client-from-next-tax-year"
+  lazy val obligationsWaitToSignUpAgentUrl: String = s"$obligationsAgentBaseUrl/view-client-from-next-tax-year"
 
-  lazy val obligationsNextUpdatesIndividualUrl: Boolean => String = newObligationsEnabled =>
-    if (newObligationsEnabled)
-      s"$obligationsBaseUrl/submission-deadlines"
-    else
-      s"$vcFrontendBaseUrl/submission-deadlines"
+  lazy val obligationsNextUpdatesIndividualUrl: String = s"$obligationsBaseUrl/submission-deadlines"
 
-  lazy val obligationsNextUpdatesAgentUrl: Boolean => String = newObligationsEnabled =>
-    if (newObligationsEnabled)
-      s"$obligationsAgentBaseUrl/submission-deadlines"
-    else
-      s"$vcFrontendAgentBaseUrl/submission-deadlines"
+  lazy val obligationsNextUpdatesAgentUrl: String = s"$obligationsAgentBaseUrl/submission-deadlines"
 
-  def obligationsNextUpdatesUrl(isAgent: Boolean, newObligationsEnabled: Boolean): String = {
-    if (isAgent)
-      obligationsNextUpdatesAgentUrl(newObligationsEnabled)
-    else
-      obligationsNextUpdatesIndividualUrl(newObligationsEnabled)
-  }
+  def obligationsNextUpdatesUrl(isAgent: Boolean): String =
+    if (isAgent) obligationsNextUpdatesAgentUrl else obligationsNextUpdatesIndividualUrl
 
-  lazy val obligationsReportingFrequencyIndividualUrl: Boolean => String = newObligationsEnabled =>
-    if (newObligationsEnabled)
-      s"$obligationsBaseUrl/reporting-frequency"
-    else
-      s"$vcFrontendBaseUrl/reporting-frequency"
+  lazy val obligationsReportingFrequencyIndividualUrl: String = s"$obligationsBaseUrl/reporting-frequency"
 
-  lazy val obligationsReportingFrequencyAgentUrl: Boolean => String = newObligationsEnabled =>
-    if (newObligationsEnabled)
-      s"$obligationsAgentBaseUrl/reporting-frequency"
-    else
-      s"$vcFrontendAgentBaseUrl/reporting-frequency"
+  lazy val obligationsReportingFrequencyAgentUrl: String = s"$obligationsAgentBaseUrl/reporting-frequency"
 
+  def obligationsReportingFrequencyUrl(isAgent: Boolean): String =
+    if (isAgent) obligationsReportingFrequencyAgentUrl else obligationsReportingFrequencyIndividualUrl
 
-  def obligationsReportingFrequencyUrl(isAgent: Boolean, newObligationsEnabled: Boolean): String = {
-    if (isAgent)
-      obligationsReportingFrequencyAgentUrl(newObligationsEnabled)
-    else
-      obligationsReportingFrequencyIndividualUrl(newObligationsEnabled)
-  }
-  
   //triggered migration routes
   import businessDetails.controllers.triggeredMigration.routes as triggeredMigrationRoutes
 
-  def triggeredMigrationCompleteStepsUrl(isAgent: Boolean, businessDetailsFrontendEnabled: Boolean): String = {
+  def triggeredMigrationCompleteStepsUrl(isAgent: Boolean): String = {
     triggeredMigrationRoutes.CompleteStepsController.show(isAgent).url
   }
 

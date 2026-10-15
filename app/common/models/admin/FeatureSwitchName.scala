@@ -41,16 +41,12 @@ object FeatureSwitchName {
       JsSuccess(DisplayBusinessStartDate)
     case JsString(TriggeredMigration.name) =>
       JsSuccess(TriggeredMigration)
-    case JsString(ObligationsFrontend.name) =>
-      JsSuccess(ObligationsFrontend)
     case JsString(OverseasBusinessAddress.name) =>
       JsSuccess(OverseasBusinessAddress)
     case JsString(IdempotencyKeyForCreateIncomeSource.name) =>
       JsSuccess(IdempotencyKeyForCreateIncomeSource)
     case JsString(NoIncomeSourcesRedirect.name) =>
       JsSuccess(NoIncomeSourcesRedirect)
-    case JsString(NewHubContextRootEnabled.name) =>
-      JsSuccess(NewHubContextRootEnabled)
     case JsString(HideBusinessName.name) =>
       JsSuccess(HideBusinessName)
     case notRequiredFS =>
@@ -82,17 +78,10 @@ object FeatureSwitchName {
       OverseasBusinessAddress,
       IdempotencyKeyForCreateIncomeSource,
       NoIncomeSourcesRedirect,
-      ObligationsFrontend,
-      NewHubContextRootEnabled,
       HideBusinessName
     )
 
   def get(str: String): Option[FeatureSwitchName] = allFeatureSwitches find (_.name == str)
-}
-
-case object ObligationsFrontend extends FeatureSwitchName {
-  override val name: String = "obligations-frontend"
-  override def toString: String = "Obligations Frontend"
 }
 
 case object NotRequiredFS extends FeatureSwitchName {
@@ -125,17 +114,7 @@ case object NoIncomeSourcesRedirect extends FeatureSwitchName {
   override val toString: String = "No Income Sources Redirect"
 }
 
-case object NewHubContextRootEnabled extends FeatureSwitchName {
-  override val name: String = "new-hub-context-root"
-  override val toString: String = "New Hub Context-root Enabled"
-}
-
 case object HideBusinessName extends FeatureSwitchName {
   override val name: String = "hide-business-name"
   override val toString: String = "Hide business name when unknown"
-}
-
-case object BusinessDetailsFrontend extends FeatureSwitchName {
-  override val name: String = "business-details-frontend"
-  override val toString: String = "Business Details Frontend"
 }
