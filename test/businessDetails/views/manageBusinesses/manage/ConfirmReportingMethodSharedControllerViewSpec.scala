@@ -150,7 +150,7 @@ class ConfirmReportingMethodSharedControllerViewSpec extends TestSupport {
         reportingMethod,
         isCYPlus = false
       ) {
-        document.getElementsByClass("govuk-caption-xl").first().text().contains(pageSubHeading) shouldBe true
+        document.getElementsByClass("govuk-caption-xl").first().text() should include(pageSubHeading)
       }
 
       "render the continue button" in new Setup(

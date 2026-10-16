@@ -151,8 +151,10 @@ class ManageIncomeSourceDetailsSelfEmploymentSpec extends ManageIncomeSourceDeta
             manageDetailsSummaryValues.get(1).text() shouldBe businessWithLatencyAddress
             manageDetailsSummaryValues.get(4).text() shouldBe annuallyGracePeriod
             manageDetailsSummaryValues.get(5).text() shouldBe quarterlyGracePeriod
-            manageDetailsSummaryKeys.eq(6).text().contains(reportingMethod)
-            manageDetailsSummaryKeys.eq(7).text().contains(reportingMethod)
+
+            // TODO: investigate the @getTaxYears method in this view, currently it is unused and so the below elements won't exist
+//            manageDetailsSummaryKeys.eq(6).text() should include(reportingMethod)
+//            manageDetailsSummaryKeys.eq(7).text() should include(reportingMethod)
           }
 
           "valid latency information and two tax years not crystallised and ITSA status for TY2 is Annual but Latency TY2 is Q" in {

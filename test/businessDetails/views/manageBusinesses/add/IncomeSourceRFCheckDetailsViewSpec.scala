@@ -58,7 +58,7 @@ class IncomeSourceRFCheckDetailsViewSpec extends TestSupport {
         case ForeignProperty => "Foreign property"
       }
 
-      pageDocument.getElementsByClass("govuk-caption-xl").text().contains(subHeading) shouldBe true
+      pageDocument.getElementsByClass("govuk-caption-xl").text() should include(subHeading)
     }
 
     "have the correct summary heading and page contents" in new Setup(incomeSourceType, changeReportingFrequency, isReportingQuarterlyCurrentYear, isReportingQuarterlyForNextYear) {
