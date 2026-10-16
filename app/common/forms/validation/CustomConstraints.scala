@@ -19,7 +19,6 @@ package common.forms.validation
 import play.api.data.validation.{Constraint, Constraints, Invalid, Valid}
 
 import java.time.LocalDate
-import java.time.format.{DateTimeFormatter, ResolverStyle}
 
 trait CustomConstraints extends Constraints {
 
@@ -30,26 +29,6 @@ trait CustomConstraints extends Constraints {
           .map(_.apply(input))
           .find(_ != Valid)
           .getOrElse(Valid)
-    }
-
-  protected def optMaxLength(max: Int, err: Invalid): Constraint[Option[String]] = Constraint {
-    case Some(x) if x.length > max => err
-    case _ => Valid
-  }
-
-  private def tupleToDate(dateTuple: (String, String, String)) = {
-    LocalDate.parse(s"${dateTuple._1}-${dateTuple._2}-${dateTuple._3}", DateTimeFormatter.ofPattern("d-M-uuuu").withResolverStyle(ResolverStyle.STRICT))
-  }
-
-  protected def validDate(errKey: String, args: Seq[String] = Seq()): Constraint[(String, String, String)] =
-    Constraint[(String, String, String)] { input =>
-      val date = scala.util.Try {
-        tupleToDate(input)
-      }.toOption
-      date match {
-        case Some(_) => Valid
-        case None => Invalid(errKey, args: _*)
-      }
     }
 
   protected def maxDate(maximum: LocalDate, errorKey: String, args: Any*): Constraint[LocalDate] =

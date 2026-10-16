@@ -72,7 +72,7 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
   lazy val ggUrl: String = servicesConfig.getString("government-gateway.url")
 
   def ggSignOutUrl(identifier: String): String = s"$ggUrl/bas-gateway/sign-out-without-state?continue=${exitSurveyUrl(identifier)}"
-  
+
   //Agent Services Account
   lazy val setUpAgentServicesAccountUrl: String = servicesConfig.getString("set-up-agent-services-account.url")
 
@@ -85,7 +85,7 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
 
   // income-tax-session-data url
   lazy val incomeTaxSessionDataUrl: String = servicesConfig.baseUrl("income-tax-session-data")
-  
+
   lazy val agentServicesAccountFrontend: String = servicesConfig.baseUrl("agent-services-account-frontend")
 
   // Service Navigation Links
@@ -116,21 +116,19 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
   lazy val relativeIVUpliftParams = servicesConfig.getBoolean("identity-verification-frontend.use-relative-params")
 
   def incomeSourceOverrides(): Option[Seq[String]] = config.getOptional[Seq[String]]("afterIncomeSourceCreated")
-  
-  def triggeredMigrationOverrides(): Option[Seq[String]] = config.getOptional[Seq[String]]("afterMigration")
 
   val cacheTtl: Int = config.get[Int]("mongodb.timeToLiveInSeconds")
 
   val encryptionIsEnabled: Boolean = config.get[Boolean]("encryption.isEnabled")
 
   lazy val readFeatureSwitchesFromMongo: Boolean = servicesConfig.getBoolean("feature-switches.read-from-mongo")
-  
+
   lazy val isTimeMachineEnabled: Boolean = servicesConfig.getBoolean("feature-switch.enable-time-machine")
   lazy val timeMachineAddYears: Int = servicesConfig.getInt("time-machine.add-years")
   lazy val timeMachineAddDays: Int = servicesConfig.getInt("time-machine.add-days")
 
   lazy val isSessionDataStorageEnabled: Boolean = servicesConfig.getBoolean("feature-switch.enable-session-data-storage")
-  
+
   def compatibleSoftwareLink(implicit messages: Messages): String =
     messages.lang.code match {
       case "en" => "https://www.gov.uk/guidance/choose-the-right-software-for-making-tax-digital-for-income-tax"
@@ -144,5 +142,5 @@ class FrontendAppConfig @Inject()(val servicesConfig: ServicesConfig, val config
   lazy val threshold2028 = servicesConfig.getString("thresholds.threshold2028")
 
   lazy val dynamicStubUrl: String = servicesConfig.baseUrl("itvc-dynamic-stub")
-  
+
 }
