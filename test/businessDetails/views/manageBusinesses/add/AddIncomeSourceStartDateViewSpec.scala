@@ -109,7 +109,7 @@ class AddIncomeSourceStartDateViewSpec extends TestSupport {
         document.getElementById("continue-button").text() shouldBe "Continue"
       }
       "render the error summary with required error" in new Setup(isAgent, "StartDateRequired", incomeSourceType) {
-        document.getElementsByClass("govuk-list govuk-error-summary__list").text().contains("The date must include a") shouldBe true
+        document.getElementsByClass("govuk-list govuk-error-summary__list").text() should include("The date must include a")
       }
       "render the error summary with invalid error" in new Setup(isAgent, "InvalidDate", incomeSourceType) {
         document.getElementById("error-summary").text() shouldBe "There is a problem" + " " +

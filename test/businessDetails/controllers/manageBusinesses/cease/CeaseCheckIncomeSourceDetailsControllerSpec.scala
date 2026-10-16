@@ -44,12 +44,12 @@ import shared.enums.JourneyType.{Cease, IncomeSourceJourneyType}
 import java.time.LocalDate
 import scala.concurrent.Future
 
-class CheckCeaseIncomeSourceDetailsControllerSpec extends MockAuthActions with MockSessionService with MockIncomeSourceDetailsService {
+class CeaseCheckIncomeSourceDetailsControllerSpec extends MockAuthActions with MockSessionService with MockIncomeSourceDetailsService {
 
  lazy val mockUpdateIncomeSourceService: UpdateIncomeSourceService = mock(classOf[UpdateIncomeSourceService])
   val validCeaseDate: String = LocalDate.of(2022, 10, 10).toString
 
-  val checkDetailsHeading: String = messages("cease-check-answers.title")
+  val checkDetailsHeading: String = "Check your answers"
 
   override lazy val app = applicationBuilderWithAuthBindings
     .overrides(
@@ -66,19 +66,11 @@ class CheckCeaseIncomeSourceDetailsControllerSpec extends MockAuthActions with M
 
   def heading(incomeSourceType: IncomeSourceType): String = {
     incomeSourceType match {
-      case SelfEmployment => messages("incomeSources.ceaseBusiness.checkDetails.caption")
-      case UkProperty => messages("incomeSources.ceaseUKProperty.checkDetails.caption")
-      case ForeignProperty => messages("incomeSources.ceaseForeignProperty.checkDetails.caption")
+      case SelfEmployment => "This section is Sole trader"
+      case UkProperty => "This section is UK property"
+      case ForeignProperty => "This section is Foreign property"
     }
   }
-
-  def title(incomeSourceType: IncomeSourceType, isAgent: Boolean): String = {
-    if (isAgent)
-      s"${messages("htmlTitle.agent", heading(incomeSourceType))}"
-    else
-      s"${messages("htmlTitle", heading(incomeSourceType))}"
-  }
-
 
   val individual: Boolean = false
   val agent: Boolean = true
@@ -116,8 +108,7 @@ class CheckCeaseIncomeSourceDetailsControllerSpec extends MockAuthActions with M
 
               val document: Document = Jsoup.parse(contentAsString(result))
               status(result) shouldBe Status.OK
-              document.getElementsByClass("hmrc-caption govuk-caption-xl").text().contains(
-                heading(incomeSourceType))
+              document.getElementsByClass("hmrc-caption govuk-caption-xl").text() shouldBe heading(incomeSourceType)
               document.select("h1").text shouldBe checkDetailsHeading
             }
           }

@@ -58,22 +58,22 @@ class ReportingMethodChangeErrorControllerViewSpec extends TestSupport {
           messages(s"${incomeSourceType.reportingMethodChangeErrorPrefix}.p1")
       }
       "render p2 text and link" in new Setup(isAgent, incomeSourceType) {
-        document.getElementById("reportingMethodError.p2").text().contains(
+        document.getElementById("reportingMethodError.p2").text() should include(
           messages(s"${incomeSourceType.reportingMethodChangeErrorPrefix}.p2")
-        ) shouldBe true
-        document.getElementById("reportingMethodError.p2").text().contains(
+        )
+        document.getElementById("reportingMethodError.p2").text() should include(
           messages("incomeSources.manage.reportingMethodError.hyperlink1")
-        ) shouldBe true
+        )
         document.getElementById("reportingMethodError.p2-link").attr("href") shouldBe
           getManageIncomeSourceDetailsUrl(isAgent, incomeSourceType)
       }
       "render p3 text and link" in new Setup(isAgent, incomeSourceType) {
-        document.getElementById("reportingMethodError.p3").text().contains(
+        document.getElementById("reportingMethodError.p3").text() should include(
           messages("incomeSources.manage.reportingMethodError.p3")
-        ) shouldBe true
-        document.getElementById("reportingMethodError.p3").text().contains(
+        )
+        document.getElementById("reportingMethodError.p3").text() should include(
           messages("incomeSources.manage.reportingMethodError.hyperlink2")
-        ) shouldBe true
+        )
         document.getElementById("reportingMethodError.p3-link").attr("href") shouldBe
           getManageIncomeSourcesUrl(isAgent)
       }

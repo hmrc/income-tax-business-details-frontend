@@ -66,7 +66,7 @@ class IncomeSourceReportingMethodNotSavedViewSpec extends ViewSpec {
 
   "IncomeSourceReportingMethodNotSave - Individual" should {
     "render self employment - error page" in new TestSetup(isAgent = false, incomeSourceType = SelfEmployment) {
-      document.getElementsByClass("govuk-caption-xl").text().contains (getMessage(SelfEmployment, "caption"))
+      document.getElementsByClass("govuk-caption-xl").text() should include(getMessage(SelfEmployment, "caption"))
       document.getElementsByTag("h1").first().text() shouldBe messages("incomeSources.add.error.standardError")
       document.getElementById("paragraph-1").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p1", selfEmploymentText)
       document.getElementById("paragraph-2").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p2")
@@ -76,7 +76,7 @@ class IncomeSourceReportingMethodNotSavedViewSpec extends ViewSpec {
       document.getElementById("continue-button").text() shouldBe messages("base.continue")
     }
     "render UK property - error page" in new TestSetup(isAgent = false, incomeSourceType = UkProperty) {
-      document.getElementsByClass("govuk-caption-xl").text().contains (getMessage(UkProperty, "caption"))
+      document.getElementsByClass("govuk-caption-xl").text() should include(getMessage(UkProperty, "caption"))
       document.getElementsByTag("h1").first().text() shouldBe messages("incomeSources.add.error.standardError")
       document.getElementById("paragraph-1").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p1", ukPropertyText)
       document.getElementById("paragraph-2").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p2")
@@ -86,7 +86,7 @@ class IncomeSourceReportingMethodNotSavedViewSpec extends ViewSpec {
       document.getElementById("continue-button").text() shouldBe messages("base.continue")
     }
     "render Foreign property - error page" in new TestSetup(isAgent = false, incomeSourceType = ForeignProperty) {
-      document.getElementsByClass("govuk-caption-xl").text().contains (getMessage(ForeignProperty, "caption"))
+      document.getElementsByClass("govuk-caption-xl").text() should include(getMessage(ForeignProperty, "caption"))
       document.getElementsByTag("h1").first().text() shouldBe messages("incomeSources.add.error.standardError")
       document.getElementById("paragraph-1").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p1", foreignPropertyText)
       document.getElementById("paragraph-2").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p2")
@@ -98,7 +98,7 @@ class IncomeSourceReportingMethodNotSavedViewSpec extends ViewSpec {
   }
   "IncomeSourceReportingMethodNotSave - Agent" should {
     "render self employment - error page" in new TestSetup(isAgent = true, incomeSourceType = SelfEmployment) {
-      document.getElementsByClass("govuk-caption-xl").text().contains (getMessage(SelfEmployment, "caption"))
+      document.getElementsByClass("govuk-caption-xl").text() should include(getMessage(SelfEmployment, "caption"))
       document.getElementsByTag("h1").first().text() shouldBe messages("incomeSources.add.error.standardError")
       document.getElementById("paragraph-1").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p1", selfEmploymentText)
       document.getElementById("paragraph-2").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p2")
@@ -108,7 +108,7 @@ class IncomeSourceReportingMethodNotSavedViewSpec extends ViewSpec {
       document.getElementById("continue-button").text() shouldBe messages("base.continue")
     }
     "render UK property - error page" in new TestSetup(isAgent = true, incomeSourceType = UkProperty) {
-      document.getElementsByClass("govuk-caption-xl").text().contains (getMessage(UkProperty, "caption"))
+      document.getElementsByClass("govuk-caption-xl").text() should include(getMessage(UkProperty, "caption"))
       document.getElementsByTag("h1").first().text() shouldBe messages("incomeSources.add.error.standardError")
       document.getElementById("paragraph-1").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p1", ukPropertyText)
       document.getElementById("paragraph-2").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p2")
@@ -118,7 +118,7 @@ class IncomeSourceReportingMethodNotSavedViewSpec extends ViewSpec {
       document.getElementById("continue-button").text() shouldBe messages("base.continue")
     }
     "render Foreign property - error page" in new TestSetup(isAgent = true, incomeSourceType = ForeignProperty) {
-      document.getElementsByClass("govuk-caption-xl").text().contains (getMessage(ForeignProperty, "caption"))
+      document.getElementsByClass("govuk-caption-xl").text() should include(getMessage(ForeignProperty, "caption"))
       document.getElementsByTag("h1").first().text() shouldBe messages("incomeSources.add.error.standardError")
       document.getElementById("paragraph-1").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p1", foreignPropertyText)
       document.getElementById("paragraph-2").text() shouldBe messages("incomeSources.add.error.reportingMethodNotSaved.p2")
