@@ -18,12 +18,11 @@ package businessDetails.mocks.connectors
 
 import common.models.obligations.ObligationsResponseModel
 import common.testUtils.UnitSpec
-import org.mockito.ArgumentMatchers.{any, eq as matches}
+import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito.*
 import org.scalatest.BeforeAndAfterEach
 import shared.connectors.ObligationsConnector
 
-import java.time.LocalDate
 import scala.concurrent.Future
 
 trait MockObligationsConnector extends UnitSpec with BeforeAndAfterEach {
@@ -37,12 +36,6 @@ trait MockObligationsConnector extends UnitSpec with BeforeAndAfterEach {
 
   def setupMockNextUpdates(response: ObligationsResponseModel): Unit = {
     when(mockObligationsConnector.getOpenObligations()(any(), any()))
-      .thenReturn(Future.successful(response))
-  }
-
-  def setupMockAllObligationsWithDates(from: LocalDate, to: LocalDate)(response: ObligationsResponseModel): Unit = {
-    when(mockObligationsConnector.getAllObligationsDateRange(
-      fromDate = matches(from), toDate = matches(to))(any(), any()))
       .thenReturn(Future.successful(response))
   }
 }

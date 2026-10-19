@@ -50,7 +50,6 @@ case object ReportingFrequencyPages extends JourneyState {
   override val key: String = "ReportingFrequencyPages"
 }
 
-
 case object JourneyCompleted extends JourneyState {
   //any You Cannot Go Back page, to prevent infinite redirects
   override val key: String = "JourneyCompleted"
