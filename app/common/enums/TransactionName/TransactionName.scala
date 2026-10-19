@@ -54,14 +54,6 @@ case object CreateIncomeSource extends TransactionName {
   val name = "create-income-source"
 }
 
-case object OptOutQuarterlyReportingRequest extends TransactionName {
-  val name = "opt-out-quarterly-reporting-request"
-}
-
-case object OptInQuarterlyReportingRequest extends TransactionName {
-  val name = "opt-in-quarterly-reporting-request"
-}
-
 case object AccessDeniedForSupportingAgent extends  TransactionName {
   val name = "access-denied-for-supporting-agent"
 }

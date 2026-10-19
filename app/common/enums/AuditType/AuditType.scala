@@ -26,20 +26,8 @@ sealed trait AuditType {
   }
 }
 
-case object ForecastIncome extends AuditType {
-  val name = "ForecastIncome"
-}
-
-case object ItsaHomePage extends AuditType {
-  val name = "ItsaHomePage"
-}
-
 case object IncomeSourceDetailsResponse extends AuditType {
   val name = "incomeSourceDetailsResponse"
-}
-
-case object InitiatePayNow extends AuditType {
-  val name = "InitiatePayNow"
 }
 
 case object LowConfidenceLevelIvOutcomeFail extends AuditType {
@@ -54,30 +42,6 @@ case object LowConfidenceLevelIvHandoff extends AuditType {
   val name = "LowConfidenceLevelIvHandoff"
 }
 
-case object ObligationsPageView extends AuditType {
-  val name = "obligationsPageView"
-}
-
-case object PaymentAllocations extends AuditType {
-  val name = "PaymentAllocations"
-}
-
-case object PaymentHistoryResponse extends AuditType {
-  val name = "PaymentHistoryResponse"
-}
-
-case object TaxCalculationDetailsResponse extends AuditType {
-  val name = "TaxCalculationDetailsResponse"
-}
-
-case object TaxYearOverviewResponse extends AuditType {
-  val name = "TaxYearOverviewResponse"
-}
-
-case object ViewInYearTaxEstimate extends AuditType {
-  val name = "ViewInYearTaxEstimate"
-}
-
 case object CeaseIncomeSource extends AuditType {
   override val name: String = "CeaseIncomeSource"
 }
@@ -90,32 +54,8 @@ case object CreateIncomeSource extends AuditType {
   override val name: String = "CreateIncomeSource"
 }
 
-case object EnterClientUTR extends AuditType {
-  override val name: String = "AgentLoginUTRSubmitted"
-}
-
-case object ClientDetailsConfirmed extends AuditType {
-  override val name: String = "ClientDetailsConfirmed"
-}
-
-case object AdjustPaymentsOnAccount extends AuditType {
-  override val name: String = "AdjustPaymentsOnAccount"
-}
-
 case object AccessDeniedForSupportingAgent extends AuditType {
   val name = "AccessDeniedForSupportingAgent"
-}
-
-case object SignUpTaxYearsPage extends AuditType {
-  val name = "SignUpTaxYearsPage"
-}
-
-case object OptOutTaxYearsPage extends AuditType {
-  val name = "OptOutTaxYearsPage"
-}
-
-case object ReportingObligationsPage extends AuditType {
-  val name = "ReportingObligationsPage"
 }
 
 case object TriggeredMigrationStart extends AuditType {
