@@ -18,7 +18,6 @@ package shared.services
 
 import common.auth.MtdItUser
 import common.models.core.Nino
-import common.models.incomeSourceDetails.TaxYear
 import common.services.DateService
 import shared.connectors.CalculationListConnector
 import shared.models.calculationList.{CalculationListErrorModel, CalculationListModel}
@@ -45,10 +44,6 @@ class CalculationListService @Inject()(calculationListConnector: CalculationList
       case err: CalculationListErrorModel if err.code == 404 => Future.successful(Some(false))
       case err: CalculationListErrorModel => Future.successful(Some(false))
     }
-  }
-
-  def isTaxYearCrystallised(taxYear: TaxYear)(implicit user: MtdItUser[_], hc: HeaderCarrier): Future[Boolean] = {
-    determineTaxYearCrystallised(taxYear.endYear)
   }
 
   def determineTaxYearCrystallised(taxYear: Int)(implicit user: MtdItUser[_], hc: HeaderCarrier): Future[Boolean] = {

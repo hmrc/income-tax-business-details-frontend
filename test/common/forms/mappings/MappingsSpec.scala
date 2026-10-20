@@ -38,8 +38,6 @@ object MappingsSpec {
 
 class MappingsSpec extends AnyFreeSpec with Matchers with OptionValues with Mappings {
 
-  import MappingsSpec._
-
   "text" - {
 
     val testForm: Form[String] =
@@ -79,44 +77,6 @@ class MappingsSpec extends AnyFreeSpec with Matchers with OptionValues with Mapp
     }
   }
 
-  "boolean" - {
-
-    val testForm: Form[Boolean] =
-      Form(
-        "value" -> boolean()
-      )
-
-    "must bind true" in {
-      val result = testForm.bind(Map("value" -> "true"))
-      result.get mustEqual true
-    }
-
-    "must bind false" in {
-      val result = testForm.bind(Map("value" -> "false"))
-      result.get mustEqual false
-    }
-
-    "must not bind a non-boolean" in {
-      val result = testForm.bind(Map("value" -> "not a boolean"))
-      result.errors must contain(FormError("value", "error.boolean"))
-    }
-
-    "must not bind an empty value" in {
-      val result = testForm.bind(Map("value" -> ""))
-      result.errors must contain(FormError("value", "error.required"))
-    }
-
-    "must not bind an empty map" in {
-      val result = testForm.bind(Map.empty[String, String])
-      result.errors must contain(FormError("value", "error.required"))
-    }
-
-    "must unbind" in {
-      val result = testForm.fill(true)
-      result.apply("value").value.value mustEqual "true"
-    }
-  }
-
   "int" - {
 
     val testForm: Form[Int] =
@@ -142,28 +102,6 @@ class MappingsSpec extends AnyFreeSpec with Matchers with OptionValues with Mapp
     "must unbind a valid value" in {
       val result = testForm.fill(123)
       result.apply("value").value.value mustEqual "123"
-    }
-  }
-
-  "enumerable" - {
-
-    val testForm = Form(
-      "value" -> enumerable[Foo]()
-    )
-
-    "must bind a valid option" in {
-      val result = testForm.bind(Map("value" -> "Bar"))
-      result.get mustEqual Bar
-    }
-
-    "must not bind an invalid option" in {
-      val result = testForm.bind(Map("value" -> "Not Bar"))
-      result.errors must contain(FormError("value", "error.invalid"))
-    }
-
-    "must not bind an empty map" in {
-      val result = testForm.bind(Map.empty[String, String])
-      result.errors must contain(FormError("value", "error.required"))
     }
   }
 }

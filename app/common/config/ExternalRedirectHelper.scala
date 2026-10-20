@@ -80,7 +80,4 @@ trait ExternalRedirectHelper {
       case "cy" => "https://www.gov.uk/government/collections/troi-treth-yn-ddigidol-ar-gyfer-treth-incwm.cy"
       case _ => "https://www.gov.uk/government/collections/making-tax-digital-for-income-tax"
     }
-  
-  
-
 }

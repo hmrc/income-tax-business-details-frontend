@@ -36,17 +36,6 @@ trait Mappings extends Formatters with Constraints {
                     args: Seq[String] = Seq.empty): FieldMapping[Int] =
     of(intFormatter(requiredKey, wholeNumberKey, nonNumericKey, args))
 
-  protected def boolean(requiredKey: String = "error.required",
-                        invalidKey: String = "error.boolean",
-                        args: Seq[String] = Seq.empty): FieldMapping[Boolean] =
-    of(booleanFormatter(requiredKey, invalidKey, args))
-
-
-  protected def enumerable[A](requiredKey: String = "error.required",
-                              invalidKey: String = "error.invalid",
-                              args: Seq[String] = Seq.empty)(implicit ev: Enumerable[A]): FieldMapping[A] =
-    of(enumerableFormatter[A](requiredKey, invalidKey, args))
-
   protected def localDate(
                            invalidKey: String,
                            allRequiredKey: String,

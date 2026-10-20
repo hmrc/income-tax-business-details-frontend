@@ -31,48 +31,6 @@ trait Constraints {
           .getOrElse(Valid)
     }
 
-  protected def minimumValue[A](minimum: A, errorKey: String)(implicit ev: Ordering[A]): Constraint[A] =
-    Constraint {
-      input =>
-
-        import ev._
-
-        if (input >= minimum) {
-          Valid
-        } else {
-          Invalid(errorKey, minimum)
-        }
-    }
-
-  protected def maximumValue[A](maximum: A, errorKey: String)(implicit ev: Ordering[A]): Constraint[A] =
-    Constraint {
-      input =>
-
-        import ev._
-
-        if (input <= maximum) {
-          Valid
-        } else {
-          Invalid(errorKey, maximum)
-        }
-    }
-    
-  protected def regexp(regex: String, errorKey: String): Constraint[String] =
-    Constraint {
-      case str if str.matches(regex) =>
-        Valid
-      case _ =>
-        Invalid(errorKey, regex)
-    }
-
-  protected def maxLength(maximum: Int, errorKey: String): Constraint[String] =
-    Constraint {
-      case str if str.length <= maximum =>
-        Valid
-      case _ =>
-        Invalid(errorKey, maximum)
-    }
-
   protected def maxDate(maximum: LocalDate, errorKey: String, args: Any*): Constraint[LocalDate] =
     Constraint {
       case date if date.isAfter(maximum) =>
