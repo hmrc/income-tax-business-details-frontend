@@ -52,7 +52,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
   def signUpLink(i: Int)(implicit document: Document) = document.getElementById(s"sign-up-link-$i")
   def optOutLink(i: Int)(implicit document: Document) = document.getElementById(s"opt-out-link-$i")
 
-  class SelfEmploymentSetup(isAgent: Boolean, startDateEnabled: Boolean = true, hideBusinessName: Boolean = false) {
+  class SelfEmploymentSetup(isAgent: Boolean, startDateEnabled: Boolean = true) {
 
     def changeReportingMethodUrl(id: String, taxYear: String, changeTo: String): String = {
       manageYourBusinessRoutes.ConfirmReportingMethodSharedController.show(isAgent, taxYear, changeTo, SelfEmployment).url
@@ -60,7 +60,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
 
     lazy val view: HtmlFormat.Appendable = {
       manageIncomeSourceDetailsView(
-        selfEmploymentViewModel.copy(hideUnknownBusinessName = hideBusinessName),
+        selfEmploymentViewModel,
         isAgent,
         backUrl = backUrl(isAgent),
         showStartDate = startDateEnabled
@@ -71,7 +71,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
 
   }
 
-  class SelfEmploymentUnknownsSetup(isAgent: Boolean, startDateEnabled: Boolean = true) {
+  class SelfEmploymentUnknownsSetup(isAgent: Boolean, startDateEnabled: Boolean = true, hideBusinessName: Boolean = false) {
 
     def changeReportingMethodUrl(taxYear: String, changeTo: String): String = {
       manageYourBusinessRoutes.ConfirmReportingMethodSharedController.show(isAgent, taxYear, changeTo, incomeSourceType = SelfEmployment).url
@@ -79,7 +79,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
 
     lazy val view: HtmlFormat.Appendable = {
       manageIncomeSourceDetailsView(
-        selfEmploymentViewModelWithUnknowns,
+        selfEmploymentViewModelWithUnknowns.copy(hideUnknownBusinessName = hideBusinessName),
         isAgent,
         backUrl = backUrl(isAgent),
         showStartDate = startDateEnabled
@@ -687,8 +687,8 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
       Option(document.getElementById("manage-details-table")).mkString("") should not include "Date started"
     }
 
-    "do not display business name if HideBusinessName is enabled" in new SelfEmploymentSetup(true, hideBusinessName = true) {
-      Option(document.getElementById("manage-details-table")).mkString("") should not include "Business Name"
+    "do not display business name if trading name is unknown and hideUnknownBusinessName is enabled" in new SelfEmploymentUnknownsSetup(true, hideBusinessName = true) {
+      Option(document.getElementById("manage-details-table")).mkString("") should not include "Business name"
     }
   }
 

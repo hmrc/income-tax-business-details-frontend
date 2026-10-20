@@ -80,8 +80,8 @@ class ManageIncomeSourceDetailsSelfEmploymentSpec extends ManageIncomeSourceDeta
 
             manageDetailsSummaryRows.get(1).getElementsByTag("dt").text() shouldBe "Address"
             manageDetailsSummaryRows.get(1).getElementsByTag("dd").text() shouldBe businessWithLatencyAddress
-            manageDetailsSummaryRows.eq(6).isEmpty
-            manageDetailsSummaryRows.eq(7).isEmpty
+            manageDetailsSummaryRows.eq(6) shouldBe empty
+            manageDetailsSummaryRows.eq(7) shouldBe empty
             document.getElementById("reportingFrequency").text() shouldBe "Depending on your circumstances, you may be able to view and change your reporting obligations for all your businesses."
             Option(document.getElementById("up-to-two-tax-years")) shouldBe None
           }
