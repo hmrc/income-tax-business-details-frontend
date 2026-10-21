@@ -80,8 +80,8 @@ class ManageIncomeSourceDetailsSelfEmploymentSpec extends ManageIncomeSourceDeta
 
             manageDetailsSummaryRows.get(1).getElementsByTag("dt").text() shouldBe "Address"
             manageDetailsSummaryRows.get(1).getElementsByTag("dd").text() shouldBe businessWithLatencyAddress
-            manageDetailsSummaryRows.eq(6).isEmpty
-            manageDetailsSummaryRows.eq(7).isEmpty
+            manageDetailsSummaryRows.eq(6) shouldBe empty
+            manageDetailsSummaryRows.eq(7) shouldBe empty
             document.getElementById("reportingFrequency").text() shouldBe "Depending on your circumstances, you may be able to view and change your reporting obligations for all your businesses."
             Option(document.getElementById("up-to-two-tax-years")) shouldBe None
           }
@@ -111,9 +111,9 @@ class ManageIncomeSourceDetailsSelfEmploymentSpec extends ManageIncomeSourceDeta
 
             manageDetailsSummaryRows.get(1).getElementsByTag("dt").text() shouldBe "Address"
             manageDetailsSummaryRows.get(1).getElementsByTag("dd").text() shouldBe businessWithLatencyAddress2
-            manageDetailsSummaryRows.eq(5).isEmpty
-            manageDetailsSummaryRows.eq(6).isEmpty
-            manageDetailsSummaryRows.eq(7).isEmpty
+            manageDetailsSummaryRows.eq(5) shouldBe empty
+            manageDetailsSummaryRows.eq(6) shouldBe empty
+            manageDetailsSummaryRows.eq(7) shouldBe empty
             document.getElementById("reportingFrequency").text() shouldBe "Depending on your circumstances, you may be able to view and change your reporting obligations for all your businesses."
           }
 
@@ -151,8 +151,6 @@ class ManageIncomeSourceDetailsSelfEmploymentSpec extends ManageIncomeSourceDeta
             manageDetailsSummaryValues.get(1).text() shouldBe businessWithLatencyAddress
             manageDetailsSummaryValues.get(4).text() shouldBe annuallyGracePeriod
             manageDetailsSummaryValues.get(5).text() shouldBe quarterlyGracePeriod
-            manageDetailsSummaryKeys.eq(6).text().contains(reportingMethod)
-            manageDetailsSummaryKeys.eq(7).text().contains(reportingMethod)
           }
 
           "valid latency information and two tax years not crystallised and ITSA status for TY2 is Annual but Latency TY2 is Q" in {
@@ -182,8 +180,15 @@ class ManageIncomeSourceDetailsSelfEmploymentSpec extends ManageIncomeSourceDeta
             val manageDetailsSummaryKeys = getManageDetailsSummaryKeys(document)
             manageDetailsSummaryKeys.get(1).text() shouldBe "Address"
             manageDetailsSummaryValues.get(1).text() shouldBe businessWithLatencyAddress
-            manageDetailsSummaryValues.eq(5).isEmpty
-            manageDetailsSummaryValues.eq(6).isEmpty
+            manageDetailsSummaryKeys.get(2).text() shouldBe "Date started"
+            manageDetailsSummaryValues.get(2).text() shouldBe "1 January 2022"
+            manageDetailsSummaryKeys.get(3).text() shouldBe "Type of trade"
+            manageDetailsSummaryValues.get(3).text() shouldBe "Fruit Ltd"
+            manageDetailsSummaryKeys.get(4).text() shouldBe "Using Making Tax Digital for Income Tax for 2022 to 2023"
+            manageDetailsSummaryValues.get(4).text() shouldBe "No"
+            manageDetailsSummaryKeys.get(5).text() shouldBe "Using Making Tax Digital for Income Tax for 2023 to 2024"
+            manageDetailsSummaryValues.get(5).text() shouldBe "Yes"
+            manageDetailsSummaryValues.eq(6) shouldBe empty
           }
 
           "valid latency information and two tax years not crystallised and ITSA status for TY2 is Annual but Latency TY2 is A" in {
@@ -213,8 +218,15 @@ class ManageIncomeSourceDetailsSelfEmploymentSpec extends ManageIncomeSourceDeta
             val manageDetailsSummaryKeys = getManageDetailsSummaryKeys(document)
             manageDetailsSummaryKeys.get(1).text() shouldBe "Address"
             manageDetailsSummaryValues.get(1).text() shouldBe businessWithLatencyAddress2
-            manageDetailsSummaryValues.eq(5).isEmpty
-            manageDetailsSummaryValues.eq(6).isEmpty
+            manageDetailsSummaryKeys.get(2).text() shouldBe "Date started"
+            manageDetailsSummaryValues.get(2).text() shouldBe "1 January 2022"
+            manageDetailsSummaryKeys.get(3).text() shouldBe "Type of trade"
+            manageDetailsSummaryValues.get(3).text() shouldBe "Fruit Ltd"
+            manageDetailsSummaryKeys.get(4).text() shouldBe "Using Making Tax Digital for Income Tax for 2022 to 2023"
+            manageDetailsSummaryValues.get(4).text() shouldBe "No"
+            manageDetailsSummaryKeys.get(5).text() shouldBe "Using Making Tax Digital for Income Tax for 2023 to 2024"
+            manageDetailsSummaryValues.get(5).text() shouldBe "No"
+            manageDetailsSummaryValues.eq(6) shouldBe empty
           }
 
           "the user has a valid id parameter, valid latency information and two tax years crystallised" in {
@@ -243,8 +255,8 @@ class ManageIncomeSourceDetailsSelfEmploymentSpec extends ManageIncomeSourceDeta
             val manageDetailsSummaryValues = getManageDetailsSummaryValues(document)
             getManageDetailsSummaryKeys(document).get(1).text() shouldBe "Address"
             manageDetailsSummaryValues.get(1).text() shouldBe businessWithLatencyAddress
-            manageDetailsSummaryValues.eq(5).isEmpty
-            manageDetailsSummaryValues.eq(6).isEmpty
+            manageDetailsSummaryValues.eq(5) shouldBe empty
+            manageDetailsSummaryValues.eq(6) shouldBe empty
           }
 
           "the user has a valid id parameter, but non eligible itsa status" in {

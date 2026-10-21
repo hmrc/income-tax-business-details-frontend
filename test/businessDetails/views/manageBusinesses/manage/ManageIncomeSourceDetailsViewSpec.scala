@@ -52,7 +52,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
   def signUpLink(i: Int)(implicit document: Document) = document.getElementById(s"sign-up-link-$i")
   def optOutLink(i: Int)(implicit document: Document) = document.getElementById(s"opt-out-link-$i")
 
-  class SelfEmploymentSetup(isAgent: Boolean, startDateEnabled: Boolean = true, hideBusinessName: Boolean = false) {
+  class SelfEmploymentSetup(isAgent: Boolean, startDateEnabled: Boolean = true) {
 
     def changeReportingMethodUrl(id: String, taxYear: String, changeTo: String): String = {
       manageYourBusinessRoutes.ConfirmReportingMethodSharedController.show(isAgent, taxYear, changeTo, SelfEmployment).url
@@ -60,7 +60,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
 
     lazy val view: HtmlFormat.Appendable = {
       manageIncomeSourceDetailsView(
-        selfEmploymentViewModel.copy(hideUnknownBusinessName = hideBusinessName),
+        selfEmploymentViewModel,
         isAgent,
         backUrl = backUrl(isAgent),
         showStartDate = startDateEnabled
@@ -71,7 +71,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
 
   }
 
-  class SelfEmploymentUnknownsSetup(isAgent: Boolean, startDateEnabled: Boolean = true) {
+  class SelfEmploymentUnknownsSetup(isAgent: Boolean, startDateEnabled: Boolean = true, hideBusinessName: Boolean = false) {
 
     def changeReportingMethodUrl(taxYear: String, changeTo: String): String = {
       manageYourBusinessRoutes.ConfirmReportingMethodSharedController.show(isAgent, taxYear, changeTo, incomeSourceType = SelfEmployment).url
@@ -79,7 +79,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
 
     lazy val view: HtmlFormat.Appendable = {
       manageIncomeSourceDetailsView(
-        selfEmploymentViewModelWithUnknowns,
+        selfEmploymentViewModelWithUnknowns.copy(hideUnknownBusinessName = hideBusinessName),
         isAgent,
         backUrl = backUrl(isAgent),
         showStartDate = startDateEnabled
@@ -361,7 +361,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
     }
 
     "do not display start date if DisplayBusinessStartDate is disabled" in new SelfEmploymentSetup(false, startDateEnabled = false) {
-      Option(document.getElementById("manage-details-table")).mkString("").contains("Date started") shouldBe false
+      Option(document.getElementById("manage-details-table")).mkString("") should not include "Date started"
     }
 
     "render the correct text when OptInOptOutContentUpdateR17 feature is enabled" in new SelfEmploymentSetupWithOptInContentR17(false) {
@@ -486,7 +486,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
         document.getElementById("bullet-1").text() shouldBe "in compatible software that supports this option"
         document.getElementById("bullet-2").text() shouldBe "before you send your first quarterly update of the tax year"
         document.getElementById("learn-about-quarters-link").text() shouldBe "Learn more about standard and calendar quarters (opens in new tab)"
-        document.getElementById("standard-update-period-dropdown").text().contains("What is a calendar update period?") shouldBe true
+        document.getElementById("standard-update-period-dropdown").text() should include("What is a calendar update period?")
       }
 
       "update period is standard and user is reporting quarterly" in {
@@ -508,7 +508,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
         document.getElementById("bullet-1").text() shouldBe "in compatible software that supports this option"
         document.getElementById("bullet-2").text() shouldBe "before you send your first quarterly update of the tax year"
         document.getElementById("learn-about-quarters-link").text() shouldBe "Learn more about standard and calendar quarters (opens in new tab)"
-        document.getElementById("standard-update-period-dropdown").text().contains("What is a standard update period?") shouldBe true
+        document.getElementById("standard-update-period-dropdown").text() should include("What is a standard update period?")
       }
     }
     "not render the update period dropdown and field" when {
@@ -684,11 +684,11 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
     }
 
     "do not display start date if DisplayBusinessStartDate is disabled" in new SelfEmploymentSetup(true, startDateEnabled = false) {
-      Option(document.getElementById("manage-details-table")).mkString("").contains("Date started") shouldBe false
+      Option(document.getElementById("manage-details-table")).mkString("") should not include "Date started"
     }
 
-    "do not display business name if HideBusinessName is enabled" in new SelfEmploymentSetup(true, hideBusinessName = true) {
-      Option(document.getElementById("manage-details-table")).mkString("").contains("Business Name") shouldBe false
+    "do not display business name if trading name is unknown and hideUnknownBusinessName is enabled" in new SelfEmploymentUnknownsSetup(true, hideBusinessName = true) {
+      Option(document.getElementById("manage-details-table")).mkString("") should not include "Business name"
     }
   }
 
@@ -760,7 +760,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
     }
 
     "do not display start date if DisplayBusinessStartDate is disabled" in new UkSetup(false, startDateEnabled = false) {
-      Option(document.getElementById("manage-details-table")).mkString("").contains("Date started") shouldBe false
+      Option(document.getElementById("manage-details-table")).mkString("") should not include "Date started"
     }
 
   }
@@ -806,7 +806,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
     }
 
     "do not display start date if DisplayBusinessStartDate is disabled" in new UkSetup(false, startDateEnabled = false) {
-      Option(document.getElementById("manage-details-table")).mkString("").contains("Date started") shouldBe false
+      Option(document.getElementById("manage-details-table")).mkString("") should not include "Date started"
     }
   }
 
@@ -878,7 +878,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
     }
 
     "do not display start date if DisplayBusinessStartDate is disabled" in new ForeignSetup(false, startDateEnabled = false) {
-      Option(document.getElementById("manage-details-table")).mkString("").contains("Date started") shouldBe false
+      Option(document.getElementById("manage-details-table")).mkString("") should not include "Date started"
     }
   }
 
@@ -924,7 +924,7 @@ class ManageIncomeSourceDetailsViewSpec extends TestSupport with ViewSpec {
     }
 
     "do not display start date if DisplayBusinessStartDate is disabled" in new ForeignSetup(true, startDateEnabled = false) {
-      Option(document.getElementById("manage-details-table")).mkString("").contains("Date started") shouldBe false
+      Option(document.getElementById("manage-details-table")).mkString("") should not include "Date started"
     }
 
   }

@@ -148,7 +148,6 @@ val rows = {
     }
 }
 
-
 @getMTDUsageRows = @{
     viewModel.latencyDetails.toSeq.flatMap { latencyDetails =>
         Seq(
@@ -228,47 +227,6 @@ val rows = {
                             attributes = Map(
                                 "id" -> (if (latencyDetails.latencyIndicator2 == "Q") "opt-out-link-2" else "sign-up-link-2")
                             )
-                        )
-                    )
-                )) else None
-            ))
-        ).flatten
-    }
-}
-
-@getTaxYears = @{
-    viewModel.latencyDetails.toSeq.flatMap { latencyDetails =>
-        Seq(
-            Some(SummaryListRow(
-                key = Key(
-                    content = Text(messages("incomeSources.manage.new.business.details.reporting.method", (latencyDetails.taxYear1.toInt - 1).toString, latencyDetails.taxYear1))
-                ),
-                value = Value(
-                    content = Text(messages(s"incomeSources.manage.new.business.details.${viewModel.latencyValueAsKey(latencyDetails.latencyIndicator1)}"))
-                ),
-                actions = if (viewModel.shouldShowChangeLinksForTaxYearOne) Some(Actions(
-                    items = Seq(
-                        ActionItem(
-                            href = changeReportingMethodUrl(taxYearValue(latencyDetails.taxYear1), changeToValue(latencyDetails.latencyIndicator1)),
-                            content = Text(messages("incomeSources.manage.new.business.details.change")),
-                            attributes = Map("id" -> "change-link-1")
-                        )
-                    )
-                )) else None
-            )),
-            Some(SummaryListRow(
-                key = Key(
-                    content = Text(messages("incomeSources.manage.new.business.details.reporting.method", (latencyDetails.taxYear2.toInt - 1).toString, latencyDetails.taxYear2))
-                ),
-                value = Value(
-                    content = Text(messages(s"incomeSources.manage.new.business.details.${viewModel.latencyValueAsKey(latencyDetails.latencyIndicator2)}"))
-                ),
-                actions = if (viewModel.shouldShowChangeLinksForTaxYearTwo) Some(Actions(
-                    items = Seq(
-                        ActionItem(
-                            href = changeReportingMethodUrl(taxYearValue(latencyDetails.taxYear2), changeToValue(latencyDetails.latencyIndicator2)),
-                            content = Text(messages("incomeSources.manage.new.business.details.change")),
-                            attributes = Map("id" -> "change-link-2")
                         )
                     )
                 )) else None

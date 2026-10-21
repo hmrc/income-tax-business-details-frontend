@@ -119,7 +119,7 @@ class AddBusinessNameViewSpec extends ViewSpec {
     val heading1: String = "Business name"
     val heading2: String = "What is your business name?"
     val paragraph: String = "This is the business name you used to register for Self Assessment. If your sole trader business does not have a separate name, enter your own first and last name."
-    val hint: String = "The business name you enter can only include upper or lower case letters, full stops, commas, digits, &, {0}, \\, /, -."
+    val hint: String = "The business name you enter can only include upper or lower case letters, full stops, commas, digits, &, ’, \\, /, -."
     val errorBusinessNameEmpty: String = "Enter your name or the name of your business"
     val errorBusinessNameLength: String = "Business name must be 105 characters or fewer"
     val errorBusinessNameChar: String = "Business name cannot include !, \"\", * or ?"
@@ -146,7 +146,7 @@ class AddBusinessNameViewSpec extends ViewSpec {
         paragraph.text shouldBe AddBusinessNameMessages.paragraph
 
         val hint: Element = document.selectHead(".govuk-hint")
-        hint.text contains AddBusinessNameMessages.hint
+        hint.text shouldBe AddBusinessNameMessages.hint
 
         val form: Element = document.selectHead("form")
         val input: Element = form.selectHead("input")
