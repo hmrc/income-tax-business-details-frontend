@@ -29,6 +29,7 @@ case class BusinessDetailsModel(
                                  firstAccountingPeriodEndDate: Option[LocalDate],
                                  tradingStartDate: Option[LocalDate],
                                  contextualTaxYear: Option[String],
+                                 deleted: Option[Boolean] = None,
                                  cessation: Option[CessationModel],
                                  address: Option[AddressModel] = None,
                                  latencyDetails: Option[LatencyDetails] = None,
