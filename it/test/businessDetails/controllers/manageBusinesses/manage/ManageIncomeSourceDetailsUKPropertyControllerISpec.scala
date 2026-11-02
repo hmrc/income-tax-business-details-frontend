@@ -39,6 +39,9 @@ class ManageIncomeSourceDetailsUKPropertyControllerISpec extends ManageIncomeSou
   val dateNow = LocalDate.now()
   def taxYearEnd: Int = if(dateNow.isAfter(LocalDate.of(dateNow.getYear, 4, 5))) dateNow.getYear + 1 else dateNow.getYear
 
+  val cyTaxYearString: String = TaxYear.makeTaxYearWithEndYear(taxYearEnd).shortenTaxYearEnd
+  val cyPlusOneTaxYearString: String = TaxYear.makeTaxYearWithEndYear(taxYearEnd + 1).shortenTaxYearEnd
+
   mtdAllRoles.foreach { mtdUserRole =>
 
     val path = getPath(mtdUserRole)
@@ -55,7 +58,7 @@ class ManageIncomeSourceDetailsUKPropertyControllerISpec extends ManageIncomeSou
             "URL contains a valid income source ID user has no latency information" in {
               stubAuthorised(mtdUserRole, List(DisplayBusinessStartDate))
               GetInsourceDetailsStub.stubGetIncomeSourceDetailsResponse(testMtditid)(OK, ukPropertyOnlyResponse)
-              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated")
+              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated", cyTaxYearString)
 
               await(sessionService.setMongoData(testUIJourneySessionData(UkProperty)))
 
@@ -117,8 +120,8 @@ class ManageIncomeSourceDetailsUKPropertyControllerISpec extends ManageIncomeSou
             "URL contains a valid income source ID and user has latency information, but itsa status is not mandatory or voluntary" in {
               stubAuthorised(mtdUserRole, List(DisplayBusinessStartDate))
               GetInsourceDetailsStub.stubGetIncomeSourceDetailsResponse(testMtditid)(OK, singleUKPropertyResponseWithUnknownsInLatencyPeriod(latencyDetails))
-              ITSAStatusDetailsStub.stubGetITSAStatusDetails("Annual", "2022-23")
-              ITSAStatusDetailsStub.stubGetITSAStatusDetails("Annual", "2023-24")
+              ITSAStatusDetailsStub.stubGetITSAStatusDetails("Annual", cyTaxYearString)
+              ITSAStatusDetailsStub.stubGetITSAStatusDetails("Annual", cyPlusOneTaxYearString)
 
               await(sessionService.setMongoData(testUIJourneySessionData(SelfEmployment)))
 
