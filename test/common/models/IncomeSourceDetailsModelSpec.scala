@@ -169,11 +169,31 @@ class IncomeSourceDetailsModelSpec extends UnitSpec with Matchers with MockDateS
         result shouldBe Right(testSelfEmploymentIdMaybe.get)
       }
     }
+    "user has income incomeSourceIdHashes matching the url incomeSourceIdHash and one incomeSource has 'deleted' field set to true" should {
+      "return the matching incomeSourceId inside an Option" in {
+        implicit val user: MtdItUser[_] = getIndividualUserIncomeSourcesConfigurable(fakeRequestWithActiveSession, IncomeSourceDetailsModel(testNino, testMtditid, Some("2017"), List(business1, business1WithDeletedFiled(true)), Nil))
+
+        val result = user.incomeSources.compareHashToQueryString(incomeSourceIdHash = testSelfEmploymentIdHash.toOption.get)
+
+        result shouldBe Right(testSelfEmploymentIdMaybe.get)
+      }
+    }
     "user has multiple incomeSourceIdHashes matching the url incomeSourceIdHash" should {
       "return the matching incomeSourceId inside an Option" in {
         implicit val user: MtdItUser[_] = getIndividualUserIncomeSourcesConfigurable(fakeRequestWithActiveSession, dualBusinessIncome)
 
         val listOfIncomeSourceIds: List[String] = user.incomeSources.businesses.filterNot(_.isCeased).map(_.incomeSourceId)
+
+        val result = user.incomeSources.compareHashToQueryString(incomeSourceIdHash = testSelfEmploymentIdHash.toOption.get)
+
+        result shouldBe Left(MultipleIncomeSourcesFound(testSelfEmploymentIdHash.toOption.get.hash, listOfIncomeSourceIds))
+      }
+    }
+    "user has multiple incomeSourceIdHashes matching the url incomeSourceIdHash and one incomeSource has 'deleted' field set to false" should {
+      "return throw MultipleIncomeSourcesFound exception" in {
+        implicit val user: MtdItUser[_] = getIndividualUserIncomeSourcesConfigurable(fakeRequestWithActiveSession, IncomeSourceDetailsModel(testNino, testMtditid, Some("2017"), List(business1, business1WithDeletedFiled(false)), Nil))
+
+        val listOfIncomeSourceIds: List[String] = user.incomeSources.businesses.filterNot(bdm => bdm.isCeased || bdm.deleted.contains(true)).map(_.incomeSourceId)
 
         val result = user.incomeSources.compareHashToQueryString(incomeSourceIdHash = testSelfEmploymentIdHash.toOption.get)
 

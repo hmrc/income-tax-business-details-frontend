@@ -132,6 +132,7 @@ class ManageObligationsControllerSpec
           None,
           Some(LocalDate.of(2022, 1, 1)),
           contextualTaxYear = None,
+          deleted = None,
           None,
         )), List.empty)
     }
