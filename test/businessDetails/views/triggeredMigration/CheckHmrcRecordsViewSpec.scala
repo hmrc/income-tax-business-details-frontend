@@ -53,16 +53,17 @@ class CheckHmrcRecordsViewSpec extends TestSupport{
   }
 
   object CheckHmrcRecordsMessages {
-    val heading = "Check HMRC records only list your active businesses"
-    val title = "Check HMRC records only list your active businesses - Manage your Self Assessment - GOV.UK"
-    val desc = "You must check and confirm your income sources for the 2026 to 2027 tax year onwards, before you can continue. These income sources were created using information from your previous tax return."
-    val desc2 = "You may now have quarterly deadlines for your sole trader and/or property businesses listed here."
-    val inset = "Making sure this page is correct will help avoid both missing deadlines for your active businesses and having deadlines for an income source you may have closed down or sold."
-    val bulletStart = "So if necessary, you must:"
-    val bullet1 = "add any active businesses that are missing"
-    val bullet2 = "cease any that you no longer get income from"
+    val heading = "Check HMRC records"
+    val title = "Check HMRC records - Manage your Self Assessment - GOV.UK"
+    val desc = "You must check and confirm that HMRC records include all businesses that were active during the 2026 to 2027 tax year before you can continue."
+    val desc2 = "These businesses were created using information from your previous tax return."
+    val desc3 = "You may now have quarterly deadlines for your sole trader and/or property businesses listed here."
+    val inset = "Making sure this page is correct will help avoid both missing deadlines for businesses that were active during the relevant tax year and having deadlines for an income source that was not active during that tax year."
+    val bulletStart = "If necessary, you must:"
+    val bullet1 = "add any businesses that were active during the relevant tax year that are missing"
+    val bullet2 = "cease any businesses that you no longer receive income from"
 
-    val yourActiveBusinessesHeading = "Your active businesses"
+    val yourActiveBusinessesHeading = "Your businesses"
     val soleTraderHeading = "Sole trader businesses"
     val addASoleTraderBusinessText = "Add a sole trader business"
     val soleTraderGuidance = "You’re self-employed if you run your own business as an individual and work for yourself. This is also known as being a ‘sole trader’. If you work through a limited company, you’re not a sole trader."
@@ -75,7 +76,7 @@ class CheckHmrcRecordsViewSpec extends TestSupport{
     val foreignPropertyHeading = "Foreign property"
     val addAPropertyBusinessText = "Add a property business"
     val addForeignPropertyBusinessText = "Add foreign property business"
-    val noActivePropertyText = "If you get income from one or more properties in the UK, you have a UK property business. If the property is abroad, you have a foreign property business. For example: letting houses, flats or holiday homes either on a long or short term basis."
+    val noActivePropertyText = "If you get income from one or more properties in the UK, you have a UK property business. If the property is outside the UK, you have a foreign property business. For example: letting houses, flats or holiday homes either on a long or short term basis."
     val addPropertyBusinessText = "Add property business"
     val addUKPropertyBusinessText = "Add UK property business"
 
@@ -89,8 +90,8 @@ class CheckHmrcRecordsViewSpec extends TestSupport{
     val activeText = "Active"
     val unknownText = "Unknown"
 
-    val confirmRecordsHeading = "Confirm HMRC records only list your active businesses"
-    val confirmRecordsText = "This page only needs to list all your active sole trader and property income sources. Any other business details that are not right, misspelt or out of date, can be amended at a later date."
+    val confirmRecordsHeading = "Confirm HMRC records are correct"
+    val confirmRecordsText = "Check that all businesses active during the relevant tax year are shown. Any business details that are not right, misspelt or out of date can be amended at a later date."
     val confirmRecordsButton = "Confirm and continue"
 
     val ceasedBannerHeading = "Ceased"
@@ -285,6 +286,10 @@ class CheckHmrcRecordsViewSpec extends TestSupport{
 
     "have the correct description - 2" in new Setup(activeSoleTrader = activeSoleTrader, activeUkProperty = activeUkProperty, activeForeignProperty = activeForeignProperty, noCeasedBusinesses, None) {
       pageDocument.getElementById("check-hmrc-records-desc-2").text() shouldBe CheckHmrcRecordsMessages.desc2
+    }
+
+    "have the correct description - 3" in new Setup(activeSoleTrader = activeSoleTrader, activeUkProperty = activeUkProperty, activeForeignProperty = activeForeignProperty, noCeasedBusinesses, None) {
+      pageDocument.getElementById("check-hmrc-records-desc-3").text() shouldBe CheckHmrcRecordsMessages.desc3
     }
 
     "have the correct inset" in new Setup(activeSoleTrader = activeSoleTrader, activeUkProperty = activeUkProperty, activeForeignProperty = activeForeignProperty, noCeasedBusinesses, None) {
