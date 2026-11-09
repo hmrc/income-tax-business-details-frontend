@@ -42,10 +42,12 @@ class TriggeredMigrationService @Inject()(sessionService: SessionService) {
 
     CheckHmrcRecordsViewModel(
       soleTraderBusinesses = activeSoleTraderBusinesses.map { business =>
+        val startDate = business.tradingStartDate.map(_.getYear.toString)
         CheckHmrcRecordsSoleTraderDetails(
           incomeSourceId = IncomeSourceId(business.incomeSourceId),
           incomeSource = business.incomeSource,
-          businessName = business.tradingName
+          businessName = business.tradingName,
+          businessStartDate = startDate
         )
       },
       hasActiveUkProperty = hasActiveUkProperty,

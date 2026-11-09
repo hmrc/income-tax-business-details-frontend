@@ -52,7 +52,7 @@ class TriggeredMigrationServiceSpec extends TestSupport with MockSessionService 
       val result = service.getCheckHmrcRecordsViewModel(populatedIncomeSources, None, "2027", false)
 
       val expectedResult = CheckHmrcRecordsViewModel(
-        soleTraderBusinesses = List(CheckHmrcRecordsSoleTraderDetails(IncomeSourceId("XA00001234"),Some("Fruit Ltd"), Some("nextUpdates.business"))),
+        soleTraderBusinesses = List(CheckHmrcRecordsSoleTraderDetails(IncomeSourceId("XA00001234"),Some("Fruit Ltd"), Some("nextUpdates.business"), Some("2022"))),
         hasActiveUkProperty = true,
         hasActiveForeignProperty = true,
         triggeredMigrationState = None,
@@ -132,7 +132,7 @@ class TriggeredMigrationServiceSpec extends TestSupport with MockSessionService 
       val result = service.getCheckHmrcRecordsViewModel(populatedIncomeSources, Some(TriggeredMigrationCeased), "2027", false)
 
       val expectedResult = CheckHmrcRecordsViewModel(
-        soleTraderBusinesses = List(CheckHmrcRecordsSoleTraderDetails(IncomeSourceId("XA00001234"),Some("Fruit Ltd"), Some("nextUpdates.business"))),
+        soleTraderBusinesses = List(CheckHmrcRecordsSoleTraderDetails(IncomeSourceId("XA00001234"),Some("Fruit Ltd"), Some("nextUpdates.business"), Some("2022"))),
         hasActiveUkProperty = true,
         hasActiveForeignProperty = true,
         triggeredMigrationState = Some(TriggeredMigrationCeased),
@@ -152,7 +152,7 @@ class TriggeredMigrationServiceSpec extends TestSupport with MockSessionService 
       val result = service.getCheckHmrcRecordsViewModel(populatedIncomeSources, Some(TriggeredMigrationAdded(SelfEmployment)), "2027", false)
 
       val expectedResult = CheckHmrcRecordsViewModel(
-        soleTraderBusinesses = List(CheckHmrcRecordsSoleTraderDetails(IncomeSourceId("XA00001234"),Some("Fruit Ltd"), Some("nextUpdates.business"))),
+        soleTraderBusinesses = List(CheckHmrcRecordsSoleTraderDetails(IncomeSourceId("XA00001234"),Some("Fruit Ltd"), Some("nextUpdates.business"), Some("2022"))),
         hasActiveUkProperty = true,
         hasActiveForeignProperty = true,
         triggeredMigrationState = Some(TriggeredMigrationAdded(SelfEmployment)),

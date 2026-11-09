@@ -35,7 +35,7 @@ class CheckHmrcRecordsViewSpec extends TestSupport{
 
   class Setup(activeSoleTrader: Boolean, activeUkProperty: Boolean, activeForeignProperty: Boolean, numOfCeasedBusinesses: Int, triggeredMigrationState: Option[TriggeredMigrationState]) {
     val soleTraderDetails: List[CheckHmrcRecordsSoleTraderDetails] = if (activeSoleTrader) {
-      List(CheckHmrcRecordsSoleTraderDetails(IncomeSourceId("XA00001234"), Some("business"), Some("nextUpdates.business")))
+      List(CheckHmrcRecordsSoleTraderDetails(IncomeSourceId("XA00001234"), Some("business"), Some("nextUpdates.business"), Some("2020")))
     } else {
       List.empty
     }
@@ -86,6 +86,8 @@ class CheckHmrcRecordsViewSpec extends TestSupport{
     val ceaseLinkUkPropertyHref = "/manage-your-businesses/cease/uk-property-confirm-cease?isTriggeredMigration=true"
     val ceaseLinkForeignPropertyHref = "/manage-your-businesses/cease/foreign-property-confirm-cease?isTriggeredMigration=true"
     val businessNameText = "Business name"
+    val businessActiveBetween = "Active between"
+    def businessActiveBetweenValue(year: String) = s"$year - present"
     val businessStateText = "Business state"
     val activeText = "Active"
     val unknownText = "Unknown"
@@ -118,6 +120,8 @@ class CheckHmrcRecordsViewSpec extends TestSupport{
         pageDocument.getElementById("sole-trader-business-0").text() shouldBe "business"
         pageDocument.getElementById("sole-trader-business-name-0").text() shouldBe CheckHmrcRecordsMessages.businessNameText
         pageDocument.getElementById("sole-trader-business-name-value-0").text() shouldBe "nextUpdates.business"
+        pageDocument.getElementById("sole-trader-business-active-between-0").text() shouldBe CheckHmrcRecordsMessages.businessActiveBetween
+        pageDocument.getElementById("sole-trader-business-active-between-value-0").text() shouldBe CheckHmrcRecordsMessages.businessActiveBetweenValue("2020")
         pageDocument.getElementById("sole-trader-business-state-0").text() shouldBe CheckHmrcRecordsMessages.businessStateText
         pageDocument.getElementById("sole-trader-business-state-value-0").text() shouldBe CheckHmrcRecordsMessages.activeText
         pageDocument.getElementById("sole-trader-cease-link-0").text() shouldBe CheckHmrcRecordsMessages.ceaseSoleTraderText
@@ -157,6 +161,8 @@ class CheckHmrcRecordsViewSpec extends TestSupport{
         pageDocument.getElementById("sole-trader-business-0").text() shouldBe "business"
         pageDocument.getElementById("sole-trader-business-name-0").text() shouldBe CheckHmrcRecordsMessages.businessNameText
         pageDocument.getElementById("sole-trader-business-name-value-0").text() shouldBe "nextUpdates.business"
+        pageDocument.getElementById("sole-trader-business-active-between-0").text() shouldBe CheckHmrcRecordsMessages.businessActiveBetween
+        pageDocument.getElementById("sole-trader-business-active-between-value-0").text() shouldBe CheckHmrcRecordsMessages.businessActiveBetweenValue("2020")
         pageDocument.getElementById("sole-trader-business-state-0").text() shouldBe CheckHmrcRecordsMessages.businessStateText
         pageDocument.getElementById("sole-trader-business-state-value-0").text() shouldBe CheckHmrcRecordsMessages.activeText
         pageDocument.getElementById("sole-trader-cease-link-0").text() shouldBe CheckHmrcRecordsMessages.ceaseSoleTraderText

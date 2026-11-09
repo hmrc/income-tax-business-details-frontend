@@ -60,7 +60,8 @@ class CheckHmrcRecordsControllerSpec extends MockAuthActions with MockTriggeredM
   val checkHmrcRecordsSoleTraderDetails = CheckHmrcRecordsSoleTraderDetails(
     incomeSourceId = IncomeSourceId("XA00001234"),
     incomeSource = Some("Testing"),
-    businessName = Some("Test Inc")
+    businessName = Some("Test Inc"),
+    businessStartDate = Some("2020")
   )
   val testCheckHmrcRecordsViewModel = CheckHmrcRecordsViewModel(
     soleTraderBusinesses = List(checkHmrcRecordsSoleTraderDetails),

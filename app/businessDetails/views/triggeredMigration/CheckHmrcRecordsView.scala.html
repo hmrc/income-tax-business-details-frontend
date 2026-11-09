@@ -89,16 +89,24 @@
                     @if(!viewModel.hideBusinessName || business.businessName.nonEmpty) {
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key" id="sole-trader-business-name-@index">
-                            @messages("triggered-migration.check-hmrc-records.soleTrader.businessName")
+                                @messages("triggered-migration.check-hmrc-records.soleTrader.businessName")
                             </dt>
                             <dd class="govuk-summary-list__value" id="sole-trader-business-name-value-@index">
-                            @business.businessName.getOrElse(messages("triggered-migration.check-hmrc-records.soleTrader.unknown"))
+                                @business.businessName.getOrElse(messages("triggered-migration.check-hmrc-records.soleTrader.unknown"))
                             </dd>
                         </div>
                     }
                     <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key" id="sole-trader-business-active-between-@index">
+                            @messages("triggered-migration.check-hmrc-records.soleTrader.businessActiveBetween")
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="sole-trader-business-active-between-value-@index">
+                            @messages("triggered-migration.check-hmrc-records.soleTrader.activeDatePresent", business.businessStartDate.getOrElse(""))
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key" id="sole-trader-business-state-@index">
-                        @messages("triggered-migration.check-hmrc-records.soleTrader.businessState")
+                            @messages("triggered-migration.check-hmrc-records.soleTrader.businessState")
                         </dt>
                         <dd class="govuk-summary-list__value" id="sole-trader-business-state-value-@index">
                             <strong class="govuk-tag govuk-tag--turquoise">@messages("triggered-migration.check-hmrc-records.soleTrader.active")</strong>

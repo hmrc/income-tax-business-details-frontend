@@ -43,4 +43,5 @@ case class CheckHmrcRecordsViewModel(soleTraderBusinesses: List[CheckHmrcRecords
 
 case class CheckHmrcRecordsSoleTraderDetails(incomeSourceId: IncomeSourceId,
                                              incomeSource: Option[String],
-                                             businessName: Option[String])
+                                             businessName: Option[String],
+                                             businessStartDate: Option[String])
