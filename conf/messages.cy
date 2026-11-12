@@ -197,13 +197,6 @@ timeout.signIn.1                                                = Er mwyn gweld 
 timeout.signIn.2                                                = fewngofnodi
 timeout.signIn.3                                                = gan ddefnyddio’ch Dynodydd Defnyddiwr (ID) Porth y Llywodraeth.
 
-
-## BTA Partial ##
-bta_partial.heading                                             = Rhoi gwybod am eich Treth Incwm drwy feddalwedd
-bta_partial.p1                                                  = Rydych wedi cofrestru i roi gwybod am eich Treth Incwm drwy feddalwedd. Bydd hyn yn disodli’ch Ffurflen Dreth Hunanasesiad.
-bta_partial.p2                                                  = Gallwch fwrw golwg ar ddyddiadau cau eich adroddiadau, eich biliau ac amcangyfrif ar gyfer y flwyddyn dreth nesaf.
-bta_partial.home_button                                         = Bwrw golwg ar fanylion eich Treth Incwm
-
 ## Not Enrolled
 not_enrolled.heading                                            = Ni allwch gael mynediad at y gwasanaeth hwn
 not_enrolled.sign-up                                            = Mae angen i chi
@@ -3696,24 +3689,27 @@ triggered-migration.check-hmrc-records.cessation-section.heading     = Eich busn
 triggered-migration.check-hmrc-records.cessation-section.text        = Mae un neu ragor o fusnesau wedi dod i ben.
 triggered-migration.check-hmrc-records.cessation-section.text-link   = Gweld eich holl fusnesau sydd wedi dod i ben
 
-triggered-migration.check-hmrc-records.heading                       = Gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
-triggered-migration.check-hmrc-records.title                         = Gwirio bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
-triggered-migration.check-hmrc-records.desc                          = Mae’n rhaid i chi wirio a chadarnhau eich ffynonellau incwm ar gyfer blwyddyn dreth {0} i {1} ac ymlaen cyn y gallwch barhau. Cafodd y ffynonellau incwm hyn eu creu gan ddefnyddio gwybodaeth o’ch Ffurflen Dreth flaenorol.
-triggered-migration.check-hmrc-records.desc2                         = Efallai bod gennych bellach derfynau amser chwarterol ar gyfer eich busnesau unig fasnachwr a/neu eiddo sydd wedi’u rhestru yma.
-triggered-migration.check-hmrc-records.inset                         = Bydd sicrhau bod y manylion ar y dudalen hon yn gywir yn eich helpu chi i osgoi colli dyddiadau cau ar gyfer eich busnesau cyfredol, ac yn osgoi rhoi dyddiadau cau i chi ar gyfer ffynonellau incwm y gallech fod wedi’u cau neu eu gwerthu.
-triggered-migration.check-hmrc-records.bulletStart                   = Felly, bydd yn rhaid i chi wneud y canlynol yn ôl yr angen:
-triggered-migration.check-hmrc-records.bullet1                       = ychwanegu unrhyw fusnesau cyfredol sydd ar goll
-triggered-migration.check-hmrc-records.bullet2                       = rhoi’r gorau i unrhyw fusnes cyfredol nad ydych bellach yn cael incwm oddi wrtho mwyach
+triggered-migration.check-hmrc-records.heading                       = Gwirio cofnodion CThEF
+triggered-migration.check-hmrc-records.title                         = Gwirio cofnodion CThEF
+triggered-migration.check-hmrc-records.desc                          = Cyn y gallwch barhau, mae’n rhaid i chi wirio a chadarnhau bod cofnodion CThEF yn cynnwys yr holl fusnesau a oedd yn weithredol yn ystod blwyddyn dreth {0} i {1}.
+triggered-migration.check-hmrc-records.desc2                         = Cafodd y busnesau hyn eu creu ar sail gwybodaeth o’ch Ffurflen Dreth flaenorol.
+triggered-migration.check-hmrc-records.desc3                         = Erbyn hyn mae’n bosibl bod gennych ddyddiadau cau chwarterol ar gyfer eich busnesau fel unig fasnachwr a/neu eich busnesau eiddo wedi’u rhestru yma.
+triggered-migration.check-hmrc-records.inset                         = Bydd sicrhau bod y dudalen hon yn gywir yn helpu i osgoi methu dyddiadau cau ar gyfer busnesau a oedd yn weithredol yn ystod y flwyddyn dreth berthnasol. Bydd hefyd yn helpu i osgoi bod â dyddiadau cau ar gyfer ffynhonnell incwm nad oedd yn weithredol yn ystod y flwyddyn dreth honno.
+triggered-migration.check-hmrc-records.bulletStart                   = Bydd yn rhaid i chi wneud y canlynol, os oes angen:
+triggered-migration.check-hmrc-records.bullet1                       = ychwanegu unrhyw fusnesau a oedd yn weithredol yn ystod y flwyddyn dreth berthnasol sydd ar goll
+triggered-migration.check-hmrc-records.bullet2                       = dod ag unrhyw fusnesau cyfredol nad ydych bellach yn cael incwm oddi wrtho mwyach i ben
 
-triggered-migration.check-hmrc-records.yourActiveBusinesses.heading  = Eich busnesau cyfredol
-triggered-migration.check-hmrc-records.soleTrader.heading            = Busnesau unig fasnachwr
-triggered-migration.check-hmrc-records.soleTrader.cease.link         = Dod â’r busnes i ben
-triggered-migration.check-hmrc-records.soleTrader.businessName       = Enw’r busnes
-triggered-migration.check-hmrc-records.soleTrader.businessState      = Statws y busnes
-triggered-migration.check-hmrc-records.soleTrader.active             = Cyfredol
-triggered-migration.check-hmrc-records.soleTrader.add.link           = Ychwanegu busnes unig fasnachwr
-triggered-migration.check-hmrc-records.soleTrader.guidance           = Rydych yn hunangyflogedig os ydych yn rhedeg eich busnes eich hun fel unigolyn ac yn gweithio i chi’ch hun. Enw arall ar hyn yw bod yn ‘unig fasnachwr’. Os ydych yn gweithio drwy gwmni cyfyngedig, nid unig fasnachwr ydych chi.
-triggered-migration.check-hmrc-records.soleTrader.unknown            = Anhysbys
+triggered-migration.check-hmrc-records.yourActiveBusinesses.heading     = Eich busnesau
+triggered-migration.check-hmrc-records.soleTrader.heading               = Busnesau unig fasnachwr
+triggered-migration.check-hmrc-records.soleTrader.cease.link            = Dod â’r busnes i ben
+triggered-migration.check-hmrc-records.soleTrader.businessName          = Enw’r busnes
+triggered-migration.check-hmrc-records.soleTrader.businessActiveBetween = Yn weithredol rhwng
+triggered-migration.check-hmrc-records.soleTrader.activeDatePresent     = {0} - Presennol
+triggered-migration.check-hmrc-records.soleTrader.businessState         = Statws y busnes
+triggered-migration.check-hmrc-records.soleTrader.active                = Cyfredol
+triggered-migration.check-hmrc-records.soleTrader.add.link              = Ychwanegu busnes unig fasnachwr
+triggered-migration.check-hmrc-records.soleTrader.guidance              = Rydych yn hunangyflogedig os ydych yn rhedeg eich busnes eich hun fel unigolyn ac yn gweithio i chi’ch hun. Enw arall ar hyn yw bod yn ‘unig fasnachwr’. Os ydych yn gweithio drwy gwmni cyfyngedig, nid unig fasnachwr ydych chi.
+triggered-migration.check-hmrc-records.soleTrader.unknown               = Anhysbys
 
 triggered-migration.check-hmrc-records.property.heading              = Busnesau eiddo
 triggered-migration.check-hmrc-records.ukProperty.heading            = Eiddo yn y DU
@@ -3725,10 +3721,10 @@ triggered-migration.check-hmrc-records.foreignProperty.cease.link    = Dod â’
 triggered-migration.check-hmrc-records.foreignProperty.businessState = Statws y busnes
 triggered-migration.check-hmrc-records.foreignProperty.active        = Cyfredol
 triggered-migration.check-hmrc-records.foreignProperty.add.link      = Ychwanegu eiddo busnes tramor
-triggered-migration.check-hmrc-records.noActiveProperties            = Os ydych yn cael incwm o un eiddo neu fwy yn y DU, mae gennych fusnes eiddo yn y DU. Os yw’r eiddo dramor, mae gennych fusnes eiddo tramor. Er enghraifft: incwm o roi tai, fflatiau, neu gartrefi gwyliau ar osod, a hynny naill ai ar sail tymor hir neu dymor byr.
+triggered-migration.check-hmrc-records.noActiveProperties            = Os ydych yn cael incwm o un eiddo neu fwy yn y DU, mae gennych fusnes eiddo yn y DU. Os yw’r eiddo y tu allan i’r DU, mae gennych fusnes eiddo tramor. Er enghraifft: incwm o roi tai, fflatiau, neu gartrefi gwyliau ar osod, a hynny naill ai ar sail tymor hir neu dymor byr.
 
-triggered-migration.check-hmrc-records.confirmRecords.heading = Cadarnhau bod cofnodion CThEF dim ond yn cynnwys eich busnesau cyfredol
-triggered-migration.check-hmrc-records.confirmRecords.text    = Dylai’r dudalen hon dim ond rhestru’ch ffynonellau incwm cyfredol o fod yn unig fasnachwr a’ch ffynonellau incwm cyfredol o eiddo. Gall unrhyw fanylion busnes eraill sy’n anghywir, sydd wedi’u camsillafu, neu sydd ddim yn gyfredol, gael eu diweddaru yn nes ymlaen.
+triggered-migration.check-hmrc-records.confirmRecords.heading = Cadarnhau bod cofnodion CThEF yn gywir
+triggered-migration.check-hmrc-records.confirmRecords.text    = Gwiriwch fod yr holl fusnesau a oedd yn weithredol yn ystod y flwyddyn dreth berthnasol yn cael eu dangos. Gall unrhyw fanylion busnes sy’n anghywir, sydd wedi’u camsillafu, neu sydd ddim yn gyfredol, gael eu diweddaru yn nes ymlaen.
 triggered-migration.check-hmrc-records.confirmRecords.button  = Cadarnhau a pharhau
 
 # Triggered migration – Check Active Businesses Confirm page

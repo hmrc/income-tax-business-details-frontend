@@ -11,13 +11,12 @@ val appName = "income-tax-business-details-frontend"
 val cryptoJsonVersion = "8.4.0"
 val bootstrapPlayVersion = "10.8.0"
 val playPartialsVersion = "10.2.0"
-val playFrontendHMRCVersion = "13.13.0"
+val playFrontendHMRCVersion = "13.16.0"
 val catsVersion = "2.13.0"
 val jsoupVersion = "1.23.2"
-val mockitoVersion = "5.23.0"
-val scalaMockVersion = "7.5.5"
+val mockitoVersion = "5.24.0"
 val wiremockVersion = "3.0.1"
-val hmrcMongoVersion = "2.13.0"
+val hmrcMongoVersion = "2.14.0"
 val currentScalaVersion = "3.3.6"
 val playVersion = "play-30"
 
@@ -41,7 +40,6 @@ val compile = Seq(
 )
 
 def test(scope: String = "test"): Seq[ModuleID] = Seq(
-  "org.scalamock"     %% "scalamock"                      % scalaMockVersion      % scope,
   "org.jsoup"          % "jsoup"                          % jsoupVersion          % scope,
   "org.mockito"        % "mockito-core"                   % mockitoVersion        % scope,
   "uk.gov.hmrc.mongo" %% s"hmrc-mongo-test-$playVersion"  % hmrcMongoVersion      % scope,
@@ -53,7 +51,6 @@ def test(scope: String = "test"): Seq[ModuleID] = Seq(
 )
 
 def it(scope: String = "test"): Seq[ModuleID] = Seq(
-  "org.scalamock"         %% "scalamock"                      % scalaMockVersion  % scope,
   "org.jsoup"              % "jsoup"                          % jsoupVersion      % scope,
   "org.mockito"            % "mockito-core"                   % mockitoVersion    % scope,
   "com.github.tomakehurst" % "wiremock"                       % wiremockVersion   % scope,

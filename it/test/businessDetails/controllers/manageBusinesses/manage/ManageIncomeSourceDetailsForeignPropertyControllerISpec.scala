@@ -41,6 +41,8 @@ class ManageIncomeSourceDetailsForeignPropertyControllerISpec extends ManageInco
   val dateNow = LocalDate.now()
 
   def taxYearEnd: Int = if(dateNow.isAfter(LocalDate.of(dateNow.getYear, 4, 5))) dateNow.getYear + 1 else dateNow.getYear
+  val cyTaxYearString: String = TaxYear.makeTaxYearWithEndYear(taxYearEnd).shortenTaxYearEnd
+  val cyPlusOneTaxYearString: String = TaxYear.makeTaxYearWithEndYear(taxYearEnd + 1).shortenTaxYearEnd
 
   mtdAllRoles.foreach { mtdUserRole =>
 
@@ -58,8 +60,8 @@ class ManageIncomeSourceDetailsForeignPropertyControllerISpec extends ManageInco
             "URL contains a valid income source ID and user has no latency information" in {
               stubAuthorised(mtdUserRole, List(DisplayBusinessStartDate))
               GetInsourceDetailsStub.stubGetIncomeSourceDetailsResponse(testMtditid)(OK, foreignPropertyOnlyResponse)
-              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated", "2022-23")
-              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated", "2023-24")
+              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated", cyTaxYearString)
+              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated", cyPlusOneTaxYearString)
 
               await(sessionService.setMongoData(testUIJourneySessionData(ForeignProperty)))
 
@@ -77,9 +79,8 @@ class ManageIncomeSourceDetailsForeignPropertyControllerISpec extends ManageInco
               stubAuthorised(mtdUserRole, List(DisplayBusinessStartDate))
               GetInsourceDetailsStub.stubGetIncomeSourceDetailsResponse(testMtditid)(OK, singleForeignPropertyResponseInLatencyPeriod(latencyDetails))
 
-              // TODO after reenabling TimeMachine, change the tax year range to 25-26 for the below stub
-              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated", "2022-23")
-              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated", "2023-24")
+              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated", cyTaxYearString)
+              ITSAStatusDetailsStub.stubGetITSAStatusDetails("MTD Mandated", cyPlusOneTaxYearString)
 
               CalculationListStub.stubGetCalculationList(testNino, testTaxYearRange)(CalculationListIntegrationTestConstants.successResponseCrystallised.toString())
 
@@ -148,8 +149,8 @@ class ManageIncomeSourceDetailsForeignPropertyControllerISpec extends ManageInco
               stubAuthorised(mtdUserRole, List(DisplayBusinessStartDate))
               GetInsourceDetailsStub.stubGetIncomeSourceDetailsResponse(testMtditid)(OK, singleForeignPropertyResponseWithUnknownsInLatencyPeriod(latencyDetails))
 
-              ITSAStatusDetailsStub.stubGetITSAStatusDetails("Annual", "2022-23")
-              ITSAStatusDetailsStub.stubGetITSAStatusDetails("Annual", "2023-24")
+              ITSAStatusDetailsStub.stubGetITSAStatusDetails("Annual", cyTaxYearString)
+              ITSAStatusDetailsStub.stubGetITSAStatusDetails("Annual", cyPlusOneTaxYearString)
 
               val result = buildGETMTDClient(path, additionalCookies).futureValue
 
