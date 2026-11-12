@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package common.models.incomeSourceDetails
+package models.incomeSourceDetails
 
-import common.models.core.{AccountingPeriodModel, AddressModel, CessationModel}
-import common.testUtils.{TestSupport, UnitSpec}
+import models.core.{AccountingPeriodModel, AddressModel, CessationModel}
+import testUtils.{TestSupport, UnitSpec}
 
 import java.time.LocalDate
 
