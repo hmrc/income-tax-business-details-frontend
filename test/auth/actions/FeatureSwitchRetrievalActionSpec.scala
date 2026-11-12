@@ -1,0 +1,85 @@
+/*
+ * Copyright 2024 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package auth.actions
+
+import auth.MtdItUser
+import auth.actions.AuthActionsTestData.getMtdItUser
+import models.admin.{FeatureSwitch, NoIncomeSourcesRedirect}
+import services.admin.FeatureSwitchService
+import org.mockito.ArgumentMatchers.any
+import org.mockito.Mockito.when
+import org.scalatest.Assertion
+import play.api
+import play.api.Application
+import play.api.inject.guice.GuiceApplicationBuilder
+import play.api.mvc.{Result, Results}
+import play.api.test.Helpers.*
+import uk.gov.hmrc.auth.core.AffinityGroup.Individual
+import uk.gov.hmrc.http.HeaderCarrier
+
+import scala.concurrent.Future
+
+class FeatureSwitchRetrievalActionSpec extends AuthActionsSpecHelper {
+
+  override lazy val app: Application = {
+    new GuiceApplicationBuilder()
+      .overrides(
+        api.inject.bind[FeatureSwitchService].toInstance(mockFeatureSwitchService)
+      )
+      .build()
+  }
+
+  def defaultAsyncBody(
+                        requestTestCase: MtdItUser[_] => Assertion
+                      ): MtdItUser[_] => Future[Result] = testRequest => {
+    requestTestCase(testRequest)
+    Future.successful(Results.Ok("Successful"))
+  }
+
+  lazy val action = app.injector.instanceOf[FeatureSwitchRetrievalAction]
+
+  def mtdItUser: MtdItUser[_] = getMtdItUser(Individual)(fakeRequestWithActiveSession)
+
+  "refine" when {
+    "The feature switches are retrieved" should {
+      "Add the list of feature switches to the MtdItUser" in {
+        val featureSwitch = List(FeatureSwitch(NoIncomeSourcesRedirect, true))
+        when(mockFeatureSwitchService.getAll()(any[HeaderCarrier]))
+          .thenReturn(Future.successful(featureSwitch))
+
+        val result = action.invokeBlock(
+          mtdItUser,
+          defaultAsyncBody(_.featureSwitches shouldBe featureSwitch)
+        )
+
+        status(result) shouldBe OK
+        contentAsString(result) shouldBe "Successful"
+      }
+      "Add an empty list of feature switches to the MtdItUser" in {
+        when(mockFeatureSwitchService.getAll()(any[HeaderCarrier]))
+          .thenReturn(Future.successful(List.empty))
+        val result = action.invokeBlock(
+          mtdItUser,
+          defaultAsyncBody(_.featureSwitches shouldBe List.empty)
+        )
+
+        status(result) shouldBe OK
+        contentAsString(result) shouldBe "Successful"
+      }
+    }
+  }
+}
