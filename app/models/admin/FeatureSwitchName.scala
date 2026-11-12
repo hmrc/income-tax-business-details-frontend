@@ -1,0 +1,120 @@
+/*
+ * Copyright 2024 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package models.admin
+
+import play.api.Logger
+import play.api.libs.json._
+import play.api.mvc.PathBindable
+
+import scala.collection.immutable
+
+case class FeatureSwitch(name: FeatureSwitchName, isEnabled: Boolean)
+
+object FeatureSwitch {
+  implicit val format: OFormat[FeatureSwitch] = Json.format[FeatureSwitch]
+}
+
+sealed trait FeatureSwitchName {
+  val name: String
+}
+
+object FeatureSwitchName {
+
+  implicit val writes: Writes[FeatureSwitchName] = (o: FeatureSwitchName) => JsString(o.name)
+
+  implicit val reads: Reads[FeatureSwitchName] = {
+    case JsString(DisplayBusinessStartDate.name) =>
+      JsSuccess(DisplayBusinessStartDate)
+    case JsString(TriggeredMigration.name) =>
+      JsSuccess(TriggeredMigration)
+    case JsString(OverseasBusinessAddress.name) =>
+      JsSuccess(OverseasBusinessAddress)
+    case JsString(IdempotencyKeyForCreateIncomeSource.name) =>
+      JsSuccess(IdempotencyKeyForCreateIncomeSource)
+    case JsString(NoIncomeSourcesRedirect.name) =>
+      JsSuccess(NoIncomeSourcesRedirect)
+    case JsString(HideBusinessName.name) =>
+      JsSuccess(HideBusinessName)
+    case notRequiredFS =>
+      Logger("application").error("Feature switch not required in this service")
+      JsSuccess(NotRequiredFS)
+  }
+
+  implicit val formats: Format[FeatureSwitchName] =
+    Format(reads, writes)
+
+  implicit def pathBindable: PathBindable[FeatureSwitchName] = new PathBindable[FeatureSwitchName] {
+
+    override def bind(key: String, value: String): Either[String, FeatureSwitchName] =
+      JsString(value).validate[FeatureSwitchName] match {
+        case JsSuccess(name, _) =>
+          Right(name)
+        case _ =>
+          Left(s"The feature switch `$value` does not exist")
+      }
+
+    override def unbind(key: String, value: FeatureSwitchName): String =
+      value.name
+  }
+
+  val allFeatureSwitches: immutable.Set[FeatureSwitchName] =
+    Set(
+      DisplayBusinessStartDate,
+      TriggeredMigration,
+      OverseasBusinessAddress,
+      IdempotencyKeyForCreateIncomeSource,
+      NoIncomeSourcesRedirect,
+      HideBusinessName
+    )
+
+  def get(str: String): Option[FeatureSwitchName] = allFeatureSwitches find (_.name == str)
+}
+
+case object NotRequiredFS extends FeatureSwitchName {
+  override val name: String = "not-required-FS"
+  override val toString: String = "Not required feature Switch"
+}
+
+case object DisplayBusinessStartDate extends FeatureSwitchName {
+  override val name: String = "display-business-start-date"
+  override val toString: String = "Display Business Start Date"
+}
+
+case object TriggeredMigration extends FeatureSwitchName {
+  override val name: String = "triggered-migration"
+  override val toString: String = "Triggered Migration"
+}
+
+case object OverseasBusinessAddress extends FeatureSwitchName {
+  override val name: String = "overseas-business-address"
+  override val toString: String = "Overseas Business Address"
+}
+
+case object IdempotencyKeyForCreateIncomeSource extends FeatureSwitchName {
+  override val name: String = "idempotency-key-for-create-income-source"
+  override val toString: String = "Idempotency Key for Create an Income Source"
+}
+
+case object NoIncomeSourcesRedirect extends FeatureSwitchName {
+  override val name: String = "no-income-sources-redirect"
+  override val toString: String = "No Income Sources Redirect"
+}
+
+case object HideBusinessName extends FeatureSwitchName {
+  override val name: String = "hide-business-name"
+  override val toString: String = "Hide business name when unknown"
+}

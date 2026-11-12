@@ -1,0 +1,67 @@
+/*
+ * Copyright 2023 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package enums.TransactionName
+
+import scala.language.implicitConversions
+
+sealed trait TransactionName {
+  val name: String
+
+  implicit def transactionNameToString(transactionName: TransactionName): String = {
+    transactionName.name
+  }
+}
+
+case object IncomeSourceDetailsResponse extends TransactionName {
+  val name = "income-source-details-response"
+}
+
+case object LowConfidenceLevelIvOutcomeFail extends TransactionName {
+  val name = "IV-uplift-failure-outcome"
+}
+
+case object LowConfidenceLevelIvOutcomeSuccess extends TransactionName {
+  val name = "IV-uplift-success-outcome"
+}
+
+case object LowConfidenceLevelIvHandoff extends TransactionName {
+  val name = "low-confidence-level-IV-handoff"
+}
+
+case object CeaseIncomeSource extends TransactionName {
+  val name = "cease-income-source"
+}
+
+case object UpdateIncomeSource extends TransactionName {
+  val name = "update-income-source"
+}
+
+case object CreateIncomeSource extends TransactionName {
+  val name = "create-income-source"
+}
+
+case object AccessDeniedForSupportingAgent extends  TransactionName {
+  val name = "access-denied-for-supporting-agent"
+}
+
+case object TriggeredMigrationStart extends TransactionName {
+  val name = "triggered-migration-start"
+}
+
+case object TriggeredMigrationComplete extends TransactionName {
+  val name = "triggered-migration-complete"
+}
