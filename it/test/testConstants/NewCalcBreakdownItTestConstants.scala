@@ -16,8 +16,8 @@
 
 package testConstants
 
-import models.liabilitycalculation.*
-import models.liabilitycalculation.taxcalculation.*
+import models.liabilityCalculation.*
+import models.liabilityCalculation.taxcalculation.*
 
 object NewCalcBreakdownItTestConstants {
 
