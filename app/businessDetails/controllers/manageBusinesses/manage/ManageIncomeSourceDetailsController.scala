@@ -304,7 +304,7 @@ class ManageIncomeSourceDetailsController @Inject()(view: ManageIncomeSourceDeta
 
     val desiredIncomeSourceMaybe: Option[BusinessDetailsModel] =
       sources.businesses
-        .filterNot(_.isCeased)
+        .filter(_.isActive)
         .find(_.incomeSourceId == incomeSourceId.value)
 
     def defaultViewModel(desiredIncomeSource: BusinessDetailsModel): Future[ManageIncomeSourceDetailsViewModel] = Future.successful(

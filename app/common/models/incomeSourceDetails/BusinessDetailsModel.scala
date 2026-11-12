@@ -45,6 +45,8 @@ case class BusinessDetailsModel(
     case (None, Some(taxYear)) => TaxYear(taxYear.toInt - 1, taxYear.toInt).toFinancialYearStart
     case (None, None) => LocalDate.MIN
   }
+
+  def isActive: Boolean = !isCeased && !deleted.contains(true)
 }
 
 object BusinessDetailsModel {

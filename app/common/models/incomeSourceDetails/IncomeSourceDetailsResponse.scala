@@ -146,7 +146,9 @@ case class IncomeSourceDetailsModel(
 
   def compareHashToQueryString(incomeSourceIdHash: IncomeSourceIdHash)
                               (implicit user: MtdItUser[_]): Either[Throwable, IncomeSourceId] = {
-    val allUserIncomeSourceIds: List[IncomeSourceId] = user.incomeSources.businesses.filterNot(bdm => bdm.isCeased || bdm.deleted.contains(true)).map(m => mkIncomeSourceId(m.incomeSourceId))
+    val allUserIncomeSourceIds: List[IncomeSourceId] = user.incomeSources.businesses
+      .filter(_.isActive)
+      .map(m => mkIncomeSourceId(m.incomeSourceId))
     incomeSourceIdHash.findIncomeSourceIdMatchingHash(ids = allUserIncomeSourceIds)
   }
 
