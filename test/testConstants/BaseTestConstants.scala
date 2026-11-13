@@ -222,6 +222,8 @@ object BaseTestConstants extends UnitSpec with GuiceOneAppPerSuite {
     address = Some(address),
   )
 
+  def business1WithDeletedFiled(deleted: Boolean): BusinessDetailsModel = business1.copy(deleted = Some(deleted))
+
   val testPropertyAccountingPeriod = AccountingPeriodModel(LocalDate.of(2017, 4, 6), LocalDate.of(2018, 4, 5))
 
   val propertyDetails = PropertyDetailsModel(
