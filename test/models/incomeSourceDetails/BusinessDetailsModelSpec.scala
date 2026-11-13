@@ -23,16 +23,19 @@ import java.time.LocalDate
 
 class BusinessDetailsModelSpec extends UnitSpec with TestSupport {
 
+  private val currentTaxYearStartDate: LocalDate = dateService.getCurrentTaxYearStart
+  private val incomeSourceId: String = "ABC123456789"
+
   private val activeBusiness = BusinessDetailsModel(
-    incomeSourceId = "ABC123456789",
+    incomeSourceId = incomeSourceId,
     incomeSource = Some("Fruit Ltd"),
     accountingPeriod = Some(AccountingPeriodModel(
-      start = dateService.getCurrentTaxYearStart,
-      end = dateService.getAccountingPeriodEndDate(dateService.getCurrentTaxYearStart)
+      start = currentTaxYearStartDate,
+      end = dateService.getAccountingPeriodEndDate(currentTaxYearStartDate)
     )),
     tradingName = Some("business"),
-    firstAccountingPeriodEndDate = Some(dateService.getAccountingPeriodEndDate(dateService.getCurrentTaxYearStart)),
-    tradingStartDate = Some(dateService.getCurrentTaxYearStart),
+    firstAccountingPeriodEndDate = Some(dateService.getAccountingPeriodEndDate(currentTaxYearStartDate)),
+    tradingStartDate = Some(currentTaxYearStartDate),
     contextualTaxYear = None,
     cessation = None,
     address = Some(AddressModel(
@@ -68,6 +71,45 @@ class BusinessDetailsModelSpec extends UnitSpec with TestSupport {
       }
 
       "return false where there are ceased and deleted businesses" in {
+
+        activeBusiness.copy(cessation = Some(CessationModel(Some(dateService.getCurrentDate))), deleted = Some(true)).isActive shouldBe false
+      }
+    }
+  }
+
+  "isOngoingSoleTraderBusiness(id: String) method" when {
+    "invoked on a BusinessDetailsModel object" should {
+      "return true where there are no ceased or deleted businesses and 'incomeSourceId' is equal to 'id' parameter passed" in {
+
+        activeBusiness.isOngoingSoleTraderBusiness(incomeSourceId) shouldBe true
+      }
+
+      "return false where the 'id' parameter passed is not matching the 'incomeSourceId' filed" in {
+
+        activeBusiness.isOngoingSoleTraderBusiness("SomeDifferentIncomeSourceId") shouldBe false
+      }
+
+      "return false where the 'id' parameter passed as an empty String" in {
+
+        activeBusiness.isOngoingSoleTraderBusiness("") shouldBe false
+      }
+
+      "return false where the 'id' parameter passed is a valid String but the 'incomeSourceId' filed is empty String" in {
+
+        activeBusiness.copy(incomeSourceId = "").isOngoingSoleTraderBusiness(incomeSourceId) shouldBe false
+      }
+
+      "return false where there is a ceased businesses and incomeSourceId is equal to id parameter passed" in {
+
+        activeBusiness.copy(cessation = Some(CessationModel(Some(dateService.getCurrentDate)))).isOngoingSoleTraderBusiness(incomeSourceId) shouldBe false
+      }
+
+      "return false where there is a deleted businesses and incomeSourceId is equal to id parameter passed" in {
+
+        activeBusiness.copy(deleted = Some(true)).isOngoingSoleTraderBusiness(incomeSourceId) shouldBe false
+      }
+
+      "return false where there are ceased and deleted businesses and incomeSourceId is equal to id parameter passed" in {
 
         activeBusiness.copy(cessation = Some(CessationModel(Some(dateService.getCurrentDate))), deleted = Some(true)).isActive shouldBe false
       }
