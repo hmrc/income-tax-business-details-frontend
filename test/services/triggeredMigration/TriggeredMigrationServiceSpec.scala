@@ -87,6 +87,29 @@ class TriggeredMigrationServiceSpec extends TestSupport with MockSessionService 
       result shouldBe expectedResult
     }
 
+    "return a view model with no active sole trader businesses and no active uk or foreign property businesses due to Business has been deleted" in {
+      val populatedIncomeSources = baseIncomeSources.copy(
+        businesses = List(business1.copy(deleted = Some(true))),
+        properties = List(
+          ukPropertyDetails.copy(cessation = Some(CessationModel(Some(LocalDate.now())))),
+          foreignPropertyDetails.copy(cessation = Some(CessationModel(Some(LocalDate.now()))))
+        )
+      )
+
+      val result = service.getCheckHmrcRecordsViewModel(populatedIncomeSources, None, "2027", false)
+
+      val expectedResult = CheckHmrcRecordsViewModel(
+        soleTraderBusinesses = List.empty,
+        hasActiveUkProperty = false,
+        hasActiveForeignProperty = false,
+        triggeredMigrationState = None,
+        yearOfMigrationEndYear = 2027,
+        hideBusinessName = false
+      )
+
+      result shouldBe expectedResult
+    }
+
     "return a view model with an active sole trader business and no active uk or foreign property businesses due to no returned businesses" in {
       val result = service.getCheckHmrcRecordsViewModel(baseIncomeSources, None, "2027", false)
 

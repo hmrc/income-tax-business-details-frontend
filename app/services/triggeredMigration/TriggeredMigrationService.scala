@@ -34,7 +34,7 @@ import scala.concurrent.{ExecutionContext, Future}
 class TriggeredMigrationService @Inject()(sessionService: SessionService) {
 
   def getCheckHmrcRecordsViewModel(incomeSources: IncomeSourceDetailsModel, state: Option[TriggeredMigrationState], yearOfMigration: String, hideBusinessNameFs: Boolean): CheckHmrcRecordsViewModel = {
-    val activeSoleTraderBusinesses = incomeSources.businesses.filterNot(_.isCeased)
+    val activeSoleTraderBusinesses = incomeSources.businesses.filter(_.isActive)
 
     val hasActiveUkProperty = incomeSources.properties.filterNot(_.isCeased).exists(_.isUkProperty)
     val hasActiveForeignProperty = incomeSources.properties.filterNot(_.isCeased).exists(_.isForeignProperty)

@@ -38,7 +38,7 @@ class IncomeSourceDetailsService @Inject()()(
                                           ) extends FeatureSwitching {
 
   def getAddIncomeSourceViewModel(sources: IncomeSourceDetailsModel, displayBusinessStartDateFS: Boolean): Try[AddIncomeSourcesViewModel] = Try {
-    val soleTraderBusinesses = sources.businesses.filterNot(_.isCeased)
+    val soleTraderBusinesses = sources.businesses.filter(_.isActive)
     val ukProperty = sources.properties.filterNot(_.isCeased).find(_.isUkProperty)
     val foreignProperty = sources.properties.filterNot(_.isCeased).find(_.isForeignProperty)
 
@@ -66,7 +66,7 @@ class IncomeSourceDetailsService @Inject()()(
                                     hideBusinessNameFS: Boolean
                                   ): Either[Throwable, ViewIncomeSourcesViewModel] = {
 
-    val maybeSoleTraderBusinesses = sources.businesses.filterNot(_.isCeased)
+    val maybeSoleTraderBusinesses = sources.businesses.filter(_.isActive)
     val soleTraderBusinessesExists = maybeSoleTraderBusinesses.nonEmpty
 
     val maybeUkProperty = sources.properties.filterNot(_.isCeased).find(_.isUkProperty)
@@ -106,7 +106,7 @@ class IncomeSourceDetailsService @Inject()()(
 
   def getCeaseIncomeSourceViewModel(sources: IncomeSourceDetailsModel, displayBusinessStartDateFS: Boolean): Either[Throwable, CeaseIncomeSourcesViewModel] = {
 
-    val maybeSoleTraderBusinesses = sources.businesses.filterNot(_.isCeased)
+    val maybeSoleTraderBusinesses = sources.businesses.filter(_.isActive)
     val soleTraderBusinessesExists = maybeSoleTraderBusinesses.nonEmpty
 
     val maybeUkProperty = sources.properties.filterNot(_.isCeased).find(_.isUkProperty)
@@ -148,7 +148,7 @@ class IncomeSourceDetailsService @Inject()()(
                                                    businessEndDate: LocalDate
                                                  ): Either[Throwable, CheckCeaseIncomeSourceDetailsViewModel] =
     Try {
-      val soleTraderBusinesses = sources.businesses.filterNot(_.isCeased)
+      val soleTraderBusinesses = sources.businesses.filter(_.isActive)
         .find(m => mkIncomeSourceId(m.incomeSourceId) == incomeSourceId)
 
       soleTraderBusinesses.map { business =>
